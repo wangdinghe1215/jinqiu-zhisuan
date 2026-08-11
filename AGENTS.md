@@ -1,65 +1,128 @@
-# 项目上下文
+# AGENTS.md - 足球分析仪表盘
+
+## 项目概览
+
+专业足球赛事赔率分析与数据可视化平台，采用暗色主题设计，提供今日分析、流水线状态、历史战绩、数据概览四大面板。
 
 ### 版本技术栈
 
 - **Framework**: Next.js 16 (App Router)
 - **Core**: React 19
 - **Language**: TypeScript 5
-- **UI 组件**: shadcn/ui (基于 Radix UI)
+- **UI 组件**: shadcn/ui
 - **Styling**: Tailwind CSS 4
+- **图表**: Recharts
+- **数据库**: SQLite (better-sqlite3)
+- **图标**: Lucide React
 
 ## 目录结构
 
 ```
-├── public/                 # 静态资源
-├── scripts/                # 构建与启动脚本
-│   ├── build.sh            # 构建脚本
-│   ├── dev.sh              # 开发环境启动脚本
-│   ├── prepare.sh          # 预处理脚本
-│   └── start.sh            # 生产环境启动脚本
-├── src/
-│   ├── app/                # 页面路由与布局
-│   ├── components/ui/      # Shadcn UI 组件库
-│   ├── hooks/              # 自定义 Hooks
-│   ├── lib/                # 工具库
-│   │   └── utils.ts        # 通用工具函数 (cn)
-│   └── server.ts           # 自定义服务端入口
-├── next.config.ts          # Next.js 配置
-├── package.json            # 项目依赖管理
-└── tsconfig.json           # TypeScript 配置
+src/
+├── app/
+│   ├── api/                    # 后端API路由
+│   │   ├── matches/route.ts    # 比赛列表/日期筛选
+│   │   ├── matches/[id]/route.ts # 比赛详情
+│   │   ├── history/route.ts    # 历史战绩数据
+│   │   └── overview/route.ts   # 概览/流水线数据
+│   ├── page.tsx                # 今日分析面板 (首页)
+│   ├── pipeline/page.tsx       # 流水线状态面板
+│   ├── history/page.tsx        # 历史战绩面板
+│   ├── overview/page.tsx       # 数据概览面板
+│   ├── layout.tsx              # 根布局
+│   └── globals.css             # 全局样式+暗色主题
+├── components/
+│   ├── AppLayout.tsx           # 应用布局包装器
+│   ├── Sidebar.tsx             # 左侧导航栏
+│   ├── TopBar.tsx              # 顶部状态栏
+│   ├── MatchCard.tsx           # 比赛分析卡片组件
+│   ├── badges.tsx              # T-level标签/星级/方向/结果徽章
+│   └── ui/                     # shadcn/ui 组件库
+├── lib/
+│   ├── db.ts                   # SQLite数据库访问层
+│   └── utils.ts                # 通用工具函数
 ```
 
-- 项目文件（如 app 目录、pages 目录、components 等）默认初始化到 `src/` 目录下。
+## 核心功能模块
 
-## 包管理规范
+### 1. 今日分析面板 (`/`)
+- 当日所有竞彩比赛赔率分析结果
+- 比赛卡片：场次编号、联赛、对阵、SPF/RSPF赔率、让球
+- T-level等级标签（T0钻石/T1a/T1b/T2/T2b/T3渐变色）
+- 线0方向标记、星级评定、CR交叉比值、黄金比分TOP3
+- 支持按T-level、联赛、关键词筛选
+- 点击卡片展开详情
 
-**仅允许使用 pnpm** 作为包管理器，**严禁使用 npm 或 yarn**。
-**常用命令**：
-- 安装依赖：`pnpm add <package>`
-- 安装开发依赖：`pnpm add -D <package>`
-- 安装所有依赖：`pnpm install`
-- 移除依赖：`pnpm remove <package>`
+### 2. 流水线状态面板 (`/pipeline`)
+- 每日自动分析脚本运行状态（成功/失败/运行中）
+- 处理场次、耗时统计
+- 7天运行记录表格
+- 处理场次趋势柱状图、运行耗时折线图
 
-## 开发规范
+### 3. 历史战绩面板 (`/history`)
+- T-level各等级命中率统计柱状图
+- 命中率进度条列表
+- 钻石信号追踪记录表
+- 按日期筛选
 
-### 编码规范
+### 4. 数据概览面板 (`/overview`)
+- 总记录数、日期范围、分析覆盖率
+- 各联赛数据占比饼图
+- 联赛比赛数量柱状图
+- 数据表结构概览
 
-- 默认按 TypeScript `strict` 心智写代码；优先复用当前作用域已声明的变量、函数、类型和导入，禁止引用未声明标识符或拼错变量名。
-- 禁止隐式 `any` 和 `as any`；函数参数、返回值、解构项、事件对象、`catch` 错误在使用前应有明确类型或先完成类型收窄，并清理未使用的变量和导入。
+## 数据库设计
 
-### next.config 配置规范
+**表名**: `matches`
 
-- 配置的路径不要写死绝对路径，必须使用 path.resolve(__dirname, ...)、import.meta.dirname 或 process.cwd() 动态拼接。
+**核心字段**:
+- `match_no` TEXT - 场次编号 (主键)
+- `league` TEXT - 联赛名
+- `home_team` / `away_team` TEXT - 主客队
+- `match_date` TEXT - 比赛日期 (YYYY-MM-DD)
+- `spf_home/draw/away` REAL - SPF胜平负赔率
+- `rspf_home/draw/away` REAL - 让球胜平负赔率
+- `handicap` REAL - 让球数
+- `score_odds` TEXT - 比分赔率JSON
+- `full_time_result/score` TEXT - 赛果
+- `analyzed` INTEGER - 是否已分析
+- `recommended_direction` TEXT - 推荐方向
+- `hit_result` TEXT - 命中结果 (命中/未命中)
+- `strategy_used` TEXT - 使用策略
+- `t_level` TEXT - T等级 (T0/T1a/T1b/T2/T2b/T3)
+- `cr_ratio` REAL - CR交叉比值
+- `line0_direction` TEXT - 线0方向
+- `star_rating` INTEGER - 星级 (1-5)
+- `top_scores` TEXT - 黄金比分TOP3 JSON
 
-### Hydration 问题防范
+## 设计规范
 
-1. 严禁在 JSX 渲染逻辑中直接使用 typeof window、Date.now()、Math.random() 等动态数据。**必须使用 'use client' 并配合 useEffect + useState 确保动态内容仅在客户端挂载后渲染**；同时严禁非法 HTML 嵌套（如 <p> 嵌套 <div>）。
-2. **禁止使用 head 标签**，优先使用 metadata，详见文档：https://nextjs.org/docs/app/api-reference/functions/generate-metadata
-   1. 三方 CSS、字体等资源可在 `globals.css` 中顶部通过 `@import` 引入或使用 next/font
-   2. preload, preconnect, dns-prefetch 通过 ReactDOM 的 preload、preconnect、dns-prefetch 方法引入
-   3. json-ld 可阅读 https://nextjs.org/docs/app/guides/json-ld
+- 暗色主题，主背景 `#0f0f1a`，卡片 `#1a1a2e`
+- T-level渐变：钻石青色/金金色/银银色/铜铜色/铁灰色
+- 数据密集型表格布局，等宽数字字体
+- 响应式：移动端侧边栏收起为汉堡菜单
+- 自定义暗色滚动条
 
-## UI 设计与组件规范 (UI & Styling Standards)
+## 开发命令
 
-- 模板默认预装核心组件库 `shadcn/ui`，位于`src/components/ui/`目录下
-- Next.js 项目**必须默认**采用 shadcn/ui 组件、风格和规范，**除非用户指定用其他的组件和规范。**
+```bash
+pnpm install      # 安装依赖
+pnpm run dev      # 开发模式
+pnpm run build    # 生产构建
+pnpm ts-check     # TypeScript检查
+pnpm lint         # ESLint检查
+```
+
+## 环境变量
+
+- `FOOTBALL_DB_PATH` - SQLite数据库路径（默认: `/app/data/所有对话/主对话/足球分析/odds_database.db`）
+- 数据库文件不存在时自动使用内存数据库+示例数据
+
+## API接口
+
+| 方法 | 路径 | 功能 | 参数 |
+|------|------|------|------|
+| GET | `/api/matches?date=YYYY-MM-DD` | 获取指定日期比赛 | date: 日期 |
+| GET | `/api/matches/:id` | 获取单场比赛详情 | id: 场次编号 |
+| GET | `/api/history?date=` | 历史战绩+钻石信号 | date: 可选日期筛选 |
+| GET | `/api/overview` | 数据概览+流水线状态 | 无 |
