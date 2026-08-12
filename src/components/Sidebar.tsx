@@ -14,6 +14,7 @@ import {
   Target,
   Search,
   Brain,
+  Radar,
 } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -23,6 +24,7 @@ const navItems = [
   { href: '/pipeline', label: '流水线状态', icon: PlayCircle, section: 'base' },
   { href: '/history', label: '历史战绩', icon: History, section: 'base' },
   { href: '/overview', label: '数据概览', icon: Database, section: 'base' },
+  { href: '/radar', label: '雷达预警', icon: Radar, section: 'analysis' },
   { href: '/poisson', label: '泊松分析', icon: Activity, section: 'analysis' },
   { href: '/v42', label: 'V4.2分析', icon: Target, section: 'analysis' },
   { href: '/bizhongge', label: '必中哥分析', icon: Search, section: 'analysis' },
