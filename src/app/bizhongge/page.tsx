@@ -26,7 +26,6 @@ import {
   Legend,
 } from 'recharts';
 import {
-  generateOddsData,
   findByOdds,
   findByRange,
   aggregateRecords,
@@ -73,26 +72,37 @@ export default function BizhonggePage() {
     rspf_draw: null,
     rspf_away: null,
   });
+  const [dataLoading, setDataLoading] = useState(false);
 
   const [result, setResult] = useState<ReturnType<typeof aggregateRecords> | null>(null);
 
-  const loadData = useCallback((type: OddsType): OddsRecord[] => {
+  // 从 public/data/ 目录加载对应 JSON 文件
+  const loadData = useCallback(async (type: OddsType): Promise<OddsRecord[]> => {
     if (dataCache[type]) return dataCache[type]!;
-    const data = generateOddsData(type);
-    setDataCache((prev) => ({ ...prev, [type]: data }));
-    return data;
+    try {
+      const res = await fetch(`/data/${type}.json`, { cache: 'force-cache' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data: OddsRecord[] = await res.json();
+      setDataCache((prev) => ({ ...prev, [type]: data }));
+      return data;
+    } catch (e) {
+      console.error(`加载 ${type}.json 失败:`, e);
+      // 加载失败返回空数组
+      setDataCache((prev) => ({ ...prev, [type]: [] }));
+      return [];
+    }
   }, [dataCache]);
 
   const handleSearch = async () => {
     setLoading(true);
+    setDataLoading(true);
     setHasSearched(true);
     setCurrentPage(1);
     setExpandedScore(null);
 
-    // 模拟加载延迟
-    await new Promise((r) => setTimeout(r, 300));
-
-    const data = loadData(oddsType);
+    // 加载对应赔率类型的数据
+    const data = await loadData(oddsType);
+    setDataLoading(false);
     let records: OddsRecord[];
 
     if (searchMode === 'exact') {
@@ -181,6 +191,7 @@ export default function BizhonggePage() {
                 {oddsTypeOptions.map((opt) => (
                   <option key={opt.value} value={opt.value}>
                     {opt.label}
+                    {dataCache[opt.value] ? ` (${dataCache[opt.value]!.length}条)` : ''}
                   </option>
                 ))}
               </select>
