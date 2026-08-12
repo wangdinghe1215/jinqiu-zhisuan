@@ -32,7 +32,7 @@ import {
   Cell,
 } from 'recharts';
 
-const RADAR_DATA_URL = 'https://www.coze.cn/s/elrBcwx6suI/';
+const RADAR_DATA_URL = 'https://www.coze.cn/s/1M_Aj3hvBbc/';
 
 interface OddsItem {
   jingcai: number;
