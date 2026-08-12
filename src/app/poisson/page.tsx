@@ -1,334 +1,517 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from 'react';
+import { AppLayout } from '@/components/AppLayout';
 import {
+  BarChart3,
+  AlertTriangle,
   Activity,
+  Search,
+  Filter,
   ChevronDown,
   ChevronUp,
-  Target,
-  AlertTriangle,
   TrendingUp,
-  Loader2,
-} from "lucide-react";
+  Target,
+  Sigma,
+  RefreshCw,
+  ArrowUpDown,
+} from 'lucide-react';
 
-interface TopScore {
-  score: string;
-  prob: number;
-}
+// 泊松概率计算
+const factorial = (n: number): number => {
+  if (n === 0 || n === 1) return 1;
+  let result = 1;
+  for (let i = 2; i <= n; i++) result *= i;
+  return result;
+};
 
-interface PoissonData {
-  top5: TopScore[];
-  homeWinProb: number;
-  drawProb: number;
-  awayWinProb: number;
-  lambdaHome: number;
-  lambdaAway: number;
-  drawAlert: boolean;
-}
+const poissonProb = (lambda: number, k: number): number => {
+  return (Math.pow(lambda, k) * Math.exp(-lambda)) / factorial(k);
+};
 
-interface Match {
+const RETURN_RATE = 0.88;
+
+interface PoissonMatch {
   match_no: string;
   league: string;
   home_team: string;
   away_team: string;
-  match_time: string;
   spf_home: number;
   spf_draw: number;
   spf_away: number;
-  poisson: PoissonData | null;
+  match_time?: string;
 }
 
+interface TopScore {
+  score: string;
+  home: number;
+  away: number;
+  prob: number;
+}
+
+interface PoissonResult {
+  match: PoissonMatch;
+  lambda_home: number;
+  lambda_away: number;
+  top5: TopScore[];
+  direction: string;
+  confidence: number;
+  drawAlert: boolean;
+  homeProb: number;
+  drawProb: number;
+  awayProb: number;
+  matrix: number[][];
+}
+
+const calcPoisson = (match: PoissonMatch): PoissonResult => {
+  // λ计算：主胜赔率 → 客队λ；客胜赔率 → 主队λ
+  const lambda_home = -Math.log(RETURN_RATE / match.spf_away);
+  const lambda_away = -Math.log(RETURN_RATE / match.spf_home);
+
+  // 6x6矩阵
+  const matrix: number[][] = [];
+  let total = 0;
+  for (let h = 0; h < 6; h++) {
+    matrix[h] = [];
+    for (let a = 0; a < 6; a++) {
+      const p = poissonProb(lambda_home, h) * poissonProb(lambda_away, a);
+      matrix[h][a] = p;
+      total += p;
+    }
+  }
+
+  // 归一化
+  for (let h = 0; h < 6; h++) {
+    for (let a = 0; a < 6; a++) {
+      matrix[h][a] = matrix[h][a] / total;
+    }
+  }
+
+  // 胜平负概率
+  let homeProb = 0, drawProb = 0, awayProb = 0;
+  const topScores: TopScore[] = [];
+  for (let h = 0; h < 6; h++) {
+    for (let a = 0; a < 6; a++) {
+      const p = matrix[h][a];
+      if (h > a) homeProb += p;
+      else if (h === a) drawProb += p;
+      else awayProb += p;
+      topScores.push({ score: `${h}:${a}`, home: h, away: a, prob: p });
+    }
+  }
+
+  topScores.sort((a, b) => b.prob - a.prob);
+  const top5 = topScores.slice(0, 5);
+
+  // 方向和置信度
+  let direction = '主胜';
+  let confidence = homeProb;
+  if (drawProb > homeProb && drawProb > awayProb) {
+    direction = '平局';
+    confidence = drawProb;
+  } else if (awayProb > homeProb && awayProb > drawProb) {
+    direction = '客胜';
+    confidence = awayProb;
+  }
+
+  // 平局预警：Top1是平局
+  const drawAlert = top5[0].home === top5[0].away;
+
+  return {
+    match,
+    lambda_home,
+    lambda_away,
+    top5,
+    direction,
+    confidence,
+    drawAlert,
+    homeProb,
+    drawProb,
+    awayProb,
+    matrix,
+  };
+};
+
+const getDirectionColor = (dir: string) => {
+  if (dir === '主胜') return 'text-red-400';
+  if (dir === '客胜') return 'text-blue-400';
+  return 'text-yellow-400';
+};
+
+const getDirectionBg = (dir: string) => {
+  if (dir === '主胜') return 'bg-red-500/20 border-red-500/30';
+  if (dir === '客胜') return 'bg-blue-500/20 border-blue-500/30';
+  return 'bg-yellow-500/20 border-yellow-500/30';
+};
+
 export default function PoissonPage() {
-  const [matches, setMatches] = useState<Match[]>([]);
+  const [matches, setMatches] = useState<PoissonMatch[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [leagueFilter, setLeagueFilter] = useState("全部");
-  const [searchText, setSearchText] = useState("");
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const [search, setSearch] = useState('');
+  const [leagueFilter, setLeagueFilter] = useState('全部');
+  const [showLeagueDropdown, setShowLeagueDropdown] = useState(false);
+  const [sortBy, setSortBy] = useState<'time' | 'confidence' | 'drawAlert'>('time');
 
   useEffect(() => {
-    const load = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch("/api/sporttery/matches?type=poisson");
-        const data = await res.json();
-        if (data.success) {
-          setMatches(data.data || []);
-        } else {
-          setError(data.error || "加载失败");
-        }
-      } catch (e: any) {
-        setError(e.message || "网络错误");
-      } finally {
-        setLoading(false);
-      }
-    };
-    load();
+    fetchMatches();
   }, []);
 
-  const leagues = ["全部", ...new Set(matches.map((m) => m.league))];
-
-  const filtered = matches.filter((m) => {
-    if (leagueFilter !== "全部" && m.league !== leagueFilter) return false;
-    if (searchText) {
-      const q = searchText.toLowerCase();
-      if (
-        !m.home_team.toLowerCase().includes(q) &&
-        !m.away_team.toLowerCase().includes(q) &&
-        !m.league.toLowerCase().includes(q)
-      )
-        return false;
+  const fetchMatches = async () => {
+    try {
+      setLoading(true);
+      const res = await fetch('/api/sporttery/matches?type=basic');
+      const result = await res.json();
+      if (result.success && result.data) {
+        setMatches(result.data);
+      }
+    } catch (error) {
+      console.error('获取比赛失败:', error);
+    } finally {
+      setLoading(false);
     }
-    return true;
-  });
-
-  const getDirectionColor = (p: PoissonData) => {
-    if (p.homeWinProb > p.awayWinProb && p.homeWinProb > p.drawProb) return "text-red-400";
-    if (p.awayWinProb > p.homeWinProb && p.awayWinProb > p.drawProb) return "text-blue-400";
-    return "text-yellow-400";
   };
 
-  const getDirection = (p: PoissonData) => {
-    if (p.homeWinProb >= p.awayWinProb && p.homeWinProb >= p.drawProb) return "主胜";
-    if (p.awayWinProb >= p.homeWinProb && p.awayWinProb >= p.drawProb) return "客胜";
-    return "平局";
-  };
+  const leagues = useMemo(() => {
+    const set = new Set(matches.map(m => m.league));
+    return ['全部', ...Array.from(set)];
+  }, [matches]);
 
-  const getConfidence = (p: PoissonData) => {
-    const max = Math.max(p.homeWinProb, p.drawProb, p.awayWinProb);
-    return Math.round(max * 100);
-  };
+  const results = useMemo(() => {
+    return matches.map(calcPoisson);
+  }, [matches]);
+
+  const filteredResults = useMemo(() => {
+    let r = results;
+
+    if (leagueFilter !== '全部') {
+      r = r.filter(x => x.match.league === leagueFilter);
+    }
+
+    if (search) {
+      const kw = search.toLowerCase();
+      r = r.filter(x =>
+        x.match.home_team.toLowerCase().includes(kw) ||
+        x.match.away_team.toLowerCase().includes(kw) ||
+        x.match.league.toLowerCase().includes(kw) ||
+        x.match.match_no.toLowerCase().includes(kw)
+      );
+    }
+
+    if (sortBy === 'confidence') {
+      r = [...r].sort((a, b) => b.confidence - a.confidence);
+    } else if (sortBy === 'drawAlert') {
+      r = [...r].sort((a, b) => Number(b.drawAlert) - Number(a.drawAlert));
+    }
+
+    return r;
+  }, [results, leagueFilter, search, sortBy]);
+
+  // 统计数据
+  const stats = useMemo(() => ({
+    total: results.length,
+    drawAlerts: results.filter(r => r.drawAlert).length,
+    avgConfidence: results.length > 0
+      ? (results.reduce((s, r) => s + r.confidence, 0) / results.length) * 100
+      : 0,
+  }), [results]);
 
   return (
-    <div className="p-4 lg:p-6 space-y-4">
-      {/* 头部 */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2">
-            <Activity className="w-5 h-5 text-cyan-400" />
-            泊松分析
-          </h1>
-          <p className="text-sm text-gray-400 mt-1">基于SPF赔率的泊松分布比分预测</p>
+    <AppLayout>
+      <div className="space-y-6 pb-10">
+        {/* Header */}
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-100 flex items-center gap-2">
+              <Sigma className="w-6 h-6 text-purple-400" />
+              泊松分析
+              <span className="text-sm font-normal text-gray-500 ml-2">
+                基于 SPF 赔率的泊松分布比分预测
+              </span>
+            </h1>
+          </div>
+          <button
+            onClick={fetchMatches}
+            className="flex items-center gap-2 px-4 py-2 bg-[#1f2937] text-gray-300 rounded-lg hover:bg-[#374151] transition-colors text-sm"
+          >
+            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+            刷新数据
+          </button>
         </div>
-        {loading && (
-          <div className="flex items-center gap-2 text-sm text-cyan-400">
-            <Loader2 className="w-4 h-4 animate-spin" />
+
+        {/* 统计卡片 */}
+        <div className="grid grid-cols-3 gap-4">
+          <div className="p-4 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
+            <div className="flex items-center gap-2 text-gray-400 text-sm mb-1">
+              <BarChart3 className="w-4 h-4 text-cyan-400" />
+              在售场次
+            </div>
+            <div className="text-2xl font-bold text-cyan-400 tabular-nums">
+              {loading ? '...' : stats.total}
+            </div>
+          </div>
+          <div className="p-4 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
+            <div className="flex items-center gap-2 text-gray-400 text-sm mb-1">
+              <AlertTriangle className="w-4 h-4 text-yellow-400" />
+              平局预警
+            </div>
+            <div className="text-2xl font-bold text-yellow-400 tabular-nums">
+              {loading ? '...' : stats.drawAlerts}
+            </div>
+          </div>
+          <div className="p-4 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
+            <div className="flex items-center gap-2 text-gray-400 text-sm mb-1">
+              <Target className="w-4 h-4 text-green-400" />
+              平均置信度
+            </div>
+            <div className="text-2xl font-bold text-green-400 tabular-nums">
+              {loading ? '...' : `${stats.avgConfidence.toFixed(1)}%`}
+            </div>
+          </div>
+        </div>
+
+        {/* 筛选栏 */}
+        <div className="flex flex-wrap gap-3 items-center">
+          <div className="relative flex-1 min-w-[200px] max-w-md">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+            <input
+              type="text"
+              placeholder="搜索球队/联赛/场次..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 bg-[#1a1a2e] border border-gray-700 rounded-lg text-gray-200 text-sm focus:outline-none focus:border-purple-500/50 transition-colors"
+            />
+          </div>
+
+          {/* 联赛筛选 */}
+          <div className="relative">
+            <button
+              onClick={() => setShowLeagueDropdown(!showLeagueDropdown)}
+              className="flex items-center gap-2 px-4 py-2 bg-[#1a1a2e] border border-gray-700 rounded-lg text-gray-300 text-sm hover:border-gray-600 min-w-[130px] justify-between"
+            >
+              <span className="flex items-center gap-2">
+                <Filter className="w-4 h-4 text-gray-500" />
+                {leagueFilter}
+              </span>
+              {showLeagueDropdown ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            </button>
+            {showLeagueDropdown && (
+              <div className="absolute top-full mt-1 right-0 w-full max-h-60 overflow-y-auto bg-[#1f2937] border border-gray-600 rounded-lg z-20 shadow-xl min-w-[150px]">
+                {leagues.map(l => (
+                  <button
+                    key={l}
+                    onClick={() => { setLeagueFilter(l); setShowLeagueDropdown(false); }}
+                    className={`w-full px-4 py-2 text-left text-sm hover:bg-[#374151] transition-colors ${
+                      leagueFilter === l ? 'text-purple-400 bg-purple-500/10' : 'text-gray-300'
+                    }`}
+                  >
+                    {l}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* 排序 */}
+          <div className="flex gap-1">
+            {[
+              { key: 'time', label: '按时间', icon: Activity },
+              { key: 'confidence', label: '按置信度', icon: Target },
+              { key: 'drawAlert', label: '平局预警优先', icon: AlertTriangle },
+            ].map(item => (
+              <button
+                key={item.key}
+                onClick={() => setSortBy(item.key as typeof sortBy)}
+                className={`flex items-center gap-1.5 px-3 py-2 text-sm rounded-lg transition-colors ${
+                  sortBy === item.key
+                    ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
+                    : 'bg-[#1a1a2e] text-gray-400 border border-gray-700 hover:border-gray-600'
+                }`}
+              >
+                <item.icon className="w-3.5 h-3.5" />
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 比赛列表 */}
+        {loading ? (
+          <div className="text-center py-20 text-gray-500">
+            <RefreshCw className="w-8 h-8 mx-auto animate-spin mb-3" />
             加载中...
+          </div>
+        ) : filteredResults.length === 0 ? (
+          <div className="text-center py-20 text-gray-500">
+            <Activity className="w-12 h-12 mx-auto mb-3 opacity-30" />
+            <p>暂无符合条件的比赛</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {filteredResults.map(result => (
+              <div
+                key={result.match.match_no}
+                className={`p-5 bg-[#1a1a2e] border rounded-xl transition-all cursor-pointer hover:border-purple-500/40 hover:shadow-lg hover:shadow-purple-500/5 ${
+                  result.drawAlert
+                    ? 'border-yellow-500/40'
+                    : 'border-gray-700/50'
+                }`}
+                onClick={() => setExpanded(expanded === result.match.match_no ? null : result.match.match_no)}
+              >
+                {/* 头部 */}
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded">
+                      {result.match.match_no}
+                    </span>
+                    <span className="text-xs text-gray-500">{result.match.league}</span>
+                    {result.match.match_time && (
+                      <span className="text-xs text-gray-600 font-mono">
+                        {result.match.match_time.slice(0, 5)}
+                      </span>
+                    )}
+                  </div>
+                  {result.drawAlert && (
+                    <div className="flex items-center gap-1 px-2 py-0.5 bg-yellow-500/20 border border-yellow-500/40 rounded text-yellow-400 text-xs font-medium animate-pulse">
+                      <AlertTriangle className="w-3 h-3" />
+                      平局预警
+                    </div>
+                  )}
+                </div>
+
+                {/* 对阵 */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-right flex-1">
+                    <div className="text-base font-semibold text-gray-100">{result.match.home_team}</div>
+                    <div className="text-xs text-gray-500">主胜 {result.match.spf_home.toFixed(2)}</div>
+                  </div>
+                  <div className="px-4 text-center">
+                    <div className={`text-sm font-bold ${getDirectionColor(result.direction)}`}>
+                      {result.direction}
+                    </div>
+                    <div className="text-xs text-gray-500">VS</div>
+                  </div>
+                  <div className="text-left flex-1">
+                    <div className="text-base font-semibold text-gray-100">{result.match.away_team}</div>
+                    <div className="text-xs text-gray-500">客胜 {result.match.spf_away.toFixed(2)}</div>
+                  </div>
+                </div>
+
+                {/* 胜平负概率条 */}
+                <div className="mb-4">
+                  <div className="flex justify-between text-xs text-gray-500 mb-1">
+                    <span>主胜 {(result.homeProb * 100).toFixed(1)}%</span>
+                    <span>平 {(result.drawProb * 100).toFixed(1)}%</span>
+                    <span>客胜 {(result.awayProb * 100).toFixed(1)}%</span>
+                  </div>
+                  <div className="flex h-2 rounded-full overflow-hidden">
+                    <div className="bg-red-500" style={{ width: `${result.homeProb * 100}%` }} />
+                    <div className="bg-yellow-500" style={{ width: `${result.drawProb * 100}%` }} />
+                    <div className="bg-blue-500" style={{ width: `${result.awayProb * 100}%` }} />
+                  </div>
+                </div>
+
+                {/* Top5 比分 */}
+                <div className="space-y-1.5 mb-3">
+                  <div className="text-xs text-gray-500 mb-2 flex items-center gap-1">
+                    <TrendingUp className="w-3 h-3" />
+                    预测比分 Top5
+                  </div>
+                  {result.top5.map((s, i) => (
+                    <div key={s.score} className="flex items-center gap-3">
+                      <span className="text-xs text-gray-600 w-4 text-right">#{i + 1}</span>
+                      <span className={`font-mono font-bold text-sm w-12 ${
+                        i === 0 ? 'text-purple-400' : 'text-gray-300'
+                      }`}>
+                        {s.score}
+                      </span>
+                      <div className="flex-1 h-5 bg-[#0f0f1a] rounded-full overflow-hidden relative">
+                        <div
+                          className={`h-full rounded-full ${
+                            i === 0 ? 'bg-gradient-to-r from-purple-600 to-purple-400' : 'bg-purple-500/40'
+                          }`}
+                          style={{ width: `${(s.prob / result.top5[0].prob) * 100}%` }}
+                        />
+                        <span className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-gray-400 font-mono">
+                          {(s.prob * 100).toFixed(1)}%
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* λ值 + 置信度 */}
+                <div className="flex items-center justify-between pt-3 border-t border-gray-700/50 text-xs">
+                  <div className="flex items-center gap-4">
+                    <span className="text-gray-500">
+                      λ<sub>主</sub> = <span className="text-gray-300 font-mono">{result.lambda_home.toFixed(2)}</span>
+                    </span>
+                    <span className="text-gray-500">
+                      λ<sub>客</sub> = <span className="text-gray-300 font-mono">{result.lambda_away.toFixed(2)}</span>
+                    </span>
+                  </div>
+                  <div className={`flex items-center gap-1.5 px-2 py-0.5 rounded border ${getDirectionBg(result.direction)}`}>
+                    <Target className="w-3 h-3" />
+                    置信度 <span className={`font-bold ${getDirectionColor(result.direction)}`}>
+                      {(result.confidence * 100).toFixed(1)}%
+                    </span>
+                  </div>
+                </div>
+
+                {/* 展开详情 - 6x6矩阵 */}
+                {expanded === result.match.match_no && (
+                  <div className="mt-4 pt-4 border-t border-gray-700/50">
+                    <div className="text-xs text-gray-500 mb-2 flex items-center gap-1">
+                      <BarChart3 className="w-3 h-3" />
+                      6×6 比分概率矩阵（单位：%）
+                    </div>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-xs text-center">
+                        <thead>
+                          <tr className="text-gray-500">
+                            <th className="py-1 px-1"></th>
+                            {[0, 1, 2, 3, 4, 5].map(a => (
+                              <th key={a} className="py-1 px-1 font-medium">客{a}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {result.matrix.map((row, h) => (
+                            <tr key={h}>
+                              <td className="py-1 px-1 text-gray-500 font-medium">主{h}</td>
+                              {row.map((p, a) => {
+                                const maxP = result.top5[0].prob;
+                                const isTop = result.top5.slice(0, 3).some(t => t.home === h && t.away === a);
+                                return (
+                                  <td
+                                    key={a}
+                                    className={`py-1 px-1 font-mono rounded ${
+                                      isTop
+                                        ? 'bg-purple-500/30 text-purple-200 font-bold'
+                                        : p > maxP * 0.5
+                                        ? 'bg-purple-500/10 text-gray-300'
+                                        : 'text-gray-600'
+                                    }`}
+                                  >
+                                    {(p * 100).toFixed(1)}
+                                  </td>
+                                );
+                              })}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    <div className="mt-2 text-xs text-gray-600 text-center">
+                      点击卡片收起详情
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         )}
       </div>
-
-      {/* 筛选 */}
-      <div className="flex flex-wrap gap-3">
-        <select
-          value={leagueFilter}
-          onChange={(e) => setLeagueFilter(e.target.value)}
-          className="bg-[#1a1a2e] border border-[#2d3748] text-gray-200 text-sm rounded-lg px-3 py-2 focus:border-cyan-500 focus:outline-none"
-        >
-          {leagues.map((l) => (
-            <option key={l} value={l}>
-              {l}
-            </option>
-          ))}
-        </select>
-        <input
-          type="text"
-          placeholder="搜索球队/联赛..."
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-          className="bg-[#1a1a2e] border border-[#2d3748] text-gray-200 text-sm rounded-lg px-3 py-2 w-48 focus:border-cyan-500 focus:outline-none"
-        />
-        <div className="flex items-center gap-2 text-sm text-gray-400 ml-auto">
-          <Target className="w-4 h-4" />
-          共 {filtered.length} 场比赛
-        </div>
-      </div>
-
-      {error && (
-        <div className="bg-red-900/20 border border-red-500/30 text-red-300 px-4 py-3 rounded-lg">
-          {error}
-        </div>
-      )}
-
-      {!loading && !error && filtered.length === 0 && (
-        <div className="text-center py-16 text-gray-400">
-          <Activity className="w-12 h-12 mx-auto mb-3 opacity-50" />
-          <p>今日暂无竞彩比赛在售</p>
-        </div>
-      )}
-
-      {/* 比赛列表 */}
-      <div className="grid gap-3">
-        {filtered.map((match) => {
-          const p = match.poisson;
-          const isExpanded = expandedId === match.match_no;
-          const drawAlert = p && ["0:0", "1:1", "2:2"].includes(p.top5[0]?.score);
-
-          return (
-            <div
-              key={match.match_no}
-              className="bg-[#1a1a2e] border border-[#2d3748] rounded-xl overflow-hidden hover:border-cyan-500/40 transition-colors cursor-pointer"
-              onClick={() => setExpandedId(isExpanded ? null : match.match_no)}
-            >
-              <div className="p-4">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono text-cyan-400 font-bold">
-                      {match.match_no}
-                    </span>
-                    <span className="text-xs text-gray-400 bg-[#0f0f1a] px-2 py-0.5 rounded">
-                      {match.league}
-                    </span>
-                    {match.match_time && (
-                      <span className="text-xs text-gray-500">{match.match_time}</span>
-                    )}
-                  </div>
-                  {drawAlert && (
-                    <span className="flex items-center gap-1 text-xs text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded font-medium">
-                      <AlertTriangle className="w-3 h-3" />
-                      平局预警
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex-1">
-                    <div className="text-white font-semibold text-sm">{match.home_team}</div>
-                    <div className="text-gray-500 text-xs mt-1">主队</div>
-                  </div>
-                  <div className="text-center px-4">
-                    <div className="text-gray-500 text-xs mb-1">VS</div>
-                    {p && (
-                      <div className={`text-sm font-bold ${getDirectionColor(p)}`}>
-                        {getDirection(p)}
-                        <span className="text-xs ml-1 opacity-70">
-                          {getConfidence(p)}%
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex-1 text-right">
-                    <div className="text-white font-semibold text-sm">{match.away_team}</div>
-                    <div className="text-gray-500 text-xs mt-1">客队</div>
-                  </div>
-                </div>
-
-                {/* SPF赔率 */}
-                <div className="grid grid-cols-3 gap-2 mb-3">
-                  <div className="text-center bg-[#0f0f1a] py-2 rounded">
-                    <div className="text-red-400 font-mono font-bold text-sm">
-                      {match.spf_home || "-"}
-                    </div>
-                    <div className="text-gray-500 text-xs">主胜</div>
-                  </div>
-                  <div className="text-center bg-[#0f0f1a] py-2 rounded">
-                    <div className="text-yellow-400 font-mono font-bold text-sm">
-                      {match.spf_draw || "-"}
-                    </div>
-                    <div className="text-gray-500 text-xs">平局</div>
-                  </div>
-                  <div className="text-center bg-[#0f0f1a] py-2 rounded">
-                    <div className="text-blue-400 font-mono font-bold text-sm">
-                      {match.spf_away || "-"}
-                    </div>
-                    <div className="text-gray-500 text-xs">客胜</div>
-                  </div>
-                </div>
-
-                {/* Top5比分进度条 */}
-                {p && (
-                  <div className="space-y-1.5">
-                    <div className="text-xs text-gray-400 flex items-center gap-1">
-                      <TrendingUp className="w-3 h-3" />
-                      泊松预测 Top5 比分
-                    </div>
-                    {p.top5.map((s, i) => {
-                      const isDraw = s.score.includes(":") && s.score.split(":")[0] === s.score.split(":")[1];
-                      const barColor = isDraw
-                        ? "from-yellow-600/50 to-yellow-500/50"
-                        : s.score.split(":")[0] > s.score.split(":")[1]
-                        ? "from-red-600/50 to-red-500/50"
-                        : "from-blue-600/50 to-blue-500/50";
-                      return (
-                        <div key={i} className="flex items-center gap-2">
-                          <span className="text-xs font-mono text-gray-400 w-8">{i + 1}</span>
-                          <span className="text-xs text-white font-mono w-12">{s.score}</span>
-                          <div className="flex-1 bg-[#0f0f1a] h-4 rounded overflow-hidden">
-                            <div
-                              className={`h-full bg-gradient-to-r ${barColor} transition-all`}
-                              style={{ width: `${Math.min(s.prob * 400, 100)}%` }}
-                            />
-                          </div>
-                          <span className="text-xs text-gray-400 font-mono w-12 text-right">
-                            {(s.prob * 100).toFixed(1)}%
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-
-                {!p && (
-                  <div className="text-center text-gray-500 text-sm py-3">
-                    暂无完整赔率数据
-                  </div>
-                )}
-
-                {/* 展开详情 */}
-                {isExpanded && p && (
-                  <div className="mt-4 pt-4 border-t border-[#2d3748] space-y-3">
-                    {/* λ值 */}
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-[#0f0f1a] p-3 rounded-lg">
-                        <div className="text-xs text-gray-400 mb-1">主队进攻力 λ</div>
-                        <div className="text-xl font-bold text-red-400 font-mono">
-                          {p.lambdaHome.toFixed(2)}
-                        </div>
-                      </div>
-                      <div className="bg-[#0f0f1a] p-3 rounded-lg">
-                        <div className="text-xs text-gray-400 mb-1">客队进攻力 λ</div>
-                        <div className="text-xl font-bold text-blue-400 font-mono">
-                          {p.lambdaAway.toFixed(2)}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* 胜平负概率 */}
-                    <div className="grid grid-cols-3 gap-2">
-                      <div className="text-center bg-red-500/10 p-2 rounded">
-                        <div className="text-red-400 font-bold">
-                          {(p.homeWinProb * 100).toFixed(1)}%
-                        </div>
-                        <div className="text-xs text-gray-400">主胜</div>
-                      </div>
-                      <div className="text-center bg-yellow-500/10 p-2 rounded">
-                        <div className="text-yellow-400 font-bold">
-                          {(p.drawProb * 100).toFixed(1)}%
-                        </div>
-                        <div className="text-xs text-gray-400">平局</div>
-                      </div>
-                      <div className="text-center bg-blue-500/10 p-2 rounded">
-                        <div className="text-blue-400 font-bold">
-                          {(p.awayWinProb * 100).toFixed(1)}%
-                        </div>
-                        <div className="text-xs text-gray-400">客胜</div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                <div className="flex justify-center mt-2 text-gray-500">
-                  {isExpanded ? (
-                    <ChevronUp className="w-4 h-4" />
-                  ) : (
-                    <ChevronDown className="w-4 h-4" />
-                  )}
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    </AppLayout>
   );
 }

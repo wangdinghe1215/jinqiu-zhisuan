@@ -53,6 +53,25 @@ export interface SportteryMatch {
 function parseMatch(item: any): SportteryMatch | null {
   if (!item) return null;
 
+  // 只保留在售比赛，过滤已截止/已售完的
+  const matchStatus = item.matchStatus || item.sellStatus || item.status || "";
+  // Selling = 在售中，也接受空值（兼容旧数据）
+  const isSelling =
+    !matchStatus ||
+    matchStatus === "Selling" ||
+    matchStatus === "1" ||
+    matchStatus === 1 ||
+    matchStatus === "on_sale";
+  if (!isSelling) return null;
+
+  // 如果没有SPF赔率（未开售）也过滤掉
+  const hadPool = item.had || item.h || item.hadPool || item.poolHad || {};
+  const hasOdds =
+    hadPool &&
+    typeof hadPool === "object" &&
+    (hadPool.h || hadPool.d || hadPool.a || hadPool.home || hadPool.draw || hadPool.away);
+  if (!hasOdds) return null;
+
   const matchNo = item.matchNumStr || item.matchNum || item.matchId || "";
   const league = item.leagueAllName || item.leagueAbbName || item.leagueName || "未知联赛";
   const homeTeam = item.homeTeamAllName || item.homeTeamAbbName || item.homeTeamName || item.homeTeam || "";
@@ -62,7 +81,6 @@ function parseMatch(item: any): SportteryMatch | null {
 
   // SPF (胜平负) - poolCode=had, 字段名 had
   let spfHome = 0, spfDraw = 0, spfAway = 0;
-  const hadPool = item.had || item.h || item.hadPool || item.poolHad || {};
   if (hadPool && typeof hadPool === "object") {
     spfHome = parseFloat(hadPool.h || hadPool.home || hadPool.s0 || hadPool["0"] || 0);
     spfDraw = parseFloat(hadPool.d || hadPool.draw || hadPool.s1 || hadPool["1"] || 0);

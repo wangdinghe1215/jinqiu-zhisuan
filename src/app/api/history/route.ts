@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getTLevelStats, getDiamondSignals, getMatchesByDate } from '@/lib/db';
+import { getTLevelStats, getDiamondSignals, getMatchesByDate, getDateRange } from '@/lib/db';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -8,6 +8,7 @@ export async function GET(request: Request) {
   try {
     const tLevelStats = getTLevelStats();
     const diamondSignals = getDiamondSignals(30);
+    const dateRange = getDateRange();
 
     let dateMatches: unknown[] = [];
     if (date) {
@@ -20,6 +21,7 @@ export async function GET(request: Request) {
         tLevelStats,
         diamondSignals,
         dateMatches,
+        dateRange,
       },
     });
   } catch (error) {

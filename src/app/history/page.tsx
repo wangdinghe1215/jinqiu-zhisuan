@@ -45,8 +45,15 @@ interface DiamondSignal {
 export default function HistoryPage() {
   const [tLevelStats, setTLevelStats] = useState<TLevelStat[]>([]);
   const [diamondSignals, setDiamondSignals] = useState<DiamondSignal[]>([]);
+  const [dateRange, setDateRange] = useState<{ min: string; max: string; total: number } | null>(null);
   const [loading, setLoading] = useState(true);
-  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedDate, setSelectedDate] = useState(() => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  });
 
   useEffect(() => {
     fetchHistory();
@@ -62,6 +69,7 @@ export default function HistoryPage() {
       if (data.success) {
         setTLevelStats(data.data.tLevelStats || []);
         setDiamondSignals(data.data.diamondSignals || []);
+        setDateRange(data.data.dateRange || null);
       }
     } catch (error) {
       console.error('获取历史数据失败:', error);
@@ -111,6 +119,11 @@ export default function HistoryPage() {
             </h1>
             <p className="text-gray-500 text-sm mt-1">
               T-level各等级命中率统计与钻石信号追踪
+              {dateRange && (
+                <span className="ml-2 text-cyan-400">
+                  · 数据日期: {dateRange.min} ~ {dateRange.max}
+                </span>
+              )}
             </p>
           </div>
 
