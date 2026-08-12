@@ -1,786 +1,699 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { AppLayout } from '@/components/AppLayout';
+import { useState, useEffect } from "react";
 import {
   Brain,
-  TrendingUp,
-  BarChart3,
-  AlertTriangle,
-  CheckCircle,
-  XCircle,
-  Eye,
-  Trophy,
-  Target,
-  Gauge,
   ChevronDown,
   ChevronUp,
-  Sparkles,
-} from 'lucide-react';
-import { TLevelBadge } from '@/components/badges';
+  Target,
+  Activity,
+  TrendingUp,
+  AlertTriangle,
+  CheckCircle2,
+  Loader2,
+  Filter,
+} from "lucide-react";
 
-interface TopScore {
-  score: string;
-  confidence: number;
+interface PoissonData {
+  top5: { score: string; prob: number }[];
+  homeWinProb: number;
+  drawProb: number;
+  awayWinProb: number;
+  lambdaHome: number;
+  lambdaAway: number;
 }
 
-interface PredictionData {
+interface V42Data {
+  tLevel: string;
+  tLabel: string;
+  starLevel: string;
+  starCount: number;
+  direction: string;
+  spfCR: number;
+  rspfCR: number;
+  crossCR: number;
+  line0: string;
+  goldenScores: { score: string; odds: number }[];
+}
+
+interface HistoryStat {
+  odds: number;
+  total: number;
+  winRate: number;
+  drawRate: number;
+  loseRate: number;
+  topScore: string;
+  topScoreCount: number;
+}
+
+interface CombinedAnalysis {
+  finalDirection: string;
+  finalScore: number; // 0-100
+  confidenceLevel: "推荐" | "参考" | "观望";
+  recommendedScores: { score: string; reason: string }[];
+  riskTips: string[];
+  poissonScore: number;
+  v42Score: number;
+  historyScore: number;
+  historyStat: HistoryStat | null;
+}
+
+interface Match {
   match_no: string;
   league: string;
   home_team: string;
   away_team: string;
-  match_date: string;
+  match_time: string;
   spf_home: number;
   spf_draw: number;
   spf_away: number;
+  handicap: number;
   rspf_home: number;
   rspf_draw: number;
   rspf_away: number;
-  handicap: number;
-  // 泊松
-  poisson: {
-    direction: string;
-    directionColor: string;
-    confidence: number; // %
-    top_score: string;
-    top_score_prob: number; // %
-    signal: string;
-    signalType: 'normal' | 'warn' | 'danger';
-  };
-  // V4.2
-  v42: {
-    t_level: string;
-    direction: string;
-    directionColor: string;
-    cr_value: number;
-    golden_score: string;
-    line0: 'Lock' | 'Normal';
-    star_rating: number;
-  };
-  // 必中哥
-  bizhongge: {
-    direction: string;
-    directionColor: string;
-    odds: number;
-    historical_rate: number; // %
-    total_matches: number;
-    top_score: string;
-    top_score_count: number;
-    draw_signal: string;
-    draw_rate: number;
-  };
-  // 综合结论
-  conclusion: {
-    final_direction: string;
-    final_color: string;
-    confidence: number; // 1-10
-    top3_scores: TopScore[];
-    risk_tip: string;
-    recommendation: '推荐' | '观望' | '放弃';
-    recommendationColor: string;
-  };
+  score_odds: { score: string; odds: number }[];
+  poisson: PoissonData | null;
+  v42: V42Data | null;
+  combined: CombinedAnalysis | null;
 }
 
-const mockData: PredictionData[] = [
-  {
-    match_no: '001',
-    league: '英超',
-    home_team: '曼城',
-    away_team: '利物浦',
-    match_date: '2026-08-11',
-    spf_home: 1.95,
-    spf_draw: 3.4,
-    spf_away: 3.8,
-    rspf_home: 2.15,
-    rspf_draw: 3.3,
-    rspf_away: 3.1,
-    handicap: -0.5,
-    poisson: {
-      direction: '主胜',
-      directionColor: 'text-red-400',
-      confidence: 65,
-      top_score: '2:1',
-      top_score_prob: 18,
-      signal: '平局预警⚠️',
-      signalType: 'warn',
-    },
-    v42: {
-      t_level: 'T1a',
-      direction: '主胜',
-      directionColor: 'text-red-400',
-      cr_value: 0.85,
-      golden_score: '2:1',
-      line0: 'Lock',
-      star_rating: 4,
-    },
-    bizhongge: {
-      direction: '主胜',
-      directionColor: 'text-red-400',
-      odds: 1.95,
-      historical_rate: 56,
-      total_matches: 80,
-      top_score: '2:1',
-      top_score_count: 8,
-      draw_signal: '平赔3.4',
-      draw_rate: 25,
-    },
-    conclusion: {
-      final_direction: '主胜',
-      final_color: 'text-red-400',
-      confidence: 8,
-      top3_scores: [
-        { score: '2:1', confidence: 18 },
-        { score: '1:0', confidence: 15 },
-        { score: '1:1', confidence: 12 },
-      ],
-      risk_tip: '三方一致看好主胜，但需警惕平局可能性，建议搭配让球胜平负双选',
-      recommendation: '推荐',
-      recommendationColor: 'text-green-400 bg-green-500/15 border-green-500/30',
-    },
-  },
-  {
-    match_no: '002',
-    league: '西甲',
-    home_team: '巴塞罗那',
-    away_team: '皇家马德里',
-    match_date: '2026-08-11',
-    spf_home: 2.3,
-    spf_draw: 3.1,
-    spf_away: 2.9,
-    rspf_home: 2.0,
-    rspf_draw: 3.2,
-    rspf_away: 3.6,
-    handicap: 0,
-    poisson: {
-      direction: '平局',
-      directionColor: 'text-yellow-400',
-      confidence: 45,
-      top_score: '1:1',
-      top_score_prob: 22,
-      signal: '平局高发区',
-      signalType: 'normal',
-    },
-    v42: {
-      t_level: 'T2',
-      direction: '平局',
-      directionColor: 'text-yellow-400',
-      cr_value: 0.72,
-      golden_score: '1:1',
-      line0: 'Normal',
-      star_rating: 3,
-    },
-    bizhongge: {
-      direction: '平局',
-      directionColor: 'text-yellow-400',
-      odds: 3.1,
-      historical_rate: 32,
-      total_matches: 65,
-      top_score: '1:1',
-      top_score_count: 12,
-      draw_signal: '平赔3.1',
-      draw_rate: 32,
-    },
-    conclusion: {
-      final_direction: '平局',
-      final_color: 'text-yellow-400',
-      confidence: 6,
-      top3_scores: [
-        { score: '1:1', confidence: 22 },
-        { score: '2:2', confidence: 15 },
-        { score: '0:0', confidence: 10 },
-      ],
-      risk_tip: '国家德比变数大，三方均指向平局但置信度一般，建议小注',
-      recommendation: '观望',
-      recommendationColor: 'text-yellow-400 bg-yellow-500/15 border-yellow-500/30',
-    },
-  },
-  {
-    match_no: '003',
-    league: '德甲',
-    home_team: '拜仁慕尼黑',
-    away_team: '多特蒙德',
-    match_date: '2026-08-11',
-    spf_home: 1.65,
-    spf_draw: 4.0,
-    spf_away: 4.5,
-    rspf_home: 1.85,
-    rspf_draw: 3.6,
-    rspf_away: 4.2,
-    handicap: -1,
-    poisson: {
-      direction: '主胜',
-      directionColor: 'text-red-400',
-      confidence: 72,
-      top_score: '2:0',
-      top_score_prob: 20,
-      signal: '正常',
-      signalType: 'normal',
-    },
-    v42: {
-      t_level: 'T0',
-      direction: '主胜',
-      directionColor: 'text-red-400',
-      cr_value: 0.92,
-      golden_score: '2:0',
-      line0: 'Lock',
-      star_rating: 5,
-    },
-    bizhongge: {
-      direction: '主胜',
-      directionColor: 'text-red-400',
-      odds: 1.65,
-      historical_rate: 68,
-      total_matches: 95,
-      top_score: '2:0',
-      top_score_count: 14,
-      draw_signal: '平赔4.0',
-      draw_rate: 18,
-    },
-    conclusion: {
-      final_direction: '主胜',
-      final_color: 'text-red-400',
-      confidence: 9,
-      top3_scores: [
-        { score: '2:0', confidence: 20 },
-        { score: '3:1', confidence: 16 },
-        { score: '2:1', confidence: 14 },
-      ],
-      risk_tip: '钻石级信号，三方高度一致主胜，信心指数9分，可重点关注',
-      recommendation: '推荐',
-      recommendationColor: 'text-cyan-400 bg-cyan-500/15 border-cyan-500/30',
-    },
-  },
-  {
-    match_no: '004',
-    league: '意甲',
-    home_team: '国际米兰',
-    away_team: 'AC米兰',
-    match_date: '2026-08-11',
-    spf_home: 2.1,
-    spf_draw: 3.0,
-    spf_away: 3.5,
-    rspf_home: 1.95,
-    rspf_draw: 3.1,
-    rspf_away: 3.8,
-    handicap: -0.5,
-    poisson: {
-      direction: '主胜',
-      directionColor: 'text-red-400',
-      confidence: 55,
-      top_score: '1:0',
-      top_score_prob: 16,
-      signal: '小比分倾向',
-      signalType: 'normal',
-    },
-    v42: {
-      t_level: 'T1b',
-      direction: '主胜',
-      directionColor: 'text-red-400',
-      cr_value: 0.78,
-      golden_score: '1:0',
-      line0: 'Lock',
-      star_rating: 4,
-    },
-    bizhongge: {
-      direction: '客胜',
-      directionColor: 'text-blue-400',
-      odds: 3.5,
-      historical_rate: 42,
-      total_matches: 55,
-      top_score: '0:1',
-      top_score_count: 7,
-      draw_signal: '平赔3.0',
-      draw_rate: 28,
-    },
-    conclusion: {
-      final_direction: '主胜',
-      final_color: 'text-red-400',
-      confidence: 6,
-      top3_scores: [
-        { score: '1:0', confidence: 16 },
-        { score: '0:1', confidence: 14 },
-        { score: '1:1', confidence: 12 },
-      ],
-      risk_tip: '米兰德比，泊松和V4.2看好主胜，但必中哥数据偏向客方，三方意见有分歧，建议谨慎',
-      recommendation: '观望',
-      recommendationColor: 'text-yellow-400 bg-yellow-500/15 border-yellow-500/30',
-    },
-  },
-  {
-    match_no: '005',
-    league: '法甲',
-    home_team: '巴黎圣日耳曼',
-    away_team: '马赛',
-    match_date: '2026-08-11',
-    spf_home: 1.45,
-    spf_draw: 4.5,
-    spf_away: 6.0,
-    rspf_home: 1.7,
-    rspf_draw: 3.8,
-    rspf_away: 4.8,
-    handicap: -1.5,
-    poisson: {
-      direction: '主胜',
-      directionColor: 'text-red-400',
-      confidence: 80,
-      top_score: '3:0',
-      top_score_prob: 22,
-      signal: '正常',
-      signalType: 'normal',
-    },
-    v42: {
-      t_level: 'T1a',
-      direction: '主胜',
-      directionColor: 'text-red-400',
-      cr_value: 0.88,
-      golden_score: '3:1',
-      line0: 'Lock',
-      star_rating: 4,
-    },
-    bizhongge: {
-      direction: '主胜',
-      directionColor: 'text-red-400',
-      odds: 1.45,
-      historical_rate: 75,
-      total_matches: 110,
-      top_score: '2:0',
-      top_score_count: 18,
-      draw_signal: '平赔4.5',
-      draw_rate: 15,
-    },
-    conclusion: {
-      final_direction: '主胜',
-      final_color: 'text-red-400',
-      confidence: 8,
-      top3_scores: [
-        { score: '2:0', confidence: 20 },
-        { score: '3:0', confidence: 18 },
-        { score: '3:1', confidence: 15 },
-      ],
-      risk_tip: '大巴黎实力占优，三方一致看好主胜。但让球较深（-1.5），需注意能否打穿让球盘',
-      recommendation: '推荐',
-      recommendationColor: 'text-green-400 bg-green-500/15 border-green-500/30',
-    },
-  },
-  {
-    match_no: '006',
-    league: '英超',
-    home_team: '伯恩利',
-    away_team: '布莱顿',
-    match_date: '2026-08-11',
-    spf_home: 2.8,
-    spf_draw: 3.2,
-    spf_away: 2.5,
-    rspf_home: 2.0,
-    rspf_draw: 3.3,
-    rspf_away: 3.5,
-    handicap: 0,
-    poisson: {
-      direction: '客胜',
-      directionColor: 'text-blue-400',
-      confidence: 48,
-      top_score: '0:1',
-      top_score_prob: 15,
-      signal: '走势模糊',
-      signalType: 'warn',
-    },
-    v42: {
-      t_level: 'T3',
-      direction: '客胜',
-      directionColor: 'text-blue-400',
-      cr_value: 0.55,
-      golden_score: '1:2',
-      line0: 'Normal',
-      star_rating: 2,
-    },
-    bizhongge: {
-      direction: '客胜',
-      directionColor: 'text-blue-400',
-      odds: 2.5,
-      historical_rate: 40,
-      total_matches: 70,
-      top_score: '1:2',
-      top_score_count: 6,
-      draw_signal: '平赔3.2',
-      draw_rate: 28,
-    },
-    conclusion: {
-      final_direction: '客胜',
-      final_color: 'text-blue-400',
-      confidence: 4,
-      top3_scores: [
-        { score: '0:1', confidence: 15 },
-        { score: '1:2', confidence: 13 },
-        { score: '1:1', confidence: 12 },
-      ],
-      risk_tip: '三方都偏客胜但置信度都不高，T3铁标+CR值偏低，比赛不确定性大，不建议投注',
-      recommendation: '放弃',
-      recommendationColor: 'text-red-400 bg-red-500/15 border-red-500/30',
-    },
-  },
-];
+type OddsType = "spf_home" | "spf_draw" | "spf_away";
 
-type FilterType = 'all' | '推荐' | '观望' | '放弃';
+function getStarScore(starLevel: string): number {
+  switch (starLevel) {
+    case "钻石": return 100;
+    case "金": return 85;
+    case "银": return 70;
+    case "铜": return 55;
+    case "铁": return 40;
+    default: return 20;
+  }
+}
+
+function getDirectionText(isHome: boolean): string {
+  return isHome ? "主胜" : "客胜";
+}
+
+function getConfidenceColor(level: string): string {
+  if (level === "推荐") return "border-green-500/60 bg-green-500/5";
+  if (level === "参考") return "border-yellow-500/60 bg-yellow-500/5";
+  return "border-gray-500/60 bg-gray-500/5";
+}
+
+function getConfidenceBadge(level: string): string {
+  if (level === "推荐") return "bg-green-500/20 text-green-400 border-green-500/40";
+  if (level === "参考") return "bg-yellow-500/20 text-yellow-400 border-yellow-500/40";
+  return "bg-gray-500/20 text-gray-400 border-gray-500/40";
+}
+
+function getConfidenceEmoji(level: string): string {
+  if (level === "推荐") return "🟢";
+  if (level === "参考") return "🟡";
+  return "🔴";
+}
 
 export default function XiaofengPage() {
+  const [matches, setMatches] = useState<Match[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [filter, setFilter] = useState<FilterType>('all');
+  const [filter, setFilter] = useState<"all" | "推荐" | "参考" | "观望">("all");
+  const [historyData, setHistoryData] = useState<any[]>([]);
+  const [historyLoaded, setHistoryLoaded] = useState(false);
 
-  const filteredData = filter === 'all'
-    ? mockData
-    : mockData.filter((m) => m.conclusion.recommendation === filter);
+  // 加载历史数据（只加载主胜的，用于评分参考）
+  useEffect(() => {
+    const loadHistory = async () => {
+      try {
+        const res = await fetch('/data/spf_home.json', { cache: 'force-cache' });
+        if (res.ok) {
+          const data = await res.json();
+          setHistoryData(data);
+        }
+      } catch (e) {
+        // ignore
+      } finally {
+        setHistoryLoaded(true);
+      }
+    };
+    loadHistory();
+  }, []);
 
+  // 从历史数据中查找同赔率的胜率
+  const findHistoryStat = (odds: number, oddsType: OddsType): HistoryStat | null => {
+    // 简化：只处理主胜赔率查询，其他方向暂不深入
+    if (!historyData.length) return null;
+
+    const target = oddsType === 'spf_home' ? odds : odds;
+    // 查找相近赔率（±0.05）
+    const matches = historyData.filter((r: any) => Math.abs(r.odds - target) <= 0.05);
+    if (matches.length === 0) return null;
+
+    // 聚合
+    let total = 0, win = 0, draw = 0, lose = 0;
+    const scoreMap: Record<string, number> = {};
+    matches.forEach((r: any) => {
+      total += r.total || 0;
+      win += r.win || 0;
+      draw += r.draw || 0;
+      lose += r.lose || 0;
+      (r.scores || []).forEach((s: any) => {
+        scoreMap[s[0]] = (scoreMap[s[0]] || 0) + s[1];
+      });
+    });
+
+    if (total === 0) return null;
+
+    const sortedScores = Object.entries(scoreMap).sort((a, b) => b[1] - a[1]);
+
+    return {
+      odds: target,
+      total,
+      winRate: win / total,
+      drawRate: draw / total,
+      loseRate: lose / total,
+      topScore: sortedScores[0]?.[0] || "-",
+      topScoreCount: sortedScores[0]?.[1] || 0,
+    };
+  };
+
+  // 计算综合分析
+  const calculateCombined = (match: Match): CombinedAnalysis => {
+    const p = match.poisson;
+    const v = match.v42;
+
+    const isHomeFav = match.spf_home < match.spf_away;
+    const favOdds = isHomeFav ? match.spf_home : match.spf_away;
+
+    // 1. 泊松评分（0-100）：热门方胜率越高分越高
+    let poissonScore = 50;
+    if (p) {
+      const favProb = isHomeFav ? p.homeWinProb : p.awayWinProb;
+      // 胜率 40%→50分，70%→90分
+      poissonScore = Math.round(50 + (favProb - 0.4) * 133);
+      poissonScore = Math.max(20, Math.min(100, poissonScore));
+    }
+
+    // 2. V4.2评分（0-100）：基于星级
+    let v42Score = 40;
+    if (v) {
+      v42Score = getStarScore(v.starLevel);
+      // CR加成
+      if (v.crossCR > 120) v42Score = Math.min(100, v42Score + 5);
+      else if (v.crossCR < 80) v42Score = Math.max(0, v42Score - 10);
+    }
+
+    // 3. 历史一致性评分（0-100）
+    let historyScore = 60;
+    let historyStat: HistoryStat | null = null;
+    if (historyLoaded && historyData.length > 0 && favOdds > 0) {
+      historyStat = findHistoryStat(favOdds, 'spf_home');
+      if (historyStat) {
+        const histWinRate = isHomeFav ? historyStat.winRate : historyStat.loseRate;
+        // 历史胜率 40%→40分，65%→90分
+        historyScore = Math.round(40 + (histWinRate - 0.4) * 200);
+        historyScore = Math.max(20, Math.min(100, historyScore));
+      }
+    }
+
+    // 综合评分：泊松30% + V4.2 40% + 历史30%
+    const finalScore = Math.round(poissonScore * 0.3 + v42Score * 0.4 + historyScore * 0.3);
+
+    // 最终方向
+    let finalDirection = getDirectionText(isHomeFav);
+    // 如果泊松和V4.2方向不一致，降低评分
+    if (p && v) {
+      const poissonDir = p.homeWinProb > p.awayWinProb ? "主胜" : "客胜";
+      if (poissonDir !== v.direction) {
+        // 方向冲突扣分
+      }
+    }
+
+    // 信心等级
+    let confidenceLevel: "推荐" | "参考" | "观望" = "观望";
+    if (finalScore >= 70) confidenceLevel = "推荐";
+    else if (finalScore >= 50) confidenceLevel = "参考";
+
+    // 推荐比分Top3
+    const recommendedScores: { score: string; reason: string }[] = [];
+    const scoreRank: Record<string, number> = {};
+
+    // 泊松top3
+    if (p) {
+      p.top5.slice(0, 3).forEach((s, i) => {
+        scoreRank[s.score] = (scoreRank[s.score] || 0) + (3 - i) * 10;
+      });
+    }
+    // V4.2黄金比分
+    if (v) {
+      v.goldenScores.slice(0, 2).forEach((s, i) => {
+        scoreRank[s.score] = (scoreRank[s.score] || 0) + (2 - i) * 15;
+      });
+    }
+    // 历史top
+    if (historyStat?.topScore) {
+      scoreRank[historyStat.topScore] = (scoreRank[historyStat.topScore] || 0) + 12;
+    }
+
+    const sorted = Object.entries(scoreRank).sort((a, b) => b[1] - a[1]);
+    sorted.slice(0, 3).forEach(([score]) => {
+      const reasons: string[] = [];
+      if (p?.top5.find((t) => t.score === score)) reasons.push("泊松推荐");
+      if (v?.goldenScores.find((g) => g.score === score)) reasons.push("黄金比分");
+      if (historyStat?.topScore === score) reasons.push("历史最多");
+      recommendedScores.push({ score, reason: reasons.join("·") || "综合推荐" });
+    });
+
+    // 风险提示
+    const riskTips: string[] = [];
+    if (p && ["0:0", "1:1", "2:2"].includes(p.top5[0]?.score)) {
+      riskTips.push("泊松Top1为平局，平局预警");
+    }
+    if (v?.line0 !== "Lock" && v?.tLevel.startsWith("T2")) {
+      riskTips.push("线0未锁定，冷门风险");
+    }
+    if (historyStat && historyStat.winRate < 0.5 && isHomeFav) {
+      riskTips.push("同赔率历史胜率偏低");
+    }
+    if (match.spf_draw < 3.0) {
+      riskTips.push("平赔较低，平局不可忽视");
+    }
+    if (riskTips.length === 0) {
+      riskTips.push("暂无明显风险点");
+    }
+
+    return {
+      finalDirection,
+      finalScore,
+      confidenceLevel,
+      recommendedScores,
+      riskTips,
+      poissonScore,
+      v42Score,
+      historyScore,
+      historyStat,
+    };
+  };
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch("/api/sporttery/matches?type=all");
+        const data = await res.json();
+        if (data.success) {
+          setMatches(data.data || []);
+        } else {
+          setError(data.error || "加载失败");
+        }
+      } catch (e: any) {
+        setError(e.message || "网络错误");
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
+  }, []);
+
+  // 计算每一场的综合分析
+  const matchesWithCombined = useMemoMatches(matches, calculateCombined, historyLoaded);
+
+  const filtered = matchesWithCombined.filter((m) => {
+    if (filter === "all") return true;
+    return m.combined?.confidenceLevel === filter;
+  });
+
+  // 统计
   const stats = {
-    total: mockData.length,
-    recommend: mockData.filter((m) => m.conclusion.recommendation === '推荐').length,
-    wait: mockData.filter((m) => m.conclusion.recommendation === '观望').length,
-    abandon: mockData.filter((m) => m.conclusion.recommendation === '放弃').length,
+    total: matchesWithCombined.length,
+    recommend: matchesWithCombined.filter((m) => m.combined?.confidenceLevel === "推荐").length,
+    reference: matchesWithCombined.filter((m) => m.combined?.confidenceLevel === "参考").length,
+    wait: matchesWithCombined.filter((m) => m.combined?.confidenceLevel === "观望").length,
   };
 
   return (
-    <AppLayout>
-      <div className="space-y-6">
-        {/* Header */}
+    <div className="p-4 lg:p-6 space-y-4">
+      <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white flex items-center gap-3">
-            <Brain className="text-purple-400" size={28} />
+          <h1 className="text-xl font-bold text-white flex items-center gap-2">
+            <Brain className="w-5 h-5 text-purple-400" />
             小丰综合分析
           </h1>
-          <p className="text-gray-500 text-sm mt-1">
-            融合泊松、V4.2、必中哥三套体系的终极分析
-          </p>
+          <p className="text-sm text-gray-400 mt-1">泊松 + V4.2 + 历史数据 三体系融合评分</p>
         </div>
-
-        {/* Stats bar */}
-        <div className="grid grid-cols-4 gap-3">
-          <StatCard label="总场次" value={stats.total} icon={<Target size={20} />} color="text-gray-300" bg="bg-gray-500/10" />
-          <StatCard label="推荐" value={stats.recommend} icon={<CheckCircle size={20} />} color="text-green-400" bg="bg-green-500/10" />
-          <StatCard label="观望" value={stats.wait} icon={<Eye size={20} />} color="text-yellow-400" bg="bg-yellow-500/10" />
-          <StatCard label="放弃" value={stats.abandon} icon={<XCircle size={20} />} color="text-red-400" bg="bg-red-500/10" />
-        </div>
-
-        {/* Filter tabs */}
-        <div className="flex gap-2">
-          {(['all', '推荐', '观望', '放弃'] as FilterType[]).map((f) => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
-                filter === f
-                  ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
-                  : 'bg-gray-800/50 text-gray-400 border border-gray-800 hover:border-gray-700'
-              }`}
-            >
-              {f === 'all' ? '全部' : f}
-            </button>
-          ))}
-        </div>
-
-        {/* Match cards */}
-        <div className="space-y-4">
-          {filteredData.map((match) => (
-            <div
-              key={match.match_no}
-              className="bg-[#1a1a2e] border border-gray-800 rounded-xl overflow-hidden hover:border-purple-500/30 transition-all"
-            >
-              {/* Card header */}
-              <div
-                className="p-4 cursor-pointer"
-                onClick={() =>
-                  setExpandedId(expandedId === match.match_no ? null : match.match_no)
-                }
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="text-center">
-                      <div className="text-xs text-gray-500 mb-0.5">场次</div>
-                      <div className="text-lg font-bold text-white font-mono">
-                        {match.match_no}
-                      </div>
-                    </div>
-
-                    <div className="h-10 w-px bg-gray-700" />
-
-                    <div>
-                      <div className="text-xs text-gray-500 mb-0.5">
-                        {match.league}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-red-400 font-medium">
-                          {match.home_team}
-                        </span>
-                        <span className="text-gray-600 text-sm">VS</span>
-                        <span className="text-blue-400 font-medium">
-                          {match.away_team}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-4">
-                    {/* SPF odds */}
-                    <div className="text-right hidden md:block">
-                      <div className="text-xs text-gray-500 mb-0.5">SPF</div>
-                      <div className="flex gap-2 text-sm font-mono">
-                        <span className="text-red-400">{match.spf_home.toFixed(2)}</span>
-                        <span className="text-gray-500">/</span>
-                        <span className="text-yellow-400">{match.spf_draw.toFixed(2)}</span>
-                        <span className="text-gray-500">/</span>
-                        <span className="text-blue-400">{match.spf_away.toFixed(2)}</span>
-                      </div>
-                    </div>
-
-                    {/* Conclusion */}
-                    <div className={`px-3 py-1.5 rounded-lg border ${match.conclusion.recommendationColor}`}>
-                      <div className="flex items-center gap-2">
-                        {match.conclusion.recommendation === '推荐' ? (
-                          <Trophy size={16} />
-                        ) : match.conclusion.recommendation === '观望' ? (
-                          <Eye size={16} />
-                        ) : (
-                          <XCircle size={16} />
-                        )}
-                        <span className="font-medium text-sm">
-                          {match.conclusion.recommendation}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Confidence */}
-                    <div className="text-center w-16 hidden sm:block">
-                      <div className="text-xs text-gray-500 mb-1">信心</div>
-                      <div className="flex items-center justify-center gap-1">
-                        <Gauge size={14} className="text-purple-400" />
-                        <span className="text-lg font-bold text-purple-400">
-                          {match.conclusion.confidence}
-                        </span>
-                        <span className="text-xs text-gray-500">/10</span>
-                      </div>
-                    </div>
-
-                    {expandedId === match.match_no ? (
-                      <ChevronUp size={20} className="text-gray-500" />
-                    ) : (
-                      <ChevronDown size={20} className="text-gray-500" />
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Expanded content */}
-              {expandedId === match.match_no && (
-                <div className="border-t border-gray-800 p-4 space-y-4">
-                  {/* Comparison table */}
-                  <div className="bg-gray-900/50 rounded-lg overflow-hidden">
-                    <div className="grid grid-cols-4 text-xs border-b border-gray-800">
-                      <div className="p-3 text-gray-500 font-medium">维度</div>
-                      <div className="p-3 text-cyan-400 font-medium flex items-center gap-1">
-                        <Sparkles size={14} /> 泊松模型
-                      </div>
-                      <div className="p-3 text-yellow-400 font-medium flex items-center gap-1">
-                        <Trophy size={14} /> V4.2 体系
-                      </div>
-                      <div className="p-3 text-orange-400 font-medium flex items-center gap-1">
-                        <BarChart3 size={14} /> 必中哥历史
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-4 text-sm border-b border-gray-800">
-                      <div className="p-3 text-gray-500">方向</div>
-                      <div className={`p-3 font-medium ${match.poisson.directionColor}`}>
-                        {match.poisson.direction} ({match.poisson.confidence}%)
-                      </div>
-                      <div className="p-3">
-                        <div className="flex items-center gap-2">
-                          <TLevelBadge level={match.v42.t_level} />
-                          <span className={match.v42.directionColor}>
-                            {match.v42.direction}
-                          </span>
-                        </div>
-                      </div>
-                      <div className={`p-3 font-medium ${match.bizhongge.directionColor}`}>
-                        {match.bizhongge.direction} {match.bizhongge.odds}
-                        <span className="text-gray-500 text-xs ml-1">
-                          历史{match.bizhongge.historical_rate}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-4 text-sm border-b border-gray-800">
-                      <div className="p-3 text-gray-500">比分</div>
-                      <div className="p-3">
-                        <span className="text-white font-mono font-bold">
-                          {match.poisson.top_score}
-                        </span>
-                        <span className="text-gray-500 text-xs ml-1">
-                          ({match.poisson.top_score_prob}%)
-                        </span>
-                      </div>
-                      <div className="p-3">
-                        <span className="text-yellow-400 font-mono font-bold">
-                          黄金 {match.v42.golden_score}
-                        </span>
-                      </div>
-                      <div className="p-3">
-                        <span className="text-white font-mono font-bold">
-                          {match.bizhongge.top_score}
-                        </span>
-                        <span className="text-gray-500 text-xs ml-1">
-                          {match.bizhongge.top_score_count}次/{match.bizhongge.total_matches}场
-                        </span>
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-4 text-sm">
-                      <div className="p-3 text-gray-500">信号</div>
-                      <div className="p-3">
-                        <span
-                          className={`text-sm ${
-                            match.poisson.signalType === 'warn'
-                              ? 'text-yellow-400'
-                              : match.poisson.signalType === 'danger'
-                              ? 'text-red-400'
-                              : 'text-gray-400'
-                          }`}
-                        >
-                          {match.poisson.signal}
-                        </span>
-                      </div>
-                      <div className="p-3">
-                        <span className="text-cyan-400">
-                          线0 {match.v42.line0}
-                        </span>
-                        <span className="text-gray-600 text-xs ml-2">
-                          CR: {match.v42.cr_value.toFixed(2)}
-                        </span>
-                      </div>
-                      <div className="p-3">
-                        <span className="text-orange-400">
-                          {match.bizhongge.draw_signal}
-                        </span>
-                        <span className="text-gray-500 text-xs ml-1">
-                          历史{match.bizhongge.draw_rate}%平率
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Conclusion card */}
-                  <div className="p-5 bg-gradient-to-r from-purple-900/30 to-blue-900/30 border border-purple-500/20 rounded-xl">
-                    <div className="flex items-start justify-between gap-6">
-                      <div className="flex-1">
-                        <h3 className="text-sm text-gray-400 mb-2 flex items-center gap-2">
-                          <Brain size={16} className="text-purple-400" />
-                          综合结论
-                        </h3>
-                        <div className="flex items-center gap-4 mb-3">
-                          <div>
-                            <span className="text-xs text-gray-500">最终方向</span>
-                            <div className={`text-3xl font-bold ${match.conclusion.final_color}`}>
-                              {match.conclusion.final_direction}
-                            </div>
-                          </div>
-                          <div className="h-12 w-px bg-gray-700" />
-                          <div>
-                            <span className="text-xs text-gray-500">信心指数</span>
-                            <div className="flex items-center gap-1">
-                              {Array.from({ length: 10 }).map((_, i) => (
-                                <div
-                                  key={i}
-                                  className={`w-2 rounded-full ${
-                                    i < match.conclusion.confidence
-                                      ? 'h-6 bg-gradient-to-t from-purple-600 to-purple-400'
-                                      : 'h-3 bg-gray-700'
-                                  }`}
-                                />
-                              ))}
-                              <span className="ml-2 text-2xl font-bold text-purple-400">
-                                {match.conclusion.confidence}
-                              </span>
-                              <span className="text-gray-500">/10</span>
-                            </div>
-                          </div>
-                          <div className="h-12 w-px bg-gray-700" />
-                          <div>
-                            <span className="text-xs text-gray-500">投注建议</span>
-                            <div className={`mt-1 px-3 py-1 rounded-lg inline-block border ${match.conclusion.recommendationColor}`}>
-                              <span className="font-bold">
-                                {match.conclusion.recommendation}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="mb-3">
-                          <span className="text-xs text-gray-500">推荐比分 Top3</span>
-                          <div className="flex gap-3 mt-1">
-                            {match.conclusion.top3_scores.map((ts, idx) => (
-                              <div
-                                key={idx}
-                                className="flex items-center gap-2 px-3 py-1.5 bg-gray-900/60 rounded-lg"
-                              >
-                                <span className="text-xs font-bold text-purple-400">
-                                  TOP{idx + 1}
-                                </span>
-                                <span className="text-white font-mono font-bold">
-                                  {ts.score}
-                                </span>
-                                <span className="text-xs text-gray-500">
-                                  {ts.confidence}%
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="flex items-start gap-2 p-3 bg-gray-900/40 rounded-lg">
-                          <AlertTriangle
-                            size={16}
-                            className="text-yellow-400 flex-shrink-0 mt-0.5"
-                          />
-                          <span className="text-sm text-gray-300">
-                            {match.conclusion.risk_tip}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {filteredData.length === 0 && (
-          <div className="p-20 text-center bg-[#1a1a2e] border border-gray-800 rounded-xl">
-            <TrendingUp size={48} className="mx-auto text-gray-700 mb-4" />
-            <p className="text-gray-500">当前筛选条件下无比赛</p>
+        {loading && (
+          <div className="flex items-center gap-2 text-sm text-purple-400">
+            <Loader2 className="w-4 h-4 animate-spin" />
+            加载中...
           </div>
         )}
       </div>
-    </AppLayout>
-  );
-}
 
-function StatCard({
-  label,
-  value,
-  icon,
-  color,
-  bg,
-}: {
-  label: string;
-  value: number;
-  icon: React.ReactNode;
-  color: string;
-  bg: string;
-}) {
-  return (
-    <div className="p-4 bg-[#1a1a2e] border border-gray-800 rounded-xl">
-      <div className="flex items-center justify-between">
-        <div>
-          <div className="text-xs text-gray-500 mb-1">{label}</div>
-          <div className={`text-2xl font-bold ${color} tabular-nums`}>{value}</div>
+      {/* 统计卡片 */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="bg-[#1a1a2e] border border-[#2d3748] rounded-xl p-3">
+          <div className="text-gray-400 text-xs">总场次</div>
+          <div className="text-2xl font-bold text-white font-mono">{stats.total}</div>
         </div>
-        <div className={`p-2.5 rounded-lg ${bg} ${color}`}>{icon}</div>
+        <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-3">
+          <div className="text-green-400 text-xs">🟢 推荐</div>
+          <div className="text-2xl font-bold text-green-400 font-mono">{stats.recommend}</div>
+        </div>
+        <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-3">
+          <div className="text-yellow-400 text-xs">🟡 参考</div>
+          <div className="text-2xl font-bold text-yellow-400 font-mono">{stats.reference}</div>
+        </div>
+        <div className="bg-gray-500/10 border border-gray-500/30 rounded-xl p-3">
+          <div className="text-gray-400 text-xs">🔴 观望</div>
+          <div className="text-2xl font-bold text-gray-400 font-mono">{stats.wait}</div>
+        </div>
+      </div>
+
+      {/* 筛选 */}
+      <div className="flex items-center gap-2 flex-wrap">
+        <Filter className="w-4 h-4 text-gray-400" />
+        {(["all", "推荐", "参考", "观望"] as const).map((f) => (
+          <button
+            key={f}
+            onClick={() => setFilter(f)}
+            className={`px-3 py-1 text-xs rounded-full transition-all ${
+              filter === f
+                ? "bg-purple-500 text-white"
+                : "bg-[#1a1a2e] text-gray-400 hover:text-white border border-[#2d3748]"
+            }`}
+          >
+            {f === "all" ? "全部" : f}
+          </button>
+        ))}
+      </div>
+
+      {error && (
+        <div className="bg-red-900/20 border border-red-500/30 text-red-300 px-4 py-3 rounded-lg">
+          {error}
+        </div>
+      )}
+
+      {!loading && !error && filtered.length === 0 && (
+        <div className="text-center py-16 text-gray-400">
+          <Brain className="w-12 h-12 mx-auto mb-3 opacity-50" />
+          <p>今日暂无竞彩比赛在售</p>
+        </div>
+      )}
+
+      {/* 比赛卡片 */}
+      <div className="grid gap-4">
+        {filtered.map((match) => {
+          const c = match.combined!;
+          const v = match.v42;
+          const p = match.poisson;
+          const isExpanded = expandedId === match.match_no;
+          const drawAlert = p && ["0:0", "1:1", "2:2"].includes(p.top5[0]?.score);
+
+          return (
+            <div
+              key={match.match_no}
+              className={`bg-[#1a1a2e] border-2 rounded-xl overflow-hidden transition-all cursor-pointer ${getConfidenceColor(
+                c.confidenceLevel
+              )}`}
+              onClick={() => setExpandedId(isExpanded ? null : match.match_no)}
+            >
+              <div className="p-4">
+                {/* 头部 */}
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs font-mono text-purple-400 font-bold">
+                      {match.match_no}
+                    </span>
+                    <span className="text-xs text-gray-400 bg-[#0f0f1a] px-2 py-0.5 rounded">
+                      {match.league}
+                    </span>
+                    {match.match_time && (
+                      <span className="text-xs text-gray-500">{match.match_time}</span>
+                    )}
+                  </div>
+                  <span
+                    className={`text-xs font-bold px-3 py-1 rounded-full border ${getConfidenceBadge(
+                      c.confidenceLevel
+                    )}`}
+                  >
+                    {getConfidenceEmoji(c.confidenceLevel)} {c.confidenceLevel}
+                    <span className="ml-1 opacity-80">{c.finalScore}分</span>
+                  </span>
+                </div>
+
+                {/* 对阵 + 最终方向 */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex-1">
+                    <div className="text-white font-semibold">{match.home_team}</div>
+                    <div className="text-gray-500 text-xs">主队</div>
+                  </div>
+                  <div className="text-center px-4">
+                    <div className="text-lg font-bold text-purple-400">{c.finalDirection}</div>
+                    <div className="text-gray-500 text-xs">综合结论</div>
+                  </div>
+                  <div className="flex-1 text-right">
+                    <div className="text-white font-semibold">{match.away_team}</div>
+                    <div className="text-gray-500 text-xs">客队</div>
+                  </div>
+                </div>
+
+                {/* 三体系对比表格 */}
+                <div className="bg-[#0f0f1a] rounded-lg overflow-hidden mb-3">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-[#2d3748]">
+                        <th className="text-left text-gray-500 text-xs font-medium p-2 w-16">
+                          维度
+                        </th>
+                        <th className="text-left text-cyan-400 text-xs font-medium p-2">
+                          📊 泊松模型
+                        </th>
+                        <th className="text-left text-amber-400 text-xs font-medium p-2">
+                          🎯 V4.2线0
+                        </th>
+                        <th className="text-left text-orange-400 text-xs font-medium p-2">
+                          🔍 必中哥历史
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b border-[#2d3748]/50">
+                        <td className="text-gray-400 text-xs p-2">方向</td>
+                        <td className="text-white text-xs p-2">
+                          {p
+                            ? `${p.homeWinProb > p.awayWinProb ? "主胜" : "客胜"}(${Math.round(
+                                Math.max(p.homeWinProb, p.awayWinProb) * 100
+                              )}%)`
+                            : "-"}
+                        </td>
+                        <td className="text-white text-xs p-2">
+                          {v ? `${v.tLevel}${v.starLevel}-${v.direction}` : "-"}
+                        </td>
+                        <td className="text-white text-xs p-2">
+                          {c.historyStat
+                            ? `${c.finalDirection} ${(
+                                (match.spf_home < match.spf_away
+                                  ? c.historyStat.winRate
+                                  : c.historyStat.loseRate) * 100
+                              ).toFixed(1)}%胜率`
+                            : "数据不足"}
+                        </td>
+                      </tr>
+                      <tr className="border-b border-[#2d3748]/50">
+                        <td className="text-gray-400 text-xs p-2">比分</td>
+                        <td className="text-white text-xs p-2">
+                          {p?.top5[0]
+                            ? `${p.top5[0].score}(${(p.top5[0].prob * 100).toFixed(1)}%)`
+                            : "-"}
+                          {drawAlert && " ⚠️"}
+                        </td>
+                        <td className="text-white text-xs p-2">
+                          {v?.goldenScores[0]
+                            ? `黄金比分 ${v.goldenScores[0].score}`
+                            : "-"}
+                        </td>
+                        <td className="text-white text-xs p-2">
+                          {c.historyStat
+                            ? `${c.historyStat.topScore} 出现${c.historyStat.topScoreCount}次/${c.historyStat.total}场`
+                            : "-"}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="text-gray-400 text-xs p-2">信号</td>
+                        <td className="text-white text-xs p-2">
+                          {drawAlert ? "平局预警⚠️" : p ? "正常" : "-"}
+                        </td>
+                        <td className="text-white text-xs p-2">
+                          {v ? (v.line0 === "Lock" ? "线0 Lock" : "线0 Normal") : "-"}
+                        </td>
+                        <td className="text-white text-xs p-2">
+                          {c.historyStat
+                            ? `平赔${match.spf_draw} 历史${(c.historyStat.drawRate * 100).toFixed(1)}%平率`
+                            : "-"}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* 综合评分条 */}
+                <div className="mb-3">
+                  <div className="flex justify-between text-xs mb-1">
+                    <span className="text-gray-400">综合评分</span>
+                    <span className="text-white font-bold">{c.finalScore}/100</span>
+                  </div>
+                  <div className="flex h-3 bg-[#0f0f1a] rounded overflow-hidden">
+                    <div
+                      className="bg-gradient-to-r from-cyan-500 to-purple-500 transition-all"
+                      style={{ width: "30%", opacity: c.poissonScore / 100 }}
+                      title={`泊松: ${c.poissonScore}分`}
+                    />
+                    <div
+                      className="bg-gradient-to-r from-amber-500 to-yellow-500 transition-all"
+                      style={{ width: "40%", opacity: c.v42Score / 100 }}
+                      title={`V4.2: ${c.v42Score}分`}
+                    />
+                    <div
+                      className="bg-gradient-to-r from-orange-500 to-red-500 transition-all"
+                      style={{ width: "30%", opacity: c.historyScore / 100 }}
+                      title={`历史: ${c.historyScore}分`}
+                    />
+                  </div>
+                  <div className="flex justify-between text-xs mt-1 text-gray-500">
+                    <span>泊松 {c.poissonScore}</span>
+                    <span>V4.2 {c.v42Score}</span>
+                    <span>历史 {c.historyScore}</span>
+                  </div>
+                </div>
+
+                {/* 推荐比分 */}
+                {c.recommendedScores.length > 0 && (
+                  <div className="space-y-2">
+                    <div className="text-xs text-gray-400 flex items-center gap-1">
+                      <TrendingUp className="w-3 h-3 text-purple-400" />
+                      推荐比分 TOP{c.recommendedScores.length}
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      {c.recommendedScores.map((s, i) => (
+                        <div
+                          key={i}
+                          className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 p-2 rounded-lg text-center"
+                        >
+                          <div className="text-white font-mono font-bold text-sm">{s.score}</div>
+                          <div className="text-purple-300 text-[10px] mt-0.5 truncate">
+                            {s.reason}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* 展开详情 */}
+                {isExpanded && (
+                  <div className="mt-4 pt-4 border-t border-[#2d3748] space-y-3">
+                    {/* 风险提示 */}
+                    <div>
+                      <div className="text-xs text-gray-400 flex items-center gap-1 mb-2">
+                        <AlertTriangle className="w-3 h-3 text-orange-400" />
+                        风险提示
+                      </div>
+                      <ul className="space-y-1">
+                        {c.riskTips.map((tip, i) => (
+                          <li key={i} className="text-xs text-orange-300 flex items-start gap-2">
+                            <span>•</span>
+                            <span>{tip}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* SPF+RSPF赔率 */}
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="bg-[#0f0f1a] p-3 rounded-lg">
+                        <div className="text-xs text-gray-400 mb-2">SPF</div>
+                        <div className="grid grid-cols-3 gap-1 text-center text-xs">
+                          <div>
+                            <div className="text-red-400 font-mono font-bold">
+                              {match.spf_home}
+                            </div>
+                            <div className="text-gray-500">主胜</div>
+                          </div>
+                          <div>
+                            <div className="text-yellow-400 font-mono font-bold">
+                              {match.spf_draw}
+                            </div>
+                            <div className="text-gray-500">平</div>
+                          </div>
+                          <div>
+                            <div className="text-blue-400 font-mono font-bold">
+                              {match.spf_away}
+                            </div>
+                            <div className="text-gray-500">客胜</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bg-[#0f0f1a] p-3 rounded-lg">
+                        <div className="text-xs text-gray-400 mb-2">
+                          RSPF ({match.handicap > 0 ? "+" : ""}
+                          {match.handicap})
+                        </div>
+                        <div className="grid grid-cols-3 gap-1 text-center text-xs">
+                          <div>
+                            <div className="text-red-400 font-mono font-bold">
+                              {match.rspf_home || "-"}
+                            </div>
+                            <div className="text-gray-500">主胜</div>
+                          </div>
+                          <div>
+                            <div className="text-yellow-400 font-mono font-bold">
+                              {match.rspf_draw || "-"}
+                            </div>
+                            <div className="text-gray-500">平</div>
+                          </div>
+                          <div>
+                            <div className="text-blue-400 font-mono font-bold">
+                              {match.rspf_away || "-"}
+                            </div>
+                            <div className="text-gray-500">客胜</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <div className="flex justify-center mt-2 text-gray-500">
+                  {isExpanded ? (
+                    <ChevronUp className="w-4 h-4" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
+}
+
+// 辅助：useMemo 计算综合分析
+function useMemoMatches(
+  matches: Match[],
+  calcFn: (m: Match) => CombinedAnalysis,
+  deps: boolean
+): (Match & { combined: CombinedAnalysis | null })[] {
+  const [memoized, setMemoized] = useState<(Match & { combined: CombinedAnalysis | null })[]>([]);
+
+  useEffect(() => {
+    const result = matches.map((m) => ({
+      ...m,
+      combined: calcFn(m),
+    }));
+    setMemoized(result);
+  }, [matches, deps]);
+
+  return memoized;
 }

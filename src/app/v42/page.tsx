@@ -1,738 +1,408 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { AppLayout } from '@/components/AppLayout';
+import { useState, useEffect } from "react";
 import {
   Target,
-  TrendingUp,
-  Zap,
-  Lock,
-  Unlock,
-  Star,
   ChevronDown,
   ChevronUp,
-} from 'lucide-react';
-import { cn } from '@/lib/utils';
+  Crosshair,
+  Star,
+  Lock,
+  Loader2,
+  Activity,
+} from "lucide-react";
 
-interface V42Match {
+interface V42Data {
+  tLevel: string;
+  tLabel: string;
+  starLevel: string;
+  starCount: number;
+  direction: string;
+  spfCR: number;
+  rspfCR: number;
+  crossCR: number;
+  line0: string;
+  goldenScores: { score: string; odds: number }[];
+}
+
+interface Match {
+  match_no: string;
   league: string;
   home_team: string;
   away_team: string;
+  match_time: string;
   spf_home: number;
   spf_draw: number;
   spf_away: number;
+  handicap: number;
   rspf_home: number;
   rspf_draw: number;
   rspf_away: number;
-  handicap: number;
-  t_level: string;
-  direction: string;
-  cr_value: number;
-  golden_scores: string[];
-  line0_status: 'Lock' | 'Normal';
-  star_rating: number;
+  score_odds: { score: string; odds: number }[];
+  v42: V42Data | null;
 }
 
-const mockData: V42Match[] = [
-  {
-    league: '英超',
-    home_team: '曼城',
-    away_team: '利物浦',
-    spf_home: 1.95,
-    spf_draw: 3.40,
-    spf_away: 3.80,
-    rspf_home: 2.15,
-    rspf_draw: 3.30,
-    rspf_away: 3.10,
-    handicap: -0.5,
-    t_level: 'T0',
-    direction: '主胜',
-    cr_value: 1.28,
-    golden_scores: ['2:1', '1:0'],
-    line0_status: 'Lock',
-    star_rating: 5,
-  },
-  {
-    league: '西甲',
-    home_team: '皇家马德里',
-    away_team: '巴塞罗那',
-    spf_home: 2.10,
-    spf_draw: 3.25,
-    spf_away: 3.50,
-    rspf_home: 2.00,
-    rspf_draw: 3.40,
-    rspf_away: 3.35,
-    handicap: -0.25,
-    t_level: 'T0',
-    direction: '主胜',
-    cr_value: 1.15,
-    golden_scores: ['1:0', '2:1'],
-    line0_status: 'Lock',
-    star_rating: 5,
-  },
-  {
-    league: '意甲',
-    home_team: '国际米兰',
-    away_team: 'AC米兰',
-    spf_home: 2.25,
-    spf_draw: 3.10,
-    spf_away: 3.20,
-    rspf_home: 1.95,
-    rspf_draw: 3.25,
-    rspf_away: 3.75,
-    handicap: 0,
-    t_level: 'T1a',
-    direction: '主胜',
-    cr_value: 1.12,
-    golden_scores: ['1:0', '1:1'],
-    line0_status: 'Lock',
-    star_rating: 4,
-  },
-  {
-    league: '德甲',
-    home_team: '拜仁慕尼黑',
-    away_team: '多特蒙德',
-    spf_home: 1.85,
-    spf_draw: 3.60,
-    spf_away: 4.20,
-    rspf_home: 2.30,
-    rspf_draw: 3.50,
-    rspf_away: 2.80,
-    handicap: -0.75,
-    t_level: 'T1a',
-    direction: '主胜',
-    cr_value: 1.24,
-    golden_scores: ['2:1', '2:0'],
-    line0_status: 'Lock',
-    star_rating: 4,
-  },
-  {
-    league: '法甲',
-    home_team: '巴黎圣日耳曼',
-    away_team: '马赛',
-    spf_home: 1.70,
-    spf_draw: 3.80,
-    spf_away: 4.80,
-    rspf_home: 2.05,
-    rspf_draw: 3.40,
-    rspf_away: 3.25,
-    handicap: -0.75,
-    t_level: 'T1b',
-    direction: '主胜',
-    cr_value: 1.08,
-    golden_scores: ['2:0', '2:1'],
-    line0_status: 'Normal',
-    star_rating: 3,
-  },
-  {
-    league: '中超',
-    home_team: '上海申花',
-    away_team: '北京国安',
-    spf_home: 2.40,
-    spf_draw: 3.15,
-    spf_away: 2.90,
-    rspf_home: 2.20,
-    rspf_draw: 3.30,
-    rspf_away: 3.10,
-    handicap: 0,
-    t_level: 'T1b',
-    direction: '客胜',
-    cr_value: 1.05,
-    golden_scores: ['1:2', '0:1'],
-    line0_status: 'Normal',
-    star_rating: 3,
-  },
-  {
-    league: '日职联',
-    home_team: '横滨水手',
-    away_team: '川崎前锋',
-    spf_home: 2.60,
-    spf_draw: 3.05,
-    spf_away: 2.75,
-    rspf_home: 2.50,
-    rspf_draw: 3.10,
-    rspf_away: 2.65,
-    handicap: 0,
-    t_level: 'T2',
-    direction: '平局',
-    cr_value: 1.02,
-    golden_scores: ['1:1', '2:1'],
-    line0_status: 'Normal',
-    star_rating: 2,
-  },
-  {
-    league: '韩K联',
-    home_team: '全北现代',
-    away_team: '蔚山现代',
-    spf_home: 2.35,
-    spf_draw: 3.20,
-    spf_away: 3.00,
-    rspf_home: 2.10,
-    rspf_draw: 3.35,
-    rspf_away: 3.15,
-    handicap: 0,
-    t_level: 'T2',
-    direction: '主胜',
-    cr_value: 1.03,
-    golden_scores: ['1:0', '2:1'],
-    line0_status: 'Normal',
-    star_rating: 2,
-  },
-  {
-    league: '澳超',
-    home_team: '悉尼FC',
-    away_team: '墨尔本胜利',
-    spf_home: 2.80,
-    spf_draw: 3.30,
-    spf_away: 2.50,
-    rspf_home: 2.70,
-    rspf_draw: 3.25,
-    rspf_away: 2.55,
-    handicap: 0,
-    t_level: 'T3c',
-    direction: '客胜',
-    cr_value: 0.98,
-    golden_scores: ['0:1', '1:2'],
-    line0_status: 'Normal',
-    star_rating: 1,
-  },
-  {
-    league: '葡超',
-    home_team: '波尔图',
-    away_team: '本菲卡',
-    spf_home: 2.15,
-    spf_draw: 3.15,
-    spf_away: 3.45,
-    rspf_home: 1.95,
-    rspf_draw: 3.25,
-    rspf_away: 3.75,
-    handicap: 0,
-    t_level: 'EX',
-    direction: '主胜',
-    cr_value: 1.35,
-    golden_scores: ['2:1', '1:0'],
-    line0_status: 'Lock',
-    star_rating: 5,
-  },
-];
-
-const tLevelConfig: Record<string, { label: string; bg: string; glow?: string }> = {
-  T0: {
-    label: 'T0 钻石',
-    bg: 'bg-gradient-to-r from-cyan-400 to-blue-500 text-black',
-    glow: 'shadow-[0_0_12px_rgba(0,212,255,0.4)]',
-  },
-  T1a: {
-    label: 'T1a 金星',
-    bg: 'bg-gradient-to-r from-yellow-400 to-orange-500 text-black',
-    glow: 'shadow-[0_0_10px_rgba(255,215,0,0.4)]',
-  },
-  T1b: {
-    label: 'T1b 银星',
-    bg: 'bg-gradient-to-r from-gray-300 to-gray-500 text-black',
-  },
-  T2: {
-    label: 'T2 铜星',
-    bg: 'bg-gradient-to-r from-amber-600 to-amber-800 text-white',
-  },
-  T2b: {
-    label: 'T2b 铁星',
-    bg: 'bg-gradient-to-r from-gray-500 to-gray-700 text-white',
-  },
-  T3c: {
-    label: 'T3c',
-    bg: 'bg-gray-700 text-gray-300',
-  },
-  EX: {
-    label: 'EX 特选',
-    bg: 'bg-gradient-to-r from-purple-500 to-pink-500 text-white',
-    glow: 'shadow-[0_0_12px_rgba(168,85,247,0.4)]',
-  },
+const T_LEVEL_CONFIG: Record<string, { bg: string; text: string; label: string }> = {
+  T0: { bg: "from-cyan-400 to-teal-500", text: "text-cyan-100", label: "💎T0 钻石" },
+  T1a: { bg: "from-yellow-400 to-amber-500", text: "text-yellow-900", label: "🥇T1a 金星" },
+  T1b: { bg: "from-gray-300 to-gray-400", text: "text-gray-900", label: "🥈T1b 银星" },
+  T2: { bg: "from-orange-400 to-amber-700", text: "text-orange-100", label: "🥉T2 铜星" },
+  T2b: { bg: "from-orange-600 to-red-700", text: "text-orange-100", label: "⚙️T2b 铁星" },
+  T3c: { bg: "from-gray-500 to-gray-600", text: "text-gray-100", label: "T3c" },
+  T3b: { bg: "from-gray-600 to-gray-700", text: "text-gray-100", label: "T3b" },
+  EX: { bg: "from-red-700 to-red-900", text: "text-red-100", label: "EX 排除" },
+  P: { bg: "from-gray-500 to-gray-600", text: "text-gray-100", label: "P 待定" },
 };
 
-function StarRating({ rating }: { rating: number }) {
-  const starIcons = ['💎', '🥇', '🥈', '🥉', '⚙️'];
-  const labels = ['钻石', '金', '银', '铜', '铁'];
-  const idx = Math.min(Math.max(5 - rating, 0), 4);
-  const stars = Array.from({ length: 5 }, (_, i) => i < rating);
+function renderStars(level: string, count: number) {
+  if (level === "钻石") return "💎💎💎💎💎";
+  if (level === "金") return "🥇⭐⭐⭐";
+  if (level === "银") return "🥈⭐⭐";
+  if (level === "铜") return "🥉⭐";
+  if (level === "铁") return "⚙️";
+  return "—";
+}
 
-  return (
-    <div className="flex items-center gap-1" title={`${rating}星 - ${labels[idx]}`}>
-      {stars.map((filled, i) => (
-        <Star
-          key={i}
-          size={14}
-          className={filled ? 'text-yellow-400 fill-yellow-400' : 'text-gray-700'}
-        />
-      ))}
-      <span className="text-xs text-gray-500 ml-1">
-        {starIcons[idx]}
-      </span>
-    </div>
-  );
+function getCRColor(cr: number): string {
+  if (cr >= 150) return "text-cyan-400";
+  if (cr >= 120) return "text-green-400";
+  if (cr >= 100) return "text-yellow-400";
+  if (cr >= 80) return "text-orange-400";
+  return "text-red-400";
 }
 
 export default function V42Page() {
-  const [selectedLevel, setSelectedLevel] = useState('all');
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [matches, setMatches] = useState<Match[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [tFilter, setTFilter] = useState("全部");
+  const [leagueFilter, setLeagueFilter] = useState("全部");
+  const [searchText, setSearchText] = useState("");
 
-  const levels = ['T0', 'T1a', 'T1b', 'T2', 'T2b', 'T3c', 'EX'];
-  const filtered =
-    selectedLevel === 'all'
-      ? mockData
-      : mockData.filter((m) => m.t_level === selectedLevel);
+  useEffect(() => {
+    const load = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch("/api/sporttery/matches?type=v42");
+        const data = await res.json();
+        if (data.success) {
+          setMatches(data.data || []);
+        } else {
+          setError(data.error || "加载失败");
+        }
+      } catch (e: any) {
+        setError(e.message || "网络错误");
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
+  }, []);
 
-  const directionColor = (dir: string) => {
-    switch (dir) {
-      case '主胜':
-        return 'text-red-400';
-      case '客胜':
-        return 'text-blue-400';
-      case '平局':
-        return 'text-yellow-400';
-      default:
-        return 'text-gray-400';
+  const tLevels = ["全部", "T0", "T1a", "T1b", "T2", "T2b", "T3c", "T3b", "EX"];
+  const leagues = ["全部", ...new Set(matches.map((m) => m.league))];
+
+  const filtered = matches.filter((m) => {
+    if (tFilter !== "全部" && m.v42?.tLevel !== tFilter) return false;
+    if (leagueFilter !== "全部" && m.league !== leagueFilter) return false;
+    if (searchText) {
+      const q = searchText.toLowerCase();
+      if (
+        !m.home_team.toLowerCase().includes(q) &&
+        !m.away_team.toLowerCase().includes(q) &&
+        !m.league.toLowerCase().includes(q)
+      )
+        return false;
     }
-  };
-
-  const directionBg = (dir: string) => {
-    switch (dir) {
-      case '主胜':
-        return 'bg-red-500/20 border-red-500/40 text-red-400';
-      case '客胜':
-        return 'bg-blue-500/20 border-blue-500/40 text-blue-400';
-      case '平局':
-        return 'bg-yellow-500/20 border-yellow-500/40 text-yellow-400';
-      default:
-        return 'bg-gray-500/20 border-gray-500/40 text-gray-400';
-    }
-  };
-
-  const stats = {
-    total: filtered.length,
-    lockCount: filtered.filter((m) => m.line0_status === 'Lock').length,
-    t0Count: filtered.filter((m) => m.t_level === 'T0' || m.t_level === 'EX').length,
-    avgCr: (filtered.reduce((s, m) => s + m.cr_value, 0) / filtered.length).toFixed(3),
-  };
+    return true;
+  });
 
   return (
-    <AppLayout>
-      <div className="space-y-6">
-        {/* Header */}
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h1 className="text-2xl font-bold text-white flex items-center gap-3">
-              <Target className="text-yellow-400" size={28} />
-              V4.2 分析
-            </h1>
-            <p className="text-gray-500 text-sm mt-1">
-              V4.2分析体系完整分析结果 - 黄金比分 + 线0策略 + CR值
-            </p>
+    <div className="p-4 lg:p-6 space-y-4">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-xl font-bold text-white flex items-center gap-2">
+            <Target className="w-5 h-5 text-amber-400" />
+            V4.2 分析
+          </h1>
+          <p className="text-sm text-gray-400 mt-1">线0八级方向预筛 + CR交叉比值 + 黄金比分</p>
+        </div>
+        {loading && (
+          <div className="flex items-center gap-2 text-sm text-amber-400">
+            <Loader2 className="w-4 h-4 animate-spin" />
+            加载中...
           </div>
-        </div>
+        )}
+      </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-4 gap-4">
-          <StatCard
-            icon={<Target size={20} />}
-            label="比赛总数"
-            value={stats.total}
-            color="text-yellow-400"
-          />
-          <StatCard
-            icon={<Lock size={20} />}
-            label="线0 Lock"
-            value={stats.lockCount}
-            color="text-green-400"
-          />
-          <StatCard
-            icon={<Zap size={20} />}
-            label="钻石+特选"
-            value={stats.t0Count}
-            color="text-cyan-400"
-          />
-          <StatCard
-            icon={<TrendingUp size={20} />}
-            label="平均CR值"
-            value={stats.avgCr}
-            color="text-purple-400"
-          />
-        </div>
-
-        {/* Level filters */}
-        <div className="flex flex-wrap items-center gap-2 p-4 bg-[#1a1a2e] rounded-xl border border-gray-800">
-          <span className="text-sm text-gray-400 mr-2">T级筛选:</span>
+      {/* 筛选 */}
+      <div className="flex flex-wrap gap-2">
+        {tLevels.map((t) => (
           <button
-            onClick={() => setSelectedLevel('all')}
-            className={cn(
-              'px-3 py-1 text-xs rounded-md transition-all',
-              selectedLevel === 'all'
-                ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/40'
-                : 'bg-gray-800/50 text-gray-400 border border-gray-700 hover:border-gray-600'
-            )}
+            key={t}
+            onClick={() => setTFilter(t)}
+            className={`px-3 py-1 text-xs rounded-full transition-all ${
+              tFilter === t
+                ? "bg-amber-500 text-white"
+                : "bg-[#1a1a2e] text-gray-400 hover:text-white border border-[#2d3748]"
+            }`}
           >
-            全部
+            {t}
           </button>
-          {levels.map((level) => {
-            const config = tLevelConfig[level];
-            return (
-              <button
-                key={level}
-                onClick={() =>
-                  setSelectedLevel(selectedLevel === level ? 'all' : level)
-                }
-                className={cn(
-                  'px-2.5 py-1 text-xs rounded font-bold transition-all',
-                  config.bg,
-                  selectedLevel === level
-                    ? 'ring-2 ring-white/30 scale-105'
-                    : 'opacity-70 hover:opacity-100'
-                )}
-              >
-                {config.label}
-              </button>
-            );
-          })}
+        ))}
+      </div>
+      <div className="flex flex-wrap gap-3">
+        <select
+          value={leagueFilter}
+          onChange={(e) => setLeagueFilter(e.target.value)}
+          className="bg-[#1a1a2e] border border-[#2d3748] text-gray-200 text-sm rounded-lg px-3 py-2 focus:border-amber-500 focus:outline-none"
+        >
+          {leagues.map((l) => (
+            <option key={l} value={l}>
+              {l}
+            </option>
+          ))}
+        </select>
+        <input
+          type="text"
+          placeholder="搜索球队/联赛..."
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          className="bg-[#1a1a2e] border border-[#2d3748] text-gray-200 text-sm rounded-lg px-3 py-2 w-48 focus:border-amber-500 focus:outline-none"
+        />
+        <div className="flex items-center gap-2 text-sm text-gray-400 ml-auto">
+          <Activity className="w-4 h-4" />
+          共 {filtered.length} 场
         </div>
+      </div>
 
-        {/* Match cards */}
-        <div className="space-y-3">
-          {filtered.map((match, idx) => {
-            const tConfig = tLevelConfig[match.t_level] || tLevelConfig.T3c;
-            return (
-              <div
-                key={`${match.home_team}-${match.away_team}`}
-                className={cn(
-                  'bg-[#1a1a2e] border border-gray-800 rounded-xl overflow-hidden transition-all duration-300',
-                  match.line0_status === 'Lock' &&
-                    'hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/5'
-                )}
-              >
-                <div
-                  className="p-4 cursor-pointer"
-                  onClick={() =>
-                    setExpandedIndex(expandedIndex === idx ? null : idx)
-                  }
-                >
-                  <div className="flex flex-wrap items-center gap-4">
-                    {/* League */}
-                    <div className="min-w-[70px]">
-                      <span className="text-xs text-gray-500">
-                        {match.league}
-                      </span>
-                    </div>
+      {error && (
+        <div className="bg-red-900/20 border border-red-500/30 text-red-300 px-4 py-3 rounded-lg">
+          {error}
+        </div>
+      )}
 
-                    {/* Teams */}
-                    <div className="flex-1 min-w-[180px]">
-                      <div className="flex items-center gap-2">
-                        <span className="text-red-400 text-sm font-semibold">
-                          {match.home_team}
-                        </span>
-                        <span className="text-gray-600 text-xs">VS</span>
-                        <span className="text-blue-400 text-sm font-semibold">
-                          {match.away_team}
-                        </span>
-                      </div>
-                    </div>
+      {!loading && !error && filtered.length === 0 && (
+        <div className="text-center py-16 text-gray-400">
+          <Target className="w-12 h-12 mx-auto mb-3 opacity-50" />
+          <p>今日暂无竞彩比赛在售</p>
+        </div>
+      )}
 
-                    {/* SPF odds */}
-                    <div className="flex items-center gap-1 bg-gray-900/50 rounded-lg px-2 py-1.5">
-                      <span className="text-[10px] text-gray-500 mr-1">SPF</span>
-                      <span className="text-xs font-mono text-red-400 tabular-nums">
-                        {match.spf_home.toFixed(2)}
-                      </span>
-                      <span className="text-xs text-gray-700">/</span>
-                      <span className="text-xs font-mono text-yellow-400 tabular-nums">
-                        {match.spf_draw.toFixed(2)}
-                      </span>
-                      <span className="text-xs text-gray-700">/</span>
-                      <span className="text-xs font-mono text-blue-400 tabular-nums">
-                        {match.spf_away.toFixed(2)}
-                      </span>
-                    </div>
+      {/* 比赛卡片 */}
+      <div className="grid gap-3">
+        {filtered.map((match) => {
+          const v = match.v42;
+          const isExpanded = expandedId === match.match_no;
+          const tConfig = v ? T_LEVEL_CONFIG[v.tLevel] || T_LEVEL_CONFIG.P : T_LEVEL_CONFIG.P;
 
-                    {/* RSPF + handicap */}
-                    <div className="flex items-center gap-2">
-                      <span className="px-2 py-1 text-xs bg-purple-500/20 text-purple-400 rounded font-mono font-bold">
-                        让
-                        {match.handicap > 0
-                          ? `+${match.handicap}`
-                          : match.handicap}
-                      </span>
-                      <div className="flex items-center gap-0.5 bg-gray-900/50 rounded px-2 py-1">
-                        <span className="text-[10px] text-gray-500 mr-1">
-                          RSPF
-                        </span>
-                        <span className="text-xs font-mono text-red-400 tabular-nums">
-                          {match.rspf_home.toFixed(2)}
-                        </span>
-                        <span className="text-xs text-gray-700">/</span>
-                        <span className="text-xs font-mono text-yellow-400 tabular-nums">
-                          {match.rspf_draw.toFixed(2)}
-                        </span>
-                        <span className="text-xs text-gray-700">/</span>
-                        <span className="text-xs font-mono text-blue-400 tabular-nums">
-                          {match.rspf_away.toFixed(2)}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* T-level */}
-                    <span
-                      className={cn(
-                        'px-2.5 py-1 text-xs font-bold rounded',
-                        tConfig.bg,
-                        tConfig.glow
-                      )}
-                    >
-                      {tConfig.label}
+          return (
+            <div
+              key={match.match_no}
+              className="bg-[#1a1a2e] border border-[#2d3748] rounded-xl overflow-hidden hover:border-amber-500/40 transition-colors cursor-pointer"
+              onClick={() => setExpandedId(isExpanded ? null : match.match_no)}
+            >
+              <div className="p-4">
+                {/* 头部 */}
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs font-mono text-amber-400 font-bold">
+                      {match.match_no}
                     </span>
-
-                    {/* Direction */}
-                    <span
-                      className={cn(
-                        'px-3 py-1 text-sm font-bold rounded-lg border',
-                        directionBg(match.direction)
-                      )}
-                    >
-                      {match.direction}
+                    <span className="text-xs text-gray-400 bg-[#0f0f1a] px-2 py-0.5 rounded">
+                      {match.league}
                     </span>
-
-                    {/* CR value */}
-                    <div className="flex items-center gap-1.5">
-                      <TrendingUp size={14} className="text-purple-400" />
-                      <span className="text-xs font-mono text-purple-400 tabular-nums">
-                        CR {match.cr_value.toFixed(2)}
+                    {match.match_time && (
+                      <span className="text-xs text-gray-500">{match.match_time}</span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {v?.line0 === "Lock" && (
+                      <span className="flex items-center gap-1 text-xs text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded font-medium">
+                        <Lock className="w-3 h-3" />
+                        线0 Lock
                       </span>
-                    </div>
-
-                    {/* Line0 status */}
-                    <div
-                      className={cn(
-                        'flex items-center gap-1.5 px-2 py-1 rounded text-xs font-medium',
-                        match.line0_status === 'Lock'
-                          ? 'bg-green-500/20 text-green-400'
-                          : 'bg-gray-700/50 text-gray-400'
-                      )}
-                    >
-                      {match.line0_status === 'Lock' ? (
-                        <Lock size={14} />
-                      ) : (
-                        <Unlock size={14} />
-                      )}
-                      {match.line0_status === 'Lock' ? '线0 Lock' : '线0 Normal'}
-                    </div>
-
-                    {/* Stars */}
-                    <StarRating rating={match.star_rating} />
-
-                    {/* Golden scores */}
-                    <div className="flex items-center gap-1">
-                      <Zap size={14} className="text-yellow-400" />
-                      <div className="text-xs font-mono">
-                        {match.golden_scores.map((s, i) => (
-                          <span
-                            key={s}
-                            className={cn(
-                              'px-1.5 py-0.5 rounded',
-                              i === 0
-                                ? 'bg-yellow-500/30 text-yellow-300 font-bold'
-                                : 'bg-gray-700/50 text-gray-300'
-                            )}
-                          >
-                            {s}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Expand */}
-                    {expandedIndex === idx ? (
-                      <ChevronUp size={18} className="text-gray-500" />
-                    ) : (
-                      <ChevronDown size={18} className="text-gray-500" />
+                    )}
+                    {v && (
+                      <span
+                        className={`text-xs font-bold px-2 py-0.5 rounded bg-gradient-to-r ${tConfig.bg} ${tConfig.text}`}
+                      >
+                        {tConfig.label}
+                      </span>
                     )}
                   </div>
                 </div>
 
-                {/* Expanded detail */}
-                {expandedIndex === idx && (
-                  <div className="border-t border-gray-800 bg-[#0f0f1a]/50 p-4">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      {/* 分析维度 */}
+                {/* 对阵 */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex-1">
+                    <div className="text-white font-semibold">{match.home_team}</div>
+                    <div className="text-gray-500 text-xs">主队</div>
+                  </div>
+                  <div className="text-center px-4">
+                    {v && (
+                      <div className="text-lg font-bold text-amber-400">
+                        {v.direction}
+                      </div>
+                    )}
+                    <div className="text-gray-500 text-xs mt-1">VS</div>
+                  </div>
+                  <div className="flex-1 text-right">
+                    <div className="text-white font-semibold">{match.away_team}</div>
+                    <div className="text-gray-500 text-xs">客队</div>
+                  </div>
+                </div>
+
+                {/* 赔率区 */}
+                <div className="grid grid-cols-2 gap-3 mb-3">
+                  {/* SPF */}
+                  <div className="bg-[#0f0f1a] p-3 rounded-lg">
+                    <div className="text-xs text-gray-400 mb-2">SPF 胜平负</div>
+                    <div className="grid grid-cols-3 gap-1 text-center">
                       <div>
-                        <h4 className="text-xs text-gray-500 uppercase tracking-wider mb-3">
-                          V4.2 分析维度
-                        </h4>
-                        <div className="space-y-2 text-sm">
-                          <div className="flex justify-between">
-                            <span className="text-gray-400">T级评定</span>
-                            <span
-                              className={cn(
-                                'px-2 py-0.5 text-xs font-bold rounded',
-                                tConfig.bg
-                              )}
-                            >
-                              {tConfig.label}
-                            </span>
+                        <div className="text-red-400 font-mono font-bold text-sm">
+                          {match.spf_home || "-"}
+                        </div>
+                        <div className="text-gray-500 text-xs">主胜</div>
+                      </div>
+                      <div>
+                        <div className="text-yellow-400 font-mono font-bold text-sm">
+                          {match.spf_draw || "-"}
+                        </div>
+                        <div className="text-gray-500 text-xs">平</div>
+                      </div>
+                      <div>
+                        <div className="text-blue-400 font-mono font-bold text-sm">
+                          {match.spf_away || "-"}
+                        </div>
+                        <div className="text-gray-500 text-xs">客胜</div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* RSPF */}
+                  <div className="bg-[#0f0f1a] p-3 rounded-lg">
+                    <div className="text-xs text-gray-400 mb-2 flex items-center gap-1">
+                      RSPF 让球
+                      <span className="text-cyan-400 font-mono">
+                        ({match.handicap > 0 ? "+" : ""}
+                        {match.handicap})
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-1 text-center">
+                      <div>
+                        <div className="text-red-400 font-mono font-bold text-sm">
+                          {match.rspf_home || "-"}
+                        </div>
+                        <div className="text-gray-500 text-xs">主胜</div>
+                      </div>
+                      <div>
+                        <div className="text-yellow-400 font-mono font-bold text-sm">
+                          {match.rspf_draw || "-"}
+                        </div>
+                        <div className="text-gray-500 text-xs">平</div>
+                      </div>
+                      <div>
+                        <div className="text-blue-400 font-mono font-bold text-sm">
+                          {match.rspf_away || "-"}
+                        </div>
+                        <div className="text-gray-500 text-xs">客胜</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 星级 + CR */}
+                {v && (
+                  <div className="flex items-center justify-between mb-3 bg-[#0f0f1a] p-2 rounded-lg">
+                    <div className="flex items-center gap-2">
+                      <Star className="w-4 h-4 text-yellow-500" />
+                      <span className="text-sm text-white">{renderStars(v.starLevel, v.starCount)}</span>
+                      <span className="text-xs text-gray-500 ml-1">{v.starLevel}</span>
+                    </div>
+                    <div className="flex items-center gap-4 text-xs">
+                      <div>
+                        <span className="text-gray-500">SPF-CR: </span>
+                        <span className={`font-mono font-bold ${getCRColor(v.spfCR)}`}>
+                          {v.spfCR.toFixed(1)}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-gray-500">交叉CR: </span>
+                        <span className={`font-mono font-bold ${getCRColor(v.crossCR)}`}>
+                          {v.crossCR.toFixed(1)}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* 黄金比分TOP3 */}
+                {v && v.goldenScores.length > 0 && (
+                  <div className="space-y-2">
+                    <div className="text-xs text-gray-400 flex items-center gap-1">
+                      <Crosshair className="w-3 h-3 text-amber-400" />
+                      黄金比分 TOP{v.goldenScores.length}
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      {v.goldenScores.map((s, i) => (
+                        <div
+                          key={i}
+                          className="bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-amber-500/30 p-2 rounded-lg text-center"
+                        >
+                          <div className="text-white font-mono font-bold text-sm">
+                            {s.score}
                           </div>
-                          <div className="flex justify-between">
-                            <span className="text-gray-400">推荐方向</span>
-                            <span className={directionColor(match.direction)}>
-                              {match.direction}
-                            </span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-gray-400">CR一致性比率</span>
-                            <span className="text-purple-400 font-mono">
-                              {match.cr_value.toFixed(3)}
-                            </span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-gray-400">线0状态</span>
-                            <span
-                              className={
-                                match.line0_status === 'Lock'
-                                  ? 'text-green-400'
-                                  : 'text-gray-400'
-                              }
-                            >
-                              {match.line0_status === 'Lock' ? '锁定' : '普通'}
-                            </span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-gray-400">星级评定</span>
-                            <StarRating rating={match.star_rating} />
+                          <div className="text-amber-400 font-mono text-xs">
+                            @ {s.odds.toFixed(2)}
                           </div>
                         </div>
-                      </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
-                      {/* 黄金比分 */}
-                      <div>
-                        <h4 className="text-xs text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2">
-                          <Zap size={14} className="text-yellow-400" />
-                          黄金比分 (交叉比值Top2)
-                        </h4>
-                        <div className="space-y-2">
-                          {match.golden_scores.map((score, i) => (
-                            <div
-                              key={score}
-                              className="flex items-center justify-between p-2.5 bg-gray-800/50 rounded-lg"
-                            >
-                              <div className="flex items-center gap-2">
-                                <span
-                                  className={cn(
-                                    'w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold',
-                                    i === 0
-                                      ? 'bg-yellow-500 text-black'
-                                      : 'bg-gray-600 text-white'
-                                  )}
-                                >
-                                  {i + 1}
-                                </span>
-                                <span className="text-white font-mono font-bold">
-                                  {score}
-                                </span>
-                              </div>
-                              <span className="text-xs text-yellow-400">
-                                {i === 0 ? '最高CR' : '次高CR'}
-                              </span>
-                            </div>
-                          ))}
+                {!v && (
+                  <div className="text-center text-gray-500 text-sm py-3">
+                    暂无完整V4.2分析数据
+                  </div>
+                )}
+
+                {/* 展开详情 */}
+                {isExpanded && v && (
+                  <div className="mt-4 pt-4 border-t border-[#2d3748] space-y-3">
+                    <div className="grid grid-cols-2 gap-3 text-sm">
+                      <div className="bg-[#0f0f1a] p-3 rounded-lg">
+                        <div className="text-gray-400 text-xs mb-1">T级判定</div>
+                        <div className="text-white font-semibold">{v.tLevel} · {v.tLabel}</div>
+                      </div>
+                      <div className="bg-[#0f0f1a] p-3 rounded-lg">
+                        <div className="text-gray-400 text-xs mb-1">星级等级</div>
+                        <div className="text-white font-semibold">{v.starLevel} ({v.starCount}星)</div>
+                      </div>
+                      <div className="bg-[#0f0f1a] p-3 rounded-lg">
+                        <div className="text-gray-400 text-xs mb-1">SPF-CR</div>
+                        <div className={`font-mono font-bold ${getCRColor(v.spfCR)}`}>
+                          {v.spfCR.toFixed(2)}
                         </div>
                       </div>
-
-                      {/* 赔率对比 */}
-                      <div>
-                        <h4 className="text-xs text-gray-500 uppercase tracking-wider mb-3">
-                          赔率矩阵
-                        </h4>
-                        <div className="space-y-2">
-                          <div className="grid grid-cols-4 gap-1 text-center text-xs">
-                            <div className="p-1.5 bg-gray-800/50 rounded text-gray-500">
-                              类型
-                            </div>
-                            <div className="p-1.5 bg-red-500/10 rounded text-red-400">
-                              主胜
-                            </div>
-                            <div className="p-1.5 bg-yellow-500/10 rounded text-yellow-400">
-                              平
-                            </div>
-                            <div className="p-1.5 bg-blue-500/10 rounded text-blue-400">
-                              客胜
-                            </div>
-                          </div>
-                          <div className="grid grid-cols-4 gap-1 text-center text-xs font-mono">
-                            <div className="p-1.5 bg-gray-800/30 rounded text-gray-400">
-                              SPF
-                            </div>
-                            <div className="p-1.5 bg-red-500/10 rounded text-red-400 tabular-nums">
-                              {match.spf_home.toFixed(2)}
-                            </div>
-                            <div className="p-1.5 bg-yellow-500/10 rounded text-yellow-400 tabular-nums">
-                              {match.spf_draw.toFixed(2)}
-                            </div>
-                            <div className="p-1.5 bg-blue-500/10 rounded text-blue-400 tabular-nums">
-                              {match.spf_away.toFixed(2)}
-                            </div>
-                          </div>
-                          <div className="grid grid-cols-4 gap-1 text-center text-xs font-mono">
-                            <div className="p-1.5 bg-gray-800/30 rounded text-gray-400">
-                              RSPF
-                            </div>
-                            <div className="p-1.5 bg-red-500/5 rounded text-red-400 tabular-nums">
-                              {match.rspf_home.toFixed(2)}
-                            </div>
-                            <div className="p-1.5 bg-yellow-500/5 rounded text-yellow-400 tabular-nums">
-                              {match.rspf_draw.toFixed(2)}
-                            </div>
-                            <div className="p-1.5 bg-blue-500/5 rounded text-blue-400 tabular-nums">
-                              {match.rspf_away.toFixed(2)}
-                            </div>
-                          </div>
-                          <div className="text-center text-xs text-gray-600 pt-1">
-                            让球数:{' '}
-                            <span className="text-purple-400 font-mono">
-                              {match.handicap > 0
-                                ? `+${match.handicap}`
-                                : match.handicap}
-                            </span>
-                          </div>
+                      <div className="bg-[#0f0f1a] p-3 rounded-lg">
+                        <div className="text-gray-400 text-xs mb-1">RSPF-CR</div>
+                        <div className={`font-mono font-bold ${getCRColor(v.rspfCR)}`}>
+                          {v.rspfCR.toFixed(2)}
                         </div>
                       </div>
                     </div>
                   </div>
                 )}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </AppLayout>
-  );
-}
 
-function StatCard({
-  icon,
-  label,
-  value,
-  color,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string | number;
-  color: string;
-}) {
-  return (
-    <div className="p-4 bg-[#1a1a2e] border border-gray-800 rounded-xl">
-      <div className="flex items-center gap-3">
-        <div className={`p-2.5 rounded-lg bg-gray-800/50 ${color}`}>{icon}</div>
-        <div>
-          <div className={`text-xl font-bold ${color} tabular-nums`}>
-            {value}
-          </div>
-          <div className="text-xs text-gray-500">{label}</div>
-        </div>
+                <div className="flex justify-center mt-2 text-gray-500">
+                  {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
