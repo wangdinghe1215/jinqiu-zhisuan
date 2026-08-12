@@ -201,7 +201,7 @@ export default function BizhonggePage() {
 
   return (
     <AppLayout>
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
@@ -221,7 +221,7 @@ export default function BizhonggePage() {
       </div>
 
       {/* 今日在售比赛 */}
-      <div className="p-4 bg-[#1a1a2e] border border-orange-500/30 rounded-xl">
+      <div className="p-3 bg-[#1a1a2e] border border-orange-500/30 rounded-xl">
         <div className="flex items-center gap-2 mb-3">
           <Zap className="w-4 h-4 text-orange-400" />
           <span className="text-sm font-semibold text-orange-300">
@@ -281,7 +281,7 @@ export default function BizhonggePage() {
       </div>
 
       {/* 多条件筛选面板 */}
-      <div className="p-6 bg-[#1a1a2e] border border-gray-700 rounded-xl">
+      <div className="p-3 bg-[#1a1a2e] border border-gray-700 rounded-xl">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <Filter className="w-5 h-5 text-cyan-400" />
@@ -349,7 +349,7 @@ export default function BizhonggePage() {
         <>
           {/* Probability Cards */}
           <div className="grid grid-cols-3 gap-4">
-            <div className="p-5 bg-[#1a1a2e] border border-red-500/30 rounded-xl text-center">
+            <div className="p-3 bg-[#1a1a2e] border border-red-500/30 rounded-xl text-center">
               <div className="text-sm text-gray-400 mb-1">主胜场次</div>
               <div className="text-3xl font-bold text-red-400 tabular-nums">
                 {result.win}
@@ -364,7 +364,7 @@ export default function BizhonggePage() {
                 />
               </div>
             </div>
-            <div className="p-5 bg-[#1a1a2e] border border-yellow-500/30 rounded-xl text-center">
+            <div className="p-3 bg-[#1a1a2e] border border-yellow-500/30 rounded-xl text-center">
               <div className="text-sm text-gray-400 mb-1">平局场次</div>
               <div className="text-3xl font-bold text-yellow-400 tabular-nums">
                 {result.draw}
@@ -379,7 +379,7 @@ export default function BizhonggePage() {
                 />
               </div>
             </div>
-            <div className="p-5 bg-[#1a1a2e] border border-blue-500/30 rounded-xl text-center">
+            <div className="p-3 bg-[#1a1a2e] border border-blue-500/30 rounded-xl text-center">
               <div className="text-sm text-gray-400 mb-1">客胜场次</div>
               <div className="text-3xl font-bold text-blue-400 tabular-nums">
                 {result.lose}
@@ -397,7 +397,7 @@ export default function BizhonggePage() {
           </div>
 
           {/* Stats summary row */}
-          <div className="p-4 bg-[#1a1a2e] border border-gray-700 rounded-xl">
+          <div className="p-3 bg-[#1a1a2e] border border-gray-700 rounded-xl">
             <div className="flex flex-wrap items-center gap-6 text-sm">
               <div>
                 <span className="text-gray-500">总场次：</span>
@@ -429,7 +429,7 @@ export default function BizhonggePage() {
           {/* Charts */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             {/* 赛果分布饼图 */}
-            <div className="p-5 bg-[#1a1a2e] border border-gray-700 rounded-xl">
+            <div className="p-3 bg-[#1a1a2e] border border-gray-700 rounded-xl">
               <div className="flex items-center gap-2 mb-3">
                 <PieChartIcon className="w-4 h-4 text-purple-400" />
                 <span className="text-sm font-semibold text-white">赛果分布</span>
@@ -471,7 +471,7 @@ export default function BizhonggePage() {
             </div>
 
             {/* 比分分布柱状图 */}
-            <div className="p-5 bg-[#1a1a2e] border border-gray-700 rounded-xl lg:col-span-2">
+            <div className="p-3 bg-[#1a1a2e] border border-gray-700 rounded-xl lg:col-span-2">
               <div className="flex items-center gap-2 mb-3">
                 <BarChart3 className="w-4 h-4 text-cyan-400" />
                 <span className="text-sm font-semibold text-white">
@@ -513,7 +513,7 @@ export default function BizhonggePage() {
           </div>
 
           {/* 比分详细列表 */}
-          <div className="p-6 bg-[#1a1a2e] border border-gray-700 rounded-xl">
+          <div className="p-3 bg-[#1a1a2e] border border-gray-700 rounded-xl">
             <div className="flex items-center gap-2 mb-4">
               <TrendingUp className="w-5 h-5 text-green-400" />
               <span className="font-semibold text-white">比分详细列表</span>
@@ -582,7 +582,7 @@ export default function BizhonggePage() {
 
           {/* 比赛明细表格 */}
           <div className="bg-[#1a1a2e] border border-gray-700 rounded-xl overflow-hidden">
-            <div className="p-4 border-b border-gray-700">
+            <div className="p-3 border-b border-gray-700">
               <div className="flex items-center gap-2">
                 <BarChart3 className="w-5 h-5 text-purple-400" />
                 <span className="font-semibold text-white">比赛明细</span>
@@ -665,7 +665,7 @@ export default function BizhonggePage() {
 
             {/* 分页 */}
             {totalPages > 1 && (
-              <div className="p-4 border-t border-gray-700 flex items-center justify-center gap-2">
+              <div className="p-3 border-t border-gray-700 flex items-center justify-center gap-2">
                 <button
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                   disabled={currentPage === 1}

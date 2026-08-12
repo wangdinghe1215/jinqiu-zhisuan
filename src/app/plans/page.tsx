@@ -237,7 +237,7 @@ export default function PlansPage() {
             <p className="text-sm mt-2">请稍后再来查看</p>
           </div>
         ) : currentPlan ? (
-          <div className="space-y-6">
+          <div className="space-y-4">
             {/* 日期选择 */}
             <div className="flex items-center gap-3 overflow-x-auto pb-2">
               <Calendar className="w-4 h-4 text-gray-500 flex-shrink-0" />
@@ -259,17 +259,17 @@ export default function PlansPage() {
 
             {/* 概览卡片 */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-5 bg-[#1a1a2e] rounded-xl border border-[#2d3748]">
+              <div className="p-3 bg-[#1a1a2e] rounded-xl border border-[#2d3748]">
                 <div className="text-gray-400 text-sm mb-2">总投注场次</div>
                 <div className="text-2xl font-bold text-white">{currentPlan.total_matches} 场</div>
                 <div className="text-xs text-gray-500 mt-1">精选高信心赛事</div>
               </div>
-              <div className="p-5 bg-[#1a1a2e] rounded-xl border border-[#2d3748]">
+              <div className="p-3 bg-[#1a1a2e] rounded-xl border border-[#2d3748]">
                 <div className="text-gray-400 text-sm mb-2">资金总投入</div>
                 <div className="text-2xl font-bold text-amber-400">{currentPlan.total_allocation}%</div>
                 <div className="text-xs text-gray-500 mt-1">单位资金分配比例</div>
               </div>
-              <div className="p-5 bg-[#1a1a2e] rounded-xl border border-emerald-500/30">
+              <div className="p-3 bg-[#1a1a2e] rounded-xl border border-emerald-500/30">
                 <div className="text-gray-400 text-sm mb-2 flex items-center gap-1">
                   <TrendingUp className="w-4 h-4 text-emerald-400" />
                   预期回报率

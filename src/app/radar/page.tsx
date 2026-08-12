@@ -319,7 +319,7 @@ export default function RadarPage() {
           <>
             {/* 统计卡片 */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="p-5 bg-[#1a1a2e] border border-[#2d3748] rounded-xl">
+              <div className="p-3 bg-[#1a1a2e] border border-[#2d3748] rounded-xl">
                 <div className="flex items-center gap-2 text-[#9ca3af] text-sm mb-2">
                   <Target className="w-4 h-4" />
                   <span>监控总场次</span>
@@ -370,7 +370,7 @@ export default function RadarPage() {
             </div>
 
             {/* 核心提示 */}
-            <div className="p-4 rounded-xl bg-gradient-to-r from-rose-500/20 via-orange-500/20 to-amber-500/20 border border-orange-500/30">
+            <div className="p-3 rounded-xl bg-gradient-to-r from-rose-500/20 via-orange-500/20 to-amber-500/20 border border-orange-500/30">
               <div className="flex items-start gap-3">
                 <AlertTriangle className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
                 <div>
@@ -390,7 +390,7 @@ export default function RadarPage() {
             {/* 图表区域 */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               {/* 异动分布饼图 */}
-              <div className="p-5 bg-[#1a1a2e] border border-[#2d3748] rounded-xl">
+              <div className="p-3 bg-[#1a1a2e] border border-[#2d3748] rounded-xl">
                 <h3 className="text-sm font-medium text-[#e5e7eb] mb-3 flex items-center gap-2">
                   <BarChart3 className="w-4 h-4 text-orange-400" />
                   异动分布
@@ -436,7 +436,7 @@ export default function RadarPage() {
               </div>
 
               {/* 方向引导柱状图 */}
-              <div className="p-5 bg-[#1a1a2e] border border-[#2d3748] rounded-xl lg:col-span-2">
+              <div className="p-3 bg-[#1a1a2e] border border-[#2d3748] rounded-xl lg:col-span-2">
                 <h3 className="text-sm font-medium text-[#e5e7eb] mb-3 flex items-center gap-2">
                   <TrendingUp className="w-4 h-4 text-orange-400" />
                   方向引导分布
@@ -477,7 +477,7 @@ export default function RadarPage() {
 
             {/* 异动比赛列表 */}
             <div className="bg-[#1a1a2e] border border-[#2d3748] rounded-xl overflow-hidden">
-              <div className="p-4 border-b border-[#2d3748] flex items-center justify-between">
+              <div className="p-3 border-b border-[#2d3748] flex items-center justify-between">
                 <h3 className="text-sm font-medium text-[#e5e7eb] flex items-center gap-2">
                   <AlertTriangle className="w-4 h-4 text-orange-400" />
                   异动比赛列表

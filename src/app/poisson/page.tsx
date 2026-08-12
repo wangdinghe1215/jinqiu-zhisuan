@@ -214,11 +214,14 @@ export default function PoissonPage() {
     avgConfidence: results.length > 0
       ? (results.reduce((s, r) => s + r.confidence, 0) / results.length) * 100
       : 0,
+    homeWinRate: results.length > 0
+      ? (results.filter(r => r.direction === '主胜').length / results.length) * 100
+      : 0,
   }), [results]);
 
   return (
     <AppLayout>
-      <div className="space-y-6 pb-10">
+      <div className="space-y-4 pb-6">
         {/* Header */}
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
@@ -240,32 +243,41 @@ export default function PoissonPage() {
         </div>
 
         {/* 统计卡片 */}
-        <div className="grid grid-cols-3 gap-4">
-          <div className="p-4 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
-            <div className="flex items-center gap-2 text-gray-400 text-sm mb-1">
-              <BarChart3 className="w-4 h-4 text-cyan-400" />
+        <div className="grid grid-cols-4 gap-2">
+          <div className="p-2.5 bg-[#1a1a2e] border border-gray-700/50 rounded-lg">
+            <div className="flex items-center gap-1.5 text-gray-400 text-xs mb-0.5">
+              <BarChart3 className="w-3.5 h-3.5 text-cyan-400" />
               在售场次
             </div>
-            <div className="text-2xl font-bold text-cyan-400 tabular-nums">
+            <div className="text-xl font-bold text-cyan-400 tabular-nums">
               {loading ? '...' : stats.total}
             </div>
           </div>
-          <div className="p-4 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
-            <div className="flex items-center gap-2 text-gray-400 text-sm mb-1">
-              <AlertTriangle className="w-4 h-4 text-yellow-400" />
+          <div className="p-2.5 bg-[#1a1a2e] border border-gray-700/50 rounded-lg">
+            <div className="flex items-center gap-1.5 text-gray-400 text-xs mb-0.5">
+              <AlertTriangle className="w-3.5 h-3.5 text-yellow-400" />
               平局预警
             </div>
-            <div className="text-2xl font-bold text-yellow-400 tabular-nums">
+            <div className="text-xl font-bold text-yellow-400 tabular-nums">
               {loading ? '...' : stats.drawAlerts}
             </div>
           </div>
-          <div className="p-4 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
-            <div className="flex items-center gap-2 text-gray-400 text-sm mb-1">
-              <Target className="w-4 h-4 text-green-400" />
+          <div className="p-2.5 bg-[#1a1a2e] border border-gray-700/50 rounded-lg">
+            <div className="flex items-center gap-1.5 text-gray-400 text-xs mb-0.5">
+              <Target className="w-3.5 h-3.5 text-green-400" />
               平均置信度
             </div>
-            <div className="text-2xl font-bold text-green-400 tabular-nums">
+            <div className="text-xl font-bold text-green-400 tabular-nums">
               {loading ? '...' : `${stats.avgConfidence.toFixed(1)}%`}
+            </div>
+          </div>
+          <div className="p-2.5 bg-[#1a1a2e] border border-gray-700/50 rounded-lg">
+            <div className="flex items-center gap-1.5 text-gray-400 text-xs mb-0.5">
+              <TrendingUp className="w-3.5 h-3.5 text-purple-400" />
+              主胜占比
+            </div>
+            <div className="text-xl font-bold text-purple-400 tabular-nums">
+              {loading ? '...' : `${stats.homeWinRate.toFixed(0)}%`}
             </div>
           </div>
         </div>
@@ -351,7 +363,7 @@ export default function PoissonPage() {
             {filteredResults.map(result => (
               <div
                 key={result.match.match_no}
-                className={`p-5 bg-[#1a1a2e] border rounded-xl transition-all cursor-pointer hover:border-purple-500/40 hover:shadow-lg hover:shadow-purple-500/5 ${
+                className={`p-3 bg-[#1a1a2e] border rounded-xl transition-all cursor-pointer hover:border-purple-500/40 hover:shadow-lg hover:shadow-purple-500/5 ${
                   result.drawAlert
                     ? 'border-yellow-500/40'
                     : 'border-gray-700/50'
@@ -380,7 +392,7 @@ export default function PoissonPage() {
                 </div>
 
                 {/* 对阵 */}
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-2">
                   <div className="text-right flex-1">
                     <div className="text-base font-semibold text-gray-100">{result.match.home_team}</div>
                     <div className="text-xs text-gray-500">主胜 {result.match.spf_home.toFixed(2)}</div>
@@ -441,7 +453,7 @@ export default function PoissonPage() {
                 </div>
 
                 {/* λ值 + 置信度 */}
-                <div className="flex items-center justify-between pt-3 border-t border-gray-700/50 text-xs">
+                <div className="flex items-center justify-between pt-2 border-t border-gray-700/50 text-xs">
                   <div className="flex items-center gap-4">
                     <span className="text-gray-500">
                       λ<sub>主</sub> = <span className="text-gray-300 font-mono">{result.lambda_home.toFixed(2)}</span>
@@ -460,7 +472,7 @@ export default function PoissonPage() {
 
                 {/* 展开详情 - 6x6矩阵 */}
                 {expanded === result.match.match_no && (
-                  <div className="mt-4 pt-4 border-t border-gray-700/50">
+                  <div className="mt-2 pt-2 border-t border-gray-700/50">
                     <div className="text-xs text-gray-500 mb-2 flex items-center gap-1">
                       <BarChart3 className="w-3 h-3" />
                       6×6 比分概率矩阵（单位：%）

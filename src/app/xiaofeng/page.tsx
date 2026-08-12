@@ -336,7 +336,7 @@ export default function XiaofengPage() {
   };
 
   return (
-    <div className="p-4 lg:p-6 space-y-4">
+    <div className="p-3 space-y-3">
       <div className="flex items-center gap-3">
         <button
           onClick={() => router.push('/')}
@@ -413,7 +413,7 @@ export default function XiaofengPage() {
       )}
 
       {/* 比赛卡片 */}
-      <div className="grid gap-4">
+      <div className="grid gap-3">
         {filtered.map((match) => {
           const c = match.combined!;
           const v = match.v42;

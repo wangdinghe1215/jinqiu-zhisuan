@@ -168,7 +168,7 @@ export default function OverviewPage() {
 
   return (
     <AppLayout>
-      <div className="space-y-6 pb-10">
+      <div className="space-y-4 pb-10">
         {/* Header */}
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
@@ -191,7 +191,7 @@ export default function OverviewPage() {
 
         {/* 核心统计卡片 */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="p-5 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
+          <div className="p-3 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
             <div className="flex items-center gap-2 text-gray-400 text-sm mb-2">
               <Target className="w-4 h-4 text-cyan-400" />
               今日在售
@@ -202,7 +202,7 @@ export default function OverviewPage() {
             <div className="text-xs text-gray-500 mt-1">场竞彩比赛</div>
           </div>
           
-          <div className="p-5 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
+          <div className="p-3 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
             <div className="flex items-center gap-2 text-gray-400 text-sm mb-2">
               <Trophy className="w-4 h-4 text-amber-400" />
               赛事数量
@@ -213,7 +213,7 @@ export default function OverviewPage() {
             <div className="text-xs text-gray-500 mt-1">个联赛/杯赛</div>
           </div>
           
-          <div className="p-5 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
+          <div className="p-3 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
             <div className="flex items-center gap-2 text-gray-400 text-sm mb-2">
               <Calendar className="w-4 h-4 text-green-400" />
               历史总场次
@@ -226,7 +226,7 @@ export default function OverviewPage() {
             </div>
           </div>
           
-          <div className="p-5 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
+          <div className="p-3 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
             <div className="flex items-center gap-2 text-gray-400 text-sm mb-2">
               <Activity className="w-4 h-4 text-purple-400" />
               分析覆盖率
@@ -241,7 +241,7 @@ export default function OverviewPage() {
         </div>
 
         {/* 筛选栏 - 今日在售比赛 */}
-        <div className="p-5 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
+        <div className="p-3 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
           <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
             <h2 className="text-lg font-semibold text-gray-100 flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-cyan-400" />
@@ -385,7 +385,7 @@ export default function OverviewPage() {
         {/* 图表区域 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* 联赛分布饼图 */}
-          <div className="p-5 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
+          <div className="p-3 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
             <h3 className="text-base font-semibold text-gray-100 flex items-center gap-2 mb-4">
               <PieChartIcon className="w-4 h-4 text-cyan-400" />
               今日在售赛事分布
@@ -421,7 +421,7 @@ export default function OverviewPage() {
           </div>
 
           {/* 数据库联赛柱状图 */}
-          <div className="p-5 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
+          <div className="p-3 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
             <h3 className="text-base font-semibold text-gray-100 flex items-center gap-2 mb-4">
               <BarChart3 className="w-4 h-4 text-amber-400" />
               历史数据库联赛分布 TOP10
@@ -454,7 +454,7 @@ export default function OverviewPage() {
 
         {/* 流水线状态 */}
         {dbData && dbData.pipeline && (
-          <div className="p-5 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
+          <div className="p-3 bg-[#1a1a2e] border border-gray-700/50 rounded-xl">
             <h3 className="text-base font-semibold text-gray-100 flex items-center gap-2 mb-4">
               <Activity className="w-4 h-4 text-green-400" />
               最近运行记录

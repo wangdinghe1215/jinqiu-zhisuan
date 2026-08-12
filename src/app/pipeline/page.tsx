@@ -92,7 +92,7 @@ export default function PipelinePage() {
 
   return (
     <AppLayout>
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Header */}
         <div>
           <h1 className="text-2xl font-bold text-white flex items-center gap-3">
@@ -153,7 +153,7 @@ export default function PipelinePage() {
               </div>
             </div>
 
-            <div className="p-6 bg-[#1a1a2e] border border-gray-800 rounded-xl">
+            <div className="p-3 bg-[#1a1a2e] border border-gray-800 rounded-xl">
               <div className="flex items-center gap-2 mb-3">
                 <Activity size={18} className="text-cyan-400" />
                 <span className="text-sm text-gray-400">7日成功率</span>
@@ -180,7 +180,7 @@ export default function PipelinePage() {
               </div>
             </div>
 
-            <div className="p-6 bg-[#1a1a2e] border border-gray-800 rounded-xl">
+            <div className="p-3 bg-[#1a1a2e] border border-gray-800 rounded-xl">
               <div className="flex items-center gap-2 mb-3">
                 <Calendar size={18} className="text-cyan-400" />
                 <span className="text-sm text-gray-400">总运行天数</span>
@@ -195,7 +195,7 @@ export default function PipelinePage() {
 
         {/* Charts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="p-6 bg-[#1a1a2e] border border-gray-800 rounded-xl">
+          <div className="p-3 bg-[#1a1a2e] border border-gray-800 rounded-xl">
             <h3 className="text-sm font-medium text-gray-300 mb-4">
               每日处理场次趋势
             </h3>
@@ -229,7 +229,7 @@ export default function PipelinePage() {
             </div>
           </div>
 
-          <div className="p-6 bg-[#1a1a2e] border border-gray-800 rounded-xl">
+          <div className="p-3 bg-[#1a1a2e] border border-gray-800 rounded-xl">
             <h3 className="text-sm font-medium text-gray-300 mb-4">
               运行耗时趋势 (秒)
             </h3>
@@ -273,7 +273,7 @@ export default function PipelinePage() {
 
         {/* Run history table */}
         <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl overflow-hidden">
-          <div className="p-4 border-b border-gray-800">
+          <div className="p-3 border-b border-gray-800">
             <h3 className="text-sm font-medium text-gray-300">
               最近7天运行记录
             </h3>

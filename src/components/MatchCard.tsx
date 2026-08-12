@@ -48,7 +48,7 @@ export function MatchCard({ match }: MatchCardProps) {
     >
       {/* Main row */}
       <div
-        className="p-4 cursor-pointer"
+        className="p-3 cursor-pointer"
         onClick={() => setExpanded(!expanded)}
       >
         <div className="flex flex-wrap items-center gap-4">

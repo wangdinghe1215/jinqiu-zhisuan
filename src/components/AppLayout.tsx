@@ -47,14 +47,14 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
       <div className="lg:ml-64 transition-all duration-300">
         <TopBar />
         {/* 顶部操作栏：返回按钮 + 缩放控制 */}
-        <div className="sticky top-14 z-30 bg-[#0f0f1a]/95 backdrop-blur-sm border-b border-white/5 px-6 py-3 flex items-center justify-between">
+        <div className="sticky top-14 z-30 bg-[#0f0f1a]/95 backdrop-blur-sm border-b border-white/5 px-4 py-2 flex items-center justify-between">
           <div className="flex items-center gap-3">
             {!isHomePage && (
               <button
                 onClick={handleBack}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#1a1a2e] border border-white/10 text-sm text-gray-300 hover:bg-[#252a3a] hover:text-white hover:border-white/20 transition-all"
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#1a1a2e] border border-white/10 text-xs text-gray-300 hover:bg-[#252a3a] hover:text-white hover:border-white/20 transition-all"
               >
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="w-3.5 h-3.5" />
                 <span>返回首页</span>
               </button>
             )}
@@ -110,9 +110,9 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
         </div>
-        {/* 主内容区 - 带缩放和更大间距 */}
+        {/* 主内容区 - 带缩放 */}
         <main
-          className="p-8 transition-transform origin-top"
+          className="p-4 transition-transform origin-top"
           style={{
             transform: `scale(${zoom / 100})`,
             transformOrigin: 'top center',

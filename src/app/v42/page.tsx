@@ -424,7 +424,7 @@ export default function V42Page() {
               filteredMatches.map(m => (
                 <div
                   key={m.match_no}
-                  className="p-5 bg-[#1a1a2e] border border-gray-700/50 rounded-xl cursor-pointer hover:border-amber-500/40 transition-all"
+                  className="p-3 bg-[#1a1a2e] border border-gray-700/50 rounded-xl cursor-pointer hover:border-amber-500/40 transition-all"
                   onClick={() => setExpanded(expanded === m.match_no ? null : m.match_no)}
                 >
                   {/* 头部 */}
@@ -537,7 +537,7 @@ export default function V42Page() {
 
         {/* ============ 金球智算 Tab ============ */}
         {activeTab === 'golden' && (
-          <div className="space-y-6">
+          <div className="space-y-4">
             {/* 投注栏 */}
             {totalBets > 0 && (
               <div className="sticky top-0 z-10 flex items-center justify-between px-4 py-3 bg-gradient-to-r from-amber-900/40 to-orange-900/40 border border-amber-500/30 rounded-xl backdrop-blur-sm">

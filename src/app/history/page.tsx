@@ -109,7 +109,7 @@ export default function HistoryPage() {
 
   return (
     <AppLayout>
-      <div className="space-y-6">
+      <div className="space-y-4">
         {/* Header */}
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
@@ -221,7 +221,7 @@ export default function HistoryPage() {
             </div>
           </div>
 
-          <div className="p-6 bg-[#1a1a2e] border border-gray-800 rounded-xl">
+          <div className="p-3 bg-[#1a1a2e] border border-gray-800 rounded-xl">
             <h3 className="text-sm font-medium text-gray-300 mb-4">
               等级详细统计
             </h3>
@@ -260,7 +260,7 @@ export default function HistoryPage() {
 
         {/* Diamond signals tracking */}
         <div className="bg-[#1a1a2e] border border-gray-800 rounded-xl overflow-hidden">
-          <div className="p-4 border-b border-gray-800 flex items-center justify-between">
+          <div className="p-3 border-b border-gray-800 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Trophy size={20} className="text-diamond" />
               <h3 className="font-medium text-white">钻石信号追踪记录</h3>
