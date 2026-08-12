@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo, useCallback, useEffect } from 'react';
+import { AppLayout } from '@/components/AppLayout';
 import {
   Search,
   TrendingUp,
@@ -199,6 +200,7 @@ export default function BizhonggePage() {
   }, [result, expandedScore]);
 
   return (
+    <AppLayout>
     <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -694,6 +696,7 @@ export default function BizhonggePage() {
         </div>
       )}
     </div>
+    </AppLayout>
   );
 }
 

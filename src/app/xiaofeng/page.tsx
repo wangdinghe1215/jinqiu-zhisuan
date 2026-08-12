@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import {
   Brain,
   ChevronDown,
@@ -12,7 +13,9 @@ import {
   CheckCircle2,
   Loader2,
   Filter,
+  ArrowLeft,
 } from "lucide-react";
+import { AppLayout } from "@/components/AppLayout";
 
 interface PoissonData {
   top5: { score: string; prob: number }[];
@@ -113,6 +116,7 @@ function getConfidenceEmoji(level: string): string {
 }
 
 export default function XiaofengPage() {
+  const router = useRouter();
   const [matches, setMatches] = useState<Match[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -333,20 +337,28 @@ export default function XiaofengPage() {
 
   return (
     <div className="p-4 lg:p-6 space-y-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2">
-            <Brain className="w-5 h-5 text-purple-400" />
-            小丰综合分析
-          </h1>
-          <p className="text-sm text-gray-400 mt-1">泊松 + V4.2 + 历史数据 三体系融合评分</p>
-        </div>
-        {loading && (
-          <div className="flex items-center gap-2 text-sm text-purple-400">
-            <Loader2 className="w-4 h-4 animate-spin" />
-            加载中...
+      <div className="flex items-center gap-3">
+        <button
+          onClick={() => router.push('/')}
+          className="p-2 hover:bg-[#2d3748] rounded-lg transition-colors text-gray-400 hover:text-white flex-shrink-0"
+        >
+          <ArrowLeft size={18} />
+        </button>
+        <div className="flex items-center justify-between flex-1">
+          <div>
+            <h1 className="text-xl font-bold text-white flex items-center gap-2">
+              <Brain className="w-5 h-5 text-purple-400" />
+              小丰综合分析
+            </h1>
+            <p className="text-sm text-gray-400 mt-1">泊松 + V4.2 + 历史数据 三体系融合评分</p>
           </div>
-        )}
+          {loading && (
+            <div className="flex items-center gap-2 text-sm text-purple-400">
+              <Loader2 className="w-4 h-4 animate-spin" />
+              加载中...
+            </div>
+          )}
+        </div>
       </div>
 
       {/* 统计卡片 */}

@@ -213,6 +213,13 @@ export default function RadarPage() {
       <div className="border-b border-[#2d3748] bg-[#1a1a2e]/50 backdrop-blur sticky top-0 z-10">
         <div className="px-6 py-4 flex items-center justify-between flex-wrap gap-4">
           <div className="flex items-center gap-3">
+            <button
+              onClick={() => window.location.href = '/'}
+              className="p-2 rounded-lg bg-[#252a3a] hover:bg-[#2d3748] border border-[#374151] hover:border-cyan-500/50 transition-all flex items-center gap-1.5 text-[#9ca3af] hover:text-cyan-400 text-sm"
+            >
+              ← 返回首页
+            </button>
+            <div className="w-px h-6 bg-[#374151]"></div>
             <div className="relative">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-orange-500 flex items-center justify-center">
                 <Radar className="w-5 h-5 text-white" />
@@ -251,6 +258,7 @@ export default function RadarPage() {
         </div>
       </div>
 
+      <main className="flex-1">
       <div className="p-6 space-y-6 max-w-7xl mx-auto">
         {/* 时间轴报告选择器 */}
         <div className="relative">
@@ -596,6 +604,7 @@ export default function RadarPage() {
           </>
         )}
       </div>
+      </main>
     </div>
-  );
+    );
 }
