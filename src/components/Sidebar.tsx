@@ -10,15 +10,23 @@ import {
   Trophy,
   Menu,
   X,
+  Activity,
+  Target,
+  Search,
+  Brain,
 } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { href: '/', label: '今日分析', icon: LayoutDashboard },
-  { href: '/pipeline', label: '流水线状态', icon: PlayCircle },
-  { href: '/history', label: '历史战绩', icon: History },
-  { href: '/overview', label: '数据概览', icon: Database },
+  { href: '/', label: '今日分析', icon: LayoutDashboard, section: 'base' },
+  { href: '/pipeline', label: '流水线状态', icon: PlayCircle, section: 'base' },
+  { href: '/history', label: '历史战绩', icon: History, section: 'base' },
+  { href: '/overview', label: '数据概览', icon: Database, section: 'base' },
+  { href: '/poisson', label: '泊松分析', icon: Activity, section: 'analysis' },
+  { href: '/v42', label: 'V4.2分析', icon: Target, section: 'analysis' },
+  { href: '/bizhongge', label: '必中哥分析', icon: Search, section: 'analysis' },
+  { href: '/xiaofeng', label: '小丰综合分析', icon: Brain, section: 'analysis' },
 ];
 
 export function Sidebar() {
@@ -80,32 +88,74 @@ export function Sidebar() {
 
         {/* Nav items */}
         <nav className="p-3 space-y-1">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive =
-              pathname === item.href ||
-              (item.href !== '/' && pathname.startsWith(item.href));
+          {/* 基础面板 */}
+          {navItems
+            .filter((item) => item.section === 'base')
+            .map((item) => {
+              const Icon = item.icon;
+              const isActive =
+                pathname === item.href ||
+                (item.href !== '/' && pathname.startsWith(item.href));
 
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className={cn(
-                  'flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200',
-                  'hover:bg-gray-800/60',
-                  isActive &&
-                    'bg-gradient-to-r from-cyan-500/20 to-transparent text-cyan-400 border-l-2 border-cyan-400',
-                  !isActive && 'text-gray-400'
-                )}
-              >
-                <Icon size={20} className="flex-shrink-0" />
-                {!collapsed && (
-                  <span className="text-sm font-medium">{item.label}</span>
-                )}
-              </Link>
-            );
-          })}
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={cn(
+                    'flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200',
+                    'hover:bg-gray-800/60',
+                    isActive &&
+                      'bg-gradient-to-r from-cyan-500/20 to-transparent text-cyan-400 border-l-2 border-cyan-400',
+                    !isActive && 'text-gray-400'
+                  )}
+                >
+                  <Icon size={20} className="flex-shrink-0" />
+                  {!collapsed && (
+                    <span className="text-sm font-medium">{item.label}</span>
+                  )}
+                </Link>
+              );
+            })}
+
+          {/* 分隔线 */}
+          <div className="my-3 border-t border-gray-800" />
+
+          {/* 分析体系 */}
+          {!collapsed && (
+            <div className="px-3 py-1.5 text-[10px] text-gray-600 font-medium uppercase tracking-wider">
+              分析体系
+            </div>
+          )}
+
+          {navItems
+            .filter((item) => item.section === 'analysis')
+            .map((item) => {
+              const Icon = item.icon;
+              const isActive =
+                pathname === item.href ||
+                (item.href !== '/' && pathname.startsWith(item.href));
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={cn(
+                    'flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200',
+                    'hover:bg-gray-800/60',
+                    isActive &&
+                      'bg-gradient-to-r from-purple-500/20 to-transparent text-purple-400 border-l-2 border-purple-400',
+                    !isActive && 'text-gray-400'
+                  )}
+                >
+                  <Icon size={20} className="flex-shrink-0" />
+                  {!collapsed && (
+                    <span className="text-sm font-medium">{item.label}</span>
+                  )}
+                </Link>
+              );
+            })}
         </nav>
 
         {/* Bottom info */}
