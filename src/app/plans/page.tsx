@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { ArrowLeft, Wallet, Star, TrendingUp, Calendar, Trophy, AlertTriangle, RefreshCw, ChevronDown, ChevronUp, Target } from 'lucide-react';
+import { useState, useEffect, useMemo } from 'react';
+import { ArrowLeft, Wallet, Star, TrendingUp, Calendar, Trophy, AlertTriangle, RefreshCw, ChevronDown, ChevronUp, Target, Database, FileText } from 'lucide-react';
 import Link from 'next/link';
 
 // 投注方案数据类型
@@ -38,84 +38,159 @@ function generateMockPlans(): DailyPlan[] {
   const d = String(today.getDate()).padStart(2, '0');
   const todayStr = `${y}-${m}-${d}`;
 
+  const matches: PlanMatch[] = [
+    {
+      match_no: '周四001',
+      league: '沙特联',
+      home_team: '艾卜哈',
+      away_team: '拉斯决心',
+      match_time: '00:15',
+      recommended_direction: '客胜',
+      recommended_score: '1:2',
+      confidence: 58,
+      star_level: '🥉铜',
+      allocation: 8,
+      odds: 2.62,
+      analysis: 'SPF 2.42/3.00/2.62，双方实力接近，客队状态略优，小资金试探。',
+    },
+    {
+      match_no: '周四002',
+      league: '欧协联',
+      home_team: '克拉约瓦',
+      away_team: '库奥皮奥',
+      match_time: '01:00',
+      recommended_direction: '主胜',
+      recommended_score: '2:0',
+      confidence: 82,
+      star_level: '🥇金',
+      allocation: 18,
+      odds: 1.33,
+      analysis: '主胜1.33超低赔，V4.2 T1a金星信号，主场优势明显，泊松主胜概率75%。',
+    },
+    {
+      match_no: '周四003',
+      league: '欧协联',
+      home_team: '帕福斯',
+      away_team: '萨尔茨堡',
+      match_time: '01:00',
+      recommended_direction: '客胜',
+      recommended_score: '1:2',
+      confidence: 68,
+      star_level: '🥈银',
+      allocation: 12,
+      odds: 2.06,
+      analysis: '萨尔茨堡整体实力占优，客胜赔率2.06有价值，V4.2 T2铜星+CR值偏高。',
+    },
+    {
+      match_no: '周四004',
+      league: '欧协联',
+      home_team: '雷克维京',
+      away_team: '图恩',
+      match_time: '01:30',
+      recommended_direction: '主胜',
+      recommended_score: '2:1',
+      confidence: 62,
+      star_level: '🥉铜',
+      allocation: 10,
+      odds: 2.25,
+      analysis: '主场作战有一定优势，但赔率偏高，谨慎投入。',
+    },
+    {
+      match_no: '周四005',
+      league: '沙特联',
+      home_team: '利雅青年',
+      away_team: '胡巴卡德',
+      match_time: '02:00',
+      recommended_direction: '客胜',
+      recommended_score: '1:2',
+      confidence: 70,
+      star_level: '🥈银',
+      allocation: 12,
+      odds: 1.90,
+      analysis: '客队实力占优，SPF客胜1.90，V4.2 T2铜星，历史同赔率客胜胜率约58%。',
+    },
+    {
+      match_no: '周四006',
+      league: '欧联杯',
+      home_team: '流浪者',
+      away_team: '比亚韦',
+      match_time: '02:30',
+      recommended_direction: '主胜',
+      recommended_score: '2:1',
+      confidence: 80,
+      star_level: '🥇金',
+      allocation: 15,
+      odds: 1.39,
+      analysis: '主胜1.39，V4.2 T1a金星，流浪者主场强势，泊松主胜概率72%。',
+    },
+    {
+      match_no: '周四007',
+      league: '欧协联',
+      home_team: '安德莱',
+      away_team: '塞萨洛',
+      match_time: '02:30',
+      recommended_direction: '主胜',
+      recommended_score: '2:1',
+      confidence: 65,
+      star_level: '🥉铜',
+      allocation: 8,
+      odds: 2.25,
+      analysis: '双方实力接近，主主场略占优，赔率2.25价值一般，小注即可。',
+    },
+    {
+      match_no: '周四008',
+      league: '欧联杯',
+      home_team: '哈茨',
+      away_team: '本菲卡',
+      match_time: '02:45',
+      recommended_direction: '客胜',
+      recommended_score: '0:2',
+      confidence: 85,
+      star_level: '💎钻石',
+      allocation: 15,
+      odds: 1.70,
+      analysis: '本菲卡实力碾压，客胜1.70合理，V4.2 T1b银星+平赔3.40偏高，看好客队完胜。',
+    },
+    {
+      match_no: '周四009',
+      league: '南美杯',
+      home_team: '米拉索尔',
+      away_team: '基多体大',
+      match_time: '06:00',
+      recommended_direction: '主胜',
+      recommended_score: '2:0',
+      confidence: 75,
+      star_level: '🥇金',
+      allocation: 10,
+      odds: 1.50,
+      analysis: '主胜1.50，V4.2 T1b银星，主场优势明显，CR值良好。',
+    },
+    {
+      match_no: '周四010',
+      league: '南美杯',
+      home_team: '罗萨里奥',
+      away_team: '科林蒂安',
+      match_time: '08:30',
+      recommended_direction: '主胜',
+      recommended_score: '2:1',
+      confidence: 66,
+      star_level: '🥈银',
+      allocation: 8,
+      odds: 2.08,
+      analysis: '主队主场强势，客队客场一般，SPF主胜2.08有一定价值。',
+    },
+  ];
+
+  const totalAllocation = matches.reduce((s, m) => s + m.allocation, 0);
+  const expectedReturn = Math.round(matches.reduce((s, m) => s + m.allocation * m.odds * (m.confidence / 100), 0) / totalAllocation * 100 - 100);
+
   return [
     {
       date: todayStr,
-      total_matches: 5,
-      total_allocation: 100,
-      expected_return: 135,
-      matches: [
-        {
-          match_no: '周三001',
-          league: '欧洲超级杯',
-          home_team: '巴黎圣日尔曼',
-          away_team: '阿斯顿维拉',
-          match_time: '03:00',
-          recommended_direction: '主胜',
-          recommended_score: '2:1',
-          confidence: 85,
-          star_level: '💎钻石',
-          allocation: 25,
-          odds: 1.56,
-          analysis: 'V4.2 T1a金星信号 + 泊松主胜68% + 历史主胜1.56赔率56%胜率，三方一致主胜方向。',
-        },
-        {
-          match_no: '周三002',
-          league: '解放者杯',
-          home_team: '帕梅拉斯',
-          away_team: '波特诺',
-          match_time: '06:00',
-          recommended_direction: '主胜',
-          recommended_score: '2:0',
-          confidence: 92,
-          star_level: '💎钻石',
-          allocation: 30,
-          odds: 1.19,
-          analysis: 'T0超级热门，竞彩主胜压低28.7%，高度异动信号强烈。',
-        },
-        {
-          match_no: '周三003',
-          league: '欧冠资格赛',
-          home_team: '布拉加',
-          away_team: '年青人',
-          match_time: '03:00',
-          recommended_direction: '平/主胜',
-          recommended_score: '1:1',
-          confidence: 65,
-          star_level: '🥈银',
-          allocation: 15,
-          odds: 3.40,
-          analysis: '泊松平局概率偏高，谨慎防平。',
-        },
-        {
-          match_no: '周三004',
-          league: '欧协联',
-          home_team: '萨格勒布迪纳摩',
-          away_team: '塞萨洛尼基',
-          match_time: '02:00',
-          recommended_direction: '主胜',
-          recommended_score: '1:0',
-          confidence: 72,
-          star_level: '🥇金',
-          allocation: 20,
-          odds: 1.85,
-          analysis: 'V4.2 T1b银星 + 主场优势明显，CR值良好。',
-        },
-        {
-          match_no: '周三005',
-          league: '南美杯',
-          home_team: '圣保罗',
-          away_team: '水晶体育',
-          match_time: '08:30',
-          recommended_direction: '让球主胜',
-          recommended_score: '3:1',
-          confidence: 78,
-          star_level: '🥇金',
-          allocation: 10,
-          odds: 2.30,
-          analysis: '实力差距明显，让球仍有价值。',
-        },
-      ],
+      total_matches: matches.length,
+      total_allocation: totalAllocation,
+      expected_return: expectedReturn,
+      matches,
     },
   ];
 }
@@ -123,6 +198,7 @@ function generateMockPlans(): DailyPlan[] {
 export default function PlansPage() {
   const [loading, setLoading] = useState(true);
   const [plans, setPlans] = useState<DailyPlan[]>([]);
+  const [isRealData, setIsRealData] = useState(false);
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [expandedMatches, setExpandedMatches] = useState<Set<string>>(new Set());
 
@@ -133,23 +209,22 @@ export default function PlansPage() {
   const fetchPlans = async () => {
     setLoading(true);
     try {
-      // 尝试从远程获取
       const res = await fetch(PLANS_URL, { cache: 'no-store' });
-      if (!res.ok) throw new Error('fetch failed');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      // 尝试解析为方案格式（如果是雷达数据则用示例）
-      if (data.reports && Array.isArray(data.reports)) {
-        // 这是雷达数据，不是方案数据，先用示例
-        setPlans(generateMockPlans());
+      // 必须是方案格式且有真实数据
+      if (data && Array.isArray(data.plans) && data.plans.length > 0) {
+        setPlans(data.plans);
+        setIsRealData(true);
       } else {
-        setPlans(data.plans || generateMockPlans());
-      }
-      if (plans.length === 0) {
+        // 数据格式不对或为空，降级到 mock
         setPlans(generateMockPlans());
+        setIsRealData(false);
       }
     } catch {
-      // 加载失败时用示例
+      // 加载失败，降级到 mock
       setPlans(generateMockPlans());
+      setIsRealData(false);
     } finally {
       setLoading(false);
     }
@@ -162,7 +237,10 @@ export default function PlansPage() {
     }
   }, [plans, selectedDate]);
 
-  const currentPlan = plans.find((p) => p.date === selectedDate);
+  const currentPlan = useMemo(
+    () => plans.find((p) => p.date === selectedDate),
+    [plans, selectedDate]
+  );
 
   const toggleMatch = (matchNo: string) => {
     setExpandedMatches((prev) => {
@@ -205,12 +283,28 @@ export default function PlansPage() {
               <div className="p-2 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-lg">
                 <Wallet className="w-6 h-6 text-amber-400" />
               </div>
-              <div>
+              <div className="flex items-center gap-2">
                 <h1 className="text-xl font-bold bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
                   投注方案
                 </h1>
-                <p className="text-xs text-gray-500">每日精选方案 · 资金分配管理</p>
+                {!loading && (
+                  <span
+                    className={`inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-full border ${
+                      isRealData
+                        ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
+                        : 'bg-gray-500/10 text-gray-400 border-gray-500/30'
+                    }`}
+                    title={isRealData ? '数据来自远程接口' : '数据来自本地示例'}
+                  >
+                    {isRealData ? (
+                      <><Database className="w-3 h-3" />真实数据</>
+                    ) : (
+                      <><FileText className="w-3 h-3" />示例数据</>
+                    )}
+                  </span>
+                )}
               </div>
+              <p className="text-xs text-gray-500">每日精选方案 · 资金分配管理</p>
             </div>
             <div className="flex-1" />
             <button
