@@ -272,89 +272,104 @@ export default function HistoryPage() {
                         onClick={() => toggleMatch(match.match_no)}
                         className="w-full px-4 py-3 text-left hover:bg-white/5 transition-colors"
                       >
-                        <div className="flex items-center gap-3">
-                          {/* 命中状态 */}
-                          <div className="flex-shrink-0 w-6">
-                            {match.direction_hit ? (
-                              <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                            ) : (
-                              <XCircle className="w-5 h-5 text-red-400" />
-                            )}
-                          </div>
+                        <div className="flex items-start gap-3 md:items-center md:flex-row flex-col">
+                          {/* 第一行：状态 + 场次联赛 + 对阵 + 展开图标 */}
+                          <div className="flex items-center gap-3 w-full">
+                            {/* 命中状态 */}
+                            <div className="flex-shrink-0 w-6">
+                              {match.direction_hit ? (
+                                <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                              ) : (
+                                <XCircle className="w-5 h-5 text-red-400" />
+                              )}
+                            </div>
 
-                          {/* 场次 + 联赛 */}
-                          <div className="w-24 flex-shrink-0">
-                            <div className="text-xs px-2 py-0.5 bg-[#2d3748] rounded text-gray-300 inline-block mb-1">
-                              {match.match_no}
-                            </div>
-                            <div className="text-xs text-gray-500">
-                              {match.league} {match.match_time}
-                            </div>
-                          </div>
-
-                          {/* 对阵 */}
-                          <div className="flex-1 min-w-0">
-                            <div className="text-sm font-medium text-white truncate">
-                              {match.home_team}{' '}
-                              <span className="text-gray-500 mx-1">vs</span>{' '}
-                              {match.away_team}
-                            </div>
-                            {match.spf_odds && (
-                              <div className="text-xs text-gray-500 mt-0.5 font-mono">
-                                SPF: {match.spf_odds}
+                            {/* 场次 + 联赛 */}
+                            <div className="w-24 flex-shrink-0">
+                              <div className="text-xs px-2 py-0.5 bg-[#2d3748] rounded text-gray-300 inline-block mb-1">
+                                {match.match_no}
                               </div>
+                              <div className="text-xs text-gray-500">
+                                {match.league} {match.match_time}
+                              </div>
+                            </div>
+
+                            {/* 对阵 */}
+                            <div className="flex-1 min-w-0">
+                              <div className="text-sm font-medium text-white truncate">
+                                {match.home_team}{' '}
+                                <span className="text-gray-500 mx-1">vs</span>{' '}
+                                {match.away_team}
+                              </div>
+                              {match.spf_odds && (
+                                <div className="text-xs text-gray-500 mt-0.5 font-mono">
+                                  SPF: {match.spf_odds}
+                                </div>
+                              )}
+                            </div>
+
+                            {/* 桌面端隐藏的占位：只在移动端显示展开图标（底部还有一个） */}
+                            {isExpanded ? (
+                              <ChevronDown className="w-4 h-4 text-gray-500 flex-shrink-0 md:hidden" />
+                            ) : (
+                              <ChevronRight className="w-4 h-4 text-gray-500 flex-shrink-0 md:hidden" />
                             )}
                           </div>
 
-                          {/* 推荐方向 */}
-                          <div className="text-center w-20 flex-shrink-0">
-                            <div
-                              className={`text-sm font-bold ${
-                                match.direction_hit ? 'text-emerald-400' : 'text-gray-400'
-                              }`}
-                            >
-                              {match.direction_label}
+                          {/* 右侧数据列：桌面横向，移动端纵向堆叠 */}
+                          <div className="flex gap-3 md:gap-0 w-full md:w-auto pl-9 md:pl-0 flex-wrap md:flex-nowrap">
+                            {/* 推荐方向 */}
+                            <div className="text-center w-20 flex-shrink-0">
+                              <div
+                                className={`text-sm font-bold ${
+                                  match.direction_hit ? 'text-emerald-400' : 'text-gray-400'
+                                }`}
+                              >
+                                {match.direction_label}
+                              </div>
+                              <div className="text-xs text-gray-500">推荐方向</div>
                             </div>
-                            <div className="text-xs text-gray-500">推荐方向</div>
-                          </div>
 
-                          {/* 实际赛果 */}
-                          <div className="text-center w-20 flex-shrink-0">
-                            <div
-                              className={`text-sm font-bold ${getResultColor(
-                                match.actual_result
-                              )}`}
-                            >
-                              {match.result_label}
+                            {/* 实际赛果 */}
+                            <div className="text-center w-20 flex-shrink-0">
+                              <div
+                                className={`text-sm font-bold ${getResultColor(
+                                  match.actual_result
+                                )}`}
+                              >
+                                {match.result_label}
+                              </div>
+                              <div className="text-xs text-gray-500">实际赛果</div>
                             </div>
-                            <div className="text-xs text-gray-500">实际赛果</div>
-                          </div>
 
-                          {/* 实际比分 */}
-                          <div className="text-center w-16 flex-shrink-0">
-                            <div
-                              className={`text-sm font-mono font-bold ${
-                                match.score_hit ? 'text-amber-400' : 'text-gray-400'
-                              }`}
-                            >
-                              {match.actual_score}
+                            {/* 实际比分 */}
+                            <div className="text-center w-16 flex-shrink-0">
+                              <div
+                                className={`text-sm font-mono font-bold ${
+                                  match.score_hit ? 'text-amber-400' : 'text-gray-400'
+                                }`}
+                              >
+                                {match.actual_score}
+                              </div>
+                              <div className="text-xs text-gray-500">比分</div>
                             </div>
-                            <div className="text-xs text-gray-500">比分</div>
-                          </div>
 
-                          {/* 展开图标 */}
-                          {isExpanded ? (
-                            <ChevronDown className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                          ) : (
-                            <ChevronRight className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                          )}
+                            {/* 桌面端展开图标 */}
+                            <div className="hidden md:flex items-center">
+                              {isExpanded ? (
+                                <ChevronDown className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                              ) : (
+                                <ChevronRight className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                              )}
+                            </div>
+                          </div>
                         </div>
                       </button>
 
                       {/* 展开详情：Top3预测比分 */}
                       {isExpanded && (
                         <div className="px-4 pb-3">
-                          <div className="bg-[#0f0f1a] rounded-lg p-3 border border-[#2d3748] ml-9">
+                          <div className="bg-[#0f0f1a] rounded-lg p-3 border border-[#2d3748] md:ml-9">
                             <div className="text-xs text-gray-400 mb-2">
                               预测 Top3 比分（赔率最低的 3 个）
                             </div>
