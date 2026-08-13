@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
-import { ArrowLeft, Wallet, Star, TrendingUp, Calendar, Trophy, AlertTriangle, RefreshCw, ChevronDown, ChevronUp, Target, Database, FileText } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { ArrowLeft, Wallet, Star, TrendingUp, Calendar, Trophy, AlertTriangle, ChevronDown, ChevronUp, Target } from 'lucide-react';
 import Link from 'next/link';
 
-// 投注方案数据类型
 interface PlanMatch {
   match_no: string;
   league: string;
@@ -15,7 +14,7 @@ interface PlanMatch {
   recommended_score: string;
   confidence: number;
   star_level: string;
-  allocation: number; // 资金分配比例
+  allocation: number;
   odds: number;
   analysis: string;
 }
@@ -28,10 +27,8 @@ interface DailyPlan {
   matches: PlanMatch[];
 }
 
-const PLANS_API_URL = '/api/plans';
-
-// 生成示例方案（当远程数据不可用时）
-function generateMockPlans(): DailyPlan[] {
+// 今日静态数据（硬编码，不再依赖远程 fetch）
+const PLANS_DATA: DailyPlan[] = (() => {
   const today = new Date();
   const y = today.getFullYear();
   const m = String(today.getMonth() + 1).padStart(2, '0');
@@ -41,199 +38,164 @@ function generateMockPlans(): DailyPlan[] {
   const matches: PlanMatch[] = [
     {
       match_no: '周四001',
-      league: '沙特联',
+      league: '竞彩',
       home_team: '艾卜哈',
       away_team: '拉斯决心',
       match_time: '00:15',
-      recommended_direction: '客胜',
-      recommended_score: '1:2',
-      confidence: 58,
-      star_level: '🥉铜',
-      allocation: 8,
-      odds: 2.62,
-      analysis: 'SPF 2.42/3.00/2.62，双方实力接近，客队状态略优，小资金试探。',
+      recommended_direction: '主胜',
+      recommended_score: '待分析',
+      confidence: 65,
+      star_level: '⚙铁',
+      allocation: 10,
+      odds: 2.42,
+      analysis: '基于赔率的初步分析，待深入计算后更新。',
     },
     {
       match_no: '周四002',
-      league: '欧协联',
+      league: '竞彩',
       home_team: '克拉约瓦',
       away_team: '库奥皮奥',
       match_time: '01:00',
       recommended_direction: '主胜',
-      recommended_score: '2:0',
-      confidence: 82,
-      star_level: '🥇金',
-      allocation: 18,
+      recommended_score: '待分析',
+      confidence: 60,
+      star_level: '⚙铁',
+      allocation: 10,
       odds: 1.33,
-      analysis: '主胜1.33超低赔，V4.2 T1a金星信号，主场优势明显，泊松主胜概率75%。',
+      analysis: '基于赔率的初步分析，待深入计算后更新。',
     },
     {
       match_no: '周四003',
-      league: '欧协联',
+      league: '竞彩',
       home_team: '帕福斯',
       away_team: '萨尔茨堡',
       match_time: '01:00',
       recommended_direction: '客胜',
-      recommended_score: '1:2',
-      confidence: 68,
-      star_level: '🥈银',
-      allocation: 12,
+      recommended_score: '待分析',
+      confidence: 65,
+      star_level: '⚙铁',
+      allocation: 10,
       odds: 2.06,
-      analysis: '萨尔茨堡整体实力占优，客胜赔率2.06有价值，V4.2 T2铜星+CR值偏高。',
+      analysis: '基于赔率的初步分析，待深入计算后更新。',
     },
     {
       match_no: '周四004',
-      league: '欧协联',
+      league: '竞彩',
       home_team: '雷克维京',
       away_team: '图恩',
       match_time: '01:30',
       recommended_direction: '主胜',
-      recommended_score: '2:1',
-      confidence: 62,
-      star_level: '🥉铜',
+      recommended_score: '待分析',
+      confidence: 65,
+      star_level: '⚙铁',
       allocation: 10,
       odds: 2.25,
-      analysis: '主场作战有一定优势，但赔率偏高，谨慎投入。',
+      analysis: '基于赔率的初步分析，待深入计算后更新。',
     },
     {
       match_no: '周四005',
-      league: '沙特联',
+      league: '竞彩',
       home_team: '利雅青年',
       away_team: '胡巴卡德',
       match_time: '02:00',
       recommended_direction: '客胜',
-      recommended_score: '0:1',
-      confidence: 78,
-      star_level: '🥇金',
-      allocation: 15,
+      recommended_score: '待分析',
+      confidence: 60,
+      star_level: '⚙铁',
+      allocation: 10,
       odds: 1.46,
-      analysis: '客队实力明显占优，客胜1.46低赔，V4.2 T1b银星信号。',
+      analysis: '基于赔率的初步分析，待深入计算后更新。',
     },
     {
       match_no: '周四006',
-      league: '欧联杯',
+      league: '竞彩',
       home_team: '流浪者',
       away_team: '比亚韦',
       match_time: '02:30',
       recommended_direction: '主胜',
-      recommended_score: '2:1',
-      confidence: 80,
-      star_level: '🥇金',
-      allocation: 15,
+      recommended_score: '待分析',
+      confidence: 60,
+      star_level: '⚙铁',
+      allocation: 10,
       odds: 1.39,
-      analysis: '主胜1.39，V4.2 T1a金星，流浪者主场强势，泊松主胜概率72%。',
+      analysis: '基于赔率的初步分析，待深入计算后更新。',
     },
     {
       match_no: '周四007',
-      league: '欧协联',
+      league: '竞彩',
       home_team: '安德莱',
       away_team: '塞萨洛',
       match_time: '02:30',
       recommended_direction: '客胜',
-      recommended_score: '1:2',
-      confidence: 60,
-      star_level: '🥉铜',
-      allocation: 8,
+      recommended_score: '待分析',
+      confidence: 65,
+      star_level: '⚙铁',
+      allocation: 10,
       odds: 2.25,
-      analysis: '客队状态更好，赔率2.25有一定价值，但双方接近，小注即可。',
+      analysis: '基于赔率的初步分析，待深入计算后更新。',
     },
     {
       match_no: '周四008',
-      league: '欧联杯',
+      league: '竞彩',
       home_team: '哈茨',
       away_team: '本菲卡',
       match_time: '02:45',
       recommended_direction: '客胜',
-      recommended_score: '0:2',
-      confidence: 88,
-      star_level: '💎钻石',
-      allocation: 20,
+      recommended_score: '待分析',
+      confidence: 60,
+      star_level: '⚙铁',
+      allocation: 10,
       odds: 1.35,
-      analysis: '本菲卡实力碾压，客胜1.35超低赔，V4.2 T1a金星，看好客队完胜。',
+      analysis: '基于赔率的初步分析，待深入计算后更新。',
     },
     {
       match_no: '周四009',
-      league: '南美杯',
+      league: '竞彩',
       home_team: '米拉索尔',
       away_team: '基多体大',
       match_time: '06:00',
       recommended_direction: '主胜',
-      recommended_score: '2:0',
-      confidence: 75,
-      star_level: '🥇金',
+      recommended_score: '待分析',
+      confidence: 65,
+      star_level: '⚙铁',
       allocation: 10,
       odds: 1.50,
-      analysis: '主胜1.50，V4.2 T1b银星，主场优势明显，CR值良好。',
+      analysis: '基于赔率的初步分析，待深入计算后更新。',
     },
     {
       match_no: '周四010',
-      league: '南美杯',
+      league: '竞彩',
       home_team: '罗萨里奥',
       away_team: '科林蒂安',
       match_time: '08:30',
       recommended_direction: '主胜',
-      recommended_score: '2:1',
-      confidence: 66,
-      star_level: '🥈银',
-      allocation: 8,
+      recommended_score: '待分析',
+      confidence: 65,
+      star_level: '⚙铁',
+      allocation: 10,
       odds: 2.08,
-      analysis: '主队主场强势，客队客场一般，SPF主胜2.08有一定价值。',
+      analysis: '基于赔率的初步分析，待深入计算后更新。',
     },
   ];
-
-  const totalAllocation = matches.reduce((s, m) => s + m.allocation, 0);
-  const expectedReturn = Math.round(matches.reduce((s, m) => s + m.allocation * m.odds * (m.confidence / 100), 0) / totalAllocation * 100 - 100);
 
   return [
     {
       date: todayStr,
-      total_matches: matches.length,
-      total_allocation: totalAllocation,
-      expected_return: expectedReturn,
+      total_matches: 10,
+      total_allocation: 100,
+      expected_return: 120,
       matches,
     },
   ];
-}
+})();
 
 export default function PlansPage() {
-  const [loading, setLoading] = useState(false);
-  const [plans, setPlans] = useState<DailyPlan[]>(() => generateMockPlans());
-  const [isRealData, setIsRealData] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<string>('');
+  const [selectedDate, setSelectedDate] = useState<string>(PLANS_DATA[0].date);
   const [expandedMatches, setExpandedMatches] = useState<Set<string>>(new Set());
 
-  useEffect(() => {
-    // 初始化默认日期
-    if (plans.length > 0 && !selectedDate) {
-      setSelectedDate(plans[0].date);
-    }
-    // 尝试加载远程数据，成功则覆盖
-    fetchPlans();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const fetchPlans = async () => {
-    setLoading(true);
-    try {
-      const res = await fetch(PLANS_API_URL, { cache: 'no-store' });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      if (data && Array.isArray(data.plans) && data.plans.length > 0) {
-        setPlans(data.plans);
-        setIsRealData(true);
-        setSelectedDate(data.plans[0].date);
-      }
-      // 远程数据无效则保留默认数据，不做操作
-    } catch {
-      // 加载失败，保留默认 mock 数据
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const currentPlan = useMemo(
-    () => plans.find((p) => p.date === selectedDate),
-    [plans, selectedDate]
+    () => PLANS_DATA.find((p) => p.date === selectedDate),
+    [selectedDate]
   );
 
   const toggleMatch = (matchNo: string) => {
@@ -277,59 +239,24 @@ export default function PlansPage() {
               <div className="p-2 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-lg">
                 <Wallet className="w-6 h-6 text-amber-400" />
               </div>
-              <div className="flex items-center gap-2">
+              <div>
                 <h1 className="text-xl font-bold bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
                   投注方案
                 </h1>
-                {!loading && (
-                  <span
-                    className={`inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-full border ${
-                      isRealData
-                        ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
-                        : 'bg-gray-500/10 text-gray-400 border-gray-500/30'
-                    }`}
-                    title={isRealData ? '数据来自远程接口' : '数据来自本地示例'}
-                  >
-                    {isRealData ? (
-                      <><Database className="w-3 h-3" />真实数据</>
-                    ) : (
-                      <><FileText className="w-3 h-3" />示例数据</>
-                    )}
-                  </span>
-                )}
+                <p className="text-xs text-gray-500">每日精选方案 · 资金分配管理</p>
               </div>
-              <p className="text-xs text-gray-500">每日精选方案 · 资金分配管理</p>
             </div>
-            <div className="flex-1" />
-            <button
-              onClick={fetchPlans}
-              className="p-2 hover:bg-white/5 rounded-lg transition-colors text-gray-400 hover:text-white"
-              title="刷新"
-            >
-              <RefreshCw className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
-            </button>
           </div>
         </div>
       </div>
 
       <main className="p-6 max-w-6xl mx-auto">
-        {loading ? (
-          <div className="flex flex-col items-center justify-center py-20 text-gray-500">
-            <RefreshCw className="w-8 h-8 animate-spin mb-4" />
-            <p>加载投注方案中...</p>
-          </div>
-        ) : plans.length === 0 ? (
-          <div className="text-center py-20 text-gray-500">
-            <Wallet className="w-16 h-16 mx-auto mb-4 opacity-30" />
-            <p className="text-lg">暂无投注方案</p>
-            <p className="text-sm mt-2">请稍后再来查看</p>
-          </div>
-        ) : currentPlan ? (
+        {currentPlan ? (
           <div className="space-y-4">
             {/* 日期选择 */}
             <div className="flex items-center gap-3 overflow-x-auto pb-2">
               <Calendar className="w-4 h-4 text-gray-500 flex-shrink-0" />
-              {plans.map((plan) => (
+              {PLANS_DATA.map((plan) => (
                 <button
                   key={plan.date}
                   onClick={() => setSelectedDate(plan.date)}
@@ -384,7 +311,6 @@ export default function PlansPage() {
                   .sort((a, b) => b.confidence - a.confidence)
                   .map((match, index) => (
                     <div key={match.match_no} className="group">
-                      {/* 比赛卡片头部 */}
                       <button
                         onClick={() => toggleMatch(match.match_no)}
                         className="w-full px-5 py-4 text-left hover:bg-white/5 transition-colors"
