@@ -1,7 +1,22 @@
 'use client';
 
 import { useEffect, useState, useMemo } from 'react';
-import { ArrowLeft, Calendar, Target, Trophy, TrendingUp, ChevronDown, ChevronRight, CheckCircle2, XCircle, RefreshCw, History as HistoryIcon } from 'lucide-react';
+import {
+  ArrowLeft,
+  ChevronLeft,
+  ChevronRight,
+  Calendar,
+  Target,
+  Trophy,
+  TrendingUp,
+  CheckCircle2,
+  XCircle,
+  RefreshCw,
+  History as HistoryIcon,
+  Wallet,
+  AlertTriangle,
+  ChevronDown,
+} from 'lucide-react';
 import Link from 'next/link';
 
 interface HistoryMatch {
@@ -12,6 +27,7 @@ interface HistoryMatch {
   match_time: string;
   recommended_direction: string;
   direction_label: string;
+  spf_odds?: string;
   top3_scores: string[];
   actual_score: string;
   actual_result: string;
@@ -24,8 +40,10 @@ interface HistoryDay {
   date: string;
   total: number;
   direction_hits: number;
+  direction_total: number;
   direction_rate: string;
   score_hits: number;
+  score_total: number;
   score_rate: string;
   matches: HistoryMatch[];
 }
@@ -37,7 +55,7 @@ interface HistoryData {
 export default function HistoryPage() {
   const [data, setData] = useState<HistoryData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [selectedDate, setSelectedDate] = useState<string>('');
+  const [selectedIdx, setSelectedIdx] = useState(0);
   const [expandedMatches, setExpandedMatches] = useState<Set<string>>(new Set());
 
   useEffect(() => {
@@ -50,38 +68,40 @@ export default function HistoryPage() {
       const res = await fetch('/api/history', { cache: 'no-store' });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const json = await res.json();
-      setData(json);
-      if (json.days?.length > 0) {
-        setSelectedDate(json.days[0].date);
+      if (json && Array.isArray(json.days) && json.days.length > 0) {
+        setData(json);
+        setSelectedIdx(0);
+      } else {
+        setData({ days: [] });
       }
     } catch (e) {
       console.error('fetch history failed:', e);
+      setData({ days: [] });
     } finally {
       setLoading(false);
     }
   };
 
-  const currentDay = useMemo(
-    () => data?.days?.find((d) => d.date === selectedDate) || null,
-    [data, selectedDate]
-  );
+  const days = data?.days || [];
+  const currentDay = days[selectedIdx] || null;
 
   // 累计统计
   const cumulative = useMemo(() => {
-    if (!data?.days || data.days.length === 0) {
-      return { total: 0, direction_hits: 0, direction_rate: '0%', score_hits: 0, score_rate: '0%' };
+    if (days.length === 0) {
+      return { total: 0, dir_hits: 0, dir_rate: '0%', score_hits: 0, score_rate: '0%' };
     }
-    const total = data.days.reduce((s, d) => s + d.total, 0);
-    const dh = data.days.reduce((s, d) => s + d.direction_hits, 0);
-    const sh = data.days.reduce((s, d) => s + d.score_hits, 0);
+    const total = days.reduce((s, d) => s + (d.direction_total || d.total || 0), 0);
+    const dh = days.reduce((s, d) => s + (d.direction_hits || 0), 0);
+    const st = days.reduce((s, d) => s + (d.score_total || d.total || 0), 0);
+    const sh = days.reduce((s, d) => s + (d.score_hits || 0), 0);
     return {
       total,
-      direction_hits: dh,
-      direction_rate: total > 0 ? ((dh / total) * 100).toFixed(1) + '%' : '0%',
+      dir_hits: dh,
+      dir_rate: total > 0 ? ((dh / total) * 100).toFixed(1) + '%' : '0%',
       score_hits: sh,
-      score_rate: total > 0 ? ((sh / total) * 100).toFixed(1) + '%' : '0%',
+      score_rate: st > 0 ? ((sh / st) * 100).toFixed(1) + '%' : '0%',
     };
-  }, [data]);
+  }, [days]);
 
   const toggleMatch = (matchNo: string) => {
     setExpandedMatches((prev) => {
@@ -92,9 +112,16 @@ export default function HistoryPage() {
     });
   };
 
+  const goPrev = () => {
+    if (selectedIdx < days.length - 1) setSelectedIdx(selectedIdx + 1);
+  };
+  const goNext = () => {
+    if (selectedIdx > 0) setSelectedIdx(selectedIdx - 1);
+  };
+
   const getResultColor = (result: string) => {
-    if (result === 'home') return 'text-red-400';
-    if (result === 'away') return 'text-blue-400';
+    if (result === 'home' || result === 'win') return 'text-red-400';
+    if (result === 'away' || result === 'lose') return 'text-blue-400';
     return 'text-yellow-400';
   };
 
@@ -147,25 +174,31 @@ export default function HistoryPage() {
           </div>
         ) : (
           <div className="space-y-4">
-            {/* 日期选择 Tab */}
-            <div className="flex items-center gap-3 overflow-x-auto pb-2">
-              <Calendar className="w-4 h-4 text-gray-500 flex-shrink-0" />
-              {data?.days?.map((day) => (
-                <button
-                  key={day.date}
-                  onClick={() => setSelectedDate(day.date)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all border ${
-                    selectedDate === day.date
-                      ? 'bg-gradient-to-r from-emerald-500/20 to-teal-500/20 text-emerald-400 border-emerald-500/40'
-                      : 'bg-[#1a1a2e] text-gray-400 hover:text-white border-transparent hover:border-[#2d3748]'
-                  }`}
-                >
-                  {day.date}
-                  <span className="ml-2 text-xs opacity-70">
-                    {day.direction_hits}/{day.total}
-                  </span>
-                </button>
-              ))}
+            {/* 日期切换 */}
+            <div className="flex items-center justify-between bg-[#1a1a2e] rounded-xl border border-[#2d3748] px-4 py-3">
+              <button
+                onClick={goPrev}
+                disabled={selectedIdx >= days.length - 1}
+                className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <ChevronLeft className="w-4 h-4" />
+                前一天
+              </button>
+              <div className="flex items-center gap-2">
+                <Calendar className="w-4 h-4 text-emerald-400" />
+                <span className="text-lg font-bold text-white">{currentDay.date}</span>
+                <span className="text-xs text-gray-500">
+                  （第 {selectedIdx + 1} / {days.length} 天）
+                </span>
+              </div>
+              <button
+                onClick={goNext}
+                disabled={selectedIdx <= 0}
+                className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                后一天
+                <ChevronRight className="w-4 h-4" />
+              </button>
             </div>
 
             {/* 当日汇总卡片 */}
@@ -183,23 +216,34 @@ export default function HistoryPage() {
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> 方向命中
                 </div>
                 <div className="text-xl font-bold text-emerald-400 tabular-nums">
-                  {currentDay.direction_hits} <span className="text-sm text-gray-500">({currentDay.direction_rate})</span>
+                  {currentDay.direction_hits}
+                  <span className="text-sm text-gray-500 ml-1">
+                    / {currentDay.direction_total || currentDay.total}
+                  </span>
                 </div>
+                <div className="text-xs text-emerald-400/70 mt-0.5">{currentDay.direction_rate}</div>
               </div>
               <div className="p-3 bg-[#1a1a2e] rounded-xl border border-amber-500/30">
                 <div className="text-gray-400 text-xs mb-1 flex items-center gap-1">
                   <Target className="w-3.5 h-3.5 text-amber-400" /> 比分命中
                 </div>
                 <div className="text-xl font-bold text-amber-400 tabular-nums">
-                  {currentDay.score_hits} <span className="text-sm text-gray-500">({currentDay.score_rate})</span>
+                  {currentDay.score_hits}
+                  <span className="text-sm text-gray-500 ml-1">
+                    / {currentDay.score_total || currentDay.total}
+                  </span>
                 </div>
+                <div className="text-xs text-amber-400/70 mt-0.5">{currentDay.score_rate}</div>
               </div>
-              <div className="p-3 bg-[#1a1a2e] rounded-xl border border-[#2d3748]">
+              <div className="p-3 bg-[#1a1a2e] rounded-xl border border-purple-500/30">
                 <div className="text-gray-400 text-xs mb-1 flex items-center gap-1">
-                  <TrendingUp className="w-3.5 h-3.5 text-purple-400" /> 累计命中率
+                  <TrendingUp className="w-3.5 h-3.5 text-purple-400" /> 累计方向命中
                 </div>
                 <div className="text-xl font-bold text-purple-400 tabular-nums">
-                  {cumulative.direction_rate}
+                  {cumulative.dir_rate}
+                </div>
+                <div className="text-xs text-purple-400/70 mt-0.5">
+                  {cumulative.dir_hits} / {cumulative.total}
                 </div>
               </div>
             </div>
@@ -239,23 +283,36 @@ export default function HistoryPage() {
                           </div>
 
                           {/* 场次 + 联赛 */}
-                          <div className="w-20 flex-shrink-0">
+                          <div className="w-24 flex-shrink-0">
                             <div className="text-xs px-2 py-0.5 bg-[#2d3748] rounded text-gray-300 inline-block mb-1">
                               {match.match_no}
                             </div>
-                            <div className="text-xs text-gray-500">{match.league} {match.match_time}</div>
+                            <div className="text-xs text-gray-500">
+                              {match.league} {match.match_time}
+                            </div>
                           </div>
 
                           {/* 对阵 */}
                           <div className="flex-1 min-w-0">
                             <div className="text-sm font-medium text-white truncate">
-                              {match.home_team} <span className="text-gray-500 mx-1">vs</span> {match.away_team}
+                              {match.home_team}{' '}
+                              <span className="text-gray-500 mx-1">vs</span>{' '}
+                              {match.away_team}
                             </div>
+                            {match.spf_odds && (
+                              <div className="text-xs text-gray-500 mt-0.5 font-mono">
+                                SPF: {match.spf_odds}
+                              </div>
+                            )}
                           </div>
 
                           {/* 推荐方向 */}
                           <div className="text-center w-20 flex-shrink-0">
-                            <div className={`text-sm font-bold ${match.direction_hit ? 'text-emerald-400' : 'text-gray-400'}`}>
+                            <div
+                              className={`text-sm font-bold ${
+                                match.direction_hit ? 'text-emerald-400' : 'text-gray-400'
+                              }`}
+                            >
                               {match.direction_label}
                             </div>
                             <div className="text-xs text-gray-500">推荐方向</div>
@@ -263,7 +320,11 @@ export default function HistoryPage() {
 
                           {/* 实际赛果 */}
                           <div className="text-center w-20 flex-shrink-0">
-                            <div className={`text-sm font-bold ${getResultColor(match.actual_result)}`}>
+                            <div
+                              className={`text-sm font-bold ${getResultColor(
+                                match.actual_result
+                              )}`}
+                            >
                               {match.result_label}
                             </div>
                             <div className="text-xs text-gray-500">实际赛果</div>
@@ -271,9 +332,11 @@ export default function HistoryPage() {
 
                           {/* 实际比分 */}
                           <div className="text-center w-16 flex-shrink-0">
-                            <div className={`text-sm font-mono font-bold ${
-                              match.score_hit ? 'text-amber-400' : 'text-gray-400'
-                            }`}>
+                            <div
+                              className={`text-sm font-mono font-bold ${
+                                match.score_hit ? 'text-amber-400' : 'text-gray-400'
+                              }`}
+                            >
                               {match.actual_score}
                             </div>
                             <div className="text-xs text-gray-500">比分</div>
@@ -290,9 +353,11 @@ export default function HistoryPage() {
 
                       {/* 展开详情：Top3预测比分 */}
                       {isExpanded && (
-                        <div className="px-4 pb-3 pl-13">
+                        <div className="px-4 pb-3">
                           <div className="bg-[#0f0f1a] rounded-lg p-3 border border-[#2d3748] ml-9">
-                            <div className="text-xs text-gray-400 mb-2">预测 Top3 比分</div>
+                            <div className="text-xs text-gray-400 mb-2">
+                              预测 Top3 比分（赔率最低的 3 个）
+                            </div>
                             <div className="flex flex-wrap gap-2">
                               {match.top3_scores.map((score, idx) => {
                                 const hit = match.score_hit && score === match.actual_score;
@@ -307,22 +372,36 @@ export default function HistoryPage() {
                                   >
                                     <span className="text-xs opacity-60">No.{idx + 1}</span>
                                     {score}
-                                    {hit && <CheckCircle2 className="w-3.5 h-3.5 text-amber-400" />}
+                                    {hit && (
+                                      <CheckCircle2 className="w-3.5 h-3.5 text-amber-400" />
+                                    )}
                                   </div>
                                 );
                               })}
                             </div>
                             <div className="mt-3 pt-2 border-t border-[#2d3748] flex items-center gap-4 text-xs">
-                              <span className={`flex items-center gap-1 ${
-                                match.direction_hit ? 'text-emerald-400' : 'text-red-400'
-                              }`}>
-                                {match.direction_hit ? <CheckCircle2 className="w-3 h-3" /> : <XCircle className="w-3 h-3" />}
+                              <span
+                                className={`flex items-center gap-1 ${
+                                  match.direction_hit ? 'text-emerald-400' : 'text-red-400'
+                                }`}
+                              >
+                                {match.direction_hit ? (
+                                  <CheckCircle2 className="w-3 h-3" />
+                                ) : (
+                                  <XCircle className="w-3 h-3" />
+                                )}
                                 方向{match.direction_hit ? '命中' : '未中'}
                               </span>
-                              <span className={`flex items-center gap-1 ${
-                                match.score_hit ? 'text-amber-400' : 'text-gray-500'
-                              }`}>
-                                {match.score_hit ? <CheckCircle2 className="w-3 h-3" /> : <XCircle className="w-3 h-3" />}
+                              <span
+                                className={`flex items-center gap-1 ${
+                                  match.score_hit ? 'text-amber-400' : 'text-gray-500'
+                                }`}
+                              >
+                                {match.score_hit ? (
+                                  <CheckCircle2 className="w-3 h-3" />
+                                ) : (
+                                  <XCircle className="w-3 h-3" />
+                                )}
                                 比分{match.score_hit ? '命中' : '未中'}
                               </span>
                             </div>
@@ -335,28 +414,82 @@ export default function HistoryPage() {
               </div>
             </div>
 
+            {/* 投注方案历史（昨日推荐方案结果） */}
+            {selectedIdx < days.length - 1 && days[selectedIdx + 1] && (
+              <div className="bg-[#1a1a2e] rounded-xl border border-amber-500/30 overflow-hidden">
+                <div className="px-4 py-3 border-b border-amber-500/20 flex items-center justify-between bg-amber-500/5">
+                  <h2 className="font-semibold text-amber-300 flex items-center gap-2 text-sm">
+                    <Wallet className="w-4 h-4" />
+                    投注方案结果 · {days[selectedIdx + 1].date}
+                  </h2>
+                  <span className="text-xs text-amber-400/70">
+                    方向 {days[selectedIdx + 1].direction_rate}
+                  </span>
+                </div>
+                <div className="p-4">
+                  <div className="grid grid-cols-3 gap-3 mb-3">
+                    <div className="text-center p-2 bg-[#0f0f1a] rounded-lg">
+                      <div className="text-xs text-gray-500">总场次</div>
+                      <div className="text-lg font-bold text-white tabular-nums">
+                        {days[selectedIdx + 1].total}
+                      </div>
+                    </div>
+                    <div className="text-center p-2 bg-[#0f0f1a] rounded-lg">
+                      <div className="text-xs text-gray-500">方向命中</div>
+                      <div className="text-lg font-bold text-emerald-400 tabular-nums">
+                        {days[selectedIdx + 1].direction_hits}
+                      </div>
+                    </div>
+                    <div className="text-center p-2 bg-[#0f0f1a] rounded-lg">
+                      <div className="text-xs text-gray-500">比分命中</div>
+                      <div className="text-lg font-bold text-amber-400 tabular-nums">
+                        {days[selectedIdx + 1].score_hits}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-xs text-gray-500 flex items-start gap-1.5">
+                    <AlertTriangle className="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-amber-500" />
+                    <span>
+                      昨日推荐方案的完整赛果如上，点击「前一天」可查看每场比赛详情。
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* 底部累计统计 */}
             <div className="bg-[#1a1a2e] rounded-xl border border-[#2d3748] p-4">
               <h3 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
                 <TrendingUp className="w-4 h-4 text-purple-400" />
-                累计统计 <span className="text-xs text-gray-500 font-normal">（共 {cumulative.total} 场）</span>
+                累计统计
+                <span className="text-xs text-gray-500 font-normal">
+                  （共 {days.length} 天 / {cumulative.total} 场）
+                </span>
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 <div className="p-3 bg-[#0f0f1a] rounded-lg">
                   <div className="text-xs text-gray-500 mb-1">总场次</div>
-                  <div className="text-lg font-bold text-white tabular-nums">{cumulative.total}</div>
+                  <div className="text-lg font-bold text-white tabular-nums">
+                    {cumulative.total}
+                  </div>
                 </div>
                 <div className="p-3 bg-[#0f0f1a] rounded-lg">
                   <div className="text-xs text-gray-500 mb-1">方向命中</div>
-                  <div className="text-lg font-bold text-emerald-400 tabular-nums">{cumulative.direction_hits}</div>
+                  <div className="text-lg font-bold text-emerald-400 tabular-nums">
+                    {cumulative.dir_hits}
+                  </div>
                 </div>
                 <div className="p-3 bg-[#0f0f1a] rounded-lg">
                   <div className="text-xs text-gray-500 mb-1">方向命中率</div>
-                  <div className="text-lg font-bold text-emerald-400 tabular-nums">{cumulative.direction_rate}</div>
+                  <div className="text-lg font-bold text-emerald-400 tabular-nums">
+                    {cumulative.dir_rate}
+                  </div>
                 </div>
                 <div className="p-3 bg-[#0f0f1a] rounded-lg">
                   <div className="text-xs text-gray-500 mb-1">比分命中率</div>
-                  <div className="text-lg font-bold text-amber-400 tabular-nums">{cumulative.score_rate}</div>
+                  <div className="text-lg font-bold text-amber-400 tabular-nums">
+                    {cumulative.score_rate}
+                  </div>
                 </div>
               </div>
             </div>
