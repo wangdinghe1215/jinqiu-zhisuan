@@ -28,7 +28,7 @@ interface DailyPlan {
   matches: PlanMatch[];
 }
 
-const PLANS_URL = 'https://www.coze.cn/s/w1yiwOW5X40/';
+const PLANS_API_URL = '/api/plans';
 
 // 生成示例方案（当远程数据不可用时）
 function generateMockPlans(): DailyPlan[] {
@@ -102,12 +102,12 @@ function generateMockPlans(): DailyPlan[] {
       away_team: '胡巴卡德',
       match_time: '02:00',
       recommended_direction: '客胜',
-      recommended_score: '1:2',
-      confidence: 70,
-      star_level: '🥈银',
-      allocation: 12,
-      odds: 1.90,
-      analysis: '客队实力占优，SPF客胜1.90，V4.2 T2铜星，历史同赔率客胜胜率约58%。',
+      recommended_score: '0:1',
+      confidence: 78,
+      star_level: '🥇金',
+      allocation: 15,
+      odds: 1.46,
+      analysis: '客队实力明显占优，客胜1.46低赔，V4.2 T1b银星信号。',
     },
     {
       match_no: '周四006',
@@ -129,13 +129,13 @@ function generateMockPlans(): DailyPlan[] {
       home_team: '安德莱',
       away_team: '塞萨洛',
       match_time: '02:30',
-      recommended_direction: '主胜',
-      recommended_score: '2:1',
-      confidence: 65,
+      recommended_direction: '客胜',
+      recommended_score: '1:2',
+      confidence: 60,
       star_level: '🥉铜',
       allocation: 8,
       odds: 2.25,
-      analysis: '双方实力接近，主主场略占优，赔率2.25价值一般，小注即可。',
+      analysis: '客队状态更好，赔率2.25有一定价值，但双方接近，小注即可。',
     },
     {
       match_no: '周四008',
@@ -145,11 +145,11 @@ function generateMockPlans(): DailyPlan[] {
       match_time: '02:45',
       recommended_direction: '客胜',
       recommended_score: '0:2',
-      confidence: 85,
+      confidence: 88,
       star_level: '💎钻石',
-      allocation: 15,
-      odds: 1.70,
-      analysis: '本菲卡实力碾压，客胜1.70合理，V4.2 T1b银星+平赔3.40偏高，看好客队完胜。',
+      allocation: 20,
+      odds: 1.35,
+      analysis: '本菲卡实力碾压，客胜1.35超低赔，V4.2 T1a金星，看好客队完胜。',
     },
     {
       match_no: '周四009',
@@ -196,46 +196,40 @@ function generateMockPlans(): DailyPlan[] {
 }
 
 export default function PlansPage() {
-  const [loading, setLoading] = useState(true);
-  const [plans, setPlans] = useState<DailyPlan[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [plans, setPlans] = useState<DailyPlan[]>(() => generateMockPlans());
   const [isRealData, setIsRealData] = useState(false);
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [expandedMatches, setExpandedMatches] = useState<Set<string>>(new Set());
 
   useEffect(() => {
+    // 初始化默认日期
+    if (plans.length > 0 && !selectedDate) {
+      setSelectedDate(plans[0].date);
+    }
+    // 尝试加载远程数据，成功则覆盖
     fetchPlans();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchPlans = async () => {
     setLoading(true);
     try {
-      const res = await fetch(PLANS_URL, { cache: 'no-store' });
+      const res = await fetch(PLANS_API_URL, { cache: 'no-store' });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      // 必须是方案格式且有真实数据
       if (data && Array.isArray(data.plans) && data.plans.length > 0) {
         setPlans(data.plans);
         setIsRealData(true);
-      } else {
-        // 数据格式不对或为空，降级到 mock
-        setPlans(generateMockPlans());
-        setIsRealData(false);
+        setSelectedDate(data.plans[0].date);
       }
+      // 远程数据无效则保留默认数据，不做操作
     } catch {
-      // 加载失败，降级到 mock
-      setPlans(generateMockPlans());
-      setIsRealData(false);
+      // 加载失败，保留默认 mock 数据
     } finally {
       setLoading(false);
     }
   };
-
-  // 初始化选择日期
-  useEffect(() => {
-    if (plans.length > 0 && !selectedDate) {
-      setSelectedDate(plans[0].date);
-    }
-  }, [plans, selectedDate]);
 
   const currentPlan = useMemo(
     () => plans.find((p) => p.date === selectedDate),
