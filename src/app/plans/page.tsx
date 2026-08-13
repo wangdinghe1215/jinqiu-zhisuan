@@ -28,7 +28,7 @@ interface DailyPlan {
   matches: PlanMatch[];
 }
 
-const PLANS_URL = 'https://www.coze.cn/s/1M_Aj3hvBbc/';
+const PLANS_URL = 'https://www.coze.cn/s/w1yiwOW5X40/';
 
 // 生成示例方案（当远程数据不可用时）
 function generateMockPlans(): DailyPlan[] {
