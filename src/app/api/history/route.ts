@@ -1,33 +1,30 @@
 import { NextResponse } from 'next/server';
-import { getTLevelStats, getDiamondSignals, getMatchesByDate, getDateRange } from '@/lib/db';
+import fs from 'fs';
+import path from 'path';
 
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const date = searchParams.get('date');
+export const dynamic = 'force-dynamic';
 
+const HISTORY_JSON_PATH = path.join(
+  process.cwd(),
+  'public',
+  'data',
+  'history_records.json'
+);
+
+export async function GET() {
   try {
-    const tLevelStats = getTLevelStats();
-    const diamondSignals = getDiamondSignals(30);
-    const dateRange = getDateRange();
-
-    let dateMatches: unknown[] = [];
-    if (date) {
-      dateMatches = getMatchesByDate(date);
+    if (!fs.existsSync(HISTORY_JSON_PATH)) {
+      return NextResponse.json(
+        { days: [] },
+        { status: 200 }
+      );
     }
-
-    return NextResponse.json({
-      success: true,
-      data: {
-        tLevelStats,
-        diamondSignals,
-        dateMatches,
-        dateRange,
-      },
-    });
-  } catch (error) {
-    console.error('API Error [history]:', error);
+    const raw = fs.readFileSync(HISTORY_JSON_PATH, 'utf-8');
+    const data = JSON.parse(raw);
+    return NextResponse.json(data);
+  } catch (e) {
     return NextResponse.json(
-      { success: false, error: '获取历史数据失败' },
+      { error: e instanceof Error ? e.message : 'read failed' },
       { status: 500 }
     );
   }
