@@ -68,8 +68,40 @@ interface HistoryData {
   days: HistoryDay[];
 }
 
+// 必中哥V2（刻舟求剑）数据类型
+interface BzgOddsItem {
+  target_odds: number;
+  total: number;
+  win_pct: number;
+  draw_pct: number;
+  lose_pct: number;
+  top5: [string, number][];
+}
+
+interface BzgMatch {
+  match_no: string;
+  league: string;
+  home_team: string;
+  away_team: string;
+  bizhongge: {
+    home_win: BzgOddsItem;
+    draw: BzgOddsItem;
+    away_win: BzgOddsItem;
+  };
+}
+
+interface BzgDay {
+  date: string;
+  matches: BzgMatch[];
+}
+
+interface BzgData {
+  days: BzgDay[];
+}
+
 export default function HistoryPage() {
   const [data, setData] = useState<HistoryData | null>(null);
+  const [bzgData, setBzgData] = useState<BzgData | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedIdx, setSelectedIdx] = useState(0);
 
@@ -96,6 +128,23 @@ export default function HistoryPage() {
       setLoading(false);
     }
   };
+
+  // 加载必中哥V2数据
+  useEffect(() => {
+    const fetchBzg = async () => {
+      try {
+        const res = await fetch('/data/bizhongge_data.json', { cache: 'no-store' });
+        if (!res.ok) return;
+        const json = await res.json();
+        if (json && Array.isArray(json.days)) {
+          setBzgData(json);
+        }
+      } catch (e) {
+        console.error('fetch bizhongge failed:', e);
+      }
+    };
+    fetchBzg();
+  }, []);
 
   const days = data?.days || [];
   const currentDay = days[selectedIdx] || null;
@@ -352,6 +401,7 @@ export default function HistoryPage() {
               </div>
 
               {currentDay.matches.map((match) => {
+                const bzgMatches = bzgData?.days?.find((d: any) => d.date === currentDay?.date)?.matches;
                 const poissonDir = poissonDirFromScores(match.top3_scores);
                 const poissonDirHit = isDirHit(poissonDir, match.actual_result, match.result_label);
                 const dirHit = match.direction_hit;
@@ -360,6 +410,7 @@ export default function HistoryPage() {
                   ? match.xf_direction === match.actual_result
                   : false;
                 const xfScoreHit = Array.isArray(match.xf_top_scores) && match.xf_top_scores.includes(match.actual_score);
+                const bzgMatch = bzgMatches?.find((b) => b.match_no === match.match_no);
 
                 return (
                   <div
@@ -399,8 +450,8 @@ export default function HistoryPage() {
                       </div>
                     </div>
 
-                    {/* 四维对比：2×2 网格 */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#2d3748]">
+                    {/* 五维对比：移动端2列 / 桌面端5列 */}
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-[#2d3748]">
                       {/* 1️⃣ 泊松分析 */}
                       <div className="bg-[#1a1a2e] p-2.5">
                         <div className="text-xs text-cyan-400 font-medium mb-2 flex items-center gap-1">
@@ -580,6 +631,43 @@ export default function HistoryPage() {
                           </div>
                         </div>
                       </div>
+
+                      {/* 5️⃣ 必中哥·刻舟求剑 */}
+                      <div className="p-2.5 bg-orange-500/5 border border-orange-500/10">
+                        <div className="text-xs font-medium mb-2 flex items-center gap-1 text-orange-400">
+                          🗡️ 刻舟求剑
+                        </div>
+                        {bzgMatch ? (
+                          <div className="space-y-2">
+                          {['home_win', 'draw', 'away_win'].map((key) => {
+                            const b = (bzgMatch.bizhongge as any)[key];
+                            if (!b) return null;
+                            const labelMap: Record<string, string> = { home_win: '主胜', draw: '平局', away_win: '客胜' };
+                            const pctKey = key === 'home_win' ? 'win_pct' : key === 'draw' ? 'draw_pct' : 'lose_pct';
+                            return (
+                              <div key={key} className="space-y-1">
+                                <div className="flex items-center justify-between text-[11px]">
+                                  <span className="text-gray-400">{labelMap[key]} {b.target_odds}</span>
+                                  <span className="text-orange-300 font-mono">{b.total}场 {b[pctKey]}%</span>
+                                </div>
+                                <div className="flex flex-wrap gap-1">
+                                  {(b.top5 || []).slice(0, 3).map((item: [string, number], i: number) => (
+                                    <span
+                                      key={i}
+                                      className="px-1.5 py-0.5 text-[10px] rounded bg-orange-900/40 text-orange-200 font-mono"
+                                    >
+                                      {item[0]}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      ) : (
+                        <div className="text-[11px] text-gray-500 py-2 text-center">暂无数据</div>
+                      )}
+                    </div>
                     </div>
 
                     {/* 底部总结栏 */}
