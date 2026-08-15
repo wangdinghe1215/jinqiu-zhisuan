@@ -25,15 +25,30 @@ interface HistoryMatch {
   away_team: string;
   league: string;
   match_time: string;
+  half_score: string;
+  spf_odds: string;
+  rspf_odds: string;
+  handicap: number;
+  poisson_lambda_h: number;
+  poisson_lambda_a: number;
+  top3_scores: string[];
   recommended_direction: string;
   direction_label: string;
-  spf_odds?: string;
-  top3_scores: string[];
+  rspf_direction: string;
+  xf_direction: string;
+  xf_label: string;
+  xf_top_scores: string[];
   actual_score: string;
   actual_result: string;
   result_label: string;
+  spf_result_detail: string;
+  rspf_result_detail: string;
   direction_hit: boolean;
   score_hit: boolean;
+  direction_hit_label: string;
+  score_hit_label: string;
+  poisson_vs_actual: string;
+  summary: string;
   match_number?: string;
 }
 
@@ -127,22 +142,22 @@ export default function HistoryPage() {
   // 四维对比日统计（基于现有字段重新计算）
   const dimensionStats = useMemo(() => {
     const matches = currentDay?.matches || [];
-    const count = (getDir: (m: HistoryMatch) => string | null) => {
+    const count = (getDir: (m: HistoryMatch) => string | null | undefined) => {
       let total = 0;
       let hits = 0;
       matches.forEach((m) => {
         const dir = getDir(m);
-        if (dir) {
+        if (dir && dir !== 'none') {
           total++;
-          if (isDirHit(dir, m.actual_result, m.result_label)) hits++;
+          if (dir === m.actual_result) hits++;
         }
       });
       return { total, hits, rate: total > 0 ? ((hits / total) * 100).toFixed(1) + '%' : '-' };
     };
     return {
       poisson: count((m) => poissonDirFromScores(m.top3_scores)),
-      v42: count((m) => m.recommended_direction || null),
-      xiaofeng: count((m) => m.recommended_direction || null),
+      v42: count((m) => m.recommended_direction),
+      xiaofeng: count((m) => m.xf_direction),
     };
   }, [currentDay]);
 
@@ -338,16 +353,13 @@ export default function HistoryPage() {
 
               {currentDay.matches.map((match) => {
                 const poissonDir = poissonDirFromScores(match.top3_scores);
-                const poissonHit = isDirHit(poissonDir, match.actual_result, match.result_label);
+                const poissonDirHit = isDirHit(poissonDir, match.actual_result, match.result_label);
                 const dirHit = match.direction_hit;
                 const scoreHit = match.score_hit;
-
-                const dirLabel = (dir: string | null) => {
-                  if (!dir) return '-';
-                  if (dir === 'home') return '主胜';
-                  if (dir === 'away') return '客胜';
-                  return '平局';
-                };
+                const xfHit = match.xf_direction && match.xf_direction !== 'none'
+                  ? match.xf_direction === match.actual_result
+                  : false;
+                const xfScoreHit = Array.isArray(match.xf_top_scores) && match.xf_top_scores.includes(match.actual_score);
 
                 return (
                   <div
@@ -356,8 +368,8 @@ export default function HistoryPage() {
                       dirHit ? 'border-emerald-500/30' : 'border-[#2d3748]'
                     }`}
                   >
-                    {/* 卡片头部：场次 + 联赛 + 对阵 + 总命中状态 */}
-                    <div className="px-3 py-2.5 border-b border-[#2d3748] flex items-center gap-3 bg-[#16213e]/50">
+                    {/* 卡片头部 */}
+                    <div className="px-3 py-2 border-b border-[#2d3748] flex items-center gap-2.5 bg-[#16213e]/50">
                       <div className="text-xs px-2 py-0.5 bg-[#2d3748] rounded text-gray-300 font-mono flex-shrink-0">
                         {match.match_no}
                       </div>
@@ -372,19 +384,16 @@ export default function HistoryPage() {
                       <div className="flex items-center gap-1 flex-shrink-0">
                         {dirHit ? (
                           <span className="flex items-center gap-1 text-xs text-emerald-400 font-medium">
-                            <CheckCircle2 className="w-3.5 h-3.5" />
-                            方向中
+                            <CheckCircle2 className="w-3.5 h-3.5" />方向中
                           </span>
                         ) : (
                           <span className="flex items-center gap-1 text-xs text-red-400 font-medium">
-                            <XCircle className="w-3.5 h-3.5" />
-                            方向失
+                            <XCircle className="w-3.5 h-3.5" />方向失
                           </span>
                         )}
                         {scoreHit && (
-                          <span className="flex items-center gap-1 text-xs text-amber-400 font-medium ml-1">
-                            <CheckCircle2 className="w-3.5 h-3.5" />
-                            比分中
+                          <span className="flex items-center gap-1 text-xs text-amber-400 font-medium ml-0.5">
+                            <CheckCircle2 className="w-3.5 h-3.5" />比分中
                           </span>
                         )}
                       </div>
@@ -392,103 +401,194 @@ export default function HistoryPage() {
 
                     {/* 四维对比：2×2 网格 */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#2d3748]">
-                      {/* 📊 泊松分析 */}
+                      {/* 1️⃣ 泊松分析 */}
                       <div className="bg-[#1a1a2e] p-2.5">
-                        <div className="text-xs text-cyan-400 font-medium mb-1.5 flex items-center gap-1">
-                          <span>📊</span>泊松分析
+                        <div className="text-xs text-cyan-400 font-medium mb-2 flex items-center gap-1">
+                          <BarChart3 className="w-3 h-3" />泊松分析
                         </div>
-                        <div className={`text-sm font-bold mb-1 ${poissonHit ? 'text-emerald-400' : 'text-gray-400'}`}>
-                          {dirLabel(poissonDir)} {poissonHit && <span className="ml-1">✅</span>}
-                        </div>
-                        <div className="text-xs text-gray-500 mb-1">Top3 比分</div>
-                        <div className="flex flex-wrap gap-1">
-                          {match.top3_scores.slice(0, 3).map((s, i) => {
-                            const hit = scoreHit && s === match.actual_score;
-                            return (
-                              <span
-                                key={i}
-                                className={`px-1.5 py-0.5 rounded text-xs font-mono ${
-                                  hit
-                                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                                    : 'bg-[#0f0f1a] text-gray-400 border border-[#2d3748]'
-                                }`}
-                              >
-                                {s}
-                              </span>
-                            );
-                          })}
+                        <div className="space-y-1.5 text-xs">
+                          <div>
+                            <div className="text-gray-500 text-[11px] mb-0.5">预期进球 λ</div>
+                            <div className="font-mono text-cyan-300">
+                              主 {match.poisson_lambda_h?.toFixed?.(2) || '-'} / 客 {match.poisson_lambda_a?.toFixed?.(2) || '-'}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-gray-500 text-[11px] mb-0.5">
+                              方向 {poissonDirHit && <span className="text-emerald-400">✅</span>}
+                            </div>
+                            <div className={`font-medium ${poissonDirHit ? 'text-emerald-400' : 'text-gray-300'}`}>
+                              {poissonDir ? (poissonDir === 'home' ? '主胜' : poissonDir === 'away' ? '客胜' : '平局') : '-'}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-gray-500 text-[11px] mb-0.5">Top3 比分</div>
+                            <div className="flex flex-wrap gap-1">
+                              {(match.top3_scores || []).slice(0, 3).map((s, i) => {
+                                const hit = scoreHit && s === match.actual_score;
+                                return (
+                                  <span
+                                    key={i}
+                                    className={`px-1.5 py-0.5 rounded text-[11px] font-mono ${
+                                      hit
+                                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                                        : 'bg-[#0f0f1a] text-gray-400 border border-[#2d3748]'
+                                    }`}
+                                  >
+                                    {s}
+                                  </span>
+                                );
+                              })}
+                            </div>
+                          </div>
+                          <div className="pt-1 border-t border-[#2d3748]">
+                            {scoreHit ? (
+                              <span className="text-amber-400 text-[11px]">比分命中 🎯</span>
+                            ) : poissonDirHit ? (
+                              <span className="text-emerald-400 text-[11px]">方向命中 ✓</span>
+                            ) : (
+                              <span className="text-gray-600 text-[11px]">未命中</span>
+                            )}
+                          </div>
                         </div>
                       </div>
 
-                      {/* 🎯 V4.2分析 */}
+                      {/* 2️⃣ V4.2分析 */}
                       <div className="bg-[#1a1a2e] p-2.5">
-                        <div className="text-xs text-yellow-400 font-medium mb-1.5 flex items-center gap-1">
-                          <span>🎯</span>V4.2分析
+                        <div className="text-xs text-violet-400 font-medium mb-2 flex items-center gap-1">
+                          <Target className="w-3 h-3" />V4.2分析
                         </div>
-                        <div className={`text-sm font-bold mb-1 ${dirHit ? 'text-emerald-400' : 'text-gray-400'}`}>
-                          {match.direction_label} {dirHit && <span className="ml-1">✅</span>}
-                        </div>
-                        <div className="text-xs text-gray-500 mb-1">赔率</div>
-                        <div className="text-xs font-mono text-gray-300">
-                          {match.spf_odds || '-'}
-                        </div>
-                        <div className="text-xs text-gray-500 mt-1">
-                          星级：<span className="text-yellow-400">★★★☆☆</span>
+                        <div className="space-y-1.5 text-xs">
+                          <div>
+                            <div className="text-gray-500 text-[11px] mb-0.5">
+                              SPF方向 {dirHit && <span className="text-emerald-400">✅</span>}
+                            </div>
+                            <div className={`font-medium ${dirHit ? 'text-emerald-400' : 'text-gray-300'}`}>
+                              {match.direction_label || '-'}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-gray-500 text-[11px] mb-0.5">SPF赔率</div>
+                            <div className="font-mono text-gray-300 text-[11px]">
+                              {match.spf_odds || '-'}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-gray-500 text-[11px] mb-0.5">RSPF方向</div>
+                            <div className="font-medium text-violet-300">
+                              {match.rspf_direction || '-'}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-gray-500 text-[11px] mb-0.5">
+                              RSPF赔率 (让{match.handicap ?? 0}球)
+                            </div>
+                            <div className="font-mono text-gray-400 text-[11px]">
+                              {match.rspf_odds || '-'}
+                            </div>
+                          </div>
                         </div>
                       </div>
 
-                      {/* 🧠 小丰综合 */}
+                      {/* 3️⃣ 小丰综合 */}
                       <div className="bg-[#1a1a2e] p-2.5">
-                        <div className="text-xs text-purple-400 font-medium mb-1.5 flex items-center gap-1">
-                          <span>🧠</span>小丰综合
+                        <div className="text-xs text-amber-400 font-medium mb-2 flex items-center gap-1">
+                          <TrendingUp className="w-3 h-3" />小丰综合
                         </div>
-                        <div className={`text-sm font-bold mb-1 ${dirHit ? 'text-emerald-400' : 'text-gray-400'}`}>
-                          {match.direction_label || '-'} {dirHit && <span className="ml-1">✅</span>}
-                        </div>
-                        <div className="text-xs text-gray-500 mb-1">推荐比分</div>
-                        <div className="flex flex-wrap gap-1 mb-1.5">
-                          {match.top3_scores && match.top3_scores.length > 0 ? (
-                            match.top3_scores.map((s, i) => (
-                              <span
-                                key={i}
-                                className={`px-1.5 py-0.5 rounded text-xs font-mono ${
-                                  match.actual_score && s === match.actual_score
-                                    ? 'bg-amber-500/30 text-amber-300 border border-amber-500/50'
-                                    : 'bg-white/5 text-gray-300'
-                                }`}
-                              >
-                                {s}
-                              </span>
-                            ))
-                          ) : (
-                            <span className="text-gray-600 text-xs">-</span>
-                          )}
-                        </div>
-                        <div className="text-xs text-gray-500">
-                          综合评分：<span className="text-purple-400">72分</span>
+                        <div className="space-y-1.5 text-xs">
+                          <div>
+                            <div className="text-gray-500 text-[11px] mb-0.5">
+                              综合方向 {xfHit && <span className="text-emerald-400">✅</span>}
+                            </div>
+                            <div className={`font-medium ${xfHit ? 'text-emerald-400' : 'text-gray-300'}`}>
+                              {match.xf_label || '-'}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-gray-500 text-[11px] mb-0.5">推荐比分</div>
+                            <div className="flex flex-wrap gap-1">
+                              {(match.xf_top_scores || []).length > 0 ? (
+                                match.xf_top_scores.map((s, i) => {
+                                  const hit = scoreHit && s === match.actual_score;
+                                  return (
+                                    <span
+                                      key={i}
+                                      className={`px-1.5 py-0.5 rounded text-[11px] font-mono ${
+                                        hit
+                                          ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                                          : 'bg-[#0f0f1a] text-gray-400 border border-[#2d3748]'
+                                      }`}
+                                    >
+                                      {s}
+                                    </span>
+                                  );
+                                })
+                              ) : (
+                                <span className="text-gray-600 text-[11px]">-</span>
+                              )}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-gray-500 text-[11px] mb-0.5">SPF参考</div>
+                            <div className="font-mono text-gray-400 text-[11px]">
+                              {match.spf_odds || '-'}
+                            </div>
+                          </div>
+                          <div className="pt-1 border-t border-[#2d3748]">
+                            {xfHit && xfScoreHit ? (
+                              <span className="text-emerald-400 text-[11px]">方向+比分双中</span>
+                            ) : xfHit ? (
+                              <span className="text-emerald-400 text-[11px]">方向命中 ✓</span>
+                            ) : (
+                              <span className="text-gray-600 text-[11px]">未命中</span>
+                            )}
+                          </div>
                         </div>
                       </div>
 
-                      {/* 🏆 实际赛果 */}
-                      <div className="bg-blue-500/5 p-2.5">
-                        <div className="text-xs text-blue-400 font-medium mb-1.5 flex items-center gap-1">
+                      {/* 4️⃣ 实际赛果 */}
+                      <div className={`p-2.5 ${dirHit ? 'bg-emerald-500/5' : scoreHit ? 'bg-amber-500/5' : 'bg-red-500/5'}`}>
+                        <div className="text-xs font-medium mb-2 flex items-center gap-1" style={{ color: dirHit ? '#34d399' : '#f87171' }}>
                           <Trophy className="w-3 h-3" />实际赛果
                         </div>
-                        <div className={`text-sm font-bold mb-1 ${getResultColor(match.actual_result)}`}>
-                          {match.result_label} ✅
-                        </div>
-                        <div className="text-xs text-gray-500 mb-1">最终比分</div>
-                        <div className={`text-base font-mono font-bold ${scoreHit ? 'text-amber-400' : 'text-white'}`}>
-                          {match.actual_score}
-                        </div>
-                        <div className="text-xs text-gray-500 mt-1">
-                          {scoreHit ? (
-                            <span className="text-amber-400">比分命中 🎯</span>
-                          ) : (
-                            <span className="text-gray-500">比分未中</span>
-                          )}
+                        <div className="space-y-1.5 text-xs">
+                          <div>
+                            <div className="text-gray-500 text-[11px] mb-0.5">全场比分</div>
+                            <div className={`text-base font-mono font-bold ${scoreHit ? 'text-amber-400' : 'text-white'}`}>
+                              {match.actual_score}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-gray-500 text-[11px] mb-0.5">半场比分</div>
+                            <div className="font-mono text-gray-400">{match.half_score || '-'}</div>
+                          </div>
+                          <div>
+                            <div className="text-gray-500 text-[11px] mb-0.5">赛果</div>
+                            <div className={`font-medium ${getResultColor(match.actual_result)}`}>
+                              {match.result_label}
+                            </div>
+                          </div>
+                          <div className="grid grid-cols-2 gap-1 text-[11px]">
+                            <div>
+                              <div className="text-gray-500">SPF开奖</div>
+                              <div className="text-gray-300 font-mono">{match.spf_result_detail || '-'}</div>
+                            </div>
+                            <div>
+                              <div className="text-gray-500">RSPF开奖</div>
+                              <div className="text-gray-300 font-mono">{match.rspf_result_detail || '-'}</div>
+                            </div>
+                          </div>
                         </div>
                       </div>
+                    </div>
+
+                    {/* 底部总结栏 */}
+                    <div className="px-3 py-1.5 border-t border-[#2d3748] bg-[#0f0f1a]/50 flex items-center gap-3 text-[11px] text-gray-400">
+                      <span>方向：{match.direction_hit_label}</span>
+                      <span>比分：{match.score_hit_label}</span>
+                      <span className="flex-1 text-right text-gray-500 truncate">
+                        {match.poisson_vs_actual || ''}
+                      </span>
                     </div>
                   </div>
                 );
