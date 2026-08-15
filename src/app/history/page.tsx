@@ -73,7 +73,7 @@ export default function HistoryPage() {
   const fetchHistory = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/history', { cache: 'no-store' });
+      const res = await fetch('/data/history_records.json', { cache: 'no-store' });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const json = await res.json();
       if (json && Array.isArray(json.days) && json.days.length > 0) {
