@@ -1,0 +1,2032 @@
+{
+  "date": "2026-08-15",
+  "total": 27,
+  "bizhongge_pass": 10,
+  "matches": [
+    {
+      "match_no": "周六001",
+      "league": "日职",
+      "home_team": "鹿岛鹿角",
+      "away_team": "名古屋鲸",
+      "match_time": "08-15 17:00",
+      "spf_odds": "1.73/3.38/3.92",
+      "rspf_odds": "3.45/3.38/1.84",
+      "handicap": -1.0,
+      "poisson": {
+        "lambda_h": 1.73,
+        "lambda_a": 1.06,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "11.3%"
+          },
+          {
+            "score": "1:0",
+            "prob": "10.6%"
+          },
+          {
+            "score": "2:1",
+            "prob": "9.7%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 2,
+        "star_name": "白银",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.8857
+      },
+      "bizhongge": {
+        "pass_count": 4,
+        "total": 5,
+        "verdict": "推荐",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.93",
+            "passed": true
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让-1.0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.38",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=1.73",
+            "passed": true
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.886",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "中",
+        "top_scores": [
+          "1:1",
+          "1:0"
+        ]
+      }
+    },
+    {
+      "match_no": "周六002",
+      "league": "日乙",
+      "home_team": "秋田闪电",
+      "away_team": "富山胜利",
+      "match_time": "08-15 17:00",
+      "spf_odds": "2.85/2.85/2.34",
+      "rspf_odds": "1.4/4.0/6.05",
+      "handicap": 1.0,
+      "poisson": {
+        "lambda_h": 1.07,
+        "lambda_a": 1.21,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "13.2%"
+          },
+          {
+            "score": "0:1",
+            "prob": "12.4%"
+          },
+          {
+            "score": "1:0",
+            "prob": "11.0%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "客胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8857
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.24",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF客 vs 让1.0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=2.85",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.34",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.886",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "客胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "0:1"
+        ]
+      }
+    },
+    {
+      "match_no": "周六003",
+      "league": "日职",
+      "home_team": "浦和红钻",
+      "away_team": "广岛三箭",
+      "match_time": "08-15 18:00",
+      "spf_odds": "1.81/3.6/3.3",
+      "rspf_odds": "1.77/3.5/3.6",
+      "handicap": -1.0,
+      "poisson": {
+        "lambda_h": 1.69,
+        "lambda_a": 1.2,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "11.3%"
+          },
+          {
+            "score": "2:1",
+            "prob": "9.5%"
+          },
+          {
+            "score": "1:0",
+            "prob": "9.4%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 2,
+        "star_name": "白银",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8824
+      },
+      "bizhongge": {
+        "pass_count": 3,
+        "total": 5,
+        "verdict": "可关注",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.78",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让-1.0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.60",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=1.81",
+            "passed": true
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.882",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "中",
+        "top_scores": [
+          "1:1",
+          "2:1"
+        ]
+      }
+    },
+    {
+      "match_no": "周六004",
+      "league": "日职",
+      "home_team": "神户胜利",
+      "away_team": "东京FC",
+      "match_time": "08-15 18:00",
+      "spf_odds": "2.03/3.12/3.16",
+      "rspf_odds": "4.9/3.7/1.53",
+      "handicap": 1.0,
+      "poisson": {
+        "lambda_h": 1.45,
+        "lambda_a": 1.11,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "12.4%"
+          },
+          {
+            "score": "1:0",
+            "prob": "11.2%"
+          },
+          {
+            "score": "2:1",
+            "prob": "9.0%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.8853
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.52",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让1.0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.12",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.03",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.885",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "1:0"
+        ]
+      }
+    },
+    {
+      "match_no": "周六005",
+      "league": "韩职",
+      "home_team": "首尔FC",
+      "away_team": "大田市民",
+      "match_time": "08-15 18:30",
+      "spf_odds": "2.04/3.25/3.02",
+      "rspf_odds": "3.75/3.55/1.72",
+      "handicap": -1.0,
+      "poisson": {
+        "lambda_h": 1.45,
+        "lambda_a": 1.15,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "12.4%"
+          },
+          {
+            "score": "1:0",
+            "prob": "10.7%"
+          },
+          {
+            "score": "2:1",
+            "prob": "9.0%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.8857
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.52",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让-1.0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.25",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.04",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.886",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "1:0"
+        ]
+      }
+    },
+    {
+      "match_no": "周六006",
+      "league": "韩职",
+      "home_team": "光州FC",
+      "away_team": "浦项制铁",
+      "match_time": "08-15 18:30",
+      "spf_odds": "2.07/3.0/3.2",
+      "rspf_odds": "1.65/3.6/4.05",
+      "handicap": -1.0,
+      "poisson": {
+        "lambda_h": 1.43,
+        "lambda_a": 1.1,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "12.5%"
+          },
+          {
+            "score": "1:0",
+            "prob": "11.4%"
+          },
+          {
+            "score": "2:1",
+            "prob": "9.0%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8858
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.49",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让-1.0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.00",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.07",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.886",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "1:0"
+        ]
+      }
+    },
+    {
+      "match_no": "周六007",
+      "league": "德乙",
+      "home_team": "柏林赫塔",
+      "away_team": "海登海姆",
+      "match_time": "08-15 21:30",
+      "spf_odds": "2.1/3.3/2.85",
+      "rspf_odds": "2.1/3.3/2.85",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.43,
+        "lambda_a": 1.2,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "12.4%"
+          },
+          {
+            "score": "1:0",
+            "prob": "10.3%"
+          },
+          {
+            "score": "2:1",
+            "prob": "8.8%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8849
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.49",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.30",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.10",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.885",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "1:0"
+        ]
+      }
+    },
+    {
+      "match_no": "周六008",
+      "league": "英冠",
+      "home_team": "博尔顿",
+      "away_team": "普雷斯顿",
+      "match_time": "08-15 22:00",
+      "spf_odds": "2.35/3.1/2.65",
+      "rspf_odds": "2.35/3.1/2.65",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.22,
+        "lambda_a": 1.13,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "13.2%"
+          },
+          {
+            "score": "1:0",
+            "prob": "11.6%"
+          },
+          {
+            "score": "0:1",
+            "prob": "10.8%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8885
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.31",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.10",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.35",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.889",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "1:0"
+        ]
+      }
+    },
+    {
+      "match_no": "周六009",
+      "league": "瑞超",
+      "home_team": "米亚尔比",
+      "away_team": "天狼星",
+      "match_time": "08-15 23:00",
+      "spf_odds": "1.85/3.4/3.4",
+      "rspf_odds": "1.85/3.4/3.4",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.67,
+        "lambda_a": 1.17,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "11.4%"
+          },
+          {
+            "score": "1:0",
+            "prob": "9.7%"
+          },
+          {
+            "score": "2:1",
+            "prob": "9.5%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 2,
+        "star_name": "白银",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8859
+      },
+      "bizhongge": {
+        "pass_count": 3,
+        "total": 5,
+        "verdict": "可关注",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.73",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.40",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=1.85",
+            "passed": true
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.886",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "中",
+        "top_scores": [
+          "1:1",
+          "1:0"
+        ]
+      }
+    },
+    {
+      "match_no": "周六010",
+      "league": "英冠",
+      "home_team": "诺维奇",
+      "away_team": "西布罗姆",
+      "match_time": "08-15 22:00",
+      "spf_odds": "2.2/3.2/2.8",
+      "rspf_odds": "2.2/3.2/2.8",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.39,
+        "lambda_a": 1.21,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "12.5%"
+          },
+          {
+            "score": "1:0",
+            "prob": "10.3%"
+          },
+          {
+            "score": "0:1",
+            "prob": "9.0%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8895
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.41",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.20",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.20",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.890",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "1:0"
+        ]
+      }
+    },
+    {
+      "match_no": "周六011",
+      "league": "挪超",
+      "home_team": "奥斯KFUM",
+      "away_team": "利勒斯特",
+      "match_time": "08-15 23:00",
+      "spf_odds": "2.4/3.3/2.45",
+      "rspf_odds": "2.4/3.3/2.45",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.21,
+        "lambda_a": 1.19,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "13.1%"
+          },
+          {
+            "score": "1:0",
+            "prob": "11.0%"
+          },
+          {
+            "score": "0:1",
+            "prob": "10.8%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8866
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.41",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.30",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.40",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.887",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "1:0"
+        ]
+      }
+    },
+    {
+      "match_no": "周六012",
+      "league": "荷甲",
+      "home_team": "威廉二世",
+      "away_team": "奈梅亨",
+      "match_time": "08-15 00:45",
+      "spf_odds": "2.5/3.3/2.35",
+      "rspf_odds": "2.5/3.3/2.35",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.18,
+        "lambda_a": 1.22,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "13.1%"
+          },
+          {
+            "score": "0:1",
+            "prob": "11.1%"
+          },
+          {
+            "score": "1:0",
+            "prob": "10.7%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "客胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.8861
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.42",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF客 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.30",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.35",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.886",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "客胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "0:1"
+        ]
+      }
+    },
+    {
+      "match_no": "周六013",
+      "league": "葡超",
+      "home_team": "阿尔维卡",
+      "away_team": "阿马多拉",
+      "match_time": "08-15 01:00",
+      "spf_odds": "2.15/3.1/2.95",
+      "rspf_odds": "2.15/3.1/2.95",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.41,
+        "lambda_a": 1.17,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "12.5%"
+          },
+          {
+            "score": "1:0",
+            "prob": "10.7%"
+          },
+          {
+            "score": "0:1",
+            "prob": "8.9%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8876
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.42",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.10",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.15",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.888",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "1:0"
+        ]
+      }
+    },
+    {
+      "match_no": "周六014",
+      "league": "芬超",
+      "home_team": "玛丽港",
+      "away_team": "塞伊奈",
+      "match_time": "08-15 01:00",
+      "spf_odds": "2.6/3.4/2.2",
+      "rspf_odds": "2.6/3.4/2.2",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.27,
+        "lambda_a": 1.39,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "12.3%"
+          },
+          {
+            "score": "0:1",
+            "prob": "9.7%"
+          },
+          {
+            "score": "1:0",
+            "prob": "8.8%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "客胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.8824
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.50",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF客 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.40",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.20",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.882",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "客胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "0:1"
+        ]
+      }
+    },
+    {
+      "match_no": "周六015",
+      "league": "沙职",
+      "home_team": "布赖合作",
+      "away_team": "赛哈海湾",
+      "match_time": "08-15 02:00",
+      "spf_odds": "1.65/3.5/4.2",
+      "rspf_odds": "1.65/3.5/4.2",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.92,
+        "lambda_a": 1.1,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "10.3%"
+          },
+          {
+            "score": "2:1",
+            "prob": "9.9%"
+          },
+          {
+            "score": "1:0",
+            "prob": "9.4%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 3,
+        "star_name": "黄金",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8851
+      },
+      "bizhongge": {
+        "pass_count": 4,
+        "total": 5,
+        "verdict": "推荐",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=1.08",
+            "passed": true
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.50",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=1.65",
+            "passed": true
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.885",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "高",
+        "top_scores": [
+          "1:1",
+          "2:1"
+        ]
+      }
+    },
+    {
+      "match_no": "周六016",
+      "league": "英冠",
+      "home_team": "谢菲联",
+      "away_team": "伯明翰",
+      "match_time": "08-15 02:45",
+      "spf_odds": "2.0/3.2/3.1",
+      "rspf_odds": "2.0/3.2/3.1",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.46,
+        "lambda_a": 1.13,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "12.4%"
+          },
+          {
+            "score": "1:0",
+            "prob": "11.0%"
+          },
+          {
+            "score": "2:1",
+            "prob": "9.0%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.881
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.54",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.20",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.00",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.881",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "1:0"
+        ]
+      }
+    },
+    {
+      "match_no": "周六017",
+      "league": "荷甲",
+      "home_team": "乌德勒支",
+      "away_team": "阿尔克马",
+      "match_time": "08-15 02:45",
+      "spf_odds": "2.55/3.4/2.25",
+      "rspf_odds": "2.55/3.4/2.25",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.17,
+        "lambda_a": 1.25,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "13.0%"
+          },
+          {
+            "score": "0:1",
+            "prob": "11.1%"
+          },
+          {
+            "score": "1:0",
+            "prob": "10.4%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "客胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.8844
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.49",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF客 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.40",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.25",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.884",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "客胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "0:1"
+        ]
+      }
+    },
+    {
+      "match_no": "周六018",
+      "league": "葡超",
+      "home_team": "维塞乌",
+      "away_team": "圣克拉拉",
+      "match_time": "08-15 03:15",
+      "spf_odds": "2.3/3.0/2.75",
+      "rspf_odds": "2.3/3.0/2.75",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.22,
+        "lambda_a": 1.1,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "13.2%"
+          },
+          {
+            "score": "1:0",
+            "prob": "12.0%"
+          },
+          {
+            "score": "0:1",
+            "prob": "10.8%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8836
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.29",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.00",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.30",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.884",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "1:0"
+        ]
+      }
+    },
+    {
+      "match_no": "周六019",
+      "league": "西甲",
+      "home_team": "阿拉维斯",
+      "away_team": "赫塔费",
+      "match_time": "08-15 03:30",
+      "spf_odds": "2.25/2.9/2.95",
+      "rspf_odds": "2.25/2.9/2.95",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.24,
+        "lambda_a": 1.05,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "13.2%"
+          },
+          {
+            "score": "1:0",
+            "prob": "12.5%"
+          },
+          {
+            "score": "0:1",
+            "prob": "10.7%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8863
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.32",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=2.90",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.25",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.886",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "1:0"
+        ]
+      }
+    },
+    {
+      "match_no": "周六020",
+      "league": "沙职",
+      "home_team": "吉达联合",
+      "away_team": "拉斯永恒",
+      "match_time": "08-15 02:00",
+      "spf_odds": "1.45/3.8/5.8",
+      "rspf_odds": "1.45/3.8/5.8",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 2.29,
+        "lambda_a": 0.98,
+        "top3": [
+          {
+            "score": "2:0",
+            "prob": "10.0%"
+          },
+          {
+            "score": "2:1",
+            "prob": "9.8%"
+          },
+          {
+            "score": "1:0",
+            "prob": "8.7%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 4,
+        "star_name": "铂金",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8887
+      },
+      "bizhongge": {
+        "pass_count": 4,
+        "total": 5,
+        "verdict": "推荐",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=1.78",
+            "passed": true
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.80",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=1.45",
+            "passed": true
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.889",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "高",
+        "top_scores": [
+          "2:0",
+          "2:1"
+        ]
+      }
+    },
+    {
+      "match_no": "周六021",
+      "league": "沙职",
+      "home_team": "利雅胜利",
+      "away_team": "穆拜征服",
+      "match_time": "08-15 02:00",
+      "spf_odds": "1.25/4.8/8.5",
+      "rspf_odds": "1.25/4.8/8.5",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 2.72,
+        "lambda_a": 0.82,
+        "top3": [
+          {
+            "score": "2:0",
+            "prob": "10.8%"
+          },
+          {
+            "score": "3:0",
+            "prob": "9.8%"
+          },
+          {
+            "score": "2:1",
+            "prob": "8.8%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 5,
+        "star_name": "钻石",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8881
+      },
+      "bizhongge": {
+        "pass_count": 4,
+        "total": 5,
+        "verdict": "推荐",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=2.96",
+            "passed": true
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=4.80",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=1.25",
+            "passed": true
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.888",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "高",
+        "top_scores": [
+          "2:0",
+          "3:0"
+        ]
+      }
+    },
+    {
+      "match_no": "周六022",
+      "league": "荷甲",
+      "home_team": "SBV精英",
+      "away_team": "埃因霍温",
+      "match_time": "08-15 02:45",
+      "spf_odds": "5.5/4.5/1.38",
+      "rspf_odds": "5.5/4.5/1.38",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.03,
+        "lambda_a": 2.36,
+        "top3": [
+          {
+            "score": "1:2",
+            "prob": "9.7%"
+          },
+          {
+            "score": "0:2",
+            "prob": "9.4%"
+          },
+          {
+            "score": "1:1",
+            "prob": "8.2%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "客胜",
+        "star": 4,
+        "star_name": "铂金",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.886
+      },
+      "bizhongge": {
+        "pass_count": 4,
+        "total": 5,
+        "verdict": "推荐",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=1.75",
+            "passed": true
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF客 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=4.50",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=1.38",
+            "passed": true
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.886",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "客胜",
+        "confidence": "高",
+        "top_scores": [
+          "1:2",
+          "0:2"
+        ]
+      }
+    },
+    {
+      "match_no": "周六023",
+      "league": "荷甲",
+      "home_team": "福图纳",
+      "away_team": "坎布尔",
+      "match_time": "08-15 02:45",
+      "spf_odds": "2.8/3.3/2.15",
+      "rspf_odds": "2.8/3.3/2.15",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.21,
+        "lambda_a": 1.41,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "12.4%"
+          },
+          {
+            "score": "0:1",
+            "prob": "10.2%"
+          },
+          {
+            "score": "1:0",
+            "prob": "8.8%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "客胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.8887
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.47",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF客 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.30",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.15",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.889",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "客胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "0:1"
+        ]
+      }
+    },
+    {
+      "match_no": "周六024",
+      "league": "西甲",
+      "home_team": "塞维利亚",
+      "away_team": "巴列卡诺",
+      "match_time": "08-15 03:30",
+      "spf_odds": "1.85/3.2/3.7",
+      "rspf_odds": "1.85/3.2/3.7",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.67,
+        "lambda_a": 1.1,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "11.5%"
+          },
+          {
+            "score": "1:0",
+            "prob": "10.5%"
+          },
+          {
+            "score": "2:1",
+            "prob": "9.6%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 2,
+        "star_name": "白银",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8902
+      },
+      "bizhongge": {
+        "pass_count": 3,
+        "total": 5,
+        "verdict": "可关注",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.78",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.20",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=1.85",
+            "passed": true
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.890",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "中",
+        "top_scores": [
+          "1:1",
+          "1:0"
+        ]
+      }
+    },
+    {
+      "match_no": "周六025",
+      "league": "葡超",
+      "home_team": "里奥阿维",
+      "away_team": "波尔图",
+      "match_time": "08-15 03:30",
+      "spf_odds": "4.8/3.6/1.57",
+      "rspf_odds": "4.8/3.6/1.57",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.01,
+        "lambda_a": 1.98,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "10.1%"
+          },
+          {
+            "score": "0:1",
+            "prob": "10.0%"
+          },
+          {
+            "score": "1:2",
+            "prob": "10.0%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "客胜",
+        "star": 3,
+        "star_name": "黄金",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.8904
+      },
+      "bizhongge": {
+        "pass_count": 4,
+        "total": 5,
+        "verdict": "推荐",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=1.33",
+            "passed": true
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF客 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.60",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=1.57",
+            "passed": true
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.890",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "客胜",
+        "confidence": "高",
+        "top_scores": [
+          "1:1",
+          "0:1"
+        ]
+      }
+    },
+    {
+      "match_no": "周六026",
+      "league": "巴甲",
+      "home_team": "弗鲁米嫩",
+      "away_team": "帕梅拉斯",
+      "match_time": "08-15 05:30",
+      "spf_odds": "2.7/2.9/2.4",
+      "rspf_odds": "2.7/2.9/2.4",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.11,
+        "lambda_a": 1.19,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "13.2%"
+          },
+          {
+            "score": "0:1",
+            "prob": "11.9%"
+          },
+          {
+            "score": "1:0",
+            "prob": "11.1%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "客胜",
+        "star": 1,
+        "star_name": "青铜",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.8835
+      },
+      "bizhongge": {
+        "pass_count": 2,
+        "total": 5,
+        "verdict": "观望",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.21",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF客 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=2.90",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=2.40",
+            "passed": false
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.883",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "客胜",
+        "confidence": "低",
+        "top_scores": [
+          "1:1",
+          "0:1"
+        ]
+      }
+    },
+    {
+      "match_no": "周六027",
+      "league": "美职",
+      "home_team": "盐湖城",
+      "away_team": "明尼苏达",
+      "match_time": "08-15 09:30",
+      "spf_odds": "1.9/3.4/3.2",
+      "rspf_odds": "1.9/3.4/3.2",
+      "handicap": 0,
+      "poisson": {
+        "lambda_h": 1.51,
+        "lambda_a": 1.11,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "12.2%"
+          },
+          {
+            "score": "1:0",
+            "prob": "11.0%"
+          },
+          {
+            "score": "2:1",
+            "prob": "9.2%"
+          }
+        ]
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 2,
+        "star_name": "白银",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8827
+      },
+      "bizhongge": {
+        "pass_count": 3,
+        "total": 5,
+        "verdict": "可关注",
+        "conditions": [
+          {
+            "name": "赔率离散度",
+            "detail": "σ=0.66",
+            "passed": false
+          },
+          {
+            "name": "让球一致性",
+            "detail": "SPF主 vs 让0",
+            "passed": true
+          },
+          {
+            "name": "平赔稳胆",
+            "detail": "平赔=3.40",
+            "passed": false
+          },
+          {
+            "name": "明确优势方",
+            "detail": "最低赔率=1.90",
+            "passed": true
+          },
+          {
+            "name": "返还率",
+            "detail": "RV=0.883",
+            "passed": true
+          }
+        ]
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "中",
+        "top_scores": [
+          "1:1",
+          "1:0"
+        ]
+      }
+    }
+  ]
+}
