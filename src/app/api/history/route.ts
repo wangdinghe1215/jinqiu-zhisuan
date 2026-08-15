@@ -15,7 +15,20 @@ const LOCAL_JSON_PATH = path.join(
 const EMPTY_DATA = { days: [] };
 
 export async function GET() {
-  // 先尝试远程 fetch
+  // 优先读取本地静态 JSON 文件
+  try {
+    if (fs.existsSync(LOCAL_JSON_PATH)) {
+      const raw = fs.readFileSync(LOCAL_JSON_PATH, 'utf-8');
+      const data = JSON.parse(raw);
+      if (data && Array.isArray(data.days)) {
+        return NextResponse.json(data);
+      }
+    }
+  } catch {
+    // 本地读取失败，继续尝试远程
+  }
+
+  // 降级：远程 fetch
   try {
     const res = await fetch(REMOTE_URL, {
       redirect: 'follow',
@@ -31,20 +44,7 @@ export async function GET() {
       }
     }
   } catch {
-    // 远程失败，继续尝试本地
-  }
-
-  // 降级：本地 JSON 文件
-  try {
-    if (fs.existsSync(LOCAL_JSON_PATH)) {
-      const raw = fs.readFileSync(LOCAL_JSON_PATH, 'utf-8');
-      const data = JSON.parse(raw);
-      if (data && Array.isArray(data.days)) {
-        return NextResponse.json(data);
-      }
-    }
-  } catch {
-    // 本地也失败，返回空数据
+    // 远程也失败，返回空数据
   }
 
   return NextResponse.json(EMPTY_DATA);
