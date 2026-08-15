@@ -1,31 +1,19 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import historyData from '../../../../public/data/history_records.json';
 
 export const dynamic = 'force-dynamic';
 
 const REMOTE_URL = 'https://www.coze.cn/s/Hq1SsX46pcs/';
-const LOCAL_JSON_PATH = path.join(
-  process.cwd(),
-  'public',
-  'data',
-  'history_records.json'
-);
-
 const EMPTY_DATA = { days: [] };
 
+function isValidData(data: unknown): data is { days: unknown[] } {
+  return !!data && typeof data === 'object' && data !== null && 'days' in data && Array.isArray((data as { days: unknown }).days);
+}
+
 export async function GET() {
-  // 优先读取本地静态 JSON 文件
-  try {
-    if (fs.existsSync(LOCAL_JSON_PATH)) {
-      const raw = fs.readFileSync(LOCAL_JSON_PATH, 'utf-8');
-      const data = JSON.parse(raw);
-      if (data && Array.isArray(data.days)) {
-        return NextResponse.json(data);
-      }
-    }
-  } catch {
-    // 本地读取失败，继续尝试远程
+  // 优先用本地静态 import 的 JSON（构建时打包，路径最可靠）
+  if (isValidData(historyData)) {
+    return NextResponse.json(historyData);
   }
 
   // 降级：远程 fetch
@@ -39,12 +27,12 @@ export async function GET() {
     });
     if (res.ok) {
       const data = await res.json();
-      if (data && Array.isArray(data.days)) {
+      if (isValidData(data)) {
         return NextResponse.json(data);
       }
     }
   } catch {
-    // 远程也失败，返回空数据
+    // 远程也失败
   }
 
   return NextResponse.json(EMPTY_DATA);
