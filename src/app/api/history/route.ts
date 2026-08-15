@@ -4,7 +4,7 @@ import path from 'path';
 
 export const dynamic = 'force-dynamic';
 
-const REMOTE_URL = 'https://www.coze.cn/s/jNEvA7DNNHc/';
+const REMOTE_URL = 'https://www.coze.cn/s/Hq1SsX46pcs/';
 const LOCAL_JSON_PATH = path.join(
   process.cwd(),
   'public',
