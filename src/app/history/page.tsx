@@ -16,8 +16,6 @@ import {
   Wallet,
   AlertTriangle,
   BarChart3,
-  ChevronDown,
-  ChevronUp,
   Clock,
   Activity,
 } from 'lucide-react';
@@ -161,7 +159,6 @@ export default function HistoryPage() {
   const [loading, setLoading] = useState(true);
   const [trackLoading, setTrackLoading] = useState(true);
   const [selectedIdx, setSelectedIdx] = useState(0);
-  const [expandedDays, setExpandedDays] = useState<Record<string, boolean>>({});
 
   // ============== 数据加载 ==============
   useEffect(() => {
@@ -197,11 +194,6 @@ export default function HistoryPage() {
       const json = await res.json();
       if (json && typeof json === 'object') {
         setTrackData(json);
-        // 默认展开第一天
-        const dates = Object.keys(json).sort((a, b) => b.localeCompare(a));
-        if (dates.length > 0) {
-          setExpandedDays({ [dates[0]]: true });
-        }
       }
     } catch (e) {
       console.error('fetch tracking failed:', e);
@@ -242,19 +234,22 @@ export default function HistoryPage() {
   const currentDay = days[selectedIdx] || null;
 
   const cumulative = useMemo(() => {
-    if (days.length === 0) {
-      return { total: 0, dir_hits: 0, dir_rate: '0%', score_hits: 0, score_rate: '0%' };
+    // 改动4: 累计统计从 2026-08-13 开始
+    const validDays = (days || []).filter((d) => (d.date || '') >= '2026-08-13');
+    if (validDays.length === 0) {
+      return { total: 0, dir_hits: 0, dir_rate: '0%', score_hits: 0, score_rate: '0%', days: 0 };
     }
-    const total = days.reduce((s, d) => s + (d.direction_total || d.total || 0), 0);
-    const dh = days.reduce((s, d) => s + (d.direction_hits || 0), 0);
-    const st = days.reduce((s, d) => s + (d.score_total || d.total || 0), 0);
-    const sh = days.reduce((s, d) => s + (d.score_hits || 0), 0);
+    const total = validDays.reduce((s, d) => s + (d.direction_total || d.total || 0), 0);
+    const dh = validDays.reduce((s, d) => s + (d.direction_hits || 0), 0);
+    const st = validDays.reduce((s, d) => s + (d.score_total || d.total || 0), 0);
+    const sh = validDays.reduce((s, d) => s + (d.score_hits || 0), 0);
     return {
       total,
       dir_hits: dh,
       dir_rate: total > 0 ? ((dh / total) * 100).toFixed(1) + '%' : '0%',
       score_hits: sh,
       score_rate: st > 0 ? ((sh / st) * 100).toFixed(1) + '%' : '0%',
+      days: validDays.length,
     };
   }, [days]);
 
@@ -291,10 +286,24 @@ export default function HistoryPage() {
       });
       return { total, hits, rate: total > 0 ? ((hits / total) * 100).toFixed(1) + '%' : '-' };
     };
+    // 改动3: 刻舟求剑维度统计，从 dimension5 读取
+    const countD5 = () => {
+      let total = 0;
+      let hits = 0;
+      matches.forEach((m) => {
+        const d5 = (m as any).dimension5;
+        if (d5 && d5.is_hit !== null && d5.is_hit !== undefined) {
+          total++;
+          if (d5.is_hit) hits++;
+        }
+      });
+      return { total, hits, rate: total > 0 ? ((hits / total) * 100).toFixed(1) + '%' : '-' };
+    };
     return {
       poisson: count((m) => poissonDirFromScores(m.top3_scores)),
       v42: count((m) => m.recommended_direction),
       xiaofeng: count((m) => m.xf_direction),
+      bizhongge: countD5(),
     };
   }, [currentDay]);
 
@@ -330,23 +339,18 @@ export default function HistoryPage() {
     return { totalDays, totalMatches, totalHits, rate };
   }, [trackDays]);
 
-  const toggleDay = (date: string) => {
-    setExpandedDays((prev) => ({ ...prev, [date]: !prev[date] }));
-  };
+  const [selectedTrackDate, setSelectedTrackDate] = useState<string | null>(null);
 
-  const getDayColor = (status: string, rate: number) => {
-    if (status === 'pending') return 'border-gray-600 bg-gray-800/30';
-    if (rate >= 60) return 'border-emerald-500/40 bg-emerald-500/5';
-    if (rate >= 30) return 'border-orange-500/40 bg-orange-500/5';
-    return 'border-red-500/40 bg-red-500/5';
-  };
+  // 改动5: 默认选中最新一天
+  useEffect(() => {
+    if (trackDays.length > 0 && !selectedTrackDate) {
+      setSelectedTrackDate(trackDays[0].date);
+    }
+  }, [trackDays, selectedTrackDate]);
 
-  const getDayTextColor = (status: string, rate: number) => {
-    if (status === 'pending') return 'text-gray-400';
-    if (rate >= 60) return 'text-emerald-400';
-    if (rate >= 30) return 'text-orange-400';
-    return 'text-red-400';
-  };
+  const selectedTrackDay = useMemo(() => {
+    return trackDays.find((d) => d.date === selectedTrackDate) || null;
+  }, [trackDays, selectedTrackDate]);
 
   const dirLabel = (dir: string) => {
     if (dir === 'home') return '主胜';
@@ -469,130 +473,172 @@ export default function HistoryPage() {
                 <p className="text-lg">暂无追踪数据</p>
               </div>
             ) : (
-              <div className="space-y-2">
-                {trackDays.map((day) => {
-                  const expanded = expandedDays[day.date];
-                  const status = day.stats?.status || 'done';
-                  const rate = day.stats?.rate || 0;
-                  const total = day.stats?.total || day.matches?.length || 0;
-                  const hits = day.stats?.hits || 0;
-                  return (
-                    <div
-                      key={day.date}
-                      className={`rounded-xl border overflow-hidden transition-colors ${getDayColor(status, rate)}`}
-                    >
-                      {/* 卡片头部 */}
-                      <div
-                        className="px-3 py-2.5 flex items-center gap-2 cursor-pointer"
-                        onClick={() => toggleDay(day.date)}
+              <div className="space-y-3">
+                {/* 改动5: 横向日期选择按钮 */}
+                <div className="flex gap-2 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-thin">
+                  {trackDays.map((day) => {
+                    const status = day.stats?.status || 'done';
+                    const rate = day.stats?.rate || 0;
+                    const total = day.stats?.total || day.matches?.length || 0;
+                    const hits = day.stats?.hits || 0;
+                    const isActive = selectedTrackDate === day.date;
+                    const colorCls =
+                      status === 'pending'
+                        ? 'border-gray-600 bg-gray-800/50 text-gray-400'
+                        : rate >= 60
+                        ? 'border-emerald-500/50 bg-emerald-500/10 text-emerald-400'
+                        : rate >= 30
+                        ? 'border-orange-500/50 bg-orange-500/10 text-orange-400'
+                        : 'border-red-500/50 bg-red-500/10 text-red-400';
+                    const activeCls = isActive
+                      ? 'ring-2 ring-cyan-400 scale-[1.02] bg-[#1a1a2e]'
+                      : '';
+                    const monthDay = day.date.slice(5).replace('-', '/');
+                    return (
+                      <button
+                        key={day.date}
+                        onClick={() => setSelectedTrackDate(day.date)}
+                        className={`flex-shrink-0 px-3 py-2 rounded-xl border text-left min-w-[90px] transition-all ${colorCls} ${activeCls} hover:border-cyan-400/50`}
                       >
-                        <div className="flex items-center gap-2 flex-1 min-w-0">
-                          <span className="text-sm font-bold text-white">
-                            {day.date}
-                          </span>
-                          <span className="text-xs text-gray-400">{day.wd}</span>
+                        <div className="text-xs text-gray-400 font-medium">{day.wd}</div>
+                        <div className="text-sm font-bold">{monthDay}</div>
+                        <div className="text-[10px] mt-0.5 tabular-nums">
+                          {hits}/{total} · {rate}%
                         </div>
-                        <div className="flex items-center gap-2 flex-shrink-0">
-                          <span className="text-xs text-gray-400">
-                            {hits}/{total}
-                          </span>
-                          <span className={`text-xs font-bold tabular-nums ${getDayTextColor(status, rate)}`}>
-                            {rate}%
-                          </span>
-                          {status === 'pending' ? (
-                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-600/40 text-gray-300">
-                              待回填
-                            </span>
-                          ) : (
-                            <span className={`text-[10px] px-1.5 py-0.5 rounded ${
-                              rate >= 60 ? 'bg-emerald-500/20 text-emerald-400' :
-                              rate >= 30 ? 'bg-orange-500/20 text-orange-400' :
-                              'bg-red-500/20 text-red-400'
-                            }`}>
-                              已完成
-                            </span>
-                          )}
-                          {expanded ? (
-                            <ChevronUp className="w-4 h-4 text-gray-400" />
-                          ) : (
-                            <ChevronDown className="w-4 h-4 text-gray-400" />
-                          )}
-                        </div>
-                      </div>
+                      </button>
+                    );
+                  })}
+                </div>
 
-                      {/* 展开的比赛列表 */}
-                      {expanded && (
-                        <div className="border-t border-[#2d3748] overflow-x-auto">
-                          <table className="w-full text-xs min-w-[640px]">
-                            <thead className="bg-[#0f0f1a]/50">
-                              <tr className="text-gray-400 text-[11px]">
-                                <th className="px-2 py-2 text-left font-medium">编号</th>
-                                <th className="px-2 py-2 text-left font-medium">联赛</th>
-                                <th className="px-2 py-2 text-left font-medium">对阵</th>
-                                <th className="px-2 py-2 text-center font-medium">SPF赔率</th>
-                                <th className="px-2 py-2 text-center font-medium">预测方向</th>
-                                <th className="px-2 py-2 text-center font-medium">比分</th>
-                                <th className="px-2 py-2 text-center font-medium">结果</th>
-                                <th className="px-2 py-2 text-center font-medium">命中</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {day.matches.map((m, i) => {
-                                const isHit = m.hit === true;
-                                const isPending = m.hit === null || m.hit === undefined;
-                                return (
-                                  <tr
-                                    key={m.mn || i}
-                                    className={`border-t border-[#2d3748]/50 ${
-                                      isHit ? 'bg-emerald-500/5' : ''
-                                    }`}
-                                  >
-                                    <td className="px-2 py-2 font-mono text-gray-300">{m.mn}</td>
-                                    <td className="px-2 py-2 text-gray-400">{m.lg}</td>
-                                    <td className="px-2 py-2">
-                                      <span className="text-red-400">{m.ht}</span>
-                                      <span className="text-gray-600 mx-1">vs</span>
-                                      <span className="text-blue-400">{m.at}</span>
-                                    </td>
-                                    <td className="px-2 py-2 text-center font-mono tabular-nums text-gray-300">
-                                      {m.spf}
-                                    </td>
-                                    <td className="px-2 py-2 text-center">
-                                      <span className={`px-2 py-0.5 rounded text-[11px] font-medium ${
-                                        m.dir === 'home' ? 'bg-red-500/20 text-red-400' :
-                                        m.dir === 'away' ? 'bg-blue-500/20 text-blue-400' :
-                                        'bg-yellow-500/20 text-yellow-400'
-                                      }`}>
-                                        {dirLabel(m.dir)}
-                                      </span>
-                                    </td>
-                                    <td className="px-2 py-2 text-center font-mono text-white">
-                                      {m.score || '-'}
-                                    </td>
-                                    <td className="px-2 py-2 text-center">
-                                      <span className={getResultColor(m.result)}>
-                                        {resultLabel(m.result)}
-                                      </span>
-                                    </td>
-                                    <td className="px-2 py-2 text-center">
-                                      {isPending ? (
-                                        <span className="text-gray-400">⏳</span>
-                                      ) : isHit ? (
-                                        <span className="text-emerald-400">✅</span>
-                                      ) : (
-                                        <span className="text-red-400">❌</span>
-                                      )}
-                                    </td>
-                                  </tr>
-                                );
-                              })}
-                            </tbody>
-                          </table>
-                        </div>
+                {/* 选中日期的比赛详情 */}
+                {selectedTrackDay ? (
+                  <div
+                    className={`rounded-xl border overflow-hidden ${
+                      selectedTrackDay.stats?.status === 'pending'
+                        ? 'border-gray-600 bg-gray-800/20'
+                        : (selectedTrackDay.stats?.rate || 0) >= 60
+                        ? 'border-emerald-500/40 bg-emerald-500/5'
+                        : (selectedTrackDay.stats?.rate || 0) >= 30
+                        ? 'border-orange-500/40 bg-orange-500/5'
+                        : 'border-red-500/40 bg-red-500/5'
+                    }`}
+                  >
+                    <div className="px-3 py-2 flex items-center gap-2 border-b border-[#2d3748]">
+                      <Calendar className="w-4 h-4 text-cyan-400" />
+                      <span className="text-sm font-bold text-white">
+                        {selectedTrackDay.date}
+                      </span>
+                      <span className="text-xs text-gray-400">{selectedTrackDay.wd}</span>
+                      <div className="flex-1" />
+                      <span className="text-xs text-gray-400">
+                        {selectedTrackDay.stats?.hits || 0}/
+                        {selectedTrackDay.stats?.total || selectedTrackDay.matches?.length || 0}
+                      </span>
+                      <span
+                        className={`text-xs font-bold tabular-nums ${
+                          selectedTrackDay.stats?.status === 'pending'
+                            ? 'text-gray-400'
+                            : (selectedTrackDay.stats?.rate || 0) >= 60
+                            ? 'text-emerald-400'
+                            : (selectedTrackDay.stats?.rate || 0) >= 30
+                            ? 'text-orange-400'
+                            : 'text-red-400'
+                        }`}
+                      >
+                        {selectedTrackDay.stats?.rate || 0}%
+                      </span>
+                      {selectedTrackDay.stats?.status === 'pending' ? (
+                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-600/40 text-gray-300">
+                          待回填
+                        </span>
+                      ) : (
+                        <span
+                          className={`text-[10px] px-1.5 py-0.5 rounded ${
+                            (selectedTrackDay.stats?.rate || 0) >= 60
+                              ? 'bg-emerald-500/20 text-emerald-400'
+                              : (selectedTrackDay.stats?.rate || 0) >= 30
+                              ? 'bg-orange-500/20 text-orange-400'
+                              : 'bg-red-500/20 text-red-400'
+                          }`}
+                        >
+                          已完成
+                        </span>
                       )}
                     </div>
-                  );
-                })}
+
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-xs min-w-[640px]">
+                        <thead className="bg-[#0f0f1a]/50">
+                          <tr className="text-gray-400 text-[11px]">
+                            <th className="px-2 py-2 text-left font-medium">编号</th>
+                            <th className="px-2 py-2 text-left font-medium">联赛</th>
+                            <th className="px-2 py-2 text-left font-medium">对阵</th>
+                            <th className="px-2 py-2 text-center font-medium">SPF赔率</th>
+                            <th className="px-2 py-2 text-center font-medium">预测方向</th>
+                            <th className="px-2 py-2 text-center font-medium">比分</th>
+                            <th className="px-2 py-2 text-center font-medium">结果</th>
+                            <th className="px-2 py-2 text-center font-medium">命中</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {selectedTrackDay.matches.map((m, i) => {
+                            const isHit = m.hit === true;
+                            const isPending = m.hit === null || m.hit === undefined;
+                            return (
+                              <tr
+                                key={m.mn || i}
+                                className={`border-t border-[#2d3748]/50 ${
+                                  isHit ? 'bg-emerald-500/5' : ''
+                                }`}
+                              >
+                                <td className="px-2 py-2 font-mono text-gray-300">{m.mn}</td>
+                                <td className="px-2 py-2 text-gray-400">{m.lg}</td>
+                                <td className="px-2 py-2">
+                                  <span className="text-red-400">{m.ht}</span>
+                                  <span className="text-gray-600 mx-1">vs</span>
+                                  <span className="text-blue-400">{m.at}</span>
+                                </td>
+                                <td className="px-2 py-2 text-center font-mono tabular-nums text-gray-300">
+                                  {m.spf}
+                                </td>
+                                <td className="px-2 py-2 text-center">
+                                  <span
+                                    className={`px-2 py-0.5 rounded text-[11px] font-medium ${
+                                      m.dir === 'home'
+                                        ? 'bg-red-500/20 text-red-400'
+                                        : m.dir === 'away'
+                                        ? 'bg-blue-500/20 text-blue-400'
+                                        : 'bg-yellow-500/20 text-yellow-400'
+                                    }`}
+                                  >
+                                    {dirLabel(m.dir)}
+                                  </span>
+                                </td>
+                                <td className="px-2 py-2 text-center font-mono text-white">
+                                  {m.score || '-'}
+                                </td>
+                                <td className="px-2 py-2 text-center">
+                                  <span className={getResultColor(m.result)}>
+                                    {resultLabel(m.result)}
+                                  </span>
+                                </td>
+                                <td className="px-2 py-2 text-center">
+                                  {isPending ? (
+                                    <span className="text-gray-400">⏳</span>
+                                  ) : isHit ? (
+                                    <span className="text-emerald-400">✅</span>
+                                  ) : (
+                                    <span className="text-red-400">❌</span>
+                                  )}
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                ) : null}
               </div>
             )}
           </div>
@@ -693,7 +739,7 @@ export default function HistoryPage() {
                     <BarChart3 className="w-4 h-4 text-cyan-400" />
                     四维对比命中率（当日）
                   </h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                  <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
                     <div className="p-2.5 bg-[#0f0f1a] rounded-lg border border-[#2d3748]">
                       <div className="text-xs text-gray-400 mb-1">📈 泊松分析</div>
                       <div className="text-lg font-bold text-emerald-400 tabular-nums">
@@ -719,6 +765,16 @@ export default function HistoryPage() {
                       </div>
                       <div className="text-xs text-gray-500">
                         {dimensionStats.xiaofeng.hits} / {dimensionStats.xiaofeng.total} 场
+                      </div>
+                    </div>
+                    {/* 改动3: 新增刻舟求剑维度框，橙色主题 */}
+                    <div className="p-2.5 bg-[#0f0f1a] rounded-lg border border-orange-500/30">
+                      <div className="text-xs text-orange-400 mb-1">🗡️ 刻舟求剑</div>
+                      <div className="text-lg font-bold text-orange-400 tabular-nums">
+                        {dimensionStats.bizhongge.rate}
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        {dimensionStats.bizhongge.hits} / {dimensionStats.bizhongge.total} 场
                       </div>
                     </div>
                     <div className="p-2.5 bg-[#0f0f1a] rounded-lg border border-[#2d3748]">
@@ -1025,7 +1081,7 @@ export default function HistoryPage() {
                 <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-xl border border-emerald-500/20 p-4 mt-6">
                   <h3 className="font-semibold text-emerald-400 mb-3 flex items-center gap-2 text-sm">
                     <TrendingUp className="w-4 h-4" />
-                    累计统计（{days.length} 天）
+                    累计统计（{cumulative.days} 天 · 8/13起）
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                     <div>
