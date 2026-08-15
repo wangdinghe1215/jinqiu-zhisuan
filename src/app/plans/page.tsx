@@ -1,448 +1,404 @@
-'use client';
+"use client";
 
-import { useState, useMemo } from 'react';
-import { ArrowLeft, Wallet, Star, TrendingUp, Calendar, Trophy, AlertTriangle, ChevronDown, ChevronUp, Target } from 'lucide-react';
-import Link from 'next/link';
+import { useState, useEffect, useMemo } from "react";
+import { ArrowLeft, TrendingUp, Target, CalendarDays, Trophy, AlertCircle } from "lucide-react";
+import Link from "next/link";
 
 interface PlanMatch {
-  match_no: string;
-  league: string;
-  home_team: string;
-  away_team: string;
-  match_time: string;
-  recommended_direction: string;
-  recommended_score: string;
-  confidence: number;
-  star_level: string;
-  allocation: number;
-  odds: number;
-  analysis: string;
+  mn: string;
+  lg: string;
+  ht: string;
+  at: string;
+  tm: string;
+  spf?: { home: number; draw: number; away: number };
+  rspf?: { home: number; draw: number; away: number };
+  hcp?: number;
+  dir?: string | null;
+  top3?: string[] | null;
+  score?: string | null;
+  result?: string | null;
+  dir_hit?: boolean | null;
+  score_hit?: boolean | null;
+  v42_dir?: string | null;
+  v42_star?: number | null;
+  xf_dir?: string | null;
+  xf_conf?: string | null;
+  bzg_pass?: boolean | null;
+  poi_top3?: string[] | null;
 }
 
-interface DailyPlan {
+interface PlanDay {
   date: string;
-  total_matches: number;
-  total_allocation: number;
-  expected_return: number;
   matches: PlanMatch[];
+  stats: {
+    total: number;
+    dir_hits: number;
+    dir_rate: number;
+    status: string;
+  };
 }
 
-// 今日静态数据（硬编码，不再依赖远程 fetch）
-const PLANS_DATA: DailyPlan[] = (() => {
-  const today = new Date();
-  const y = today.getFullYear();
-  const m = String(today.getMonth() + 1).padStart(2, '0');
-  const d = String(today.getDate()).padStart(2, '0');
-  const todayStr = `${y}-${m}-${d}`;
+const WEEKDAY_MAP: Record<string, string> = {
+  "0": "周日",
+  "1": "周一",
+  "2": "周二",
+  "3": "周三",
+  "4": "周四",
+  "5": "周五",
+  "6": "周六",
+};
 
-  const matches: PlanMatch[] = [
-    {
-      match_no: '周四001',
-      league: '竞彩',
-      home_team: '艾卜哈',
-      away_team: '拉斯决心',
-      match_time: '00:15',
-      recommended_direction: '主胜',
-      recommended_score: '待分析',
-      confidence: 65,
-      star_level: '⚙铁',
-      allocation: 10,
-      odds: 2.42,
-      analysis: '基于赔率的初步分析，待深入计算后更新。',
-    },
-    {
-      match_no: '周四002',
-      league: '竞彩',
-      home_team: '克拉约瓦',
-      away_team: '库奥皮奥',
-      match_time: '01:00',
-      recommended_direction: '主胜',
-      recommended_score: '待分析',
-      confidence: 60,
-      star_level: '⚙铁',
-      allocation: 10,
-      odds: 1.33,
-      analysis: '基于赔率的初步分析，待深入计算后更新。',
-    },
-    {
-      match_no: '周四003',
-      league: '竞彩',
-      home_team: '帕福斯',
-      away_team: '萨尔茨堡',
-      match_time: '01:00',
-      recommended_direction: '客胜',
-      recommended_score: '待分析',
-      confidence: 65,
-      star_level: '⚙铁',
-      allocation: 10,
-      odds: 2.06,
-      analysis: '基于赔率的初步分析，待深入计算后更新。',
-    },
-    {
-      match_no: '周四004',
-      league: '竞彩',
-      home_team: '雷克维京',
-      away_team: '图恩',
-      match_time: '01:30',
-      recommended_direction: '主胜',
-      recommended_score: '待分析',
-      confidence: 65,
-      star_level: '⚙铁',
-      allocation: 10,
-      odds: 2.25,
-      analysis: '基于赔率的初步分析，待深入计算后更新。',
-    },
-    {
-      match_no: '周四005',
-      league: '竞彩',
-      home_team: '利雅青年',
-      away_team: '胡巴卡德',
-      match_time: '02:00',
-      recommended_direction: '客胜',
-      recommended_score: '待分析',
-      confidence: 60,
-      star_level: '⚙铁',
-      allocation: 10,
-      odds: 1.46,
-      analysis: '基于赔率的初步分析，待深入计算后更新。',
-    },
-    {
-      match_no: '周四006',
-      league: '竞彩',
-      home_team: '流浪者',
-      away_team: '比亚韦',
-      match_time: '02:30',
-      recommended_direction: '主胜',
-      recommended_score: '待分析',
-      confidence: 60,
-      star_level: '⚙铁',
-      allocation: 10,
-      odds: 1.39,
-      analysis: '基于赔率的初步分析，待深入计算后更新。',
-    },
-    {
-      match_no: '周四007',
-      league: '竞彩',
-      home_team: '安德莱',
-      away_team: '塞萨洛',
-      match_time: '02:30',
-      recommended_direction: '客胜',
-      recommended_score: '待分析',
-      confidence: 65,
-      star_level: '⚙铁',
-      allocation: 10,
-      odds: 2.25,
-      analysis: '基于赔率的初步分析，待深入计算后更新。',
-    },
-    {
-      match_no: '周四008',
-      league: '竞彩',
-      home_team: '哈茨',
-      away_team: '本菲卡',
-      match_time: '02:45',
-      recommended_direction: '客胜',
-      recommended_score: '待分析',
-      confidence: 60,
-      star_level: '⚙铁',
-      allocation: 10,
-      odds: 1.35,
-      analysis: '基于赔率的初步分析，待深入计算后更新。',
-    },
-    {
-      match_no: '周四009',
-      league: '竞彩',
-      home_team: '米拉索尔',
-      away_team: '基多体大',
-      match_time: '06:00',
-      recommended_direction: '主胜',
-      recommended_score: '待分析',
-      confidence: 65,
-      star_level: '⚙铁',
-      allocation: 10,
-      odds: 1.50,
-      analysis: '基于赔率的初步分析，待深入计算后更新。',
-    },
-    {
-      match_no: '周四010',
-      league: '竞彩',
-      home_team: '罗萨里奥',
-      away_team: '科林蒂安',
-      match_time: '08:30',
-      recommended_direction: '主胜',
-      recommended_score: '待分析',
-      confidence: 65,
-      star_level: '⚙铁',
-      allocation: 10,
-      odds: 2.08,
-      analysis: '基于赔率的初步分析，待深入计算后更新。',
-    },
-  ];
+function getWeekday(dateStr: string): string {
+  const d = new Date(dateStr + "T00:00:00");
+  return WEEKDAY_MAP[String(d.getDay())] || "";
+}
 
-  return [
-    {
-      date: todayStr,
-      total_matches: 10,
-      total_allocation: 100,
-      expected_return: 120,
-      matches,
-    },
-  ];
-})();
+function formatDateShort(dateStr: string): string {
+  const parts = dateStr.split("-");
+  return `${parseInt(parts[1])}/${parseInt(parts[2])}`;
+}
+
+function getRateColorClass(rate: number, status: string): string {
+  if (status === "pending") return "bg-gray-700/50 text-gray-400 border-gray-600";
+  if (rate >= 60) return "bg-emerald-500/20 text-emerald-400 border-emerald-500/50";
+  if (rate >= 30) return "bg-amber-500/20 text-amber-400 border-amber-500/50";
+  return "bg-red-500/20 text-red-400 border-red-500/50";
+}
+
+function getRateTextColor(rate: number, status: string): string {
+  if (status === "pending") return "text-gray-400";
+  if (rate >= 60) return "text-emerald-400";
+  if (rate >= 30) return "text-amber-400";
+  return "text-red-400";
+}
+
+function dirColor(dir?: string | null): string {
+  if (!dir) return "text-gray-500";
+  if (dir.includes("主")) return "text-red-400";
+  if (dir.includes("客")) return "text-blue-400";
+  if (dir.includes("平")) return "text-yellow-400";
+  return "text-gray-400";
+}
 
 export default function PlansPage() {
-  const [selectedDate, setSelectedDate] = useState<string>(PLANS_DATA[0].date);
-  const [expandedMatches, setExpandedMatches] = useState<Set<string>>(new Set());
+  const [plansData, setPlansData] = useState<Record<string, PlanDay>>({});
+  const [loading, setLoading] = useState(true);
+  const [selectedDate, setSelectedDate] = useState<string>("");
 
-  const currentPlan = useMemo(
-    () => PLANS_DATA.find((p) => p.date === selectedDate),
-    [selectedDate]
-  );
+  useEffect(() => {
+    let cancelled = false;
+    async function load() {
+      try {
+        const res = await fetch("/data/plans_data.json", { cache: "no-store" });
+        if (!res.ok) throw new Error("加载失败");
+        const data = await res.json();
+        if (!cancelled) {
+          setPlansData(data);
+          const dates = Object.keys(data).sort().reverse();
+          if (dates.length > 0) setSelectedDate(dates[0]);
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error("加载方案数据失败:", err);
+        setLoading(false);
+      }
+    }
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
-  const toggleMatch = (matchNo: string) => {
-    setExpandedMatches((prev) => {
-      const next = new Set(prev);
-      if (next.has(matchNo)) next.delete(matchNo);
-      else next.add(matchNo);
-      return next;
-    });
-  };
+  const sortedDates = useMemo(() => Object.keys(plansData).sort().reverse(), [plansData]);
 
-  const getStarColor = (level: string) => {
-    if (level.includes('钻石')) return 'text-cyan-400';
-    if (level.includes('金')) return 'text-yellow-400';
-    if (level.includes('银')) return 'text-gray-300';
-    if (level.includes('铜')) return 'text-orange-400';
-    return 'text-gray-500';
-  };
+  const currentDay = selectedDate ? plansData[selectedDate] : null;
+  const currentStats = currentDay?.stats;
 
-  const getConfidenceColor = (conf: number) => {
-    if (conf >= 85) return 'text-emerald-400';
-    if (conf >= 70) return 'text-yellow-400';
-    if (conf >= 55) return 'text-orange-400';
-    return 'text-red-400';
-  };
+  // 累计统计（从 8/13 起）
+  const cumulative = useMemo(() => {
+    let total = 0;
+    let dirHits = 0;
+    for (const date of sortedDates) {
+      if (date < "2026-08-13") continue;
+      const day = plansData[date];
+      if (!day) continue;
+      total += day.stats.total;
+      dirHits += day.stats.dir_hits;
+    }
+    const rate = total > 0 ? (dirHits / total) * 100 : 0;
+    return { total, dirHits, rate };
+  }, [sortedDates, plansData]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-950 text-gray-200">
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <div className="animate-pulse space-y-4">
+            <div className="h-8 bg-gray-800 rounded w-1/3" />
+            <div className="h-10 bg-gray-800 rounded w-full" />
+            <div className="h-64 bg-gray-800 rounded w-full" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!currentDay) {
+    return (
+      <div className="min-h-screen bg-gray-950 text-gray-200 flex items-center justify-center">
+        <div className="text-center">
+          <AlertCircle size={48} className="text-gray-600 mx-auto mb-4" />
+          <p className="text-gray-500">暂无方案数据</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="min-h-screen bg-[#0f0f1a] text-gray-100">
-      {/* Header */}
-      <div className="border-b border-[#2d3748] bg-[#1a1a2e]/80 backdrop-blur-sm sticky top-0 z-10">
-        <div className="px-6 py-4 max-w-6xl mx-auto">
-          <div className="flex items-center gap-4">
+    <div className="min-h-screen bg-gray-950 text-gray-200">
+      <div className="max-w-7xl mx-auto px-4 py-6 space-y-5">
+        {/* 顶部标题栏 */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
             <Link
               href="/"
-              className="p-2 hover:bg-white/5 rounded-lg transition-colors group"
+              className="p-2 rounded-lg bg-gray-800/50 hover:bg-gray-800 transition-colors"
               title="返回首页"
             >
-              <ArrowLeft className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
+              <ArrowLeft size={18} />
             </Link>
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-lg">
-                <Wallet className="w-6 h-6 text-amber-400" />
+            <div>
+              <h1 className="text-xl font-bold flex items-center gap-2">
+                <Target className="text-cyan-400" size={22} />
+                投注方案
+              </h1>
+              <p className="text-xs text-gray-500 mt-0.5">每日推荐方案追踪</p>
+            </div>
+          </div>
+        </div>
+
+        {/* 日期选择栏 */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-thin">
+          {sortedDates.map((date) => {
+            const day = plansData[date];
+            const isSelected = date === selectedDate;
+            const rate = day.stats.dir_rate;
+            const status = day.stats.status;
+            const colorCls = getRateColorClass(rate, status);
+            return (
+              <button
+                key={date}
+                onClick={() => setSelectedDate(date)}
+                className={`flex-shrink-0 flex flex-col items-center px-4 py-2 rounded-xl border transition-all min-w-[85px] ${
+                  isSelected
+                    ? `${colorCls} ring-2 ring-offset-2 ring-offset-gray-950 ring-cyan-500/60 scale-105`
+                    : `${colorCls} opacity-70 hover:opacity-100`
+                }`}
+              >
+                <span className="text-xs opacity-70">{getWeekday(date)}</span>
+                <span className="text-sm font-bold">{formatDateShort(date)}</span>
+                <span className="text-[11px] mt-0.5 font-mono">
+                  {status === "pending"
+                    ? "待赛"
+                    : `${day.stats.dir_hits}/${day.stats.total}`}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* 当日汇总栏 */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="bg-gray-900/80 border border-gray-800 rounded-xl p-4">
+            <div className="text-xs text-gray-500 mb-1">总场次</div>
+            <div className="text-2xl font-bold text-white tabular-nums">
+              {currentStats?.total ?? 0}
+            </div>
+          </div>
+          <div className="bg-gray-900/80 border border-gray-800 rounded-xl p-4">
+            <div className="text-xs text-gray-500 mb-1">方向命中</div>
+            <div className="text-2xl font-bold text-emerald-400 tabular-nums">
+              {currentStats?.dir_hits ?? 0}
+              <span className="text-sm text-gray-500 ml-1">场</span>
+            </div>
+          </div>
+          <div className="bg-gray-900/80 border border-gray-800 rounded-xl p-4">
+            <div className="text-xs text-gray-500 mb-1">命中率</div>
+            <div
+              className={`text-2xl font-bold tabular-nums ${getRateTextColor(
+                currentStats?.dir_rate ?? 0,
+                currentStats?.status ?? "pending"
+              )}`}
+            >
+              {currentStats?.status === "pending"
+                ? "—"
+                : `${currentStats?.dir_rate.toFixed(1)}%`}
+            </div>
+          </div>
+          <div className="bg-gray-900/80 border border-gray-800 rounded-xl p-4">
+            <div className="text-xs text-gray-500 mb-1">状态</div>
+            <div className="flex items-center gap-2 mt-2">
+              <span
+                className={`w-2.5 h-2.5 rounded-full ${
+                  currentStats?.status === "done"
+                    ? "bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]"
+                    : currentStats?.status === "pending"
+                    ? "bg-amber-400 animate-pulse shadow-[0_0_8px_rgba(251,191,36,0.6)]"
+                    : "bg-red-400"
+                }`}
+              />
+              <span className="text-sm font-medium">
+                {currentStats?.status === "done"
+                  ? "已完成"
+                  : currentStats?.status === "pending"
+                  ? "进行中"
+                  : currentStats?.status}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* 比赛列表 */}
+        <div className="bg-gray-900/80 border border-gray-800 rounded-xl overflow-hidden">
+          <div className="px-4 py-3 border-b border-gray-800 flex items-center justify-between">
+            <h2 className="text-sm font-semibold flex items-center gap-2">
+              <TrendingUp size={16} className="text-cyan-400" />
+              比赛列表
+            </h2>
+            <span className="text-xs text-gray-500">共 {currentDay.matches.length} 场</span>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="bg-gray-800/50 text-gray-400 text-xs uppercase">
+                <tr>
+                  <th className="text-left px-4 py-2.5 font-medium whitespace-nowrap">编号</th>
+                  <th className="text-left px-4 py-2.5 font-medium whitespace-nowrap">联赛</th>
+                  <th className="text-left px-4 py-2.5 font-medium whitespace-nowrap">对阵</th>
+                  <th className="text-center px-4 py-2.5 font-medium whitespace-nowrap">推荐方向</th>
+                  <th className="text-center px-4 py-2.5 font-medium whitespace-nowrap">Top3 比分</th>
+                  <th className="text-center px-4 py-2.5 font-medium whitespace-nowrap">比分</th>
+                  <th className="text-center px-4 py-2.5 font-medium whitespace-nowrap">赛果</th>
+                  <th className="text-center px-4 py-2.5 font-medium whitespace-nowrap">方向</th>
+                  <th className="text-center px-4 py-2.5 font-medium whitespace-nowrap">比分</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-800/60">
+                {currentDay.matches.map((m, idx) => {
+                  const dirHit = m.dir_hit;
+                  const scoreHit = m.score_hit;
+                  return (
+                    <tr
+                      key={m.mn || idx}
+                      className="hover:bg-gray-800/30 transition-colors"
+                    >
+                      <td className="px-4 py-2.5 font-mono text-cyan-400 text-xs font-bold whitespace-nowrap">
+                        {m.mn}
+                      </td>
+                      <td className="px-4 py-2.5 text-gray-400 text-xs whitespace-nowrap">
+                        {m.lg}
+                      </td>
+                      <td className="px-4 py-2.5 whitespace-nowrap">
+                        <div className="flex items-center gap-1.5 text-sm">
+                          <span className="text-red-400 font-medium">{m.ht}</span>
+                          <span className="text-gray-600 text-xs">vs</span>
+                          <span className="text-blue-400 font-medium">{m.at}</span>
+                        </div>
+                        <div className="text-[11px] text-gray-600 mt-0.5">{m.tm}</div>
+                      </td>
+                      <td className={`px-4 py-2.5 text-center font-semibold whitespace-nowrap ${dirColor(m.dir)}`}>
+                        {m.dir || <span className="text-gray-600">—</span>}
+                      </td>
+                      <td className="px-4 py-2.5 text-center">
+                        <div className="flex items-center justify-center gap-1 flex-wrap">
+                          {m.top3 && m.top3.length > 0 ? (
+                            m.top3.map((s, i) => (
+                              <span
+                                key={i}
+                                className={`px-1.5 py-0.5 text-[11px] font-mono rounded ${
+                                  i === 0
+                                    ? "bg-yellow-500/20 text-yellow-400"
+                                    : i === 1
+                                    ? "bg-gray-500/20 text-gray-400"
+                                    : "bg-amber-700/20 text-amber-500"
+                                }`}
+                              >
+                                {s}
+                              </span>
+                            ))
+                          ) : (
+                            <span className="text-gray-600">—</span>
+                          )}
+                        </div>
+                      </td>
+                      <td className="px-4 py-2.5 text-center font-mono font-bold text-yellow-400 whitespace-nowrap">
+                        {m.score || <span className="text-gray-600 font-normal">待赛</span>}
+                      </td>
+                      <td className={`px-4 py-2.5 text-center whitespace-nowrap ${dirColor(m.result)}`}>
+                        {m.result || <span className="text-gray-600">—</span>}
+                      </td>
+                      <td className="px-4 py-2.5 text-center">
+                        {dirHit === true ? (
+                          <span className="text-emerald-400 text-lg">✅</span>
+                        ) : dirHit === false ? (
+                          <span className="text-red-400 text-lg">❌</span>
+                        ) : (
+                          <span className="text-gray-600">⏳</span>
+                        )}
+                      </td>
+                      <td className="px-4 py-2.5 text-center">
+                        {scoreHit === true ? (
+                          <span className="text-emerald-400 text-lg">✅</span>
+                        ) : scoreHit === false ? (
+                          <span className="text-red-400 text-lg">❌</span>
+                        ) : (
+                          <span className="text-gray-600">⏳</span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* 底部累计统计 */}
+        <div className="bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-cyan-500/10 border border-cyan-500/20 rounded-xl p-4">
+          <div className="flex items-center gap-2 mb-3">
+            <Trophy size={18} className="text-cyan-400" />
+            <h3 className="text-sm font-semibold">累计统计（8/13 起）</h3>
+          </div>
+          <div className="grid grid-cols-3 gap-4">
+            <div>
+              <div className="text-xs text-gray-500 mb-1">总场次</div>
+              <div className="text-xl font-bold text-white tabular-nums">
+                {cumulative.total}
               </div>
-              <div>
-                <h1 className="text-xl font-bold bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
-                  投注方案
-                </h1>
-                <p className="text-xs text-gray-500">每日精选方案 · 资金分配管理</p>
+            </div>
+            <div>
+              <div className="text-xs text-gray-500 mb-1">方向命中</div>
+              <div className="text-xl font-bold text-emerald-400 tabular-nums">
+                {cumulative.dirHits}
+              </div>
+            </div>
+            <div>
+              <div className="text-xs text-gray-500 mb-1">命中率</div>
+              <div
+                className={`text-xl font-bold tabular-nums ${
+                  cumulative.rate >= 60
+                    ? "text-emerald-400"
+                    : cumulative.rate >= 30
+                    ? "text-amber-400"
+                    : "text-red-400"
+                }`}
+              >
+                {cumulative.total > 0 ? `${cumulative.rate.toFixed(1)}%` : "—"}
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <main className="p-6 max-w-6xl mx-auto">
-        {currentPlan ? (
-          <div className="space-y-4">
-            {/* 日期选择 */}
-            <div className="flex items-center gap-3 overflow-x-auto pb-2">
-              <Calendar className="w-4 h-4 text-gray-500 flex-shrink-0" />
-              {PLANS_DATA.map((plan) => (
-                <button
-                  key={plan.date}
-                  onClick={() => setSelectedDate(plan.date)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all ${
-                    selectedDate === plan.date
-                      ? 'bg-gradient-to-r from-amber-500/20 to-orange-500/20 text-amber-400 border border-amber-500/40'
-                      : 'bg-[#1a1a2e] text-gray-400 hover:text-white border border-transparent hover:border-[#2d3748]'
-                  }`}
-                >
-                  {plan.date}
-                  <span className="ml-2 text-xs opacity-70">{plan.total_matches}场</span>
-                </button>
-              ))}
-            </div>
-
-            {/* 概览卡片 */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-3 bg-[#1a1a2e] rounded-xl border border-[#2d3748]">
-                <div className="text-gray-400 text-sm mb-2">总投注场次</div>
-                <div className="text-2xl font-bold text-white">{currentPlan.total_matches} 场</div>
-                <div className="text-xs text-gray-500 mt-1">精选高信心赛事</div>
-              </div>
-              <div className="p-3 bg-[#1a1a2e] rounded-xl border border-[#2d3748]">
-                <div className="text-gray-400 text-sm mb-2">资金总投入</div>
-                <div className="text-2xl font-bold text-amber-400">{currentPlan.total_allocation}%</div>
-                <div className="text-xs text-gray-500 mt-1">单位资金分配比例</div>
-              </div>
-              <div className="p-3 bg-[#1a1a2e] rounded-xl border border-emerald-500/30">
-                <div className="text-gray-400 text-sm mb-2 flex items-center gap-1">
-                  <TrendingUp className="w-4 h-4 text-emerald-400" />
-                  预期回报率
-                </div>
-                <div className="text-2xl font-bold text-emerald-400">+{currentPlan.expected_return}%</div>
-                <div className="text-xs text-gray-500 mt-1">理论收益估算</div>
-              </div>
-            </div>
-
-            {/* 方案列表 */}
-            <div className="bg-[#1a1a2e] rounded-xl border border-[#2d3748] overflow-hidden">
-              <div className="px-5 py-4 border-b border-[#2d3748] flex items-center justify-between">
-                <h2 className="font-semibold text-white flex items-center gap-2">
-                  <Trophy className="w-5 h-5 text-amber-400" />
-                  今日推荐方案
-                </h2>
-                <span className="text-xs text-gray-500">
-                  按信心度排序 · 共 {currentPlan.matches.length} 场
-                </span>
-              </div>
-
-              <div className="divide-y divide-[#2d3748]">
-                {currentPlan.matches
-                  .sort((a, b) => b.confidence - a.confidence)
-                  .map((match, index) => (
-                    <div key={match.match_no} className="group">
-                      <button
-                        onClick={() => toggleMatch(match.match_no)}
-                        className="w-full px-5 py-4 text-left hover:bg-white/5 transition-colors"
-                      >
-                        <div className="flex items-center gap-4">
-                          {/* 序号 + 资金占比 */}
-                          <div className="flex flex-col items-center gap-1 w-16">
-                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center text-amber-400 font-bold text-sm">
-                              {index + 1}
-                            </div>
-                            <div className="text-xs text-amber-400 font-medium">
-                              {match.allocation}%
-                            </div>
-                          </div>
-
-                          {/* 场次联赛 */}
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 mb-1">
-                              <span className="text-xs px-2 py-0.5 bg-[#2d3748] rounded text-gray-400">
-                                {match.match_no}
-                              </span>
-                              <span className="text-xs text-gray-500">{match.league}</span>
-                              <span className="text-xs text-gray-600">{match.match_time}</span>
-                            </div>
-                            <div className="text-white font-medium">
-                              {match.home_team} <span className="text-gray-500 mx-1">vs</span>{' '}
-                              {match.away_team}
-                            </div>
-                          </div>
-
-                          {/* 推荐方向 */}
-                          <div className="text-center w-20">
-                            <div className="text-sm font-bold text-emerald-400">
-                              {match.recommended_direction}
-                            </div>
-                            <div className="text-xs text-gray-500">
-                              @{match.odds}
-                            </div>
-                          </div>
-
-                          {/* 比分 */}
-                          <div className="text-center w-20">
-                            <div className="text-sm font-mono text-amber-400 font-bold">
-                              {match.recommended_score}
-                            </div>
-                            <div className="text-xs text-gray-500">推荐比分</div>
-                          </div>
-
-                          {/* 星级 */}
-                          <div className={`text-center w-20 font-bold ${getStarColor(match.star_level)}`}>
-                            {match.star_level}
-                          </div>
-
-                          {/* 信心度 */}
-                          <div className="w-24">
-                            <div className="flex justify-between text-xs mb-1">
-                              <span className="text-gray-400">信心度</span>
-                              <span className={getConfidenceColor(match.confidence)}>
-                                {match.confidence}%
-                              </span>
-                            </div>
-                            <div className="h-1.5 bg-[#2d3748] rounded-full overflow-hidden">
-                              <div
-                                className={`h-full rounded-full transition-all ${
-                                  match.confidence >= 85
-                                    ? 'bg-gradient-to-r from-emerald-500 to-green-400'
-                                    : match.confidence >= 70
-                                      ? 'bg-gradient-to-r from-yellow-500 to-amber-400'
-                                      : match.confidence >= 55
-                                        ? 'bg-gradient-to-r from-orange-500 to-red-400'
-                                        : 'bg-gradient-to-r from-red-500 to-red-400'
-                                }`}
-                                style={{ width: `${match.confidence}%` }}
-                              />
-                            </div>
-                          </div>
-
-                          {/* 展开图标 */}
-                          {expandedMatches.has(match.match_no) ? (
-                            <ChevronUp className="w-5 h-5 text-gray-500" />
-                          ) : (
-                            <ChevronDown className="w-5 h-5 text-gray-500" />
-                          )}
-                        </div>
-                      </button>
-
-                      {/* 展开详情 */}
-                      {expandedMatches.has(match.match_no) && (
-                        <div className="px-5 pb-4 pl-24">
-                          <div className="bg-[#0f0f1a] rounded-lg p-4 border border-[#2d3748]">
-                            <div className="flex items-start gap-2 mb-3">
-                              <Target className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
-                              <div>
-                                <div className="text-sm font-medium text-white mb-1">分析要点</div>
-                                <p className="text-sm text-gray-400 leading-relaxed">
-                                  {match.analysis}
-                                </p>
-                              </div>
-                            </div>
-                            <div className="flex items-center gap-4 mt-3 pt-3 border-t border-[#2d3748] text-xs text-gray-500">
-                              <span className="flex items-center gap-1">
-                                <Star className="w-3 h-3" /> 星级：{match.star_level}
-                              </span>
-                              <span className="flex items-center gap-1">
-                                <Wallet className="w-3 h-3" /> 资金：{match.allocation}%
-                              </span>
-                              <span className="flex items-center gap-1">
-                                <TrendingUp className="w-3 h-3" /> 赔率：{match.odds}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-              </div>
-            </div>
-
-            {/* 风险提示 */}
-            <div className="p-4 bg-amber-500/5 border border-amber-500/20 rounded-lg flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-              <div className="text-sm text-amber-200/80">
-                <div className="font-medium text-amber-400 mb-1">风险提示</div>
-                <p>
-                  投注方案仅供参考，不构成投注建议。彩票有风险，投注需谨慎。
-                  请根据自身情况理性投注，切勿过度投入资金。
-                </p>
-              </div>
-            </div>
-          </div>
-        ) : null}
-      </main>
     </div>
   );
 }
