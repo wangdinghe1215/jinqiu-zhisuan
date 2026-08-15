@@ -99,6 +99,30 @@ interface BzgData {
   days: BzgDay[];
 }
 
+// 必中哥字段映射（兼容短名/长名）
+function mapBzgMatch(m: any): BzgMatch {
+  const bk = m.bizhongge || m.bk || {};
+  const mapTarget = (t: any): BzgOddsItem => ({
+    target_odds: t?.target_odds ?? t?.o,
+    total: t?.total ?? t?.t ?? 0,
+    win_pct: t?.win_pct ?? t?.wp ?? 0,
+    draw_pct: t?.draw_pct ?? t?.dp ?? 0,
+    lose_pct: t?.lose_pct ?? t?.lp ?? 0,
+    top5: (t?.top5 ?? t?.top ?? []).map((x: any) => [String(x[0]), Number(x[1])]),
+  });
+  return {
+    match_no: m.match_no ?? m.mn ?? '',
+    league: m.league ?? m.lg ?? '',
+    home_team: m.home_team ?? m.ht ?? '',
+    away_team: m.away_team ?? m.at ?? '',
+    bizhongge: {
+      home_win: mapTarget(bk.home_win),
+      draw: mapTarget(bk.draw),
+      away_win: mapTarget(bk.away_win),
+    }
+  };
+}
+
 export default function HistoryPage() {
   const [data, setData] = useState<HistoryData | null>(null);
   const [bzgData, setBzgData] = useState<BzgData | null>(null);
@@ -136,9 +160,21 @@ export default function HistoryPage() {
         const res = await fetch('/data/bizhongge_data.json', { cache: 'no-store' });
         if (!res.ok) return;
         const json = await res.json();
+        // 归一化：支持单天格式 {date, matches} 或多天格式 {days: [...]}
+        let normalized: BzgData;
         if (json && Array.isArray(json.days)) {
-          setBzgData(json);
+          normalized = json;
+        } else if (json && json.matches) {
+          // 单天格式，字段名可能是短名，做映射
+          const normalizedDay: BzgDay = {
+            date: json.date,
+            matches: json.matches.map((m: any) => mapBzgMatch(m))
+          };
+          normalized = { days: [normalizedDay] };
+        } else {
+          return;
         }
+        setBzgData(normalized);
       } catch (e) {
         console.error('fetch bizhongge failed:', e);
       }
