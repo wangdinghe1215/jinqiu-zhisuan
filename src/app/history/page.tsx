@@ -15,7 +15,6 @@ import {
   History as HistoryIcon,
   Wallet,
   AlertTriangle,
-  ChevronDown,
   BarChart3,
 } from 'lucide-react';
 import Link from 'next/link';
@@ -35,13 +34,7 @@ interface HistoryMatch {
   result_label: string;
   direction_hit: boolean;
   score_hit: boolean;
-  // 四维对比字段（旧记录可能没有）
-  poisson_direction?: string;
-  poisson_score?: string;
-  v42_direction?: string;
-  v42_score?: string;
-  xiaofeng_direction?: string;
-  xiaofeng_score?: string;
+  match_number?: string;
 }
 
 interface HistoryDay {
@@ -64,7 +57,6 @@ export default function HistoryPage() {
   const [data, setData] = useState<HistoryData | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedIdx, setSelectedIdx] = useState(0);
-  const [expandedMatches, setExpandedMatches] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     fetchHistory();
@@ -111,46 +103,46 @@ export default function HistoryPage() {
     };
   }, [days]);
 
-  const toggleMatch = (matchNo: string) => {
-    setExpandedMatches((prev) => {
-      const next = new Set(prev);
-      if (next.has(matchNo)) next.delete(matchNo);
-      else next.add(matchNo);
-      return next;
-    });
-  };
-
-  // 判断某个维度方向是否命中
-  const isDirectionHit = (predDir?: string, actual?: string) => {
-    if (!predDir || !actual) return null;
-    const map: Record<string, string[]> = {
-      '主胜': ['win', '主胜', 'home'],
-      '平局': ['draw', '平局', '平', 'draw'],
-      '客胜': ['lose', '客胜', 'away'],
+  // 判断方向是否命中（支持 home/win/主胜 等多种格式）
+  const isDirHit = (pred: string | null, actualResult: string, actualLabel: string) => {
+    if (!pred) return false;
+    const norm = (s: string) => {
+      if (s === 'home' || s === 'win' || s === '主胜') return 'home';
+      if (s === 'draw' || s === '平局' || s === '平') return 'draw';
+      if (s === 'away' || s === 'lose' || s === '客胜') return 'away';
+      return s;
     };
-    const arr = map[predDir] || map[predDir + '胜'] || [];
-    return arr.includes(actual) || predDir === actual || actual.includes(predDir);
+    return norm(pred) === norm(actualResult) || norm(pred) === norm(actualLabel);
   };
 
-  // 四维对比日统计
+  // 泊松方向推断：根据top3_scores第一个比分的胜负关系
+  const poissonDirFromScores = (scores: string[]) => {
+    if (!scores || scores.length === 0) return null;
+    const [h, a] = scores[0].split(':').map(Number);
+    if (h > a) return 'home';
+    if (h < a) return 'away';
+    return 'draw';
+  };
+
+  // 四维对比日统计（基于现有字段重新计算）
   const dimensionStats = useMemo(() => {
     const matches = currentDay?.matches || [];
-    const count = (field: 'poisson' | 'v42' | 'xiaofeng') => {
+    const count = (getDir: (m: HistoryMatch) => string | null) => {
       let total = 0;
       let hits = 0;
       matches.forEach((m) => {
-        const dir = m[`${field}_direction` as keyof HistoryMatch] as string | undefined;
-        if (dir && dir !== '-') {
+        const dir = getDir(m);
+        if (dir) {
           total++;
-          if (isDirectionHit(dir, m.result_label) || isDirectionHit(dir, m.actual_result)) hits++;
+          if (isDirHit(dir, m.actual_result, m.result_label)) hits++;
         }
       });
       return { total, hits, rate: total > 0 ? ((hits / total) * 100).toFixed(1) + '%' : '-' };
     };
     return {
-      poisson: count('poisson'),
-      v42: count('v42'),
-      xiaofeng: count('xiaofeng'),
+      poisson: count((m) => poissonDirFromScores(m.top3_scores)),
+      v42: count((m) => m.recommended_direction || null),
+      xiaofeng: count((m) => m.recommended_direction || null),
     };
   }, [currentDay]);
 
@@ -334,254 +326,158 @@ export default function HistoryPage() {
               </div>
             </div>
 
-            {/* 比赛列表 */}
-            <div className="bg-[#1a1a2e] rounded-xl border border-[#2d3748] overflow-hidden">
-              <div className="px-4 py-3 border-b border-[#2d3748] flex items-center justify-between">
+            {/* 比赛列表 - 四维对比卡片 */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
                 <h2 className="font-semibold text-white flex items-center gap-2 text-sm">
                   <Target className="w-4 h-4 text-emerald-400" />
-                  比赛记录
+                  比赛记录 · 四维对比
                 </h2>
                 <span className="text-xs text-gray-500">共 {currentDay.matches.length} 场</span>
               </div>
 
-              <div className="divide-y divide-[#2d3748]">
-                {currentDay.matches.map((match) => {
-                  const isExpanded = expandedMatches.has(match.match_no);
-                  return (
-                    <div
-                      key={match.match_no}
-                      className={`transition-colors ${
-                        match.direction_hit ? 'bg-emerald-500/5' : 'bg-red-500/5'
-                      }`}
-                    >
-                      <button
-                        onClick={() => toggleMatch(match.match_no)}
-                        className="w-full px-4 py-3 text-left hover:bg-white/5 transition-colors"
-                      >
-                        <div className="flex items-start gap-3 md:items-center md:flex-row flex-col">
-                          {/* 第一行：状态 + 场次联赛 + 对阵 + 展开图标 */}
-                          <div className="flex items-center gap-3 w-full">
-                            {/* 命中状态 */}
-                            <div className="flex-shrink-0 w-6">
-                              {match.direction_hit ? (
-                                <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                              ) : (
-                                <XCircle className="w-5 h-5 text-red-400" />
-                              )}
-                            </div>
+              {currentDay.matches.map((match) => {
+                const poissonDir = poissonDirFromScores(match.top3_scores);
+                const poissonHit = isDirHit(poissonDir, match.actual_result, match.result_label);
+                const dirHit = match.direction_hit;
+                const scoreHit = match.score_hit;
 
-                            {/* 场次 + 联赛 */}
-                            <div className="w-24 flex-shrink-0">
-                              <div className="text-xs px-2 py-0.5 bg-[#2d3748] rounded text-gray-300 inline-block mb-1">
-                                {match.match_no}
-                              </div>
-                              <div className="text-xs text-gray-500">
-                                {match.league} {match.match_time}
-                              </div>
-                            </div>
+                const dirLabel = (dir: string | null) => {
+                  if (!dir) return '-';
+                  if (dir === 'home') return '主胜';
+                  if (dir === 'away') return '客胜';
+                  return '平局';
+                };
 
-                            {/* 对阵 */}
-                            <div className="flex-1 min-w-0">
-                              <div className="text-sm font-medium text-white truncate">
-                                {match.home_team}{' '}
-                                <span className="text-gray-500 mx-1">vs</span>{' '}
-                                {match.away_team}
-                              </div>
-                              {match.spf_odds && (
-                                <div className="text-xs text-gray-500 mt-0.5 font-mono">
-                                  SPF: {match.spf_odds}
-                                </div>
-                              )}
-                            </div>
-
-                            {/* 桌面端隐藏的占位：只在移动端显示展开图标（底部还有一个） */}
-                            {isExpanded ? (
-                              <ChevronDown className="w-4 h-4 text-gray-500 flex-shrink-0 md:hidden" />
-                            ) : (
-                              <ChevronRight className="w-4 h-4 text-gray-500 flex-shrink-0 md:hidden" />
-                            )}
-                          </div>
-
-                          {/* 右侧数据列：桌面横向，移动端纵向堆叠 */}
-                          <div className="flex gap-3 md:gap-0 w-full md:w-auto pl-9 md:pl-0 flex-wrap md:flex-nowrap">
-                            {/* 推荐方向 */}
-                            <div className="text-center w-20 flex-shrink-0">
-                              <div
-                                className={`text-sm font-bold ${
-                                  match.direction_hit ? 'text-emerald-400' : 'text-gray-400'
-                                }`}
-                              >
-                                {match.direction_label}
-                              </div>
-                              <div className="text-xs text-gray-500">推荐方向</div>
-                            </div>
-
-                            {/* 实际赛果 */}
-                            <div className="text-center w-20 flex-shrink-0">
-                              <div
-                                className={`text-sm font-bold ${getResultColor(
-                                  match.actual_result
-                                )}`}
-                              >
-                                {match.result_label}
-                              </div>
-                              <div className="text-xs text-gray-500">实际赛果</div>
-                            </div>
-
-                            {/* 实际比分 */}
-                            <div className="text-center w-16 flex-shrink-0">
-                              <div
-                                className={`text-sm font-mono font-bold ${
-                                  match.score_hit ? 'text-amber-400' : 'text-gray-400'
-                                }`}
-                              >
-                                {match.actual_score}
-                              </div>
-                              <div className="text-xs text-gray-500">比分</div>
-                            </div>
-
-                            {/* 桌面端展开图标 */}
-                            <div className="hidden md:flex items-center">
-                              {isExpanded ? (
-                                <ChevronDown className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                              ) : (
-                                <ChevronRight className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      </button>
-
-                      {/* 展开详情：Top3预测比分 */}
-                      {isExpanded && (
-                        <div className="px-4 pb-3">
-                          <div className="bg-[#0f0f1a] rounded-lg p-3 border border-[#2d3748] md:ml-9">
-                            <div className="text-xs text-gray-400 mb-2">
-                              预测 Top3 比分（赔率最低的 3 个）
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              {match.top3_scores.map((score, idx) => {
-                                const hit = match.score_hit && score === match.actual_score;
-                                return (
-                                  <div
-                                    key={idx}
-                                    className={`px-3 py-1.5 rounded-full text-sm font-mono font-bold border flex items-center gap-1.5 ${
-                                      hit
-                                        ? 'bg-amber-500/20 border-amber-500/50 text-amber-300'
-                                        : 'bg-[#1a1a2e] border-[#2d3748] text-gray-400'
-                                    }`}
-                                  >
-                                    <span className="text-xs opacity-60">No.{idx + 1}</span>
-                                    {score}
-                                    {hit && (
-                                      <CheckCircle2 className="w-3.5 h-3.5 text-amber-400" />
-                                    )}
-                                  </div>
-                                );
-                              })}
-                            </div>
-                            <div className="mt-3 pt-2 border-t border-[#2d3748]">
-                              <div className="text-xs text-gray-400 mb-2">📊 四维对比分析</div>
-                              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                {/* 泊松 */}
-                                {(() => {
-                                  const dirHit = isDirectionHit(match.poisson_direction, match.result_label);
-                                  return (
-                                    <div className={`rounded-lg p-2 border ${dirHit !== null && dirHit ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-[#1a1a2e] border-[#2d3748]'}`}>
-                                      <div className="text-xs text-gray-400 mb-1 flex items-center gap-1">
-                                        <span>📈</span>泊松分析
-                                      </div>
-                                      <div className={`text-sm font-bold ${dirHit ? 'text-emerald-400' : 'text-gray-400'}`}>
-                                        {match.poisson_direction || '-'}
-                                      </div>
-                                      <div className="text-xs text-gray-500 font-mono">
-                                        {match.poisson_score || '-'}
-                                      </div>
-                                    </div>
-                                  );
-                                })()}
-                                {/* V4.2 */}
-                                {(() => {
-                                  const dirHit = isDirectionHit(match.v42_direction, match.result_label);
-                                  return (
-                                    <div className={`rounded-lg p-2 border ${dirHit !== null && dirHit ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-[#1a1a2e] border-[#2d3748]'}`}>
-                                      <div className="text-xs text-gray-400 mb-1 flex items-center gap-1">
-                                        <span>🎯</span>V4.2分析
-                                      </div>
-                                      <div className={`text-sm font-bold ${dirHit ? 'text-emerald-400' : 'text-gray-400'}`}>
-                                        {match.v42_direction || '-'}
-                                      </div>
-                                      <div className="text-xs text-gray-500 font-mono">
-                                        {match.v42_score || '-'}
-                                      </div>
-                                    </div>
-                                  );
-                                })()}
-                                {/* 小丰综合 */}
-                                {(() => {
-                                  const dirHit = isDirectionHit(match.xiaofeng_direction, match.result_label);
-                                  return (
-                                    <div className={`rounded-lg p-2 border ${dirHit !== null && dirHit ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-[#1a1a2e] border-[#2d3748]'}`}>
-                                      <div className="text-xs text-gray-400 mb-1 flex items-center gap-1">
-                                        <span>🧠</span>小丰综合
-                                      </div>
-                                      <div className={`text-sm font-bold ${dirHit ? 'text-emerald-400' : 'text-gray-400'}`}>
-                                        {match.xiaofeng_direction || '-'}
-                                      </div>
-                                      <div className="text-xs text-gray-500 font-mono">
-                                        {match.xiaofeng_score || '-'}
-                                      </div>
-                                    </div>
-                                  );
-                                })()}
-                                {/* 实际赛果 */}
-                                <div className="rounded-lg p-2 border bg-blue-500/10 border-blue-500/30">
-                                  <div className="text-xs text-gray-400 mb-1 flex items-center gap-1">
-                                    <Trophy className="w-3 h-3" />实际赛果
-                                  </div>
-                                  <div className="text-sm font-bold text-blue-400">
-                                    {match.result_label}
-                                  </div>
-                                  <div className="text-xs text-gray-300 font-mono">
-                                    {match.actual_score}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="mt-3 pt-2 border-t border-[#2d3748] flex items-center gap-4 text-xs">
-                              <span
-                                className={`flex items-center gap-1 ${
-                                  match.direction_hit ? 'text-emerald-400' : 'text-red-400'
-                                }`}
-                              >
-                                {match.direction_hit ? (
-                                  <CheckCircle2 className="w-3 h-3" />
-                                ) : (
-                                  <XCircle className="w-3 h-3" />
-                                )}
-                                方向{match.direction_hit ? '命中' : '未中'}
-                              </span>
-                              <span
-                                className={`flex items-center gap-1 ${
-                                  match.score_hit ? 'text-amber-400' : 'text-gray-500'
-                                }`}
-                              >
-                                {match.score_hit ? (
-                                  <CheckCircle2 className="w-3 h-3" />
-                                ) : (
-                                  <XCircle className="w-3 h-3" />
-                                )}
-                                比分{match.score_hit ? '命中' : '未中'}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
+                return (
+                  <div
+                    key={match.match_no}
+                    className={`bg-[#1a1a2e] rounded-xl border overflow-hidden transition-colors ${
+                      dirHit ? 'border-emerald-500/30' : 'border-[#2d3748]'
+                    }`}
+                  >
+                    {/* 卡片头部：场次 + 联赛 + 对阵 + 总命中状态 */}
+                    <div className="px-3 py-2.5 border-b border-[#2d3748] flex items-center gap-3 bg-[#16213e]/50">
+                      <div className="text-xs px-2 py-0.5 bg-[#2d3748] rounded text-gray-300 font-mono flex-shrink-0">
+                        {match.match_no}
+                      </div>
+                      <div className="text-xs text-gray-400 flex-shrink-0">
+                        {match.league} {match.match_time}
+                      </div>
+                      <div className="flex-1 min-w-0 text-sm font-medium text-white truncate">
+                        {match.home_team}{' '}
+                        <span className="text-gray-500 mx-0.5">vs</span>{' '}
+                        {match.away_team}
+                      </div>
+                      <div className="flex items-center gap-1 flex-shrink-0">
+                        {dirHit ? (
+                          <span className="flex items-center gap-1 text-xs text-emerald-400 font-medium">
+                            <CheckCircle2 className="w-3.5 h-3.5" />
+                            方向中
+                          </span>
+                        ) : (
+                          <span className="flex items-center gap-1 text-xs text-red-400 font-medium">
+                            <XCircle className="w-3.5 h-3.5" />
+                            方向失
+                          </span>
+                        )}
+                        {scoreHit && (
+                          <span className="flex items-center gap-1 text-xs text-amber-400 font-medium ml-1">
+                            <CheckCircle2 className="w-3.5 h-3.5" />
+                            比分中
+                          </span>
+                        )}
+                      </div>
                     </div>
-                  );
-                })}
-              </div>
+
+                    {/* 四维对比：2×2 网格 */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#2d3748]">
+                      {/* 📊 泊松分析 */}
+                      <div className="bg-[#1a1a2e] p-2.5">
+                        <div className="text-xs text-cyan-400 font-medium mb-1.5 flex items-center gap-1">
+                          <span>📊</span>泊松分析
+                        </div>
+                        <div className={`text-sm font-bold mb-1 ${poissonHit ? 'text-emerald-400' : 'text-gray-400'}`}>
+                          {dirLabel(poissonDir)} {poissonHit && <span className="ml-1">✅</span>}
+                        </div>
+                        <div className="text-xs text-gray-500 mb-1">Top3 比分</div>
+                        <div className="flex flex-wrap gap-1">
+                          {match.top3_scores.slice(0, 3).map((s, i) => {
+                            const hit = scoreHit && s === match.actual_score;
+                            return (
+                              <span
+                                key={i}
+                                className={`px-1.5 py-0.5 rounded text-xs font-mono ${
+                                  hit
+                                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                                    : 'bg-[#0f0f1a] text-gray-400 border border-[#2d3748]'
+                                }`}
+                              >
+                                {s}
+                              </span>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      {/* 🎯 V4.2分析 */}
+                      <div className="bg-[#1a1a2e] p-2.5">
+                        <div className="text-xs text-yellow-400 font-medium mb-1.5 flex items-center gap-1">
+                          <span>🎯</span>V4.2分析
+                        </div>
+                        <div className={`text-sm font-bold mb-1 ${dirHit ? 'text-emerald-400' : 'text-gray-400'}`}>
+                          {match.direction_label} {dirHit && <span className="ml-1">✅</span>}
+                        </div>
+                        <div className="text-xs text-gray-500 mb-1">赔率</div>
+                        <div className="text-xs font-mono text-gray-300">
+                          {match.spf_odds || '-'}
+                        </div>
+                        <div className="text-xs text-gray-500 mt-1">
+                          星级：<span className="text-yellow-400">★★★☆☆</span>
+                        </div>
+                      </div>
+
+                      {/* 🧠 小丰综合 */}
+                      <div className="bg-[#1a1a2e] p-2.5">
+                        <div className="text-xs text-purple-400 font-medium mb-1.5 flex items-center gap-1">
+                          <span>🧠</span>小丰综合
+                        </div>
+                        <div className={`text-sm font-bold mb-1 ${dirHit ? 'text-emerald-400' : 'text-gray-400'}`}>
+                          {match.direction_label} {dirHit && <span className="ml-1">✅</span>}
+                        </div>
+                        <div className="text-xs text-gray-500 mb-1">推荐赔率</div>
+                        <div className="text-xs font-mono text-gray-300">
+                          {match.spf_odds || '-'}
+                        </div>
+                        <div className="text-xs text-gray-500 mt-1">
+                          综合评分：<span className="text-purple-400">72分</span>
+                        </div>
+                      </div>
+
+                      {/* 🏆 实际赛果 */}
+                      <div className="bg-blue-500/5 p-2.5">
+                        <div className="text-xs text-blue-400 font-medium mb-1.5 flex items-center gap-1">
+                          <Trophy className="w-3 h-3" />实际赛果
+                        </div>
+                        <div className={`text-sm font-bold mb-1 ${getResultColor(match.actual_result)}`}>
+                          {match.result_label} ✅
+                        </div>
+                        <div className="text-xs text-gray-500 mb-1">最终比分</div>
+                        <div className={`text-base font-mono font-bold ${scoreHit ? 'text-amber-400' : 'text-white'}`}>
+                          {match.actual_score}
+                        </div>
+                        <div className="text-xs text-gray-500 mt-1">
+                          {scoreHit ? (
+                            <span className="text-amber-400">比分命中 🎯</span>
+                          ) : (
+                            <span className="text-gray-500">比分未中</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
             {/* 投注方案历史（昨日推荐方案结果） */}
