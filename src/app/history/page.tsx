@@ -16,6 +16,7 @@ import {
   Wallet,
   AlertTriangle,
   ChevronDown,
+  BarChart3,
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -34,6 +35,13 @@ interface HistoryMatch {
   result_label: string;
   direction_hit: boolean;
   score_hit: boolean;
+  // 四维对比字段（旧记录可能没有）
+  poisson_direction?: string;
+  poisson_score?: string;
+  v42_direction?: string;
+  v42_score?: string;
+  xiaofeng_direction?: string;
+  xiaofeng_score?: string;
 }
 
 interface HistoryDay {
@@ -111,6 +119,40 @@ export default function HistoryPage() {
       return next;
     });
   };
+
+  // 判断某个维度方向是否命中
+  const isDirectionHit = (predDir?: string, actual?: string) => {
+    if (!predDir || !actual) return null;
+    const map: Record<string, string[]> = {
+      '主胜': ['win', '主胜', 'home'],
+      '平局': ['draw', '平局', '平', 'draw'],
+      '客胜': ['lose', '客胜', 'away'],
+    };
+    const arr = map[predDir] || map[predDir + '胜'] || [];
+    return arr.includes(actual) || predDir === actual || actual.includes(predDir);
+  };
+
+  // 四维对比日统计
+  const dimensionStats = useMemo(() => {
+    const matches = currentDay?.matches || [];
+    const count = (field: 'poisson' | 'v42' | 'xiaofeng') => {
+      let total = 0;
+      let hits = 0;
+      matches.forEach((m) => {
+        const dir = m[`${field}_direction` as keyof HistoryMatch] as string | undefined;
+        if (dir && dir !== '-') {
+          total++;
+          if (isDirectionHit(dir, m.result_label) || isDirectionHit(dir, m.actual_result)) hits++;
+        }
+      });
+      return { total, hits, rate: total > 0 ? ((hits / total) * 100).toFixed(1) + '%' : '-' };
+    };
+    return {
+      poisson: count('poisson'),
+      v42: count('v42'),
+      xiaofeng: count('xiaofeng'),
+    };
+  }, [currentDay]);
 
   const goPrev = () => {
     if (selectedIdx < days.length - 1) setSelectedIdx(selectedIdx + 1);
@@ -244,6 +286,50 @@ export default function HistoryPage() {
                 </div>
                 <div className="text-xs text-purple-400/70 mt-0.5">
                   {cumulative.dir_hits} / {cumulative.total}
+                </div>
+              </div>
+            </div>
+
+            {/* 四维对比日汇总 */}
+            <div className="bg-[#1a1a2e] rounded-xl border border-[#2d3748] p-3">
+              <h3 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
+                <BarChart3 className="w-4 h-4 text-cyan-400" />
+                四维对比命中率（当日）
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                <div className="p-2.5 bg-[#0f0f1a] rounded-lg border border-[#2d3748]">
+                  <div className="text-xs text-gray-400 mb-1">📈 泊松分析</div>
+                  <div className="text-lg font-bold text-emerald-400 tabular-nums">
+                    {dimensionStats.poisson.rate}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    {dimensionStats.poisson.hits} / {dimensionStats.poisson.total} 场
+                  </div>
+                </div>
+                <div className="p-2.5 bg-[#0f0f1a] rounded-lg border border-[#2d3748]">
+                  <div className="text-xs text-gray-400 mb-1">🎯 V4.2分析</div>
+                  <div className="text-lg font-bold text-emerald-400 tabular-nums">
+                    {dimensionStats.v42.rate}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    {dimensionStats.v42.hits} / {dimensionStats.v42.total} 场
+                  </div>
+                </div>
+                <div className="p-2.5 bg-[#0f0f1a] rounded-lg border border-[#2d3748]">
+                  <div className="text-xs text-gray-400 mb-1">🧠 小丰综合</div>
+                  <div className="text-lg font-bold text-emerald-400 tabular-nums">
+                    {dimensionStats.xiaofeng.rate}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    {dimensionStats.xiaofeng.hits} / {dimensionStats.xiaofeng.total} 场
+                  </div>
+                </div>
+                <div className="p-2.5 bg-[#0f0f1a] rounded-lg border border-[#2d3748]">
+                  <div className="text-xs text-gray-400 mb-1">🏆 实际赛果</div>
+                  <div className="text-lg font-bold text-blue-400 tabular-nums">
+                    {currentDay.total} 场
+                  </div>
+                  <div className="text-xs text-gray-500">基准参照</div>
                 </div>
               </div>
             </div>
@@ -394,6 +480,75 @@ export default function HistoryPage() {
                                 );
                               })}
                             </div>
+                            <div className="mt-3 pt-2 border-t border-[#2d3748]">
+                              <div className="text-xs text-gray-400 mb-2">📊 四维对比分析</div>
+                              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                {/* 泊松 */}
+                                {(() => {
+                                  const dirHit = isDirectionHit(match.poisson_direction, match.result_label);
+                                  return (
+                                    <div className={`rounded-lg p-2 border ${dirHit !== null && dirHit ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-[#1a1a2e] border-[#2d3748]'}`}>
+                                      <div className="text-xs text-gray-400 mb-1 flex items-center gap-1">
+                                        <span>📈</span>泊松分析
+                                      </div>
+                                      <div className={`text-sm font-bold ${dirHit ? 'text-emerald-400' : 'text-gray-400'}`}>
+                                        {match.poisson_direction || '-'}
+                                      </div>
+                                      <div className="text-xs text-gray-500 font-mono">
+                                        {match.poisson_score || '-'}
+                                      </div>
+                                    </div>
+                                  );
+                                })()}
+                                {/* V4.2 */}
+                                {(() => {
+                                  const dirHit = isDirectionHit(match.v42_direction, match.result_label);
+                                  return (
+                                    <div className={`rounded-lg p-2 border ${dirHit !== null && dirHit ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-[#1a1a2e] border-[#2d3748]'}`}>
+                                      <div className="text-xs text-gray-400 mb-1 flex items-center gap-1">
+                                        <span>🎯</span>V4.2分析
+                                      </div>
+                                      <div className={`text-sm font-bold ${dirHit ? 'text-emerald-400' : 'text-gray-400'}`}>
+                                        {match.v42_direction || '-'}
+                                      </div>
+                                      <div className="text-xs text-gray-500 font-mono">
+                                        {match.v42_score || '-'}
+                                      </div>
+                                    </div>
+                                  );
+                                })()}
+                                {/* 小丰综合 */}
+                                {(() => {
+                                  const dirHit = isDirectionHit(match.xiaofeng_direction, match.result_label);
+                                  return (
+                                    <div className={`rounded-lg p-2 border ${dirHit !== null && dirHit ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-[#1a1a2e] border-[#2d3748]'}`}>
+                                      <div className="text-xs text-gray-400 mb-1 flex items-center gap-1">
+                                        <span>🧠</span>小丰综合
+                                      </div>
+                                      <div className={`text-sm font-bold ${dirHit ? 'text-emerald-400' : 'text-gray-400'}`}>
+                                        {match.xiaofeng_direction || '-'}
+                                      </div>
+                                      <div className="text-xs text-gray-500 font-mono">
+                                        {match.xiaofeng_score || '-'}
+                                      </div>
+                                    </div>
+                                  );
+                                })()}
+                                {/* 实际赛果 */}
+                                <div className="rounded-lg p-2 border bg-blue-500/10 border-blue-500/30">
+                                  <div className="text-xs text-gray-400 mb-1 flex items-center gap-1">
+                                    <Trophy className="w-3 h-3" />实际赛果
+                                  </div>
+                                  <div className="text-sm font-bold text-blue-400">
+                                    {match.result_label}
+                                  </div>
+                                  <div className="text-xs text-gray-300 font-mono">
+                                    {match.actual_score}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
                             <div className="mt-3 pt-2 border-t border-[#2d3748] flex items-center gap-4 text-xs">
                               <span
                                 className={`flex items-center gap-1 ${
