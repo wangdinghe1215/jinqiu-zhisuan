@@ -242,7 +242,7 @@ export default function HistoryPage() {
                   <Trophy className="w-3.5 h-3.5" /> 总场次
                 </div>
                 <div className="text-xl font-bold text-white tabular-nums">
-                  {currentDay.total}
+                  {currentDay.matches?.length ?? currentDay.total}
                 </div>
               </div>
               <div className="p-3 bg-[#1a1a2e] rounded-xl border border-emerald-500/30">
@@ -252,7 +252,7 @@ export default function HistoryPage() {
                 <div className="text-xl font-bold text-emerald-400 tabular-nums">
                   {currentDay.direction_hits}
                   <span className="text-sm text-gray-500 ml-1">
-                    / {currentDay.direction_total || currentDay.total}
+                    / {currentDay.matches?.length ?? currentDay.total}
                   </span>
                 </div>
                 <div className="text-xs text-emerald-400/70 mt-0.5">{currentDay.direction_rate}</div>
@@ -264,7 +264,7 @@ export default function HistoryPage() {
                 <div className="text-xl font-bold text-amber-400 tabular-nums">
                   {currentDay.score_hits}
                   <span className="text-sm text-gray-500 ml-1">
-                    / {currentDay.score_total || currentDay.total}
+                    / {currentDay.matches?.length ?? currentDay.total}
                   </span>
                 </div>
                 <div className="text-xs text-amber-400/70 mt-0.5">{currentDay.score_rate}</div>
@@ -443,13 +443,28 @@ export default function HistoryPage() {
                           <span>🧠</span>小丰综合
                         </div>
                         <div className={`text-sm font-bold mb-1 ${dirHit ? 'text-emerald-400' : 'text-gray-400'}`}>
-                          {match.direction_label} {dirHit && <span className="ml-1">✅</span>}
+                          {match.direction_label || '-'} {dirHit && <span className="ml-1">✅</span>}
                         </div>
-                        <div className="text-xs text-gray-500 mb-1">推荐赔率</div>
-                        <div className="text-xs font-mono text-gray-300">
-                          {match.spf_odds || '-'}
+                        <div className="text-xs text-gray-500 mb-1">推荐比分</div>
+                        <div className="flex flex-wrap gap-1 mb-1.5">
+                          {match.top3_scores && match.top3_scores.length > 0 ? (
+                            match.top3_scores.map((s, i) => (
+                              <span
+                                key={i}
+                                className={`px-1.5 py-0.5 rounded text-xs font-mono ${
+                                  match.actual_score && s === match.actual_score
+                                    ? 'bg-amber-500/30 text-amber-300 border border-amber-500/50'
+                                    : 'bg-white/5 text-gray-300'
+                                }`}
+                              >
+                                {s}
+                              </span>
+                            ))
+                          ) : (
+                            <span className="text-gray-600 text-xs">-</span>
+                          )}
                         </div>
-                        <div className="text-xs text-gray-500 mt-1">
+                        <div className="text-xs text-gray-500">
                           综合评分：<span className="text-purple-400">72分</span>
                         </div>
                       </div>
