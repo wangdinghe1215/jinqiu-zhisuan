@@ -28,14 +28,24 @@
             "score": "2:1",
             "prob": "9.7%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 53.1,
+          "draw": 23.8,
+          "away": 23.2
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 2,
         "star_name": "白银",
         "rspf_direction": "客胜(让)",
-        "rv": 0.8857
+        "rv": 0.8857,
+        "golden_scores": [
+          "1:0",
+          "1:1",
+          "2:1"
+        ]
       },
       "bizhongge": {
         "pass_count": 4,
@@ -75,7 +85,12 @@
         "top_scores": [
           "1:1",
           "1:0"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "客胜",
+        "total_goals": 2.8,
+        "half_time": "主胜"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -207,14 +222,24 @@
             "score": "1:0",
             "prob": "11.0%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 32.3,
+          "draw": 28.4,
+          "away": 39.3
+        }
       },
       "v42": {
         "direction": "客胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "主胜(让)",
-        "rv": 0.8857
+        "rv": 0.8857,
+        "golden_scores": [
+          "0:0",
+          "1:1",
+          "2:1"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -254,7 +279,12 @@
         "top_scores": [
           "1:1",
           "0:1"
-        ]
+        ],
+        "conclusion": "综合一致，主推客胜",
+        "spf_pick": "客胜",
+        "rspf_pick": "主胜",
+        "total_goals": 2.3,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -386,14 +416,24 @@
             "score": "1:0",
             "prob": "9.4%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 48.8,
+          "draw": 24.0,
+          "away": 27.1
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 2,
         "star_name": "白银",
         "rspf_direction": "主胜(让)",
-        "rv": 0.8824
+        "rv": 0.8824,
+        "golden_scores": [
+          "1:1",
+          "2:1",
+          "0:0"
+        ]
       },
       "bizhongge": {
         "pass_count": 3,
@@ -433,7 +473,12 @@
         "top_scores": [
           "1:1",
           "2:1"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "主胜",
+        "total_goals": 2.9,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -565,14 +610,24 @@
             "score": "2:1",
             "prob": "9.0%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 44.9,
+          "draw": 26.2,
+          "away": 28.9
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "客胜(让)",
-        "rv": 0.8853
+        "rv": 0.8853,
+        "golden_scores": [
+          "1:0",
+          "1:1",
+          "0:0"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -612,7 +667,12 @@
         "top_scores": [
           "1:1",
           "1:0"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "客胜",
+        "total_goals": 2.6,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -744,14 +804,24 @@
             "score": "2:1",
             "prob": "9.0%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 44.0,
+          "draw": 26.0,
+          "away": 30.0
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "客胜(让)",
-        "rv": 0.8857
+        "rv": 0.8857,
+        "golden_scores": [
+          "1:1",
+          "1:0",
+          "0:1"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -791,7 +861,12 @@
         "top_scores": [
           "1:1",
           "1:0"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "客胜",
+        "total_goals": 2.6,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -923,14 +998,24 @@
             "score": "2:1",
             "prob": "9.0%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 44.6,
+          "draw": 26.4,
+          "away": 29.0
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "主胜(让)",
-        "rv": 0.8858
+        "rv": 0.8858,
+        "golden_scores": [
+          "1:1",
+          "0:0",
+          "0:1"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -970,7 +1055,12 @@
         "top_scores": [
           "1:1",
           "1:0"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "主胜",
+        "total_goals": 2.5,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -1102,14 +1192,24 @@
             "score": "2:1",
             "prob": "8.8%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 42.3,
+          "draw": 26.0,
+          "away": 31.6
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "主胜(让)",
-        "rv": 0.8849
+        "rv": 0.8849,
+        "golden_scores": [
+          "1:1",
+          "1:0",
+          "0:0"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -1149,7 +1249,12 @@
         "top_scores": [
           "1:1",
           "1:0"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "主胜",
+        "total_goals": 2.6,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -1281,14 +1386,24 @@
             "score": "0:1",
             "prob": "10.8%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 38.2,
+          "draw": 28.0,
+          "away": 33.8
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "主胜(让)",
-        "rv": 0.8885
+        "rv": 0.8885,
+        "golden_scores": [
+          "1:1",
+          "1:0",
+          "2:1"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -1328,7 +1443,12 @@
         "top_scores": [
           "1:1",
           "1:0"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "主胜",
+        "total_goals": 2.3,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -1460,14 +1580,24 @@
             "score": "2:1",
             "prob": "9.5%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 49.0,
+          "draw": 24.2,
+          "away": 26.7
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 2,
         "star_name": "白银",
         "rspf_direction": "主胜(让)",
-        "rv": 0.8859
+        "rv": 0.8859,
+        "golden_scores": [
+          "1:1",
+          "1:0",
+          "2:1"
+        ]
       },
       "bizhongge": {
         "pass_count": 3,
@@ -1507,7 +1637,12 @@
         "top_scores": [
           "1:1",
           "1:0"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "主胜",
+        "total_goals": 2.8,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -1639,14 +1774,24 @@
             "score": "0:1",
             "prob": "9.0%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 41.1,
+          "draw": 26.3,
+          "away": 32.7
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "主胜(让)",
-        "rv": 0.8895
+        "rv": 0.8895,
+        "golden_scores": [
+          "1:1",
+          "1:0",
+          "2:1"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -1686,7 +1831,12 @@
         "top_scores": [
           "1:1",
           "1:0"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "主胜",
+        "total_goals": 2.6,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -1818,14 +1968,24 @@
             "score": "0:1",
             "prob": "10.8%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 36.7,
+          "draw": 27.7,
+          "away": 35.7
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "主胜(让)",
-        "rv": 0.8866
+        "rv": 0.8866,
+        "golden_scores": [
+          "1:1",
+          "1:0",
+          "2:1"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -1865,7 +2025,12 @@
         "top_scores": [
           "1:1",
           "1:0"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "主胜",
+        "total_goals": 2.4,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -1997,14 +2162,24 @@
             "score": "1:0",
             "prob": "10.7%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 35.2,
+          "draw": 27.7,
+          "away": 37.1
+        }
       },
       "v42": {
         "direction": "客胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "客胜(让)",
-        "rv": 0.8861
+        "rv": 0.8861,
+        "golden_scores": [
+          "1:1",
+          "0:1",
+          "1:0"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -2044,7 +2219,12 @@
         "top_scores": [
           "1:1",
           "0:1"
-        ]
+        ],
+        "conclusion": "综合一致，主推客胜",
+        "spf_pick": "客胜",
+        "rspf_pick": "客胜",
+        "total_goals": 2.4,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -2176,14 +2356,24 @@
             "score": "0:1",
             "prob": "8.9%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 42.5,
+          "draw": 26.3,
+          "away": 31.2
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "主胜(让)",
-        "rv": 0.8876
+        "rv": 0.8876,
+        "golden_scores": [
+          "1:1",
+          "1:0",
+          "0:0"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -2223,7 +2413,12 @@
         "top_scores": [
           "1:1",
           "1:0"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "主胜",
+        "total_goals": 2.6,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -2355,14 +2550,24 @@
             "score": "1:0",
             "prob": "8.8%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 34.2,
+          "draw": 26.0,
+          "away": 39.8
+        }
       },
       "v42": {
         "direction": "客胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "客胜(让)",
-        "rv": 0.8824
+        "rv": 0.8824,
+        "golden_scores": [
+          "1:1",
+          "0:1",
+          "1:2"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -2402,7 +2607,12 @@
         "top_scores": [
           "1:1",
           "0:1"
-        ]
+        ],
+        "conclusion": "综合一致，主推客胜",
+        "spf_pick": "客胜",
+        "rspf_pick": "客胜",
+        "total_goals": 2.7,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -2534,14 +2744,24 @@
             "score": "1:0",
             "prob": "9.4%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 56.5,
+          "draw": 22.1,
+          "away": 21.4
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 3,
         "star_name": "黄金",
         "rspf_direction": "主胜(让)",
-        "rv": 0.8851
+        "rv": 0.8851,
+        "golden_scores": [
+          "1:0",
+          "1:1",
+          "2:0"
+        ]
       },
       "bizhongge": {
         "pass_count": 4,
@@ -2581,7 +2801,12 @@
         "top_scores": [
           "1:1",
           "2:1"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "主胜",
+        "total_goals": 3.0,
+        "half_time": "主胜"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -2713,14 +2938,24 @@
             "score": "2:1",
             "prob": "9.0%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 44.7,
+          "draw": 26.0,
+          "away": 29.3
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "主胜(让)",
-        "rv": 0.881
+        "rv": 0.881,
+        "golden_scores": [
+          "1:1",
+          "1:0",
+          "2:1"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -2760,7 +2995,12 @@
         "top_scores": [
           "1:1",
           "1:0"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "主胜",
+        "total_goals": 2.6,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -2892,14 +3132,24 @@
             "score": "1:0",
             "prob": "10.4%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 34.3,
+          "draw": 27.5,
+          "away": 38.2
+        }
       },
       "v42": {
         "direction": "客胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "客胜(让)",
-        "rv": 0.8844
+        "rv": 0.8844,
+        "golden_scores": [
+          "1:1",
+          "1:2",
+          "0:1"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -2939,7 +3189,12 @@
         "top_scores": [
           "1:1",
           "0:1"
-        ]
+        ],
+        "conclusion": "综合一致，主推客胜",
+        "spf_pick": "客胜",
+        "rspf_pick": "客胜",
+        "total_goals": 2.4,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -3071,14 +3326,24 @@
             "score": "0:1",
             "prob": "10.8%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 38.9,
+          "draw": 28.2,
+          "away": 33.0
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "主胜(让)",
-        "rv": 0.8836
+        "rv": 0.8836,
+        "golden_scores": [
+          "1:1",
+          "1:0",
+          "2:1"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -3118,7 +3383,12 @@
         "top_scores": [
           "1:1",
           "1:0"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "主胜",
+        "total_goals": 2.3,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -3250,14 +3520,24 @@
             "score": "0:1",
             "prob": "10.7%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 40.6,
+          "draw": 28.3,
+          "away": 31.2
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "主胜(让)",
-        "rv": 0.8863
+        "rv": 0.8863,
+        "golden_scores": [
+          "1:1",
+          "1:0",
+          "0:0"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -3297,7 +3577,12 @@
         "top_scores": [
           "1:1",
           "1:0"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "主胜",
+        "total_goals": 2.3,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -3429,14 +3714,24 @@
             "score": "1:0",
             "prob": "8.7%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 66.8,
+          "draw": 18.5,
+          "away": 14.7
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 4,
         "star_name": "铂金",
         "rspf_direction": "主胜(让)",
-        "rv": 0.8887
+        "rv": 0.8887,
+        "golden_scores": [
+          "1:0",
+          "1:1",
+          "2:0"
+        ]
       },
       "bizhongge": {
         "pass_count": 4,
@@ -3476,7 +3771,12 @@
         "top_scores": [
           "2:0",
           "2:1"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "主胜",
+        "total_goals": 3.3,
+        "half_time": "主胜"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -3608,14 +3908,24 @@
             "score": "2:1",
             "prob": "8.8%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 77.2,
+          "draw": 14.0,
+          "away": 8.7
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 5,
         "star_name": "钻石",
         "rspf_direction": "主胜(让)",
-        "rv": 0.8881
+        "rv": 0.8881,
+        "golden_scores": [
+          "2:0",
+          "3:0",
+          "2:1"
+        ]
       },
       "bizhongge": {
         "pass_count": 4,
@@ -3655,7 +3965,12 @@
         "top_scores": [
           "2:0",
           "3:0"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "主胜",
+        "total_goals": 3.5,
+        "half_time": "主胜"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -3787,14 +4102,24 @@
             "score": "1:1",
             "prob": "8.2%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 15.0,
+          "draw": 18.1,
+          "away": 66.9
+        }
       },
       "v42": {
         "direction": "客胜",
         "star": 4,
         "star_name": "铂金",
         "rspf_direction": "客胜(让)",
-        "rv": 0.886
+        "rv": 0.886,
+        "golden_scores": [
+          "1:2",
+          "0:1",
+          "0:2"
+        ]
       },
       "bizhongge": {
         "pass_count": 4,
@@ -3834,7 +4159,12 @@
         "top_scores": [
           "1:2",
           "0:2"
-        ]
+        ],
+        "conclusion": "综合一致，主推客胜",
+        "spf_pick": "客胜",
+        "rspf_pick": "客胜",
+        "total_goals": 3.4,
+        "half_time": "客胜"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -3966,14 +4296,24 @@
             "score": "1:0",
             "prob": "8.8%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 32.3,
+          "draw": 26.1,
+          "away": 41.6
+        }
       },
       "v42": {
         "direction": "客胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "客胜(让)",
-        "rv": 0.8887
+        "rv": 0.8887,
+        "golden_scores": [
+          "1:1",
+          "0:1",
+          "1:2"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -4013,7 +4353,12 @@
         "top_scores": [
           "1:1",
           "0:1"
-        ]
+        ],
+        "conclusion": "综合一致，主推客胜",
+        "spf_pick": "客胜",
+        "rspf_pick": "客胜",
+        "total_goals": 2.6,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -4145,14 +4490,24 @@
             "score": "2:1",
             "prob": "9.6%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 50.7,
+          "draw": 24.3,
+          "away": 25.0
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 2,
         "star_name": "白银",
         "rspf_direction": "主胜(让)",
-        "rv": 0.8902
+        "rv": 0.8902,
+        "golden_scores": [
+          "1:1",
+          "1:0",
+          "2:1"
+        ]
       },
       "bizhongge": {
         "pass_count": 3,
@@ -4192,7 +4547,12 @@
         "top_scores": [
           "1:1",
           "1:0"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "主胜",
+        "total_goals": 2.8,
+        "half_time": "主胜"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -4324,14 +4684,24 @@
             "score": "1:2",
             "prob": "10.0%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 18.7,
+          "draw": 21.4,
+          "away": 59.9
+        }
       },
       "v42": {
         "direction": "客胜",
         "star": 3,
         "star_name": "黄金",
         "rspf_direction": "客胜(让)",
-        "rv": 0.8904
+        "rv": 0.8904,
+        "golden_scores": [
+          "0:1",
+          "1:1",
+          "0:2"
+        ]
       },
       "bizhongge": {
         "pass_count": 4,
@@ -4371,7 +4741,12 @@
         "top_scores": [
           "1:1",
           "0:1"
-        ]
+        ],
+        "conclusion": "综合一致，主推客胜",
+        "spf_pick": "客胜",
+        "rspf_pick": "客胜",
+        "total_goals": 3.0,
+        "half_time": "客胜"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -4503,14 +4878,24 @@
             "score": "1:0",
             "prob": "11.1%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 33.9,
+          "draw": 28.3,
+          "away": 37.8
+        }
       },
       "v42": {
         "direction": "客胜",
         "star": 1,
         "star_name": "青铜",
         "rspf_direction": "客胜(让)",
-        "rv": 0.8835
+        "rv": 0.8835,
+        "golden_scores": [
+          "1:1",
+          "0:1",
+          "1:2"
+        ]
       },
       "bizhongge": {
         "pass_count": 2,
@@ -4550,7 +4935,12 @@
         "top_scores": [
           "1:1",
           "0:1"
-        ]
+        ],
+        "conclusion": "综合一致，主推客胜",
+        "spf_pick": "客胜",
+        "rspf_pick": "客胜",
+        "total_goals": 2.3,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
@@ -4682,14 +5072,24 @@
             "score": "2:1",
             "prob": "9.2%"
           }
-        ]
+        ],
+        "spf_prob": {
+          "home": 46.4,
+          "draw": 25.7,
+          "away": 27.9
+        }
       },
       "v42": {
         "direction": "主胜",
         "star": 2,
         "star_name": "白银",
         "rspf_direction": "主胜(让)",
-        "rv": 0.8827
+        "rv": 0.8827,
+        "golden_scores": [
+          "1:1",
+          "1:0",
+          "2:1"
+        ]
       },
       "bizhongge": {
         "pass_count": 3,
@@ -4729,7 +5129,12 @@
         "top_scores": [
           "1:1",
           "1:0"
-        ]
+        ],
+        "conclusion": "综合一致，主推主胜",
+        "spf_pick": "主胜",
+        "rspf_pick": "主胜",
+        "total_goals": 2.6,
+        "half_time": "平局"
       },
       "bizhongge_v2": {
         "home_win": {
