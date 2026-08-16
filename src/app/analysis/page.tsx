@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, RefreshCw, Calendar, BarChart3, TrendingUp, Target, AlertTriangle, Check, X, ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowLeft, RefreshCw, Calendar, BarChart3, Target, AlertTriangle, Swords, Check, X } from "lucide-react";
 
 // ===== 类型定义 =====
 interface PoissonTop {
@@ -16,6 +16,26 @@ interface V42Data {
   star_name: string;
   rspf_direction: string;
   rv: number;
+}
+
+interface BzgV2OddsItem {
+  target_odds: number;
+  actual_odds: number;
+  exact_match: boolean;
+  total: number;
+  win: number;
+  draw: number;
+  lose: number;
+  win_pct: number;
+  draw_pct: number;
+  lose_pct: number;
+  top5: [string, number][];
+}
+
+interface BizhonggeV2 {
+  home_win: BzgV2OddsItem;
+  draw: BzgV2OddsItem;
+  away_win: BzgV2OddsItem;
 }
 
 interface BzgCondition {
@@ -53,6 +73,7 @@ interface TodayMatch {
   };
   v42: V42Data;
   bizhongge: BizhonggeData;
+  bizhongge_v2?: BizhonggeV2;
   xiaofeng: XiaofengData;
 }
 
@@ -106,13 +127,6 @@ const starColors: Record<string, string> = {
   "青铜": "text-orange-400 bg-orange-900/30 border-orange-500/50",
 };
 
-const verdictColors: Record<string, string> = {
-  "推荐": "text-emerald-400 bg-emerald-900/30 border-emerald-500/50",
-  "可关注": "text-amber-400 bg-amber-900/30 border-amber-500/50",
-  "观望": "text-gray-400 bg-gray-800/50 border-gray-500/50",
-  "放弃": "text-red-400 bg-red-900/30 border-red-500/50",
-};
-
 const confidenceColors: Record<string, string> = {
   "高": "text-emerald-400",
   "中": "text-amber-400",
@@ -128,7 +142,7 @@ export default function AnalysisPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [filter, setFilter] = useState<string>("all");
-  const [expandedBzg, setExpandedBzg] = useState<Record<string, boolean>>({});
+
   const [selectedDate, setSelectedDate] = useState<string>("");
 
   useEffect(() => {
@@ -164,7 +178,7 @@ export default function AnalysisPage() {
     if (!todayData?.matches) return [];
     let list = [...todayData.matches];
     if (filter === "bzg_pass") {
-      list = list.filter(m => m.bizhongge.verdict === "推荐");
+      list = list.filter(m => m.bizhongge_v2 !== undefined);
     } else if (filter === "high_conf") {
       list = list.filter(m => m.xiaofeng.confidence === "高");
     } else if (filter === "silver_plus") {
@@ -187,15 +201,11 @@ export default function AnalysisPage() {
     const highStars = ["钻石", "铂金", "黄金", "白银"];
     return {
       total: matches.length,
-      bzgPass: matches.filter(m => m.bizhongge.verdict === "推荐").length,
+      bzgPass: matches.filter(m => m.bizhongge_v2 !== undefined).length,
       highConf: matches.filter(m => m.xiaofeng.confidence === "高").length,
       silverPlus: matches.filter(m => highStars.includes(m.v42.star_name)).length,
     };
   }, [todayData]);
-
-  const toggleBzg = (key: string) => {
-    setExpandedBzg(prev => ({ ...prev, [key]: !prev[key] }));
-  };
 
   if (loading) {
     return (
@@ -284,8 +294,8 @@ export default function AnalysisPage() {
                 <div className="text-lg md:text-xl font-bold text-white">{stats.total}</div>
               </div>
               <div className="bg-[#1a1a2e] border border-emerald-700/40 rounded-lg px-3 py-2">
-                <div className="text-xs text-emerald-500">必中哥推荐</div>
-                <div className="text-lg md:text-xl font-bold text-emerald-400">{stats.bzgPass}</div>
+                <div className="text-xs text-orange-400">刻舟求剑</div>
+                <div className="text-lg md:text-xl font-bold text-orange-400">{stats.bzgPass}</div>
               </div>
               <div className="bg-[#1a1a2e] border border-amber-700/40 rounded-lg px-3 py-2">
                 <div className="text-xs text-amber-500">高信心</div>
@@ -301,7 +311,7 @@ export default function AnalysisPage() {
             <div className="flex flex-wrap gap-2">
               {[
                 { key: "all", label: "全部" },
-                { key: "bzg_pass", label: "必中哥推荐" },
+                { key: "bzg_pass", label: "刻舟求剑" },
                 { key: "high_conf", label: "高信心" },
                 { key: "silver_plus", label: "白银以上" },
               ].map(f => (
@@ -325,7 +335,7 @@ export default function AnalysisPage() {
                 <div className="text-center py-12 text-gray-500">没有符合条件的比赛</div>
               )}
               {filteredMatches.map((m, idx) => (
-                <TodayMatchCard key={m.match_no || idx} match={m} expanded={!!expandedBzg[m.match_no]} onToggleBzg={() => toggleBzg(m.match_no)} />
+                <TodayMatchCard key={m.match_no || idx} match={m} />
               ))}
             </div>
           </>
@@ -345,11 +355,11 @@ export default function AnalysisPage() {
 }
 
 // ===== 今日比赛卡片 =====
-function TodayMatchCard({ match, expanded, onToggleBzg }: { match: TodayMatch; expanded: boolean; onToggleBzg: () => void }) {
-  const isBzgRecommand = match.bizhongge.verdict === "推荐";
+function TodayMatchCard({ match }: { match: TodayMatch }) {
+  const hasBzgV2 = match.bizhongge_v2 !== undefined;
   return (
     <div className={`bg-[#1a1a2e] border rounded-lg overflow-hidden transition-all ${
-      isBzgRecommand ? "border-amber-500/50 shadow-[0_0_12px_rgba(245,158,11,0.1)]" : "border-gray-700/50"
+      hasBzgV2 ? "border-orange-500/40 shadow-[0_0_12px_rgba(249,115,22,0.1)]" : "border-gray-700/50"
     }`}>
       {/* 卡片头部 */}
       <div className="px-3 py-2 border-b border-gray-700/50 flex items-center justify-between gap-2">
@@ -405,41 +415,74 @@ function TodayMatchCard({ match, expanded, onToggleBzg }: { match: TodayMatch; e
           </div>
         </div>
 
-        {/* 必中哥 */}
+        {/* 刻舟求剑 V2 */}
         <div className="bg-[#1a1a2e] p-3">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-1.5">
-              <TrendingUp className="w-3.5 h-3.5 text-red-400" />
-              <span className="text-xs font-medium text-red-300">必中哥</span>
+              <Swords className="w-3.5 h-3.5 text-orange-400" />
+              <span className="text-xs font-medium text-orange-300">刻舟求剑 V2</span>
             </div>
-            <span className={`text-[10px] px-1.5 py-0.5 rounded border ${verdictColors[match.bizhongge.verdict] || ""}`}>
-              {match.bizhongge.verdict}
-            </span>
+            {hasBzgV2 ? (
+              <span className="text-[10px] px-1.5 py-0.5 rounded border border-orange-500/50 text-orange-400 bg-orange-500/10">
+                已分析
+              </span>
+            ) : (
+              <span className="text-[10px] px-1.5 py-0.5 rounded border border-gray-600 text-gray-500">
+                无数据
+              </span>
+            )}
           </div>
-          <div className="text-xs text-gray-400 mb-1">
-            通过条件: <span className={match.bizhongge.pass_count >= 3 ? "text-emerald-400" : "text-gray-300"}>
-              {match.bizhongge.pass_count}/{match.bizhongge.total}
-            </span>
-          </div>
-          <button
-            onClick={onToggleBzg}
-            className="w-full text-left text-xs text-gray-500 hover:text-gray-300 flex items-center gap-1 mt-1"
-          >
-            {expanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-            {expanded ? "收起条件" : "展开条件"}
-          </button>
-          {expanded && (
-            <div className="mt-2 pt-2 border-t border-gray-700/50 space-y-1">
-              {match.bizhongge.conditions.map((c, i) => (
-                <div key={i} className="flex items-center justify-between text-xs">
-                  <span className="text-gray-400">{c.name} <span className="text-gray-500">({c.detail})</span></span>
-                  {c.passed ? (
-                    <Check className="w-3.5 h-3.5 text-emerald-400" />
-                  ) : (
-                    <X className="w-3.5 h-3.5 text-red-400" />
-                  )}
-                </div>
-              ))}
+          {match.bizhongge_v2 ? (
+            <div className="space-y-1.5">
+              <div className="grid grid-cols-3 gap-1 text-center">
+                {(["home_win", "draw", "away_win"] as const).map((key) => {
+                  const data = match.bizhongge_v2![key];
+                  const label = key === "home_win" ? "主胜" : key === "draw" ? "平局" : "客胜";
+                  const colorClass = key === "home_win" ? "text-red-400" : key === "draw" ? "text-yellow-400" : "text-blue-400";
+                  const top3 = data.top5.slice(0, 3);
+                  return (
+                    <div key={key} className="bg-gray-900/40 rounded p-1.5">
+                      <div className={`text-[10px] font-medium ${colorClass} mb-0.5`}>
+                        {label}
+                        {!data.exact_match && <span className="text-gray-500">*</span>}
+                      </div>
+                      <div className="text-xs font-mono font-bold text-white tabular-nums">
+                        @{data.target_odds.toFixed(2)}
+                      </div>
+                      <div className="text-[10px] text-gray-500 font-mono mt-0.5">
+                        {data.total}场
+                      </div>
+                      <div className="mt-1 space-y-0.5">
+                        <div className="h-1 bg-gray-700/50 rounded-full overflow-hidden">
+                          <div
+                            className={`h-full rounded-full ${
+                              key === "home_win" ? "bg-red-500/60" : key === "draw" ? "bg-yellow-500/60" : "bg-blue-500/60"
+                            }`}
+                            style={{ width: `${key === "home_win" ? data.win_pct : key === "draw" ? data.draw_pct : data.lose_pct}%` }}
+                          />
+                        </div>
+                        <div className="text-[9px] text-gray-400 font-mono">
+                          {key === "home_win" ? `胜${data.win_pct}%` : key === "draw" ? `平${data.draw_pct}%` : `负${data.lose_pct}%`}
+                        </div>
+                      </div>
+                      <div className="mt-1 flex flex-wrap gap-0.5 justify-center">
+                        {top3.map(([score, cnt], i) => (
+                          <span
+                            key={i}
+                            className="text-[9px] font-mono px-1 py-0.5 rounded bg-orange-900/20 text-orange-300 border border-orange-800/40"
+                          >
+                            {score}({cnt})
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ) : (
+            <div className="text-xs text-gray-600 italic text-center py-2">
+              暂无刻舟求剑数据
             </div>
           )}
         </div>
