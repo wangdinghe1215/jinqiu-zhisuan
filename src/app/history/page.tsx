@@ -54,6 +54,24 @@ interface HistoryMatch {
   poisson_vs_actual: string;
   summary: string;
   match_number?: string;
+  // V4.2扩展
+  v42_star?: number;
+  v42_star_name?: string;
+  v42_rv?: number;
+  v42_golden_scores?: string[];
+  // 小丰综合扩展
+  xf_conclusion?: string;
+  xf_spf_pick?: string;
+  xf_rspf_pick?: string;
+  xf_total_goals?: number;
+  xf_half_time?: string;
+  xf_spf_score?: string;
+  xf_rspf_score?: string;
+  // 泊松扩展
+  poisson_spf_prob?: { home: number; draw: number; away: number };
+  poisson_top3_detail?: Array<{ score: string; prob: string }>;
+  // 必中哥V2（刻舟求剑）- 直接嵌入
+  bizhongge_v2?: any;
 }
 
 interface HistoryDay {
@@ -807,7 +825,9 @@ export default function HistoryPage() {
                       ? match.xf_direction === match.actual_result
                       : false;
                     const xfScoreHit = Array.isArray(match.xf_top_scores) && match.xf_top_scores.includes(match.actual_score);
-                    const bzgMatch = bzgMatches?.find((b) => b.match_no === match.match_no);
+                    const bzgMatch = (match as any).bizhongge_v2
+                      ? { bizhongge: (match as any).bizhongge_v2 }
+                      : bzgMatches?.find((b: any) => b.match_no === match.match_no);
 
                     return (
                       <div
@@ -861,6 +881,14 @@ export default function HistoryPage() {
                                   主 {match.poisson_lambda_h?.toFixed?.(2) || '-'} / 客 {match.poisson_lambda_a?.toFixed?.(2) || '-'}
                                 </div>
                               </div>
+                              {match.poisson_spf_prob && (
+                                <div>
+                                  <div className="text-gray-500 text-[11px] mb-0.5">SPF概率</div>
+                                  <div className="font-mono text-cyan-300 text-[11px]">
+                                    主{match.poisson_spf_prob.home}% 平{match.poisson_spf_prob.draw}% 客{match.poisson_spf_prob.away}%
+                                  </div>
+                                </div>
+                              )}
                               <div>
                                 <div className="text-gray-500 text-[11px] mb-0.5">
                                   方向 {poissonDirHit && <span className="text-emerald-400">✅</span>}
@@ -906,6 +934,26 @@ export default function HistoryPage() {
                                   {match.direction_label || '-'}
                                 </div>
                               </div>
+                              {match.v42_star_name && (
+                                <div>
+                                  <div className="text-gray-500 text-[11px] mb-0.5">星级</div>
+                                  <div className="text-violet-300 text-[11px]">
+                                    {match.v42_star_name} {'⭐'.repeat(match.v42_star || 0)}
+                                  </div>
+                                </div>
+                              )}
+                              {match.v42_golden_scores && match.v42_golden_scores.length > 0 && (
+                                <div>
+                                  <div className="text-gray-500 text-[11px] mb-0.5">黄金比分</div>
+                                  <div className="flex flex-wrap gap-1">
+                                    {match.v42_golden_scores.map((s, i) => (
+                                      <span key={i} className="px-1.5 py-0.5 rounded text-[11px] font-mono bg-violet-900/30 text-violet-200 border border-violet-500/20">
+                                        {s}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
                               <div>
                                 <div className="text-gray-500 text-[11px] mb-0.5">SPF赔率</div>
                                 <div className="font-mono text-amber-200 tabular-nums">
@@ -963,6 +1011,36 @@ export default function HistoryPage() {
                                   })}
                                 </div>
                               </div>
+                              {match.xf_conclusion && (
+                                <div>
+                                  <div className="text-gray-500 text-[11px] mb-0.5">结论</div>
+                                  <div className="text-amber-300 text-[11px]">{match.xf_conclusion}</div>
+                                </div>
+                              )}
+                              {match.xf_spf_score && (
+                                <div className="grid grid-cols-2 gap-1">
+                                  <div>
+                                    <div className="text-gray-500 text-[11px] mb-0.5">SPF比分</div>
+                                    <div className="font-mono text-green-300 text-[11px]">{match.xf_spf_score} ({match.xf_spf_pick})</div>
+                                  </div>
+                                  <div>
+                                    <div className="text-gray-500 text-[11px] mb-0.5">RSPF比分</div>
+                                    <div className="font-mono text-purple-300 text-[11px]">{match.xf_rspf_score} ({match.xf_rspf_pick})</div>
+                                  </div>
+                                </div>
+                              )}
+                              {match.xf_total_goals !== undefined && (
+                                <div className="grid grid-cols-2 gap-1">
+                                  <div>
+                                    <div className="text-gray-500 text-[11px] mb-0.5">总进球</div>
+                                    <div className="font-mono text-amber-300 text-[11px]">{match.xf_total_goals} 球</div>
+                                  </div>
+                                  <div>
+                                    <div className="text-gray-500 text-[11px] mb-0.5">半场</div>
+                                    <div className="font-mono text-amber-300 text-[11px]">{match.xf_half_time || '-'}</div>
+                                  </div>
+                                </div>
+                              )}
                               <div>
                                 <div className="text-gray-500 text-[11px] mb-0.5">SPF参考</div>
                                 <div className="font-mono text-emerald-200/80 tabular-nums text-[11px]">
@@ -977,6 +1055,9 @@ export default function HistoryPage() {
                             <div className="text-xs text-red-400 font-medium mb-2 flex items-center gap-1">
                               <Trophy className="w-3 h-3" />实际赛果
                             </div>
+                            {!match.actual_score ? (
+                              <div className="text-yellow-500/70 text-[11px] text-center py-2">⏳ 待回填赛果</div>
+                            ) : (
                             <div className="space-y-1.5 text-xs">
                               <div>
                                 <div className="text-gray-500 text-[11px] mb-0.5">全场比分</div>
@@ -1003,6 +1084,7 @@ export default function HistoryPage() {
                                 </div>
                               </div>
                             </div>
+                            )}
                           </div>
 
                           {/* 5️⃣ 必中哥·刻舟求剑 */}
@@ -1019,7 +1101,7 @@ export default function HistoryPage() {
                                   </span>
                                 </div>
                                 <div className="flex flex-wrap gap-0.5">
-                                  {bzgMatch.bizhongge.home_win.top5.slice(0, 3).map(([s, c], i) => (
+                                  {bzgMatch.bizhongge.home_win.top5.slice(0, 3).map(([s, c]: [string, number], i: number) => (
                                     <span key={i} className="px-1 py-0.5 rounded bg-orange-500/10 text-orange-300 font-mono">
                                       {s}
                                     </span>
@@ -1032,7 +1114,7 @@ export default function HistoryPage() {
                                   </span>
                                 </div>
                                 <div className="flex flex-wrap gap-0.5">
-                                  {bzgMatch.bizhongge.draw.top5.slice(0, 3).map(([s, c], i) => (
+                                  {bzgMatch.bizhongge.draw.top5.slice(0, 3).map(([s, c]: [string, number], i: number) => (
                                     <span key={i} className="px-1 py-0.5 rounded bg-yellow-500/10 text-yellow-300 font-mono">
                                       {s}
                                     </span>
@@ -1045,7 +1127,7 @@ export default function HistoryPage() {
                                   </span>
                                 </div>
                                 <div className="flex flex-wrap gap-0.5">
-                                  {bzgMatch.bizhongge.away_win.top5.slice(0, 3).map(([s, c], i) => (
+                                  {bzgMatch.bizhongge.away_win.top5.slice(0, 3).map(([s, c]: [string, number], i: number) => (
                                     <span key={i} className="px-1 py-0.5 rounded bg-blue-500/10 text-blue-300 font-mono">
                                       {s}
                                     </span>
