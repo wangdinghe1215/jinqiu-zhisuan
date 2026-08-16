@@ -3,12 +3,12 @@
     {
       "date": "2026-08-15",
       "total": 27,
-      "direction_hits": 0,
-      "direction_total": 27,
-      "direction_rate": "待回填",
-      "score_hits": 0,
-      "score_total": 27,
-      "score_rate": "待回填",
+      "direction_hits": 13,
+      "direction_total": 26,
+      "direction_rate": "50.0%",
+      "score_hits": 6,
+      "score_total": 26,
+      "score_rate": "23.1%",
       "matches": [
         {
           "match_no": "周六001",
@@ -173,18 +173,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "2:1",
+          "actual_result": "home",
+          "result_label": "主胜",
+          "half_score": "1:0",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:客胜(让) vs 实际:home",
+          "direction_hit": true,
+          "score_hit": true,
+          "direction_hit_label": "✅",
+          "score_hit_label": "✅",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "主胜 (2:1) | 推荐方向✅ | 比分✅"
         },
         {
           "match_no": "周六002",
@@ -349,18 +349,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "0:4",
+          "actual_result": "away",
+          "result_label": "客胜",
+          "half_score": "0:2",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:away",
+          "direction_hit": true,
+          "score_hit": false,
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "客胜 (0:4) | 推荐方向✅ | 比分❌"
         },
         {
           "match_no": "周六003",
@@ -525,18 +525,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "1:4",
+          "actual_result": "away",
+          "result_label": "客胜",
+          "half_score": "1:2",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:away",
+          "direction_hit": false,
+          "score_hit": false,
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "客胜 (1:4) | 推荐方向❌ | 比分❌"
         },
         {
           "match_no": "周六004",
@@ -701,18 +701,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "2:2",
+          "actual_result": "draw",
+          "result_label": "平局",
+          "half_score": "1:1",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:客胜(让) vs 实际:draw",
+          "direction_hit": false,
+          "score_hit": false,
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "平局 (2:2) | 推荐方向❌ | 比分❌"
         },
         {
           "match_no": "周六005",
@@ -877,18 +877,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "4:2",
+          "actual_result": "home",
+          "result_label": "主胜",
+          "half_score": "0:1",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:客胜(让) vs 实际:home",
+          "direction_hit": true,
+          "score_hit": false,
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "主胜 (4:2) | 推荐方向✅ | 比分❌"
         },
         {
           "match_no": "周六006",
@@ -1053,18 +1053,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "1:2",
+          "actual_result": "away",
+          "result_label": "客胜",
+          "half_score": "0:1",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:away",
+          "direction_hit": false,
+          "score_hit": false,
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "客胜 (1:2) | 推荐方向❌ | 比分❌"
         },
         {
           "match_no": "周六007",
@@ -1229,18 +1229,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "4:1",
+          "actual_result": "home",
+          "result_label": "主胜",
+          "half_score": "3:0",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:home",
+          "direction_hit": true,
+          "score_hit": false,
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "主胜 (4:1) | 推荐方向✅ | 比分❌"
         },
         {
           "match_no": "周六008",
@@ -1405,18 +1405,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "2:1",
+          "actual_result": "home",
+          "result_label": "主胜",
+          "half_score": "2:0",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:home",
+          "direction_hit": true,
+          "score_hit": false,
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "主胜 (2:1) | 推荐方向✅ | 比分❌"
         },
         {
           "match_no": "周六009",
@@ -1581,18 +1581,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "4:3",
+          "actual_result": "home",
+          "result_label": "主胜",
+          "half_score": "0:3",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:home",
+          "direction_hit": true,
+          "score_hit": false,
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "主胜 (4:3) | 推荐方向✅ | 比分❌"
         },
         {
           "match_no": "周六010",
@@ -1757,18 +1757,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "1:2",
+          "actual_result": "away",
+          "result_label": "客胜",
+          "half_score": "0:0",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:away",
+          "direction_hit": false,
+          "score_hit": false,
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "客胜 (1:2) | 推荐方向❌ | 比分❌"
         },
         {
           "match_no": "周六011",
@@ -1933,18 +1933,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "1:1",
+          "actual_result": "draw",
+          "result_label": "平局",
+          "half_score": "0:0",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:draw",
+          "direction_hit": false,
+          "score_hit": true,
+          "direction_hit_label": "❌",
+          "score_hit_label": "✅",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "平局 (1:1) | 推荐方向❌ | 比分✅"
         },
         {
           "match_no": "周六012",
@@ -2109,18 +2109,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "1:4",
+          "actual_result": "away",
+          "result_label": "客胜",
+          "half_score": "0:1",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:客胜(让) vs 实际:away",
+          "direction_hit": true,
+          "score_hit": false,
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "客胜 (1:4) | 推荐方向✅ | 比分❌"
         },
         {
           "match_no": "周六013",
@@ -2285,18 +2285,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "2:2",
+          "actual_result": "draw",
+          "result_label": "平局",
+          "half_score": "0:0",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:draw",
+          "direction_hit": false,
+          "score_hit": false,
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "平局 (2:2) | 推荐方向❌ | 比分❌"
         },
         {
           "match_no": "周六014",
@@ -2461,18 +2461,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "2:0",
+          "actual_result": "home",
+          "result_label": "主胜",
+          "half_score": "1:0",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:客胜(让) vs 实际:home",
+          "direction_hit": false,
+          "score_hit": false,
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "主胜 (2:0) | 推荐方向❌ | 比分❌"
         },
         {
           "match_no": "周六015",
@@ -2637,18 +2637,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "0:0",
+          "actual_result": "draw",
+          "result_label": "平局",
+          "half_score": "0:0",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:draw",
+          "direction_hit": false,
+          "score_hit": false,
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "平局 (0:0) | 推荐方向❌ | 比分❌"
         },
         {
           "match_no": "周六016",
@@ -2813,18 +2813,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "0:0",
+          "actual_result": "draw",
+          "result_label": "平局",
+          "half_score": "0:0",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:draw",
+          "direction_hit": false,
+          "score_hit": false,
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "平局 (0:0) | 推荐方向❌ | 比分❌"
         },
         {
           "match_no": "周六017",
@@ -2989,18 +2989,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "1:4",
+          "actual_result": "away",
+          "result_label": "客胜",
+          "half_score": "0:1",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:客胜(让) vs 实际:away",
+          "direction_hit": true,
+          "score_hit": false,
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "客胜 (1:4) | 推荐方向✅ | 比分❌"
         },
         {
           "match_no": "周六018",
@@ -3165,18 +3165,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "0:1",
+          "actual_result": "away",
+          "result_label": "客胜",
+          "half_score": "0:0",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:away",
+          "direction_hit": false,
+          "score_hit": true,
+          "direction_hit_label": "❌",
+          "score_hit_label": "✅",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "客胜 (0:1) | 推荐方向❌ | 比分✅"
         },
         {
           "match_no": "周六019",
@@ -3341,18 +3341,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "3:0",
+          "actual_result": "home",
+          "result_label": "主胜",
+          "half_score": "1:0",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:home",
+          "direction_hit": true,
+          "score_hit": false,
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "主胜 (3:0) | 推荐方向✅ | 比分❌"
         },
         {
           "match_no": "周六020",
@@ -3517,18 +3517,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "1:1",
+          "actual_result": "draw",
+          "result_label": "平局",
+          "half_score": "1:0",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:draw",
+          "direction_hit": false,
+          "score_hit": false,
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "平局 (1:1) | 推荐方向❌ | 比分❌"
         },
         {
           "match_no": "周六021",
@@ -3693,18 +3693,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "3:0",
+          "actual_result": "home",
+          "result_label": "主胜",
+          "half_score": "2:0",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:home",
+          "direction_hit": true,
+          "score_hit": true,
+          "direction_hit_label": "✅",
+          "score_hit_label": "✅",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "主胜 (3:0) | 推荐方向✅ | 比分✅"
         },
         {
           "match_no": "周六022",
@@ -3869,18 +3869,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "1:2",
+          "actual_result": "away",
+          "result_label": "客胜",
+          "half_score": "0:1",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:客胜(让) vs 实际:away",
+          "direction_hit": true,
+          "score_hit": true,
+          "direction_hit_label": "✅",
+          "score_hit_label": "✅",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "客胜 (1:2) | 推荐方向✅ | 比分✅"
         },
         {
           "match_no": "周六023",
@@ -4045,18 +4045,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "3:1",
+          "actual_result": "home",
+          "result_label": "主胜",
+          "half_score": "2:1",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:客胜(让) vs 实际:home",
+          "direction_hit": false,
+          "score_hit": false,
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "主胜 (3:1) | 推荐方向❌ | 比分❌"
         },
         {
           "match_no": "周六024",
@@ -4221,18 +4221,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "2:1",
+          "actual_result": "home",
+          "result_label": "主胜",
+          "half_score": "0:1",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:home",
+          "direction_hit": true,
+          "score_hit": true,
+          "direction_hit_label": "✅",
+          "score_hit_label": "✅",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "主胜 (2:1) | 推荐方向✅ | 比分✅"
         },
         {
           "match_no": "周六025",
@@ -4397,18 +4397,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "0:2",
+          "actual_result": "away",
+          "result_label": "客胜",
+          "half_score": "0:1",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:客胜(让) vs 实际:away",
+          "direction_hit": true,
+          "score_hit": false,
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "客胜 (0:2) | 推荐方向✅ | 比分❌"
         },
         {
           "match_no": "周六026",
@@ -4573,18 +4573,18 @@
               ]
             }
           },
-          "actual_score": null,
-          "actual_result": null,
-          "result_label": null,
-          "half_score": null,
+          "actual_score": "3:2",
+          "actual_result": "home",
+          "result_label": "主胜",
+          "half_score": "1:1",
           "spf_result_detail": null,
-          "rspf_result_detail": null,
-          "direction_hit": null,
-          "score_hit": null,
-          "direction_hit_label": "",
-          "score_hit_label": "",
+          "rspf_result_detail": "RSPF方向:客胜(让) vs 实际:home",
+          "direction_hit": false,
+          "score_hit": false,
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "主胜 (3:2) | 推荐方向❌ | 比分❌"
         },
         {
           "match_no": "周六027",

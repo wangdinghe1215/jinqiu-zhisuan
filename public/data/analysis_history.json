@@ -1,6 +1,1179 @@
 {
   "days": [
     {
+      "date": "2026-08-15",
+      "total": 27,
+      "direction_hits": 13,
+      "direction_total": 26,
+      "direction_rate": "50.0%",
+      "score_hits": 6,
+      "score_total": 26,
+      "score_rate": "23.1%",
+      "matches": [
+        {
+          "match_no": "周六001",
+          "league": "日职",
+          "home_team": "鹿岛鹿角",
+          "away_team": "名古屋鲸",
+          "match_time": "08-15 17:00",
+          "spf_odds": "1.73/3.38/3.92",
+          "actual_score": "2:1",
+          "result_label": "主胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "2:1"
+          ],
+          "direction_hit": true,
+          "score_hit": true,
+          "half_score": "1:0",
+          "rspf_odds": "3.45/3.38/1.84",
+          "handicap": -1.0,
+          "poisson": {
+            "lambda_h": 1.73,
+            "lambda_a": 1.06,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "11.3%"
+              },
+              {
+                "score": "1:0",
+                "prob": "10.6%"
+              },
+              {
+                "score": "2:1",
+                "prob": "9.7%"
+              }
+            ]
+          },
+          "direction_hit_label": "✅",
+          "score_hit_label": "✅",
+          "poisson_vs_actual": "泊松预测命中! 2:1 (9.7%)",
+          "summary": "主胜 (2:1) | 推荐方向✅ | 比分✅"
+        },
+        {
+          "match_no": "周六002",
+          "league": "日乙",
+          "home_team": "秋田闪电",
+          "away_team": "富山胜利",
+          "match_time": "08-15 17:00",
+          "spf_odds": "2.85/2.85/2.34",
+          "actual_score": "0:4",
+          "result_label": "客胜",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:1",
+            "0:1",
+            "1:0"
+          ],
+          "direction_hit": true,
+          "score_hit": false,
+          "half_score": "0:2",
+          "rspf_odds": "1.4/4.0/6.05",
+          "handicap": 1.0,
+          "poisson": {
+            "lambda_h": 1.07,
+            "lambda_a": 1.21,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "13.2%"
+              },
+              {
+                "score": "0:1",
+                "prob": "12.4%"
+              },
+              {
+                "score": "1:0",
+                "prob": "10.9%"
+              }
+            ]
+          },
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "客胜 (0:4) | 推荐方向✅ | 比分❌"
+        },
+        {
+          "match_no": "周六003",
+          "league": "日职",
+          "home_team": "浦和红钻",
+          "away_team": "广岛三箭",
+          "match_time": "08-15 18:00",
+          "spf_odds": "1.81/3.6/3.3",
+          "actual_score": "1:4",
+          "result_label": "客胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "2:1",
+            "1:0"
+          ],
+          "direction_hit": false,
+          "score_hit": false,
+          "half_score": "1:2",
+          "rspf_odds": "1.77/3.5/3.6",
+          "handicap": -1.0,
+          "poisson": {
+            "lambda_h": 1.69,
+            "lambda_a": 1.2,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "11.3%"
+              },
+              {
+                "score": "2:1",
+                "prob": "9.5%"
+              },
+              {
+                "score": "1:0",
+                "prob": "9.4%"
+              }
+            ]
+          },
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "客胜 (1:4) | 推荐方向❌ | 比分❌"
+        },
+        {
+          "match_no": "周六004",
+          "league": "日职",
+          "home_team": "神户胜利",
+          "away_team": "东京FC",
+          "match_time": "08-15 18:00",
+          "spf_odds": "2.03/3.12/3.16",
+          "actual_score": "2:2",
+          "result_label": "平局",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "2:1"
+          ],
+          "direction_hit": false,
+          "score_hit": false,
+          "half_score": "1:1",
+          "rspf_odds": "4.9/3.7/1.53",
+          "handicap": 1.0,
+          "poisson": {
+            "lambda_h": 1.45,
+            "lambda_a": 1.11,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "12.4%"
+              },
+              {
+                "score": "1:0",
+                "prob": "11.2%"
+              },
+              {
+                "score": "2:1",
+                "prob": "9.0%"
+              }
+            ]
+          },
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "平局 (2:2) | 推荐方向❌ | 比分❌"
+        },
+        {
+          "match_no": "周六005",
+          "league": "韩职",
+          "home_team": "首尔FC",
+          "away_team": "大田市民",
+          "match_time": "08-15 18:30",
+          "spf_odds": "2.04/3.25/3.02",
+          "actual_score": "4:2",
+          "result_label": "主胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "2:1"
+          ],
+          "direction_hit": true,
+          "score_hit": false,
+          "half_score": "0:1",
+          "rspf_odds": "3.75/3.55/1.72",
+          "handicap": -1.0,
+          "poisson": {
+            "lambda_h": 1.45,
+            "lambda_a": 1.15,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "12.4%"
+              },
+              {
+                "score": "1:0",
+                "prob": "10.8%"
+              },
+              {
+                "score": "2:1",
+                "prob": "9.0%"
+              }
+            ]
+          },
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "主胜 (4:2) | 推荐方向✅ | 比分❌"
+        },
+        {
+          "match_no": "周六006",
+          "league": "韩职",
+          "home_team": "光州FC",
+          "away_team": "浦项制铁",
+          "match_time": "08-15 18:30",
+          "spf_odds": "2.07/3.0/3.2",
+          "actual_score": "1:2",
+          "result_label": "客胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "2:1"
+          ],
+          "direction_hit": false,
+          "score_hit": false,
+          "half_score": "0:1",
+          "rspf_odds": "1.65/3.6/4.05",
+          "handicap": -1.0,
+          "poisson": {
+            "lambda_h": 1.43,
+            "lambda_a": 1.1,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "12.5%"
+              },
+              {
+                "score": "1:0",
+                "prob": "11.4%"
+              },
+              {
+                "score": "2:1",
+                "prob": "9.0%"
+              }
+            ]
+          },
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "客胜 (1:2) | 推荐方向❌ | 比分❌"
+        },
+        {
+          "match_no": "周六007",
+          "league": "德乙",
+          "home_team": "柏林赫塔",
+          "away_team": "海登海姆",
+          "match_time": "08-15 21:30",
+          "spf_odds": "2.1/3.3/2.85",
+          "actual_score": "4:1",
+          "result_label": "主胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "2:1"
+          ],
+          "direction_hit": true,
+          "score_hit": false,
+          "half_score": "3:0",
+          "rspf_odds": "2.1/3.3/2.85",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.43,
+            "lambda_a": 1.2,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "12.4%"
+              },
+              {
+                "score": "1:0",
+                "prob": "10.3%"
+              },
+              {
+                "score": "2:1",
+                "prob": "8.8%"
+              }
+            ]
+          },
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "主胜 (4:1) | 推荐方向✅ | 比分❌"
+        },
+        {
+          "match_no": "周六008",
+          "league": "英冠",
+          "home_team": "博尔顿",
+          "away_team": "普雷斯顿",
+          "match_time": "08-15 22:00",
+          "spf_odds": "2.35/3.1/2.65",
+          "actual_score": "2:1",
+          "result_label": "主胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "0:1"
+          ],
+          "direction_hit": true,
+          "score_hit": false,
+          "half_score": "2:0",
+          "rspf_odds": "2.35/3.1/2.65",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.22,
+            "lambda_a": 1.13,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "13.1%"
+              },
+              {
+                "score": "1:0",
+                "prob": "11.6%"
+              },
+              {
+                "score": "0:1",
+                "prob": "10.8%"
+              }
+            ]
+          },
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "主胜 (2:1) | 推荐方向✅ | 比分❌"
+        },
+        {
+          "match_no": "周六009",
+          "league": "瑞超",
+          "home_team": "米亚尔比",
+          "away_team": "天狼星",
+          "match_time": "08-15 23:00",
+          "spf_odds": "1.85/3.4/3.4",
+          "actual_score": "4:3",
+          "result_label": "主胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "2:1"
+          ],
+          "direction_hit": true,
+          "score_hit": false,
+          "half_score": "0:3",
+          "rspf_odds": "1.85/3.4/3.4",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.67,
+            "lambda_a": 1.17,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "11.4%"
+              },
+              {
+                "score": "1:0",
+                "prob": "9.8%"
+              },
+              {
+                "score": "2:1",
+                "prob": "9.5%"
+              }
+            ]
+          },
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "主胜 (4:3) | 推荐方向✅ | 比分❌"
+        },
+        {
+          "match_no": "周六010",
+          "league": "英冠",
+          "home_team": "诺维奇",
+          "away_team": "西布罗姆",
+          "match_time": "08-15 22:00",
+          "spf_odds": "2.2/3.2/2.8",
+          "actual_score": "1:2",
+          "result_label": "客胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "0:1"
+          ],
+          "direction_hit": false,
+          "score_hit": false,
+          "half_score": "0:0",
+          "rspf_odds": "2.2/3.2/2.8",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.39,
+            "lambda_a": 1.21,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "12.5%"
+              },
+              {
+                "score": "1:0",
+                "prob": "10.3%"
+              },
+              {
+                "score": "0:1",
+                "prob": "9.0%"
+              }
+            ]
+          },
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "客胜 (1:2) | 推荐方向❌ | 比分❌"
+        },
+        {
+          "match_no": "周六011",
+          "league": "挪超",
+          "home_team": "奥斯KFUM",
+          "away_team": "利勒斯特",
+          "match_time": "08-15 23:00",
+          "spf_odds": "2.4/3.3/2.45",
+          "actual_score": "1:1",
+          "result_label": "平局",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "0:1"
+          ],
+          "direction_hit": false,
+          "score_hit": true,
+          "half_score": "0:0",
+          "rspf_odds": "2.4/3.3/2.45",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.21,
+            "lambda_a": 1.19,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "13.1%"
+              },
+              {
+                "score": "1:0",
+                "prob": "11.0%"
+              },
+              {
+                "score": "0:1",
+                "prob": "10.8%"
+              }
+            ]
+          },
+          "direction_hit_label": "❌",
+          "score_hit_label": "✅",
+          "poisson_vs_actual": "泊松预测命中! 1:1 (13.1%)",
+          "summary": "平局 (1:1) | 推荐方向❌ | 比分✅"
+        },
+        {
+          "match_no": "周六012",
+          "league": "荷甲",
+          "home_team": "威廉二世",
+          "away_team": "奈梅亨",
+          "match_time": "08-15 00:45",
+          "spf_odds": "2.5/3.3/2.35",
+          "actual_score": "1:4",
+          "result_label": "客胜",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:1",
+            "0:1",
+            "1:0"
+          ],
+          "direction_hit": true,
+          "score_hit": false,
+          "half_score": "0:1",
+          "rspf_odds": "2.5/3.3/2.35",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.18,
+            "lambda_a": 1.22,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "13.1%"
+              },
+              {
+                "score": "0:1",
+                "prob": "11.1%"
+              },
+              {
+                "score": "1:0",
+                "prob": "10.7%"
+              }
+            ]
+          },
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "客胜 (1:4) | 推荐方向✅ | 比分❌"
+        },
+        {
+          "match_no": "周六013",
+          "league": "葡超",
+          "home_team": "阿尔维卡",
+          "away_team": "阿马多拉",
+          "match_time": "08-15 01:00",
+          "spf_odds": "2.15/3.1/2.95",
+          "actual_score": "2:2",
+          "result_label": "平局",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "0:1"
+          ],
+          "direction_hit": false,
+          "score_hit": false,
+          "half_score": "0:0",
+          "rspf_odds": "2.15/3.1/2.95",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.41,
+            "lambda_a": 1.17,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "12.5%"
+              },
+              {
+                "score": "1:0",
+                "prob": "10.7%"
+              },
+              {
+                "score": "0:1",
+                "prob": "8.9%"
+              }
+            ]
+          },
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "平局 (2:2) | 推荐方向❌ | 比分❌"
+        },
+        {
+          "match_no": "周六014",
+          "league": "芬超",
+          "home_team": "玛丽港",
+          "away_team": "塞伊奈",
+          "match_time": "08-15 01:00",
+          "spf_odds": "2.6/3.4/2.2",
+          "actual_score": "2:0",
+          "result_label": "主胜",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:1",
+            "0:1",
+            "1:0"
+          ],
+          "direction_hit": false,
+          "score_hit": false,
+          "half_score": "1:0",
+          "rspf_odds": "2.6/3.4/2.2",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.27,
+            "lambda_a": 1.39,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "12.3%"
+              },
+              {
+                "score": "0:1",
+                "prob": "9.7%"
+              },
+              {
+                "score": "1:0",
+                "prob": "8.9%"
+              }
+            ]
+          },
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "主胜 (2:0) | 推荐方向❌ | 比分❌"
+        },
+        {
+          "match_no": "周六015",
+          "league": "沙职",
+          "home_team": "布赖合作",
+          "away_team": "赛哈海湾",
+          "match_time": "08-15 02:00",
+          "spf_odds": "1.65/3.5/4.2",
+          "actual_score": "0:0",
+          "result_label": "平局",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "2:1",
+            "1:0"
+          ],
+          "direction_hit": false,
+          "score_hit": false,
+          "half_score": "0:0",
+          "rspf_odds": "1.65/3.5/4.2",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.92,
+            "lambda_a": 1.1,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "10.3%"
+              },
+              {
+                "score": "2:1",
+                "prob": "9.9%"
+              },
+              {
+                "score": "1:0",
+                "prob": "9.4%"
+              }
+            ]
+          },
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "平局 (0:0) | 推荐方向❌ | 比分❌"
+        },
+        {
+          "match_no": "周六016",
+          "league": "英冠",
+          "home_team": "谢菲联",
+          "away_team": "伯明翰",
+          "match_time": "08-15 02:45",
+          "spf_odds": "2.0/3.2/3.1",
+          "actual_score": "0:0",
+          "result_label": "平局",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "2:1"
+          ],
+          "direction_hit": false,
+          "score_hit": false,
+          "half_score": "0:0",
+          "rspf_odds": "2.0/3.2/3.1",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.46,
+            "lambda_a": 1.13,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "12.4%"
+              },
+              {
+                "score": "1:0",
+                "prob": "11.0%"
+              },
+              {
+                "score": "2:1",
+                "prob": "9.0%"
+              }
+            ]
+          },
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "平局 (0:0) | 推荐方向❌ | 比分❌"
+        },
+        {
+          "match_no": "周六017",
+          "league": "荷甲",
+          "home_team": "乌德勒支",
+          "away_team": "阿尔克马",
+          "match_time": "08-15 02:45",
+          "spf_odds": "2.55/3.4/2.25",
+          "actual_score": "1:4",
+          "result_label": "客胜",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:1",
+            "0:1",
+            "1:0"
+          ],
+          "direction_hit": true,
+          "score_hit": false,
+          "half_score": "0:1",
+          "rspf_odds": "2.55/3.4/2.25",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.17,
+            "lambda_a": 1.25,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "13.0%"
+              },
+              {
+                "score": "0:1",
+                "prob": "11.1%"
+              },
+              {
+                "score": "1:0",
+                "prob": "10.4%"
+              }
+            ]
+          },
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "客胜 (1:4) | 推荐方向✅ | 比分❌"
+        },
+        {
+          "match_no": "周六018",
+          "league": "葡超",
+          "home_team": "维塞乌",
+          "away_team": "圣克拉拉",
+          "match_time": "08-15 03:15",
+          "spf_odds": "2.3/3.0/2.75",
+          "actual_score": "0:1",
+          "result_label": "客胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "0:1"
+          ],
+          "direction_hit": false,
+          "score_hit": true,
+          "half_score": "0:0",
+          "rspf_odds": "2.3/3.0/2.75",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.22,
+            "lambda_a": 1.1,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "13.2%"
+              },
+              {
+                "score": "1:0",
+                "prob": "12.0%"
+              },
+              {
+                "score": "0:1",
+                "prob": "10.8%"
+              }
+            ]
+          },
+          "direction_hit_label": "❌",
+          "score_hit_label": "✅",
+          "poisson_vs_actual": "泊松预测命中! 0:1 (10.8%)",
+          "summary": "客胜 (0:1) | 推荐方向❌ | 比分✅"
+        },
+        {
+          "match_no": "周六019",
+          "league": "西甲",
+          "home_team": "阿拉维斯",
+          "away_team": "赫塔费",
+          "match_time": "08-15 03:30",
+          "spf_odds": "2.25/2.9/2.95",
+          "actual_score": "3:0",
+          "result_label": "主胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "0:1"
+          ],
+          "direction_hit": true,
+          "score_hit": false,
+          "half_score": "1:0",
+          "rspf_odds": "2.25/2.9/2.95",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.24,
+            "lambda_a": 1.05,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "13.2%"
+              },
+              {
+                "score": "1:0",
+                "prob": "12.6%"
+              },
+              {
+                "score": "0:1",
+                "prob": "10.6%"
+              }
+            ]
+          },
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "主胜 (3:0) | 推荐方向✅ | 比分❌"
+        },
+        {
+          "match_no": "周六020",
+          "league": "沙职",
+          "home_team": "吉达联合",
+          "away_team": "拉斯永恒",
+          "match_time": "08-15 02:00",
+          "spf_odds": "1.45/3.8/5.8",
+          "actual_score": "1:1",
+          "result_label": "平局",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "2:0",
+            "2:1",
+            "1:0"
+          ],
+          "direction_hit": false,
+          "score_hit": false,
+          "half_score": "1:0",
+          "rspf_odds": "1.45/3.8/5.8",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 2.29,
+            "lambda_a": 0.98,
+            "top3": [
+              {
+                "score": "2:0",
+                "prob": "10.0%"
+              },
+              {
+                "score": "2:1",
+                "prob": "9.8%"
+              },
+              {
+                "score": "1:0",
+                "prob": "8.7%"
+              }
+            ]
+          },
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "平局 (1:1) | 推荐方向❌ | 比分❌"
+        },
+        {
+          "match_no": "周六021",
+          "league": "沙职",
+          "home_team": "利雅胜利",
+          "away_team": "穆拜征服",
+          "match_time": "08-15 02:00",
+          "spf_odds": "1.25/4.8/8.5",
+          "actual_score": "3:0",
+          "result_label": "主胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "2:0",
+            "3:0",
+            "2:1"
+          ],
+          "direction_hit": true,
+          "score_hit": true,
+          "half_score": "2:0",
+          "rspf_odds": "1.25/4.8/8.5",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 2.72,
+            "lambda_a": 0.82,
+            "top3": [
+              {
+                "score": "2:0",
+                "prob": "10.7%"
+              },
+              {
+                "score": "3:0",
+                "prob": "9.7%"
+              },
+              {
+                "score": "2:1",
+                "prob": "8.8%"
+              }
+            ]
+          },
+          "direction_hit_label": "✅",
+          "score_hit_label": "✅",
+          "poisson_vs_actual": "泊松预测命中! 3:0 (9.7%)",
+          "summary": "主胜 (3:0) | 推荐方向✅ | 比分✅"
+        },
+        {
+          "match_no": "周六022",
+          "league": "荷甲",
+          "home_team": "SBV精英",
+          "away_team": "埃因霍温",
+          "match_time": "08-15 02:45",
+          "spf_odds": "5.5/4.5/1.38",
+          "actual_score": "1:2",
+          "result_label": "客胜",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:2",
+            "0:2",
+            "1:1"
+          ],
+          "direction_hit": true,
+          "score_hit": true,
+          "half_score": "0:1",
+          "rspf_odds": "5.5/4.5/1.38",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.03,
+            "lambda_a": 2.36,
+            "top3": [
+              {
+                "score": "1:2",
+                "prob": "9.7%"
+              },
+              {
+                "score": "0:2",
+                "prob": "9.4%"
+              },
+              {
+                "score": "1:1",
+                "prob": "8.2%"
+              }
+            ]
+          },
+          "direction_hit_label": "✅",
+          "score_hit_label": "✅",
+          "poisson_vs_actual": "泊松预测命中! 1:2 (9.7%)",
+          "summary": "客胜 (1:2) | 推荐方向✅ | 比分✅"
+        },
+        {
+          "match_no": "周六023",
+          "league": "荷甲",
+          "home_team": "福图纳",
+          "away_team": "坎布尔",
+          "match_time": "08-15 02:45",
+          "spf_odds": "2.8/3.3/2.15",
+          "actual_score": "3:1",
+          "result_label": "主胜",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:1",
+            "0:1",
+            "1:0"
+          ],
+          "direction_hit": false,
+          "score_hit": false,
+          "half_score": "2:1",
+          "rspf_odds": "2.8/3.3/2.15",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.21,
+            "lambda_a": 1.41,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "12.4%"
+              },
+              {
+                "score": "0:1",
+                "prob": "10.3%"
+              },
+              {
+                "score": "1:0",
+                "prob": "8.8%"
+              }
+            ]
+          },
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "主胜 (3:1) | 推荐方向❌ | 比分❌"
+        },
+        {
+          "match_no": "周六024",
+          "league": "西甲",
+          "home_team": "塞维利亚",
+          "away_team": "巴列卡诺",
+          "match_time": "08-15 03:30",
+          "spf_odds": "1.85/3.2/3.7",
+          "actual_score": "2:1",
+          "result_label": "主胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "2:1"
+          ],
+          "direction_hit": true,
+          "score_hit": true,
+          "half_score": "0:1",
+          "rspf_odds": "1.85/3.2/3.7",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.67,
+            "lambda_a": 1.1,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "11.5%"
+              },
+              {
+                "score": "1:0",
+                "prob": "10.5%"
+              },
+              {
+                "score": "2:1",
+                "prob": "9.6%"
+              }
+            ]
+          },
+          "direction_hit_label": "✅",
+          "score_hit_label": "✅",
+          "poisson_vs_actual": "泊松预测命中! 2:1 (9.6%)",
+          "summary": "主胜 (2:1) | 推荐方向✅ | 比分✅"
+        },
+        {
+          "match_no": "周六025",
+          "league": "葡超",
+          "home_team": "里奥阿维",
+          "away_team": "波尔图",
+          "match_time": "08-15 03:30",
+          "spf_odds": "4.8/3.6/1.57",
+          "actual_score": "0:2",
+          "result_label": "客胜",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:1",
+            "0:1",
+            "1:2"
+          ],
+          "direction_hit": true,
+          "score_hit": false,
+          "half_score": "0:1",
+          "rspf_odds": "4.8/3.6/1.57",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.01,
+            "lambda_a": 1.98,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "10.1%"
+              },
+              {
+                "score": "0:1",
+                "prob": "10.0%"
+              },
+              {
+                "score": "1:2",
+                "prob": "10.0%"
+              }
+            ]
+          },
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "客胜 (0:2) | 推荐方向✅ | 比分❌"
+        },
+        {
+          "match_no": "周六026",
+          "league": "巴甲",
+          "home_team": "弗鲁米嫩",
+          "away_team": "帕梅拉斯",
+          "match_time": "08-15 05:30",
+          "spf_odds": "2.7/2.9/2.4",
+          "actual_score": "3:2",
+          "result_label": "主胜",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:1",
+            "0:1",
+            "1:0"
+          ],
+          "direction_hit": false,
+          "score_hit": false,
+          "half_score": "1:1",
+          "rspf_odds": "2.7/2.9/2.4",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.11,
+            "lambda_a": 1.19,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "13.2%"
+              },
+              {
+                "score": "0:1",
+                "prob": "11.9%"
+              },
+              {
+                "score": "1:0",
+                "prob": "11.1%"
+              }
+            ]
+          },
+          "direction_hit_label": "❌",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "主胜 (3:2) | 推荐方向❌ | 比分❌"
+        },
+        {
+          "match_no": "周六027",
+          "league": "美职",
+          "home_team": "盐湖城",
+          "away_team": "明尼苏达",
+          "match_time": "08-15 09:30",
+          "spf_odds": "1.9/3.4/3.2",
+          "actual_score": null,
+          "result_label": null,
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "2:1"
+          ],
+          "direction_hit": null,
+          "score_hit": null,
+          "half_score": null,
+          "rspf_odds": "1.9/3.4/3.2",
+          "handicap": 0,
+          "poisson": {
+            "lambda_h": 1.51,
+            "lambda_a": 1.11,
+            "top3": [
+              {
+                "score": "1:1",
+                "prob": "12.2%"
+              },
+              {
+                "score": "1:0",
+                "prob": "11.0%"
+              },
+              {
+                "score": "2:1",
+                "prob": "9.2%"
+              }
+            ]
+          },
+          "direction_hit_label": "",
+          "score_hit_label": "",
+          "poisson_vs_actual": "",
+          "summary": "待回填赛果"
+        }
+      ]
+    },
+    {
       "date": "2026-08-14",
       "total": 17,
       "direction_hits": 11,
