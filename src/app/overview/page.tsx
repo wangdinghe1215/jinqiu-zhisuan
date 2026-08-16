@@ -232,7 +232,7 @@ export default function OverviewPage() {
               分析覆盖率
             </div>
             <div className="text-3xl font-bold text-purple-400 tabular-nums">
-              {loading ? '...' : dbData ? `${(dbData.coverage.rate * 100).toFixed(1)}%` : '-'}
+              {loading ? '...' : dbData ? `${dbData.coverage.rate.toFixed(1)}%` : '-'}
             </div>
             <div className="text-xs text-gray-500 mt-1">
               {loading ? '' : dbData ? `${dbData.coverage.analyzed} / ${dbData.coverage.total} 场` : '-'}
