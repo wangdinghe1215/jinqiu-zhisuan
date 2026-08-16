@@ -184,7 +184,8 @@
           "direction_hit_label": "✅",
           "score_hit_label": "✅",
           "poisson_vs_actual": "",
-          "summary": "主胜 (2:1) | 推荐方向✅ | 比分✅"
+          "summary": "主胜 (2:1) | 推荐方向✅ | 比分✅",
+          "hit_result": "✅"
         },
         {
           "match_no": "周六002",
@@ -360,7 +361,8 @@
           "direction_hit_label": "✅",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "客胜 (0:4) | 推荐方向✅ | 比分❌"
+          "summary": "客胜 (0:4) | 推荐方向✅ | 比分❌",
+          "hit_result": "✅"
         },
         {
           "match_no": "周六003",
@@ -536,7 +538,8 @@
           "direction_hit_label": "❌",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "客胜 (1:4) | 推荐方向❌ | 比分❌"
+          "summary": "客胜 (1:4) | 推荐方向❌ | 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周六004",
@@ -712,7 +715,8 @@
           "direction_hit_label": "❌",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "平局 (2:2) | 推荐方向❌ | 比分❌"
+          "summary": "平局 (2:2) | 推荐方向❌ | 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周六005",
@@ -888,7 +892,8 @@
           "direction_hit_label": "✅",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "主胜 (4:2) | 推荐方向✅ | 比分❌"
+          "summary": "主胜 (4:2) | 推荐方向✅ | 比分❌",
+          "hit_result": "✅"
         },
         {
           "match_no": "周六006",
@@ -1064,7 +1069,8 @@
           "direction_hit_label": "❌",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "客胜 (1:2) | 推荐方向❌ | 比分❌"
+          "summary": "客胜 (1:2) | 推荐方向❌ | 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周六007",
@@ -1240,7 +1246,8 @@
           "direction_hit_label": "✅",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "主胜 (4:1) | 推荐方向✅ | 比分❌"
+          "summary": "主胜 (4:1) | 推荐方向✅ | 比分❌",
+          "hit_result": "✅"
         },
         {
           "match_no": "周六008",
@@ -1416,7 +1423,8 @@
           "direction_hit_label": "✅",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "主胜 (2:1) | 推荐方向✅ | 比分❌"
+          "summary": "主胜 (2:1) | 推荐方向✅ | 比分❌",
+          "hit_result": "✅"
         },
         {
           "match_no": "周六009",
@@ -1592,7 +1600,8 @@
           "direction_hit_label": "✅",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "主胜 (4:3) | 推荐方向✅ | 比分❌"
+          "summary": "主胜 (4:3) | 推荐方向✅ | 比分❌",
+          "hit_result": "✅"
         },
         {
           "match_no": "周六010",
@@ -1768,7 +1777,8 @@
           "direction_hit_label": "❌",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "客胜 (1:2) | 推荐方向❌ | 比分❌"
+          "summary": "客胜 (1:2) | 推荐方向❌ | 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周六011",
@@ -1944,7 +1954,8 @@
           "direction_hit_label": "❌",
           "score_hit_label": "✅",
           "poisson_vs_actual": "",
-          "summary": "平局 (1:1) | 推荐方向❌ | 比分✅"
+          "summary": "平局 (1:1) | 推荐方向❌ | 比分✅",
+          "hit_result": "❌"
         },
         {
           "match_no": "周六012",
@@ -2120,7 +2131,8 @@
           "direction_hit_label": "✅",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "客胜 (1:4) | 推荐方向✅ | 比分❌"
+          "summary": "客胜 (1:4) | 推荐方向✅ | 比分❌",
+          "hit_result": "✅"
         },
         {
           "match_no": "周六013",
@@ -2296,7 +2308,8 @@
           "direction_hit_label": "❌",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "平局 (2:2) | 推荐方向❌ | 比分❌"
+          "summary": "平局 (2:2) | 推荐方向❌ | 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周六014",
@@ -2472,7 +2485,8 @@
           "direction_hit_label": "❌",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "主胜 (2:0) | 推荐方向❌ | 比分❌"
+          "summary": "主胜 (2:0) | 推荐方向❌ | 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周六015",
@@ -2648,7 +2662,8 @@
           "direction_hit_label": "❌",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "平局 (0:0) | 推荐方向❌ | 比分❌"
+          "summary": "平局 (0:0) | 推荐方向❌ | 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周六016",
@@ -2824,7 +2839,8 @@
           "direction_hit_label": "❌",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "平局 (0:0) | 推荐方向❌ | 比分❌"
+          "summary": "平局 (0:0) | 推荐方向❌ | 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周六017",
@@ -3000,7 +3016,8 @@
           "direction_hit_label": "✅",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "客胜 (1:4) | 推荐方向✅ | 比分❌"
+          "summary": "客胜 (1:4) | 推荐方向✅ | 比分❌",
+          "hit_result": "✅"
         },
         {
           "match_no": "周六018",
@@ -3176,7 +3193,8 @@
           "direction_hit_label": "❌",
           "score_hit_label": "✅",
           "poisson_vs_actual": "",
-          "summary": "客胜 (0:1) | 推荐方向❌ | 比分✅"
+          "summary": "客胜 (0:1) | 推荐方向❌ | 比分✅",
+          "hit_result": "❌"
         },
         {
           "match_no": "周六019",
@@ -3352,7 +3370,8 @@
           "direction_hit_label": "✅",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "主胜 (3:0) | 推荐方向✅ | 比分❌"
+          "summary": "主胜 (3:0) | 推荐方向✅ | 比分❌",
+          "hit_result": "✅"
         },
         {
           "match_no": "周六020",
@@ -3528,7 +3547,8 @@
           "direction_hit_label": "❌",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "平局 (1:1) | 推荐方向❌ | 比分❌"
+          "summary": "平局 (1:1) | 推荐方向❌ | 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周六021",
@@ -3704,7 +3724,8 @@
           "direction_hit_label": "✅",
           "score_hit_label": "✅",
           "poisson_vs_actual": "",
-          "summary": "主胜 (3:0) | 推荐方向✅ | 比分✅"
+          "summary": "主胜 (3:0) | 推荐方向✅ | 比分✅",
+          "hit_result": "✅"
         },
         {
           "match_no": "周六022",
@@ -3880,7 +3901,8 @@
           "direction_hit_label": "✅",
           "score_hit_label": "✅",
           "poisson_vs_actual": "",
-          "summary": "客胜 (1:2) | 推荐方向✅ | 比分✅"
+          "summary": "客胜 (1:2) | 推荐方向✅ | 比分✅",
+          "hit_result": "✅"
         },
         {
           "match_no": "周六023",
@@ -4056,7 +4078,8 @@
           "direction_hit_label": "❌",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "主胜 (3:1) | 推荐方向❌ | 比分❌"
+          "summary": "主胜 (3:1) | 推荐方向❌ | 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周六024",
@@ -4232,7 +4255,8 @@
           "direction_hit_label": "✅",
           "score_hit_label": "✅",
           "poisson_vs_actual": "",
-          "summary": "主胜 (2:1) | 推荐方向✅ | 比分✅"
+          "summary": "主胜 (2:1) | 推荐方向✅ | 比分✅",
+          "hit_result": "✅"
         },
         {
           "match_no": "周六025",
@@ -4408,7 +4432,8 @@
           "direction_hit_label": "✅",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "客胜 (0:2) | 推荐方向✅ | 比分❌"
+          "summary": "客胜 (0:2) | 推荐方向✅ | 比分❌",
+          "hit_result": "✅"
         },
         {
           "match_no": "周六026",
@@ -4584,7 +4609,8 @@
           "direction_hit_label": "❌",
           "score_hit_label": "❌",
           "poisson_vs_actual": "",
-          "summary": "主胜 (3:2) | 推荐方向❌ | 比分❌"
+          "summary": "主胜 (3:2) | 推荐方向❌ | 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周六027",
@@ -4760,9 +4786,17 @@
           "direction_hit_label": "",
           "score_hit_label": "",
           "poisson_vs_actual": "",
-          "summary": "待回填赛果"
+          "summary": "待回填赛果",
+          "hit_result": "待回填"
         }
-      ]
+      ],
+      "direction_hit": 13,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "13/26",
+      "direction_hit_pct": 50.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-08-14",
@@ -4810,7 +4844,8 @@
           "direction_hit_label": "✅命中",
           "score_hit_label": "❌未中",
           "poisson_vs_actual": "预测Top1 1:1 vs 实际1:3",
-          "summary": "方向✅ 比分❌"
+          "summary": "方向✅ 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周五002",
@@ -4848,7 +4883,8 @@
           "direction_hit_label": "❌未中",
           "score_hit_label": "❌未中",
           "poisson_vs_actual": "预测Top1 1:1 vs 实际1:3",
-          "summary": "方向❌ 比分❌"
+          "summary": "方向❌ 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周五003",
@@ -4886,7 +4922,8 @@
           "direction_hit_label": "❌未中",
           "score_hit_label": "❌未中",
           "poisson_vs_actual": "预测Top1 1:1 vs 实际2:2",
-          "summary": "方向❌ 比分❌"
+          "summary": "方向❌ 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周五004",
@@ -4924,7 +4961,8 @@
           "direction_hit_label": "❌未中",
           "score_hit_label": "✅命中",
           "poisson_vs_actual": "预测Top1 1:1 vs 实际0:1",
-          "summary": "方向❌ 比分✅"
+          "summary": "方向❌ 比分✅",
+          "hit_result": "❌"
         },
         {
           "match_no": "周五005",
@@ -4962,7 +5000,8 @@
           "direction_hit_label": "✅命中",
           "score_hit_label": "✅命中",
           "poisson_vs_actual": "预测Top1 2:1 vs 实际2:1",
-          "summary": "方向✅ 比分✅"
+          "summary": "方向✅ 比分✅",
+          "hit_result": "❌"
         },
         {
           "match_no": "周五006",
@@ -5000,7 +5039,8 @@
           "direction_hit_label": "✅命中",
           "score_hit_label": "❌未中",
           "poisson_vs_actual": "预测Top1 1:0 vs 实际3:0",
-          "summary": "方向✅ 比分❌"
+          "summary": "方向✅ 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周五007",
@@ -5038,7 +5078,8 @@
           "direction_hit_label": "✅命中",
           "score_hit_label": "❌未中",
           "poisson_vs_actual": "预测Top1 1:1 vs 实际2:1",
-          "summary": "方向✅ 比分❌"
+          "summary": "方向✅ 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周五008",
@@ -5076,7 +5117,8 @@
           "direction_hit_label": "✅命中",
           "score_hit_label": "❌未中",
           "poisson_vs_actual": "预测Top1 1:1 vs 实际4:2",
-          "summary": "方向✅ 比分❌"
+          "summary": "方向✅ 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周五009",
@@ -5114,7 +5156,8 @@
           "direction_hit_label": "✅命中",
           "score_hit_label": "❌未中",
           "poisson_vs_actual": "预测Top1 2:0 vs 实际4:2",
-          "summary": "方向✅ 比分❌"
+          "summary": "方向✅ 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周五010",
@@ -5152,7 +5195,8 @@
           "direction_hit_label": "✅命中",
           "score_hit_label": "❌未中",
           "poisson_vs_actual": "预测Top1 1:1 vs 实际1:3",
-          "summary": "方向✅ 比分❌"
+          "summary": "方向✅ 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周五011",
@@ -5190,7 +5234,8 @@
           "direction_hit_label": "❌未中",
           "score_hit_label": "❌未中",
           "poisson_vs_actual": "预测Top1 1:1 vs 实际2:2",
-          "summary": "方向❌ 比分❌"
+          "summary": "方向❌ 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周五012",
@@ -5228,7 +5273,8 @@
           "direction_hit_label": "✅命中",
           "score_hit_label": "❌未中",
           "poisson_vs_actual": "预测Top1 2:1 vs 实际3:2",
-          "summary": "方向✅ 比分❌"
+          "summary": "方向✅ 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周五013",
@@ -5266,7 +5312,8 @@
           "direction_hit_label": "✅命中",
           "score_hit_label": "❌未中",
           "poisson_vs_actual": "预测Top1 1:1 vs 实际2:0",
-          "summary": "方向✅ 比分❌"
+          "summary": "方向✅ 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周五014",
@@ -5304,7 +5351,8 @@
           "direction_hit_label": "❌未中",
           "score_hit_label": "❌未中",
           "poisson_vs_actual": "预测Top1 1:1 vs 实际3:3",
-          "summary": "方向❌ 比分❌"
+          "summary": "方向❌ 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周五015",
@@ -5342,7 +5390,8 @@
           "direction_hit_label": "✅命中",
           "score_hit_label": "❌未中",
           "poisson_vs_actual": "预测Top1 2:0 vs 实际3:1",
-          "summary": "方向✅ 比分❌"
+          "summary": "方向✅ 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周五016",
@@ -5380,7 +5429,8 @@
           "direction_hit_label": "❌未中",
           "score_hit_label": "❌未中",
           "poisson_vs_actual": "预测Top1 2:0 vs 实际2:2",
-          "summary": "方向❌ 比分❌"
+          "summary": "方向❌ 比分❌",
+          "hit_result": "❌"
         },
         {
           "match_no": "周五017",
@@ -5418,9 +5468,17 @@
           "direction_hit_label": "✅命中",
           "score_hit_label": "❌未中",
           "poisson_vs_actual": "预测Top1 2:0 vs 实际3:2",
-          "summary": "方向✅ 比分❌"
+          "summary": "方向✅ 比分❌",
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/17",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-08-13",
@@ -5450,7 +5508,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": false,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四002",
@@ -5470,7 +5529,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": true,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四003",
@@ -5490,7 +5550,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": false,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四004",
@@ -5510,7 +5571,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": true,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四005",
@@ -5530,7 +5592,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": true,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四006",
@@ -5550,7 +5613,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": false,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四007",
@@ -5570,7 +5634,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": false,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四008",
@@ -5590,7 +5655,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": false,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四009",
@@ -5610,7 +5676,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": false,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四010",
@@ -5630,9 +5697,17 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": false,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/10",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-08-12",
@@ -5658,7 +5733,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": false,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "002",
@@ -5674,7 +5750,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": false,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "003",
@@ -5690,15 +5767,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": false,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/3",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-08-11",
       "total": 10,
       "direction_hits": 4,
-      "direction_total": 9,
+      "direction_total": 10,
       "direction_rate": "44.4%",
       "score_hits": 4,
       "score_total": 10,
@@ -5722,7 +5807,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": false,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "002",
@@ -5742,7 +5828,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": false,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "003",
@@ -5762,7 +5849,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": false,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "004",
@@ -5782,7 +5870,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "005",
@@ -5802,7 +5891,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": false,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "006",
@@ -5822,7 +5912,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": true,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "007",
@@ -5842,7 +5933,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": true,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "008",
@@ -5862,7 +5954,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": true,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "009",
@@ -5882,7 +5975,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": true,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "010",
@@ -5902,15 +5996,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": false,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/10",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-08-08",
       "total": 8,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 8,
       "direction_rate": "-",
       "score_hits": 3,
       "score_total": 8,
@@ -5934,7 +6036,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五004",
@@ -5954,7 +6057,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五005",
@@ -5974,7 +6078,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五006",
@@ -5994,7 +6099,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五007",
@@ -6014,7 +6120,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五008",
@@ -6034,7 +6141,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五009",
@@ -6054,7 +6162,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五010",
@@ -6074,15 +6183,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/8",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-08-07",
       "total": 6,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 6,
       "direction_rate": "-",
       "score_hits": 1,
       "score_total": 6,
@@ -6106,7 +6223,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五002",
@@ -6126,7 +6244,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四001",
@@ -6146,7 +6265,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四003",
@@ -6166,7 +6286,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四004",
@@ -6186,7 +6307,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四005",
@@ -6206,15 +6328,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/6",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-08-06",
       "total": 4,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 4,
       "direction_rate": "-",
       "score_hits": 3,
       "score_total": 4,
@@ -6238,7 +6368,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三002",
@@ -6258,7 +6389,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三003",
@@ -6278,7 +6410,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四002",
@@ -6298,15 +6431,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/4",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-08-04",
       "total": 9,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 9,
       "direction_rate": "-",
       "score_hits": 3,
       "score_total": 9,
@@ -6330,7 +6471,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一002",
@@ -6350,7 +6492,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一003",
@@ -6370,7 +6513,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一004",
@@ -6390,7 +6534,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二001",
@@ -6410,7 +6555,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二002",
@@ -6430,7 +6576,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二003",
@@ -6450,7 +6597,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二004",
@@ -6470,7 +6618,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二005",
@@ -6490,15 +6639,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/9",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-08-03",
       "total": 3,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 3,
       "direction_rate": "-",
       "score_hits": 1,
       "score_total": 3,
@@ -6522,7 +6679,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日013",
@@ -6542,7 +6700,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日014",
@@ -6562,15 +6721,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/3",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-08-02",
       "total": 34,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 34,
       "direction_rate": "-",
       "score_hits": 15,
       "score_total": 34,
@@ -6594,7 +6761,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六009",
@@ -6614,7 +6782,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六009",
@@ -6634,7 +6803,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六010",
@@ -6654,7 +6824,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六010",
@@ -6674,7 +6845,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六011",
@@ -6694,7 +6866,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六011",
@@ -6714,7 +6887,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六012",
@@ -6734,7 +6908,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六013",
@@ -6754,7 +6929,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六013",
@@ -6774,7 +6950,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六014",
@@ -6794,7 +6971,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六014",
@@ -6814,7 +6992,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六015",
@@ -6834,7 +7013,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六015",
@@ -6854,7 +7034,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六016",
@@ -6874,7 +7055,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六016",
@@ -6894,7 +7076,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日001",
@@ -6914,7 +7097,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日002",
@@ -6934,7 +7118,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日003",
@@ -6954,7 +7139,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日004",
@@ -6974,7 +7160,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日004",
@@ -6994,7 +7181,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日005",
@@ -7014,7 +7202,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日005",
@@ -7034,7 +7223,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日006",
@@ -7054,7 +7244,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日006",
@@ -7074,7 +7265,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日007",
@@ -7094,7 +7286,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日007",
@@ -7114,7 +7307,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日008",
@@ -7134,7 +7328,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日008",
@@ -7154,7 +7349,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日009",
@@ -7174,7 +7370,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日009",
@@ -7194,7 +7391,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日010",
@@ -7214,7 +7412,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日010",
@@ -7234,7 +7433,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日011",
@@ -7254,15 +7454,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/34",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-08-01",
       "total": 12,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 12,
       "direction_rate": "-",
       "score_hits": 2,
       "score_total": 12,
@@ -7286,7 +7494,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五002",
@@ -7306,7 +7515,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五003",
@@ -7326,7 +7536,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六001",
@@ -7346,7 +7557,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六002",
@@ -7366,7 +7578,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六003",
@@ -7386,7 +7599,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六004",
@@ -7406,7 +7620,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六004",
@@ -7426,7 +7641,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六005",
@@ -7446,7 +7662,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六006",
@@ -7466,7 +7683,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六006",
@@ -7486,7 +7704,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六007",
@@ -7506,15 +7725,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/12",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-31",
       "total": 8,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 8,
       "direction_rate": "-",
       "score_hits": 1,
       "score_total": 8,
@@ -7538,7 +7765,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五002",
@@ -7558,7 +7786,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五003",
@@ -7578,7 +7807,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四001",
@@ -7598,7 +7828,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四002",
@@ -7618,7 +7849,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四003",
@@ -7638,7 +7870,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四004",
@@ -7658,7 +7891,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四006",
@@ -7678,15 +7912,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/8",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-30",
       "total": 14,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 14,
       "direction_rate": "-",
       "score_hits": 2,
       "score_total": 14,
@@ -7710,7 +7952,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三002",
@@ -7730,7 +7973,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三003",
@@ -7750,7 +7994,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三004",
@@ -7770,7 +8015,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三005",
@@ -7790,7 +8036,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三005",
@@ -7810,7 +8057,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三006",
@@ -7830,7 +8078,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三006",
@@ -7850,7 +8099,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四001",
@@ -7870,7 +8120,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四002",
@@ -7890,7 +8141,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四003",
@@ -7910,7 +8162,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四004",
@@ -7930,7 +8183,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四005",
@@ -7950,7 +8204,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四006",
@@ -7970,15 +8225,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/14",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-29",
       "total": 5,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 5,
       "direction_rate": "-",
       "score_hits": 2,
       "score_total": 5,
@@ -8002,7 +8265,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三001",
@@ -8022,7 +8286,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三001",
@@ -8042,7 +8307,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三002",
@@ -8062,7 +8328,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二002",
@@ -8082,15 +8349,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/5",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-28",
       "total": 6,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 6,
       "direction_rate": "-",
       "score_hits": 0,
       "score_total": 6,
@@ -8114,7 +8389,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "202",
@@ -8134,7 +8410,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一201",
@@ -8154,7 +8431,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一202",
@@ -8174,7 +8452,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二001",
@@ -8194,7 +8473,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二002",
@@ -8214,15 +8494,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/6",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-27",
       "total": 6,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 6,
       "direction_rate": "-",
       "score_hits": 3,
       "score_total": 6,
@@ -8246,7 +8534,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一202",
@@ -8266,7 +8555,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日216",
@@ -8286,7 +8576,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日217",
@@ -8306,7 +8597,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日218",
@@ -8326,7 +8618,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日218",
@@ -8346,15 +8639,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/6",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-26",
       "total": 29,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 29,
       "direction_rate": "-",
       "score_hits": 3,
       "score_total": 29,
@@ -8378,7 +8679,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六208",
@@ -8398,7 +8700,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六209",
@@ -8418,7 +8721,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六209",
@@ -8438,7 +8742,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六210",
@@ -8458,7 +8763,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六210",
@@ -8478,7 +8784,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六211",
@@ -8498,7 +8805,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六211",
@@ -8518,7 +8826,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日205",
@@ -8538,7 +8847,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日205",
@@ -8558,7 +8868,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日206",
@@ -8578,7 +8889,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日206",
@@ -8598,7 +8910,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日207",
@@ -8618,7 +8931,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日207",
@@ -8638,7 +8952,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日208",
@@ -8658,7 +8973,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日208",
@@ -8678,7 +8994,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日209",
@@ -8698,7 +9015,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日210",
@@ -8718,7 +9036,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日210",
@@ -8738,7 +9057,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日211",
@@ -8758,7 +9078,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日211",
@@ -8778,7 +9099,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日212",
@@ -8798,7 +9120,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日212",
@@ -8818,7 +9141,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日213",
@@ -8838,7 +9162,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日213",
@@ -8858,7 +9183,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日214",
@@ -8878,7 +9204,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日214",
@@ -8898,7 +9225,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日215",
@@ -8918,7 +9246,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日215",
@@ -8938,15 +9267,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/29",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-25",
       "total": 8,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 8,
       "direction_rate": "-",
       "score_hits": 5,
       "score_total": 8,
@@ -8970,7 +9307,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五202",
@@ -8990,7 +9328,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六203",
@@ -9010,7 +9349,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六204",
@@ -9030,7 +9370,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六205",
@@ -9050,7 +9391,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六205",
@@ -9070,7 +9412,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六206",
@@ -9090,7 +9433,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六207",
@@ -9110,15 +9454,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/8",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-24",
       "total": 11,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 11,
       "direction_rate": "-",
       "score_hits": 3,
       "score_total": 11,
@@ -9142,7 +9494,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四202",
@@ -9162,7 +9515,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四203",
@@ -9182,7 +9536,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四203",
@@ -9202,7 +9557,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四204",
@@ -9222,7 +9578,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四205",
@@ -9242,7 +9599,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四205",
@@ -9262,7 +9620,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四206",
@@ -9282,7 +9641,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四206",
@@ -9302,7 +9662,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四207",
@@ -9322,7 +9683,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四207",
@@ -9342,15 +9704,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/11",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-23",
       "total": 13,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 13,
       "direction_rate": "-",
       "score_hits": 5,
       "score_total": 13,
@@ -9374,7 +9744,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三205",
@@ -9394,7 +9765,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三205",
@@ -9414,7 +9786,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三206",
@@ -9434,7 +9807,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三206",
@@ -9454,7 +9828,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三207",
@@ -9474,7 +9849,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三207",
@@ -9494,7 +9870,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三208",
@@ -9514,7 +9891,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三208",
@@ -9534,7 +9912,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三209",
@@ -9554,7 +9933,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三209",
@@ -9574,7 +9954,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三210",
@@ -9594,7 +9975,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三210",
@@ -9614,15 +9996,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/13",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-22",
       "total": 10,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 10,
       "direction_rate": "-",
       "score_hits": 4,
       "score_total": 10,
@@ -9646,7 +10036,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三202",
@@ -9666,7 +10057,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三203",
@@ -9686,7 +10078,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二204",
@@ -9706,7 +10099,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二204",
@@ -9726,7 +10120,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二205",
@@ -9746,7 +10141,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二206",
@@ -9766,7 +10162,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二206",
@@ -9786,7 +10183,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二207",
@@ -9806,7 +10204,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二207",
@@ -9826,15 +10225,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/10",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-21",
       "total": 7,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 7,
       "direction_rate": "-",
       "score_hits": 2,
       "score_total": 7,
@@ -9858,7 +10265,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一203",
@@ -9878,7 +10286,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一203",
@@ -9898,7 +10307,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一204",
@@ -9918,7 +10328,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二201",
@@ -9938,7 +10349,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二202",
@@ -9958,7 +10370,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二203",
@@ -9978,15 +10391,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/7",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-20",
       "total": 3,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 3,
       "direction_rate": "-",
       "score_hits": 0,
       "score_total": 3,
@@ -10010,7 +10431,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一201",
@@ -10030,7 +10452,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日104",
@@ -10050,15 +10473,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/3",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-19",
       "total": 13,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 13,
       "direction_rate": "-",
       "score_hits": 6,
       "score_total": 13,
@@ -10082,7 +10513,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六213",
@@ -10102,7 +10534,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六214",
@@ -10122,7 +10555,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六214",
@@ -10142,7 +10576,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日201",
@@ -10162,7 +10597,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日202",
@@ -10182,7 +10618,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日203",
@@ -10202,7 +10639,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日203",
@@ -10222,7 +10660,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日204",
@@ -10242,7 +10681,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日204",
@@ -10262,7 +10702,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日205",
@@ -10282,7 +10723,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日206",
@@ -10302,7 +10744,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日206",
@@ -10322,15 +10765,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/13",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-18",
       "total": 31,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 31,
       "direction_rate": "-",
       "score_hits": 12,
       "score_total": 31,
@@ -10354,7 +10805,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五201",
@@ -10374,7 +10826,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五202",
@@ -10394,7 +10847,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五202",
@@ -10414,7 +10868,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五203",
@@ -10434,7 +10889,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五204",
@@ -10454,7 +10910,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五204",
@@ -10474,7 +10931,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五205",
@@ -10494,7 +10952,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五205",
@@ -10514,7 +10973,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五206",
@@ -10534,7 +10994,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五207",
@@ -10554,7 +11015,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五207",
@@ -10574,7 +11036,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五208",
@@ -10594,7 +11057,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五208",
@@ -10614,7 +11078,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六201",
@@ -10634,7 +11099,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六202",
@@ -10654,7 +11120,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六203",
@@ -10674,7 +11141,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六204",
@@ -10694,7 +11162,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六205",
@@ -10714,7 +11183,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六206",
@@ -10734,7 +11204,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六207",
@@ -10754,7 +11225,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六207",
@@ -10774,7 +11246,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六208",
@@ -10794,7 +11267,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六208",
@@ -10814,7 +11288,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六209",
@@ -10834,7 +11309,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六210",
@@ -10854,7 +11330,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六210",
@@ -10874,7 +11351,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六211",
@@ -10894,7 +11372,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六211",
@@ -10914,7 +11393,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六212",
@@ -10934,7 +11414,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六212",
@@ -10954,15 +11435,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/31",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-17",
       "total": 16,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 16,
       "direction_rate": "-",
       "score_hits": 5,
       "score_total": 16,
@@ -10986,7 +11475,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四202",
@@ -11006,7 +11496,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四202",
@@ -11026,7 +11517,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四203",
@@ -11046,7 +11538,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四203",
@@ -11066,7 +11559,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四204",
@@ -11086,7 +11580,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四204",
@@ -11106,7 +11601,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四205",
@@ -11126,7 +11622,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四206",
@@ -11146,7 +11643,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四206",
@@ -11166,7 +11664,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四207",
@@ -11186,7 +11685,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四207",
@@ -11206,7 +11706,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四209",
@@ -11226,7 +11727,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四209",
@@ -11246,7 +11748,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四210",
@@ -11266,7 +11769,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四210",
@@ -11286,15 +11790,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/16",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-16",
       "total": 5,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 5,
       "direction_rate": "-",
       "score_hits": 2,
       "score_total": 5,
@@ -11318,7 +11830,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三201",
@@ -11338,7 +11851,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三201",
@@ -11358,7 +11872,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三202",
@@ -11378,7 +11893,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三202",
@@ -11398,15 +11914,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/5",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-15",
       "total": 4,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 4,
       "direction_rate": "-",
       "score_hits": 1,
       "score_total": 4,
@@ -11430,7 +11954,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二201",
@@ -11450,7 +11975,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二201",
@@ -11470,7 +11996,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二202",
@@ -11490,15 +12017,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/4",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-14",
       "total": 2,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 2,
       "direction_rate": "-",
       "score_hits": 1,
       "score_total": 2,
@@ -11522,7 +12057,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一201",
@@ -11542,15 +12078,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/2",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-13",
       "total": 2,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 2,
       "direction_rate": "-",
       "score_hits": 0,
       "score_total": 2,
@@ -11574,7 +12118,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日213",
@@ -11594,15 +12139,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/2",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-12",
       "total": 22,
       "direction_hits": 0,
-      "direction_total": 3,
+      "direction_total": 22,
       "direction_rate": "0.0%",
       "score_hits": 9,
       "score_total": 22,
@@ -11626,7 +12179,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六100",
@@ -11646,7 +12200,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六211",
@@ -11666,7 +12221,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日201",
@@ -11686,7 +12242,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": false,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日202",
@@ -11706,7 +12263,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": false,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日203",
@@ -11726,7 +12284,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": false,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日204",
@@ -11746,7 +12305,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日204",
@@ -11766,7 +12326,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日205",
@@ -11786,7 +12347,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日206",
@@ -11806,7 +12368,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日206",
@@ -11826,7 +12389,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日207",
@@ -11846,7 +12410,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日207",
@@ -11866,7 +12431,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日208",
@@ -11886,7 +12452,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日208",
@@ -11906,7 +12473,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日209",
@@ -11926,7 +12494,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日209",
@@ -11946,7 +12515,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日210",
@@ -11966,7 +12536,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日211",
@@ -11986,7 +12557,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日211",
@@ -12006,7 +12578,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日212",
@@ -12026,7 +12599,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日212",
@@ -12046,15 +12620,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/22",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-11",
       "total": 18,
       "direction_hits": 2,
-      "direction_total": 4,
+      "direction_total": 18,
       "direction_rate": "50.0%",
       "score_hits": 3,
       "score_total": 18,
@@ -12078,7 +12660,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五201",
@@ -12098,7 +12681,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五201",
@@ -12118,7 +12702,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": true,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六201",
@@ -12138,7 +12723,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": true,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六202",
@@ -12158,7 +12744,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": false,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六203",
@@ -12178,7 +12765,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": false,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六204",
@@ -12198,7 +12786,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六204",
@@ -12218,7 +12807,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六205",
@@ -12238,7 +12828,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六206",
@@ -12258,7 +12849,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六206",
@@ -12278,7 +12870,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六207",
@@ -12298,7 +12891,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六208",
@@ -12318,7 +12912,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六208",
@@ -12338,7 +12933,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六209",
@@ -12358,7 +12954,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六209",
@@ -12378,7 +12975,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六210",
@@ -12398,7 +12996,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六210",
@@ -12418,15 +13017,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/18",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-10",
       "total": 7,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 7,
       "direction_rate": "-",
       "score_hits": 5,
       "score_total": 7,
@@ -12450,7 +13057,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四201",
@@ -12470,7 +13078,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四201",
@@ -12490,7 +13099,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四202",
@@ -12510,7 +13120,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四202",
@@ -12530,7 +13141,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四203",
@@ -12550,7 +13162,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四203",
@@ -12570,15 +13183,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/7",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-08",
       "total": 9,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 9,
       "direction_rate": "-",
       "score_hits": 4,
       "score_total": 9,
@@ -12602,7 +13223,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三201",
@@ -12622,7 +13244,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二095",
@@ -12642,7 +13265,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二096",
@@ -12662,7 +13286,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二201",
@@ -12682,7 +13307,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二202",
@@ -12702,7 +13328,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二202",
@@ -12722,7 +13349,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二203",
@@ -12742,7 +13370,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二203",
@@ -12762,15 +13391,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/9",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-07",
       "total": 5,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 5,
       "direction_rate": "-",
       "score_hits": 3,
       "score_total": 5,
@@ -12794,7 +13431,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一094",
@@ -12814,7 +13452,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一201",
@@ -12834,7 +13473,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一202",
@@ -12854,7 +13494,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一202",
@@ -12874,15 +13515,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/5",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-06",
       "total": 2,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 2,
       "direction_rate": "-",
       "score_hits": 0,
       "score_total": 2,
@@ -12906,7 +13555,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日092",
@@ -12926,15 +13576,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/2",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-05",
       "total": 11,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 11,
       "direction_rate": "-",
       "score_hits": 5,
       "score_total": 11,
@@ -12958,7 +13616,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六090",
@@ -12978,7 +13637,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日201",
@@ -12998,7 +13658,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日202",
@@ -13018,7 +13679,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日203",
@@ -13038,7 +13700,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日204",
@@ -13058,7 +13721,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日204",
@@ -13078,7 +13742,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日205",
@@ -13098,7 +13763,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日205",
@@ -13118,7 +13784,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日206",
@@ -13138,7 +13805,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日206",
@@ -13158,15 +13826,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/11",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-04",
       "total": 18,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 18,
       "direction_rate": "-",
       "score_hits": 3,
       "score_total": 18,
@@ -13190,7 +13866,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "205",
@@ -13210,7 +13887,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "207",
@@ -13230,7 +13908,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "208",
@@ -13250,7 +13929,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五086",
@@ -13270,7 +13950,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五087",
@@ -13290,7 +13971,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五088",
@@ -13310,7 +13992,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五201",
@@ -13330,7 +14013,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六201",
@@ -13350,7 +14034,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六202",
@@ -13370,7 +14055,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六203",
@@ -13390,7 +14076,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六204",
@@ -13410,7 +14097,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六205",
@@ -13430,7 +14118,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六205",
@@ -13450,7 +14139,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六206",
@@ -13470,7 +14160,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六207",
@@ -13490,7 +14181,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六208",
@@ -13510,7 +14202,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六209",
@@ -13530,15 +14223,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/18",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-03",
       "total": 4,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 4,
       "direction_rate": "-",
       "score_hits": 2,
       "score_total": 4,
@@ -13562,7 +14263,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四083",
@@ -13582,7 +14284,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四084",
@@ -13602,7 +14305,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四085",
@@ -13622,15 +14326,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/4",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-02",
       "total": 4,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 4,
       "direction_rate": "-",
       "score_hits": 1,
       "score_total": 4,
@@ -13654,7 +14366,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三080",
@@ -13674,7 +14387,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三081",
@@ -13694,7 +14408,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三082",
@@ -13714,15 +14429,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/4",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-07-01",
       "total": 3,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 3,
       "direction_rate": "-",
       "score_hits": 1,
       "score_total": 3,
@@ -13746,7 +14469,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二078",
@@ -13766,7 +14490,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二079",
@@ -13786,15 +14511,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/3",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-30",
       "total": 3,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 3,
       "direction_rate": "-",
       "score_hits": 2,
       "score_total": 3,
@@ -13818,7 +14551,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一075",
@@ -13838,7 +14572,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一076",
@@ -13858,15 +14593,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/3",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-29",
       "total": 1,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 1,
       "direction_rate": "-",
       "score_hits": 1,
       "score_total": 1,
@@ -13890,15 +14633,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/1",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-28",
       "total": 14,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 14,
       "direction_rate": "-",
       "score_hits": 4,
       "score_total": 14,
@@ -13922,7 +14673,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "071",
@@ -13942,7 +14694,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "204",
@@ -13962,7 +14715,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "205",
@@ -13982,7 +14736,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六067",
@@ -14002,7 +14757,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六068",
@@ -14022,7 +14778,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六069",
@@ -14042,7 +14799,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六070",
@@ -14062,7 +14820,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六070",
@@ -14082,7 +14841,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六071",
@@ -14102,7 +14862,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六072",
@@ -14122,7 +14883,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六204",
@@ -14142,7 +14904,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六205",
@@ -14162,7 +14925,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六206",
@@ -14182,15 +14946,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/14",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-27",
       "total": 13,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 13,
       "direction_rate": "-",
       "score_hits": 3,
       "score_total": 13,
@@ -14214,7 +14986,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "201",
@@ -14234,7 +15007,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "203",
@@ -14254,7 +15028,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五061",
@@ -14274,7 +15049,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五062",
@@ -14294,7 +15070,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五063",
@@ -14314,7 +15091,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五064",
@@ -14334,7 +15112,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五065",
@@ -14354,7 +15133,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五066",
@@ -14374,7 +15154,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六201",
@@ -14394,7 +15175,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六201",
@@ -14414,7 +15196,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六202",
@@ -14434,7 +15217,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六203",
@@ -14454,15 +15238,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/13",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-26",
       "total": 6,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 6,
       "direction_rate": "-",
       "score_hits": 3,
       "score_total": 6,
@@ -14486,7 +15278,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四056",
@@ -14506,7 +15299,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四057",
@@ -14526,7 +15320,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四058",
@@ -14546,7 +15341,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四059",
@@ -14566,7 +15362,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四060",
@@ -14586,15 +15383,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/6",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-25",
       "total": 6,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 6,
       "direction_rate": "-",
       "score_hits": 2,
       "score_total": 6,
@@ -14618,7 +15423,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三050",
@@ -14638,7 +15444,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三051",
@@ -14658,7 +15465,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三052",
@@ -14678,7 +15486,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三053",
@@ -14698,7 +15507,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三054",
@@ -14718,15 +15528,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/6",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-24",
       "total": 10,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 10,
       "direction_rate": "-",
       "score_hits": 4,
       "score_total": 10,
@@ -14750,7 +15568,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "204",
@@ -14770,7 +15589,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "205",
@@ -14790,7 +15610,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二045",
@@ -14810,7 +15631,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二046",
@@ -14830,7 +15652,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二047",
@@ -14850,7 +15673,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二048",
@@ -14870,7 +15694,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二204",
@@ -14890,7 +15715,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二205",
@@ -14910,7 +15736,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二206",
@@ -14930,15 +15757,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/10",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-23",
       "total": 10,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 10,
       "direction_rate": "-",
       "score_hits": 3,
       "score_total": 10,
@@ -14962,7 +15797,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "201",
@@ -14982,7 +15818,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "202",
@@ -15002,7 +15839,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一041",
@@ -15022,7 +15860,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一042",
@@ -15042,7 +15881,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一043",
@@ -15062,7 +15902,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一044",
@@ -15082,7 +15923,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二201",
@@ -15102,7 +15944,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二202",
@@ -15122,7 +15965,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二203",
@@ -15142,15 +15986,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/10",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-22",
       "total": 4,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 4,
       "direction_rate": "-",
       "score_hits": 1,
       "score_total": 4,
@@ -15174,7 +16026,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日038",
@@ -15194,7 +16047,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日039",
@@ -15214,7 +16068,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日040",
@@ -15234,15 +16089,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/4",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-21",
       "total": 4,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 4,
       "direction_rate": "-",
       "score_hits": 1,
       "score_total": 4,
@@ -15266,7 +16129,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六034",
@@ -15286,7 +16150,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六035",
@@ -15306,7 +16171,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六036",
@@ -15326,15 +16192,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/4",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-20",
       "total": 4,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 4,
       "direction_rate": "-",
       "score_hits": 3,
       "score_total": 4,
@@ -15358,7 +16232,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五030",
@@ -15378,7 +16253,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五031",
@@ -15398,7 +16274,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五032",
@@ -15418,15 +16295,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/4",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-19",
       "total": 4,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 4,
       "direction_rate": "-",
       "score_hits": 2,
       "score_total": 4,
@@ -15450,7 +16335,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四026",
@@ -15470,7 +16356,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四027",
@@ -15490,7 +16377,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四028",
@@ -15510,15 +16398,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/4",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-18",
       "total": 11,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 11,
       "direction_rate": "-",
       "score_hits": 3,
       "score_total": 11,
@@ -15542,7 +16438,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "204",
@@ -15562,7 +16459,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "205",
@@ -15582,7 +16480,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三021",
@@ -15602,7 +16501,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三022",
@@ -15622,7 +16522,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三023",
@@ -15642,7 +16543,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三024",
@@ -15662,7 +16564,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三024",
@@ -15682,7 +16585,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三204",
@@ -15702,7 +16606,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三205",
@@ -15722,7 +16627,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四201",
@@ -15742,15 +16648,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/11",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-17",
       "total": 11,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 11,
       "direction_rate": "-",
       "score_hits": 1,
       "score_total": 11,
@@ -15774,7 +16688,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "201",
@@ -15794,7 +16709,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "202",
@@ -15814,7 +16730,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "203",
@@ -15834,7 +16751,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三201",
@@ -15854,7 +16772,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三202",
@@ -15874,7 +16793,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三203",
@@ -15894,7 +16814,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二017",
@@ -15914,7 +16835,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二018",
@@ -15934,7 +16856,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二019",
@@ -15954,7 +16877,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二020",
@@ -15974,15 +16898,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/11",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-16",
       "total": 5,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 5,
       "direction_rate": "-",
       "score_hits": 0,
       "score_total": 5,
@@ -16006,7 +16938,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一013",
@@ -16026,7 +16959,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一014",
@@ -16046,7 +16980,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一015",
@@ -16066,7 +17001,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一016",
@@ -16086,15 +17022,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/5",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-15",
       "total": 3,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 3,
       "direction_rate": "-",
       "score_hits": 0,
       "score_total": 3,
@@ -16118,7 +17062,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日011",
@@ -16138,7 +17083,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日012",
@@ -16158,15 +17104,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/3",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-14",
       "total": 8,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 8,
       "direction_rate": "-",
       "score_hits": 1,
       "score_total": 8,
@@ -16190,7 +17144,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "206",
@@ -16210,7 +17165,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六005",
@@ -16230,7 +17186,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六006",
@@ -16250,7 +17207,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六007",
@@ -16270,7 +17228,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六008",
@@ -16290,7 +17249,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六205",
@@ -16310,7 +17270,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六206",
@@ -16330,15 +17291,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/8",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-13",
       "total": 9,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 9,
       "direction_rate": "-",
       "score_hits": 4,
       "score_total": 9,
@@ -16362,7 +17331,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "202",
@@ -16382,7 +17352,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五003",
@@ -16402,7 +17373,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五004",
@@ -16422,7 +17394,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六201",
@@ -16442,7 +17415,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六201",
@@ -16462,7 +17436,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六202",
@@ -16482,7 +17457,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六203",
@@ -16502,7 +17478,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六204",
@@ -16522,15 +17499,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/9",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-12",
       "total": 2,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 2,
       "direction_rate": "-",
       "score_hits": 2,
       "score_total": 2,
@@ -16554,7 +17539,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四002",
@@ -16574,15 +17560,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/2",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-11",
       "total": 2,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 2,
       "direction_rate": "-",
       "score_hits": 2,
       "score_total": 2,
@@ -16606,7 +17600,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三202",
@@ -16626,15 +17621,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/2",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-10",
       "total": 3,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 3,
       "direction_rate": "-",
       "score_hits": 1,
       "score_total": 3,
@@ -16658,7 +17661,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二202",
@@ -16678,7 +17682,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二203",
@@ -16698,15 +17703,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/3",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-09",
       "total": 5,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 5,
       "direction_rate": "-",
       "score_hits": 2,
       "score_total": 5,
@@ -16730,7 +17743,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一201",
@@ -16750,7 +17764,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一202",
@@ -16770,7 +17785,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一203",
@@ -16790,7 +17806,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二201",
@@ -16810,15 +17827,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/5",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-08",
       "total": 5,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 5,
       "direction_rate": "-",
       "score_hits": 4,
       "score_total": 5,
@@ -16842,7 +17867,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日201",
@@ -16862,7 +17888,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日202",
@@ -16882,7 +17909,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日203",
@@ -16902,7 +17930,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周日204",
@@ -16922,15 +17951,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/5",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-07",
       "total": 8,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 8,
       "direction_rate": "-",
       "score_hits": 6,
       "score_total": 8,
@@ -16954,7 +17991,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六209",
@@ -16974,7 +18012,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六210",
@@ -16994,7 +18033,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六211",
@@ -17014,7 +18054,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六212",
@@ -17034,7 +18075,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六214",
@@ -17054,7 +18096,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六215",
@@ -17074,7 +18117,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六216",
@@ -17094,15 +18138,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/8",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-06",
       "total": 13,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 13,
       "direction_rate": "-",
       "score_hits": 2,
       "score_total": 13,
@@ -17126,7 +18178,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "202",
@@ -17146,7 +18199,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "205",
@@ -17166,7 +18220,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五202",
@@ -17186,7 +18241,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五203",
@@ -17206,7 +18262,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五204",
@@ -17226,7 +18283,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六201",
@@ -17246,7 +18304,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六202",
@@ -17266,7 +18325,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六203",
@@ -17286,7 +18346,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六204",
@@ -17306,7 +18367,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六205",
@@ -17326,7 +18388,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六206",
@@ -17346,7 +18409,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周六207",
@@ -17366,15 +18430,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/13",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-05",
       "total": 6,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 6,
       "direction_rate": "-",
       "score_hits": 1,
       "score_total": 6,
@@ -17398,7 +18470,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周五201",
@@ -17418,7 +18491,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四201",
@@ -17438,7 +18512,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四202",
@@ -17458,7 +18533,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四204",
@@ -17478,7 +18554,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周四205",
@@ -17498,15 +18575,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/6",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-04",
       "total": 6,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 6,
       "direction_rate": "-",
       "score_hits": 1,
       "score_total": 6,
@@ -17530,7 +18615,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "202",
@@ -17550,7 +18636,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三201",
@@ -17570,7 +18657,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三202",
@@ -17590,7 +18678,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三203",
@@ -17610,7 +18699,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周三204",
@@ -17630,15 +18720,23 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/6",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-03",
       "total": 3,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 3,
       "direction_rate": "-",
       "score_hits": 2,
       "score_total": 3,
@@ -17662,7 +18760,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二202",
@@ -17682,7 +18781,8 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周二203",
@@ -17702,15 +18802,23 @@
           "actual_result": "draw",
           "result_label": "平局",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/3",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-02",
       "total": 6,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 6,
       "direction_rate": "-",
       "score_hits": 3,
       "score_total": 6,
@@ -17734,7 +18842,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一001",
@@ -17754,7 +18863,8 @@
           "actual_result": "lose",
           "result_label": "客胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一002",
@@ -17774,7 +18884,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一003",
@@ -17794,7 +18905,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一004",
@@ -17814,7 +18926,8 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         },
         {
           "match_no": "周一006",
@@ -17834,15 +18947,23 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": true
+          "score_hit": true,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/6",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     },
     {
       "date": "2026-06-01",
       "total": 1,
       "direction_hits": 0,
-      "direction_total": 0,
+      "direction_total": 1,
       "direction_rate": "-",
       "score_hits": 0,
       "score_total": 1,
@@ -17866,9 +18987,17 @@
           "actual_result": "win",
           "result_label": "主胜",
           "direction_hit": null,
-          "score_hit": false
+          "score_hit": false,
+          "hit_result": "❌"
         }
-      ]
+      ],
+      "direction_hit": 0,
+      "direction_correct": 0,
+      "score_hit": 0,
+      "score_correct": 0,
+      "status": "0/1",
+      "direction_hit_pct": 0.0,
+      "score_hit_pct": 0.0
     }
   ]
 }
