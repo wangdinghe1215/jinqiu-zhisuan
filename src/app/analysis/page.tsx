@@ -141,7 +141,6 @@ export default function AnalysisPage() {
   const [historyData, setHistoryData] = useState<HistoryData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [filter, setFilter] = useState<string>("all");
 
   const [selectedDate, setSelectedDate] = useState<string>("");
 
@@ -172,21 +171,6 @@ export default function AnalysisPage() {
     };
     load();
   }, []);
-
-  // 筛选后的今日比赛
-  const filteredMatches = useMemo(() => {
-    if (!todayData?.matches) return [];
-    let list = [...todayData.matches];
-    if (filter === "bzg_pass") {
-      list = list.filter(m => m.bizhongge_v2 !== undefined);
-    } else if (filter === "high_conf") {
-      list = list.filter(m => m.xiaofeng.confidence === "高");
-    } else if (filter === "silver_plus") {
-      const highStars = ["钻石", "铂金", "黄金", "白银"];
-      list = list.filter(m => highStars.includes(m.v42.star_name));
-    }
-    return list;
-  }, [todayData, filter]);
 
   // 选中的历史日
   const selectedDay = useMemo(() => {
@@ -307,34 +291,22 @@ export default function AnalysisPage() {
               </div>
             </div>
 
-            {/* 筛选 */}
-            <div className="flex flex-wrap gap-2">
-              {[
-                { key: "all", label: "全部" },
-                { key: "bzg_pass", label: "刻舟求剑" },
-                { key: "high_conf", label: "高信心" },
-                { key: "silver_plus", label: "白银以上" },
-              ].map(f => (
-                <button
-                  key={f.key}
-                  onClick={() => setFilter(f.key)}
-                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${
-                    filter === f.key
-                      ? "bg-cyan-500/20 border-cyan-500/60 text-cyan-300"
-                      : "bg-[#1a1a2e] border-gray-700 text-gray-400 hover:text-white"
-                  }`}
-                >
-                  {f.label}
-                </button>
-              ))}
+            {/* 简洁统计 */}
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-gray-400">
+              <span>
+                总场次：<span className="text-white font-semibold">{stats.total} 场</span>
+              </span>
+              <span>
+                高信心（白银以上）：<span className="text-purple-300 font-semibold">{stats.silverPlus} 场</span>
+              </span>
             </div>
 
             {/* 比赛列表 */}
             <div className="space-y-3">
-              {filteredMatches.length === 0 && (
-                <div className="text-center py-12 text-gray-500">没有符合条件的比赛</div>
+              {todayData.matches.length === 0 && (
+                <div className="text-center py-12 text-gray-500">暂无比赛数据</div>
               )}
-              {filteredMatches.map((m, idx) => (
+              {todayData.matches.map((m, idx) => (
                 <TodayMatchCard key={m.match_no || idx} match={m} />
               ))}
             </div>
