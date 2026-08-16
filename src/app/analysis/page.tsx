@@ -61,6 +61,8 @@ interface XiaofengData {
   rspf_pick?: string;
   total_goals?: number;
   half_time?: string;
+  spf_score?: string;
+  rspf_score?: string;
 }
 
 interface TodayMatch {
@@ -365,12 +367,26 @@ function TodayMatchCard({ match }: { match: TodayMatch }) {
           </div>
           {match.poisson.spf_prob && (
             <div className="text-xs mb-2 flex items-center gap-1 flex-wrap">
-              <span className="text-gray-500">🎯 SPF概率:</span>
-              <span className="text-green-400">主胜{match.poisson.spf_prob.home}%</span>
-              <span className="text-gray-600">|</span>
-              <span className="text-orange-400">平局{match.poisson.spf_prob.draw}%</span>
-              <span className="text-gray-600">|</span>
-              <span className="text-red-400">客胜{match.poisson.spf_prob.away}%</span>
+              <span className="text-gray-500">SPF概率:</span>
+              {(() => {
+                const p = match.poisson.spf_prob;
+                const max = Math.max(p.home, p.draw, p.away);
+                return (
+                  <>
+                    <span className={p.home === max ? "text-cyan-300 font-semibold" : "text-gray-400"}>
+                      主胜 {p.home}%
+                    </span>
+                    <span className="text-gray-600">|</span>
+                    <span className={p.draw === max ? "text-cyan-300 font-semibold" : "text-gray-400"}>
+                      平 {p.draw}%
+                    </span>
+                    <span className="text-gray-600">|</span>
+                    <span className={p.away === max ? "text-cyan-300 font-semibold" : "text-gray-400"}>
+                      客胜 {p.away}%
+                    </span>
+                  </>
+                );
+              })()}
             </div>
           )}
           <div className="space-y-1">
@@ -382,6 +398,32 @@ function TodayMatchCard({ match }: { match: TodayMatch }) {
               </div>
             ))}
           </div>
+          {match.poisson.spf_prob && (
+            <div className="mt-1.5 pt-1.5 border-t border-gray-700/50">
+              <div className="text-[10px] text-gray-500 mb-1">SPF概率</div>
+              <div className="text-xs font-mono">
+                {(() => {
+                  const p = match.poisson.spf_prob;
+                  const maxP = Math.max(p.home, p.draw, p.away);
+                  return (
+                    <>
+                      <span className={p.home === maxP ? "text-cyan-300 font-bold" : "text-gray-400"}>
+                        主{p.home.toFixed(1)}%
+                      </span>
+                      <span className="text-gray-600"> | </span>
+                      <span className={p.draw === maxP ? "text-cyan-300 font-bold" : "text-gray-400"}>
+                        平{p.draw.toFixed(1)}%
+                      </span>
+                      <span className="text-gray-600"> | </span>
+                      <span className={p.away === maxP ? "text-cyan-300 font-bold" : "text-gray-400"}>
+                        客{p.away.toFixed(1)}%
+                      </span>
+                    </>
+                  );
+                })()}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* V4.2 */}
@@ -399,20 +441,24 @@ function TodayMatchCard({ match }: { match: TodayMatch }) {
           <div className="text-xs text-gray-400 mb-1">
             让球方向: <span className="text-purple-300">{match.v42.rspf_direction}</span>
           </div>
-          {match.v42.golden_scores && match.v42.golden_scores.length > 0 && (
-            <div className="text-xs mb-1">
-              <span className="text-gray-500">🥇 黄金比分: </span>
-              {match.v42.golden_scores.map((s: string, i: number) => (
-                <span key={i}>
-                  {i > 0 && <span className="text-gray-600"> | </span>}
-                  <span className="font-mono text-yellow-400">{s}</span>
-                </span>
-              ))}
-            </div>
-          )}
           <div className="text-xs text-gray-500">
             返还率: <span className="text-gray-300">{(match.v42.rv * 100).toFixed(1)}%</span>
           </div>
+          {match.v42.golden_scores && match.v42.golden_scores.length > 0 && (
+            <div className="mt-1.5">
+              <div className="text-[10px] text-gray-500 mb-1">🎯 泊松预测比分</div>
+              <div className="flex flex-wrap gap-1">
+                {match.v42.golden_scores.map((s: string, i: number) => (
+                  <span
+                    key={i}
+                    className="bg-purple-900/30 text-purple-300 border border-purple-700/40 rounded px-1.5 py-0.5 text-xs font-mono"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* 刻舟求剑 V2 */}
@@ -501,23 +547,39 @@ function TodayMatchCard({ match }: { match: TodayMatch }) {
             </span>
           </div>
           {match.xiaofeng.conclusion && (
-            <div className="text-sm font-bold text-amber-200 mb-2 p-2 rounded bg-amber-900/20 border border-amber-700/30">
+            <div className="text-[11px] text-gray-400 mb-2 italic">
               💡 {match.xiaofeng.conclusion}
             </div>
           )}
           <div className="space-y-1.5 mb-2">
             <div className="text-xs flex items-center gap-1">
-              <span className="text-gray-500">🎯 SPF推荐:</span>
+              <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-emerald-900/40 text-emerald-300">SPF推荐</span>
               <span className="text-amber-300 font-medium">{match.xiaofeng.spf_pick || match.xiaofeng.direction}</span>
             </div>
-            {match.xiaofeng.rspf_pick && (
-              <div className="text-xs flex items-center gap-1">
-                <span className="text-gray-500">🎯 RSPF推荐:</span>
-                <span className="text-amber-300 font-medium">{match.xiaofeng.rspf_pick}</span>
+            <div className="text-xs flex items-center gap-1">
+              <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-purple-900/40 text-purple-300">RSPF推荐</span>
+              <span className="text-amber-300 font-medium">{match.xiaofeng.rspf_pick || "—"}</span>
+            </div>
+          </div>
+          <div className="mb-2 space-y-1">
+            {match.xiaofeng.spf_score && (
+              <div className="text-xs flex items-center gap-1.5">
+                <span className="text-[10px] text-gray-500">SPF比分:</span>
+                <span className="font-mono px-1.5 py-0.5 rounded bg-emerald-900/30 text-emerald-300 border border-emerald-700/40">
+                  {match.xiaofeng.spf_score}
+                </span>
+              </div>
+            )}
+            {match.xiaofeng.rspf_score && (
+              <div className="text-xs flex items-center gap-1.5">
+                <span className="text-[10px] text-gray-500">RSPF比分:</span>
+                <span className="font-mono px-1.5 py-0.5 rounded bg-purple-900/30 text-purple-300 border border-purple-700/40">
+                  {match.xiaofeng.rspf_score}
+                </span>
               </div>
             )}
           </div>
-          {match.xiaofeng.top_scores && match.xiaofeng.top_scores.length > 0 && (
+          {match.xiaofeng.top_scores && match.xiaofeng.top_scores.length > 0 && !match.xiaofeng.spf_score && (
             <div className="mb-2">
               <div className="text-xs text-gray-500 mb-1">推荐比分</div>
               <div className="flex gap-1.5 flex-wrap">
