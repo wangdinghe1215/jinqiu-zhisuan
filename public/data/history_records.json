@@ -24837,6 +24837,709 @@
       "status": "completed",
       "direction_hit_pct": 60.0,
       "score_hit_pct": 20.0
+    },
+    {
+      "date": "2026-08-18",
+      "total": 4,
+      "direction_hits": 3,
+      "direction_total": 4,
+      "direction_rate": 75.0,
+      "score_hits": 1,
+      "score_total": 4,
+      "score_rate": 25.0,
+      "matches": [
+        {
+          "match_no": "周一002",
+          "home_team": "赫根",
+          "away_team": "哈尔姆斯",
+          "league": "瑞超",
+          "match_time": "08-18 01:00",
+          "spf_odds": "1.22/5.4/8.05",
+          "rspf_odds": "",
+          "handicap": -1.0,
+          "poisson_lambda_h": 2.45,
+          "poisson_lambda_a": 0.85,
+          "poisson_spf_prob": {
+            "home": 72.6,
+            "draw": 16.4,
+            "away": 11.0
+          },
+          "top3_scores": [
+            "2:0",
+            "2:1",
+            "3:0"
+          ],
+          "poisson_top3_detail": [
+            {
+              "score": "2:0",
+              "prob": "11.1%"
+            },
+            {
+              "score": "2:1",
+              "prob": "9.4%"
+            },
+            {
+              "score": "3:0",
+              "prob": "9.1%"
+            }
+          ],
+          "recommended_direction": "home",
+          "direction_label": "主胜",
+          "rspf_direction": "主胜(让)",
+          "v42_star": 5,
+          "v42_star_name": "钻石",
+          "v42_rv": 0.8857,
+          "v42_golden_scores": [
+            "2:0",
+            "2:1",
+            "3:0"
+          ],
+          "xf_direction": "home",
+          "xf_label": "主胜",
+          "xf_top_scores": [
+            "2:0",
+            "2:1"
+          ],
+          "xf_conclusion": "高星级(钻石)，主推主胜",
+          "xf_spf_pick": "主胜",
+          "xf_rspf_pick": "主胜(让)",
+          "xf_total_goals": 3.3,
+          "xf_half_time": "主胜",
+          "xf_spf_score": "2:0",
+          "xf_rspf_score": "2:1",
+          "bizhongge_v2": {
+            "home_win": {
+              "target_odds": 1.22,
+              "actual_odds": 1.22,
+              "exact_match": true,
+              "total": 1523,
+              "win": 1223,
+              "draw": 215,
+              "lose": 85,
+              "win_pct": 80.3,
+              "draw_pct": 14.1,
+              "lose_pct": 5.6,
+              "top5": [
+                [
+                  "2:0",
+                  208
+                ],
+                [
+                  "1:0",
+                  175
+                ],
+                [
+                  "2:1",
+                  161
+                ],
+                [
+                  "3:0",
+                  155
+                ],
+                [
+                  "3:1",
+                  126
+                ]
+              ]
+            },
+            "draw": {
+              "target_odds": 5.4,
+              "actual_odds": 5.4,
+              "exact_match": true,
+              "total": 1,
+              "win": 0,
+              "draw": 0,
+              "lose": 1,
+              "win_pct": 0.0,
+              "draw_pct": 0.0,
+              "lose_pct": 100.0,
+              "top5": [
+                [
+                  "0:3",
+                  1
+                ]
+              ]
+            },
+            "away_win": {
+              "target_odds": 8.05,
+              "actual_odds": 8.0,
+              "exact_match": false,
+              "total": 100,
+              "win": 76,
+              "draw": 11,
+              "lose": 13,
+              "win_pct": 76.0,
+              "draw_pct": 11.0,
+              "lose_pct": 13.0,
+              "top5": [
+                [
+                  "2:0",
+                  16
+                ],
+                [
+                  "3:0",
+                  11
+                ],
+                [
+                  "2:1",
+                  9
+                ],
+                [
+                  "4:0",
+                  8
+                ],
+                [
+                  "1:0",
+                  8
+                ]
+              ]
+            }
+          },
+          "actual_score": "1:0",
+          "actual_result": "home",
+          "result_label": "主胜",
+          "half_score": "1:0",
+          "spf_result_detail": null,
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:home",
+          "direction_hit": true,
+          "score_hit": false,
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "主胜 (1:0) | 推荐方向✅ | 比分❌",
+          "hit_result": "✅"
+        },
+        {
+          "match_no": "周一003",
+          "home_team": "卡迪夫城",
+          "away_team": "雷克瑟姆",
+          "league": "英冠",
+          "match_time": "08-18 03:00",
+          "spf_odds": "3.14/1.43/6.5",
+          "rspf_odds": "",
+          "handicap": -1.0,
+          "poisson_lambda_h": 0.4,
+          "poisson_lambda_a": 0.2,
+          "poisson_spf_prob": {
+            "home": 27.2,
+            "draw": 59.7,
+            "away": 13.1
+          },
+          "top3_scores": [
+            "0:0",
+            "1:0",
+            "0:1"
+          ],
+          "poisson_top3_detail": [
+            {
+              "score": "0:0",
+              "prob": "54.9%"
+            },
+            {
+              "score": "1:0",
+              "prob": "22.0%"
+            },
+            {
+              "score": "0:1",
+              "prob": "11.0%"
+            }
+          ],
+          "recommended_direction": "draw",
+          "direction_label": "平局",
+          "rspf_direction": "主胜(让)",
+          "v42_star": 3,
+          "v42_star_name": "黄金",
+          "v42_rv": 0.8535,
+          "v42_golden_scores": [
+            "0:0",
+            "1:0",
+            "0:1"
+          ],
+          "xf_direction": "draw",
+          "xf_label": "平局",
+          "xf_top_scores": [
+            "0:0",
+            "1:0"
+          ],
+          "xf_conclusion": "高星级(黄金)，主推平局",
+          "xf_spf_pick": "平局",
+          "xf_rspf_pick": "主胜(让)",
+          "xf_total_goals": 0.6,
+          "xf_half_time": "主胜",
+          "xf_spf_score": "0:0",
+          "xf_rspf_score": "1:0",
+          "bizhongge_v2": {
+            "home_win": {
+              "target_odds": 3.14,
+              "actual_odds": 3.1,
+              "exact_match": false,
+              "total": 1690,
+              "win": 507,
+              "draw": 456,
+              "lose": 727,
+              "win_pct": 30.0,
+              "draw_pct": 27.0,
+              "lose_pct": 43.0,
+              "top5": [
+                [
+                  "1:1",
+                  208
+                ],
+                [
+                  "0:1",
+                  178
+                ],
+                [
+                  "1:2",
+                  161
+                ],
+                [
+                  "1:0",
+                  147
+                ],
+                [
+                  "0:0",
+                  143
+                ]
+              ]
+            },
+            "draw": {
+              "target_odds": 1.43,
+              "actual_odds": 1.44,
+              "exact_match": false,
+              "total": 4,
+              "win": 1,
+              "draw": 3,
+              "lose": 0,
+              "win_pct": 25.0,
+              "draw_pct": 75.0,
+              "lose_pct": 0.0,
+              "top5": [
+                [
+                  "0:0",
+                  2
+                ],
+                [
+                  "1:0",
+                  1
+                ],
+                [
+                  "1:1",
+                  1
+                ]
+              ]
+            },
+            "away_win": {
+              "target_odds": 6.5,
+              "actual_odds": 6.5,
+              "exact_match": true,
+              "total": 2098,
+              "win": 1269,
+              "draw": 541,
+              "lose": 288,
+              "win_pct": 60.5,
+              "draw_pct": 25.8,
+              "lose_pct": 13.7,
+              "top5": [
+                [
+                  "1:0",
+                  257
+                ],
+                [
+                  "1:1",
+                  252
+                ],
+                [
+                  "2:0",
+                  227
+                ],
+                [
+                  "2:1",
+                  204
+                ],
+                [
+                  "0:0",
+                  162
+                ]
+              ]
+            }
+          },
+          "actual_score": "1:1",
+          "actual_result": "draw",
+          "result_label": "平局",
+          "half_score": "0:1",
+          "spf_result_detail": null,
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:draw",
+          "direction_hit": true,
+          "score_hit": false,
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "平局 (1:1) | 推荐方向✅ | 比分❌",
+          "hit_result": "✅"
+        },
+        {
+          "match_no": "周一004",
+          "home_team": "拉科鲁尼亚",
+          "away_team": "埃尔切",
+          "league": "西甲",
+          "match_time": "08-18 03:00",
+          "spf_odds": "2.9/1.62/5.75",
+          "rspf_odds": "",
+          "handicap": -1.0,
+          "poisson_lambda_h": 0.45,
+          "poisson_lambda_a": 0.25,
+          "poisson_spf_prob": {
+            "home": 30.4,
+            "draw": 54.3,
+            "away": 15.3
+          },
+          "top3_scores": [
+            "0:0",
+            "1:0",
+            "0:1"
+          ],
+          "poisson_top3_detail": [
+            {
+              "score": "0:0",
+              "prob": "49.7%"
+            },
+            {
+              "score": "1:0",
+              "prob": "22.3%"
+            },
+            {
+              "score": "0:1",
+              "prob": "12.4%"
+            }
+          ],
+          "recommended_direction": "draw",
+          "direction_label": "平局",
+          "rspf_direction": "主胜(让)",
+          "v42_star": 2,
+          "v42_star_name": "白银",
+          "v42_rv": 0.8803,
+          "v42_golden_scores": [
+            "0:0",
+            "1:0",
+            "0:1"
+          ],
+          "xf_direction": "draw",
+          "xf_label": "平局",
+          "xf_top_scores": [
+            "0:0",
+            "1:0"
+          ],
+          "xf_conclusion": "综合一致，主推平局",
+          "xf_spf_pick": "平局",
+          "xf_rspf_pick": "主胜(让)",
+          "xf_total_goals": 0.7,
+          "xf_half_time": "主胜",
+          "xf_spf_score": "0:0",
+          "xf_rspf_score": "1:0",
+          "bizhongge_v2": {
+            "home_win": {
+              "target_odds": 2.9,
+              "actual_odds": 2.9,
+              "exact_match": true,
+              "total": 2947,
+              "win": 950,
+              "draw": 898,
+              "lose": 1099,
+              "win_pct": 32.2,
+              "draw_pct": 30.5,
+              "lose_pct": 37.3,
+              "top5": [
+                [
+                  "1:1",
+                  426
+                ],
+                [
+                  "0:1",
+                  287
+                ],
+                [
+                  "0:0",
+                  279
+                ],
+                [
+                  "1:0",
+                  256
+                ],
+                [
+                  "1:2",
+                  233
+                ]
+              ]
+            },
+            "draw": {
+              "target_odds": 1.62,
+              "actual_odds": 1.62,
+              "exact_match": true,
+              "total": 10,
+              "win": 0,
+              "draw": 8,
+              "lose": 2,
+              "win_pct": 0.0,
+              "draw_pct": 80.0,
+              "lose_pct": 20.0,
+              "top5": [
+                [
+                  "0:0",
+                  3
+                ],
+                [
+                  "2:2",
+                  3
+                ],
+                [
+                  "1:1",
+                  2
+                ],
+                [
+                  "2:3",
+                  1
+                ],
+                [
+                  "1:2",
+                  1
+                ]
+              ]
+            },
+            "away_win": {
+              "target_odds": 5.75,
+              "actual_odds": 5.75,
+              "exact_match": true,
+              "total": 939,
+              "win": 549,
+              "draw": 229,
+              "lose": 161,
+              "win_pct": 58.5,
+              "draw_pct": 24.4,
+              "lose_pct": 17.1,
+              "top5": [
+                [
+                  "1:0",
+                  116
+                ],
+                [
+                  "1:1",
+                  110
+                ],
+                [
+                  "2:1",
+                  106
+                ],
+                [
+                  "2:0",
+                  100
+                ],
+                [
+                  "0:0",
+                  61
+                ]
+              ]
+            }
+          },
+          "actual_score": "1:1",
+          "actual_result": "draw",
+          "result_label": "平局",
+          "half_score": "1:0",
+          "spf_result_detail": null,
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:draw",
+          "direction_hit": true,
+          "score_hit": false,
+          "direction_hit_label": "✅",
+          "score_hit_label": "❌",
+          "poisson_vs_actual": "",
+          "summary": "平局 (1:1) | 推荐方向✅ | 比分❌",
+          "hit_result": "✅"
+        },
+        {
+          "match_no": "周一006",
+          "home_team": "巴西国际",
+          "away_team": "里莫贝雷",
+          "league": "巴甲",
+          "match_time": "08-18 07:00",
+          "spf_odds": "1.41/3.95/6.0",
+          "rspf_odds": "",
+          "handicap": -1.0,
+          "poisson_lambda_h": 1.8,
+          "poisson_lambda_a": 0.75,
+          "poisson_spf_prob": {
+            "home": 62.8,
+            "draw": 22.4,
+            "away": 14.8
+          },
+          "top3_scores": [
+            "1:0",
+            "2:0",
+            "1:1"
+          ],
+          "poisson_top3_detail": [
+            {
+              "score": "1:0",
+              "prob": "14.1%"
+            },
+            {
+              "score": "2:0",
+              "prob": "12.7%"
+            },
+            {
+              "score": "1:1",
+              "prob": "10.5%"
+            }
+          ],
+          "recommended_direction": "home",
+          "direction_label": "主胜",
+          "rspf_direction": "主胜(让)",
+          "v42_star": 4,
+          "v42_star_name": "铂金",
+          "v42_rv": 0.8857,
+          "v42_golden_scores": [
+            "1:0",
+            "2:0",
+            "1:1"
+          ],
+          "xf_direction": "home",
+          "xf_label": "主胜",
+          "xf_top_scores": [
+            "1:0",
+            "2:0"
+          ],
+          "xf_conclusion": "高星级(铂金)，主推主胜",
+          "xf_spf_pick": "主胜",
+          "xf_rspf_pick": "主胜(让)",
+          "xf_total_goals": 2.5,
+          "xf_half_time": "主胜",
+          "xf_spf_score": "1:0",
+          "xf_rspf_score": "2:0",
+          "bizhongge_v2": {
+            "home_win": {
+              "target_odds": 1.41,
+              "actual_odds": 1.4,
+              "exact_match": false,
+              "total": 4566,
+              "win": 3173,
+              "draw": 923,
+              "lose": 470,
+              "win_pct": 69.5,
+              "draw_pct": 20.2,
+              "lose_pct": 10.3,
+              "top5": [
+                [
+                  "1:0",
+                  609
+                ],
+                [
+                  "2:0",
+                  545
+                ],
+                [
+                  "2:1",
+                  481
+                ],
+                [
+                  "1:1",
+                  412
+                ],
+                [
+                  "3:0",
+                  376
+                ]
+              ]
+            },
+            "draw": {
+              "target_odds": 3.95,
+              "actual_odds": 4.0,
+              "exact_match": false,
+              "total": 4095,
+              "win": 2127,
+              "draw": 954,
+              "lose": 1014,
+              "win_pct": 51.9,
+              "draw_pct": 23.3,
+              "lose_pct": 24.8,
+              "top5": [
+                [
+                  "1:1",
+                  447
+                ],
+                [
+                  "1:0",
+                  403
+                ],
+                [
+                  "2:1",
+                  379
+                ],
+                [
+                  "2:0",
+                  349
+                ],
+                [
+                  "0:1",
+                  245
+                ]
+              ]
+            },
+            "away_win": {
+              "target_odds": 6.0,
+              "actual_odds": 6.0,
+              "exact_match": true,
+              "total": 2871,
+              "win": 1729,
+              "draw": 712,
+              "lose": 430,
+              "win_pct": 60.2,
+              "draw_pct": 24.8,
+              "lose_pct": 15.0,
+              "top5": [
+                [
+                  "1:0",
+                  348
+                ],
+                [
+                  "2:0",
+                  341
+                ],
+                [
+                  "1:1",
+                  329
+                ],
+                [
+                  "2:1",
+                  297
+                ],
+                [
+                  "0:0",
+                  203
+                ]
+              ]
+            }
+          },
+          "actual_score": "1:1",
+          "actual_result": "draw",
+          "result_label": "平局",
+          "half_score": "1:0",
+          "spf_result_detail": null,
+          "rspf_result_detail": "RSPF方向:主胜(让) vs 实际:draw",
+          "direction_hit": false,
+          "score_hit": true,
+          "direction_hit_label": "❌",
+          "score_hit_label": "✅",
+          "poisson_vs_actual": "",
+          "summary": "主胜 (1:1) | 推荐方向❌ | 比分✅",
+          "hit_result": "❌"
+        }
+      ],
+      "direction_hit": 3,
+      "direction_correct": 3,
+      "score_hit": 1,
+      "score_correct": 1,
+      "status": "completed",
+      "direction_hit_pct": 75.0,
+      "score_hit_pct": 25.0
     }
   ]
 }
