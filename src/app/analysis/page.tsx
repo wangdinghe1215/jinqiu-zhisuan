@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, RefreshCw, Calendar, BarChart3, TrendingUp, Target, AlertTriangle, Check, X, ChevronDown, ChevronUp } from "lucide-react";
 
@@ -58,6 +58,7 @@ interface TodayMatch {
     lambda_h: number;
     lambda_a: number;
     top3: PoissonTop[];
+    spf_prob?: { home: number; draw: number; away: number };
   };
   v42: V42Data;
   bizhongge_v2: BizhonggeV2Data;
@@ -152,13 +153,9 @@ export default function AnalysisPage() {
         setTodayData(t);
         if (hRes.ok) {
           const h = await hRes.json();
-          // 按日期降序排列（最新在前）
-          if (h.days && Array.isArray(h.days)) {
-            h.days.sort((a: any, b: any) => (b.date || "").localeCompare(a.date || ""));
-          }
           setHistoryData(h);
           if (h.days && h.days.length > 0) {
-            setSelectedDate(h.days[0].date);
+            setSelectedDate(h.days[h.days.length - 1].date);
           }
         }
       } catch (e: any) {
@@ -369,7 +366,7 @@ function TodayMatchCard({ match, expanded, onToggleBzg }: { match: TodayMatch; e
   const bzgDominant = bv2 ? (
     bv2.home_win.win_pct >= bv2.draw.draw_pct && bv2.home_win.win_pct >= bv2.away_win.lose_pct ? "home_win" :
     bv2.draw.draw_pct >= bv2.away_win.lose_pct ? "draw" : "away_win"
-  ) : null;
+  ) : "home_win";
   const bzgDominantPct = bv2 && bzgDominant ? (
     bzgDominant === "home_win" ? bv2.home_win.win_pct :
     bzgDominant === "draw" ? bv2.draw.draw_pct : bv2.away_win.lose_pct
@@ -406,7 +403,7 @@ function TodayMatchCard({ match, expanded, onToggleBzg }: { match: TodayMatch; e
           <div className="text-xs text-gray-400 mb-1.5">
             预期进球 <span className="text-cyan-300 font-mono">λ={match.poisson.lambda_h}</span> vs <span className="text-cyan-300 font-mono">{match.poisson.lambda_a}</span>
           </div>
-          <div className="space-y-1">
+          <div className="space-y-1 mb-2">
             <div className="text-xs text-gray-500">Top3预测</div>
             {match.poisson.top3.map((t, i) => (
               <div key={i} className="flex items-center justify-between text-xs">
@@ -415,6 +412,25 @@ function TodayMatchCard({ match, expanded, onToggleBzg }: { match: TodayMatch; e
               </div>
             ))}
           </div>
+          {match.poisson.spf_prob && (match.poisson.spf_prob.home > 0 || match.poisson.spf_prob.draw > 0 || match.poisson.spf_prob.away > 0) && (() => {
+            const sp = match.poisson.spf_prob;
+            const maxP = Math.max(sp.home, sp.draw, sp.away);
+            const spfRec = maxP === sp.home ? "主胜" : maxP === sp.away ? "客胜" : "平局";
+            const recColor = spfRec === "主胜" ? "text-red-400" : spfRec === "客胜" ? "text-blue-400" : "text-amber-400";
+            return (
+              <div className="pt-1.5 border-t border-gray-700/50">
+                <div className="text-[10px] text-gray-500 mb-1">胜平负概率</div>
+                <div className="flex items-center gap-1 text-[10px] mb-1">
+                  <span className="text-red-400">胜{sp.home}%</span>
+                  <span className="text-amber-400">平{sp.draw}%</span>
+                  <span className="text-blue-400">负{sp.away}%</span>
+                </div>
+                <div className="text-[10px]">
+                  推荐: <span className={`font-semibold ${recColor}`}>{spfRec}</span>
+                </div>
+              </div>
+            );
+          })()}
         </div>
 
         {/* V4.2 */}
@@ -423,18 +439,35 @@ function TodayMatchCard({ match, expanded, onToggleBzg }: { match: TodayMatch; e
             <Target className="w-3.5 h-3.5 text-purple-400" />
             <span className="text-xs font-medium text-purple-300">V4.2分析</span>
           </div>
-          <div className="flex items-center gap-1.5 mb-1.5">
-            <span className="text-sm font-semibold text-purple-200">{match.v42.direction}</span>
+          <div className="flex items-center gap-1.5 mb-1">
+            <span className={`text-sm font-semibold ${match.v42.direction === "主胜" ? "text-red-300" : match.v42.direction === "客胜" ? "text-blue-300" : match.v42.direction === "平局" ? "text-amber-300" : "text-purple-200"}`}>
+              {match.v42.direction}
+            </span>
             <span className={`text-[10px] px-1.5 py-0.5 rounded border ${starColors[match.v42.star_name] || "text-gray-400 border-gray-600"}`}>
               {match.v42.star_name}
             </span>
           </div>
+          <div className="text-[10px] text-gray-500 mb-1">
+            胜平负推荐: <span className={`font-medium ${match.v42.direction === "主胜" ? "text-red-400" : match.v42.direction === "客胜" ? "text-blue-400" : match.v42.direction === "平局" ? "text-amber-400" : "text-gray-400"}`}>{match.v42.direction}</span>
+          </div>
           <div className="text-xs text-gray-400 mb-1">
             让球方向: <span className="text-purple-300">{match.v42.rspf_direction}</span>
           </div>
-          <div className="text-xs text-gray-500">
+          <div className="text-xs text-gray-500 mb-1.5">
             返还率: <span className="text-gray-300">{(match.v42.rv * 100).toFixed(1)}%</span>
           </div>
+          {match.v42.golden_scores && match.v42.golden_scores.length > 0 && (
+            <>
+              <div className="text-[10px] text-gray-500 mb-0.5">🏆 黄金比分</div>
+              <div className="flex gap-1.5 flex-wrap">
+                {match.v42.golden_scores.map((s, i) => (
+                  <span key={i} className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-900/30 text-cyan-300 border border-cyan-600/50">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
         {/* 必中哥V2 · 刻舟求剑 */}
@@ -484,7 +517,7 @@ function TodayMatchCard({ match, expanded, onToggleBzg }: { match: TodayMatch; e
               </button>
               {expanded && bzgDominantTop5.length > 0 && (
                 <div className="mt-1.5 pt-1.5 border-t border-gray-700/50 space-y-0.5">
-                  <div className="text-[10px] text-gray-500 mb-1">{bzgDominant && bzgDominantLabel[bzgDominant]}方向 · 查史{bv2[bzgDominant as keyof typeof bv2]?.total || 0}场</div>
+                  <div className="text-[10px] text-gray-500 mb-1">{bzgDominantLabel[bzgDominant!]}方向 · 查史{bv2[bzgDominant]?.total || 0}场</div>
                   {bzgDominantTop5.map(([score, count], i) => (
                     <div key={i} className="flex items-center justify-between text-[10px]">
                       <span className="font-mono text-orange-300">{score}</span>
@@ -510,25 +543,16 @@ function TodayMatchCard({ match, expanded, onToggleBzg }: { match: TodayMatch; e
               信心{match.xiaofeng.confidence}
             </span>
           </div>
-          <div className="text-sm font-semibold text-amber-200 mb-1.5">{match.xiaofeng.direction}</div>
+          <div className="text-[10px] text-gray-500 mb-0.5">胜平负推荐</div>
+          <div className={`text-sm font-semibold mb-1.5 ${match.xiaofeng.direction === "主胜" ? "text-red-300" : match.xiaofeng.direction === "客胜" ? "text-blue-300" : match.xiaofeng.direction === "平局" ? "text-amber-300" : "text-gray-400"}`}>
+            {match.xiaofeng.direction}
+          </div>
           {match.xiaofeng.top_scores && match.xiaofeng.top_scores.length > 0 && (
             <>
               <div className="text-xs text-gray-500 mb-1">推荐比分</div>
               <div className="flex gap-1.5 flex-wrap">
                 {match.xiaofeng.top_scores.map((s, i) => (
                   <span key={i} className="text-xs font-mono px-2 py-0.5 rounded bg-amber-900/30 text-amber-300 border border-amber-700/40">
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </>
-          )}
-          {match.v42.golden_scores && match.v42.golden_scores.length > 0 && (
-            <>
-              <div className="text-[10px] text-gray-500 mt-1.5 mb-1">黄金比分</div>
-              <div className="flex gap-1 flex-wrap">
-                {match.v42.golden_scores.map((s, i) => (
-                  <span key={i} className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-900/20 text-cyan-300 border border-cyan-700/30">
                     {s}
                   </span>
                 ))}
@@ -553,20 +577,6 @@ function HistoryTab({
   onSelectDate: (d: string) => void;
   selectedDay: HistoryDay | null;
 }) {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  // 点击外部关闭下拉
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
   // 简单统计
   const dayStats = useMemo(() => {
     if (!selectedDay) return { total: 0, dirHits: 0, dirRate: "0%", scoreHits: 0, scoreRate: "0%" };
@@ -583,67 +593,30 @@ function HistoryTab({
     };
   }, [selectedDay]);
 
-  const getDayRateColor = (d: HistoryDay) => {
-    const matches = d.matches || [];
-    if (matches.length === 0) return "text-gray-500";
-    const hits = matches.filter(m => m.direction_hit).length;
-    const rate = hits / matches.length;
-    if (rate >= 0.6) return "text-emerald-400";
-    if (rate >= 0.3) return "text-amber-400";
-    return "text-red-400";
-  };
-
   return (
     <div className="space-y-4">
-      {/* 日期选择 - 下拉列表 */}
+      {/* 日期选择 */}
       <div className="bg-[#1a1a2e] border border-gray-700/50 rounded-lg p-3">
         <div className="flex items-center gap-2 mb-2">
           <Calendar className="w-4 h-4 text-cyan-400" />
           <span className="text-sm font-medium text-gray-300">选择日期</span>
           <span className="text-xs text-gray-500">（共{days.length}天数据）</span>
         </div>
-        <div className="relative" ref={dropdownRef}>
-          <button
-            onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="w-full flex items-center justify-between px-3 py-2 bg-[#0f0f1a] border border-gray-700 rounded-lg hover:border-cyan-500/50 transition-colors"
-          >
-            <div className="flex items-center gap-3">
-              <span className="text-sm font-medium text-white">{selectedDate}</span>
-              {selectedDay && (
-                <span className={`text-xs ${getDayRateColor(selectedDay)}`}>
-                  {selectedDay.matches?.length || 0}场 · 命中率{dayStats.dirRate}
-                </span>
-              )}
-            </div>
-            <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${dropdownOpen ? "rotate-180" : ""}`} />
-          </button>
-          {dropdownOpen && (
-            <div className="absolute top-full left-0 right-0 mt-1 max-h-64 overflow-y-auto bg-[#16213e] border border-gray-700 rounded-lg shadow-xl z-50">
-              {days.map((d, i) => {
-                const matches = d.matches || [];
-                const hits = matches.filter(m => m.direction_hit).length;
-                const rate = matches.length > 0 ? ((hits / matches.length) * 100).toFixed(1) + "%" : "-";
-                const isSelected = selectedDate === d.date;
-                const colorCls = getDayRateColor(d);
-                return (
-                  <button
-                    key={d.date || i}
-                    onClick={() => { onSelectDate(d.date); setDropdownOpen(false); }}
-                    className={`w-full flex items-center justify-between px-3 py-2 text-sm transition-colors ${
-                      isSelected
-                        ? "bg-cyan-500/20 text-cyan-200"
-                        : "text-gray-300 hover:bg-white/5"
-                    }`}
-                  >
-                    <span className="font-mono">{d.date}</span>
-                    <span className={`text-xs ${colorCls}`}>
-                      {matches.length}场 · {hits}中 · {rate}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          )}
+        <div className="flex gap-1.5 overflow-x-auto pb-1">
+          {days.map((d, i) => (
+            <button
+              key={d.date || i}
+              onClick={() => onSelectDate(d.date)}
+              className={`shrink-0 px-3 py-1.5 text-xs rounded-lg border transition-colors ${
+                selectedDate === d.date
+                  ? "bg-cyan-500/20 border-cyan-500/60 text-cyan-300"
+                  : "bg-[#0f0f1a] border-gray-700 text-gray-400 hover:text-white"
+              }`}
+            >
+              <div className="font-medium">{d.date?.slice(5)}</div>
+              <div className="text-[10px] opacity-70">{d.matches?.length || 0}场</div>
+            </button>
+          ))}
         </div>
       </div>
 
