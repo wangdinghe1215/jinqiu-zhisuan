@@ -1,0 +1,2423 @@
+{
+  "date": "2026-08-26",
+  "total": 16,
+  "bizhongge_pass": 14,
+  "matches": [
+    {
+      "match_no": "001",
+      "league": "韩职",
+      "home_team": "金泉尚武",
+      "away_team": "全北现代",
+      "match_time": "18:30:00",
+      "spf_odds": "2.92/3.15/2.13",
+      "rspf_odds": "1.55/3.8/4.55",
+      "handicap": -1.0,
+      "poisson": {
+        "lambda_h": 1.2,
+        "lambda_a": 1.3,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "14.9%"
+          },
+          {
+            "score": "0:0",
+            "prob": "11.2%"
+          },
+          {
+            "score": "0:1",
+            "prob": "10.1%"
+          }
+        ],
+        "spf_prob": {
+          "home": 32.4,
+          "draw": 32.2,
+          "away": 35.4
+        }
+      },
+      "v42": {
+        "direction": "无",
+        "star": 0,
+        "star_name": "无星",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8854,
+        "golden_scores": [
+          "1:1",
+          "0:0"
+        ]
+      },
+      "bizhongge_v2": {
+        "home_win": {
+          "target_odds": 2.92,
+          "actual_odds": 2.9,
+          "exact_match": false,
+          "total": 2954,
+          "win": 952,
+          "draw": 900,
+          "lose": 1102,
+          "win_pct": 32.2,
+          "draw_pct": 30.5,
+          "lose_pct": 37.3,
+          "top5": [
+            [
+              "1:1",
+              428
+            ],
+            [
+              "0:1",
+              287
+            ],
+            [
+              "0:0",
+              279
+            ],
+            [
+              "1:0",
+              257
+            ],
+            [
+              "1:2",
+              233
+            ]
+          ]
+        },
+        "draw": {
+          "target_odds": 3.15,
+          "actual_odds": 3.15,
+          "exact_match": true,
+          "total": 7540,
+          "win": 3008,
+          "draw": 2417,
+          "lose": 2115,
+          "win_pct": 39.9,
+          "draw_pct": 32.1,
+          "lose_pct": 28.1,
+          "top5": [
+            [
+              "1:1",
+              1128
+            ],
+            [
+              "1:0",
+              918
+            ],
+            [
+              "0:0",
+              834
+            ],
+            [
+              "2:1",
+              673
+            ],
+            [
+              "0:1",
+              659
+            ]
+          ]
+        },
+        "away_win": {
+          "target_odds": 2.13,
+          "actual_odds": 2.14,
+          "exact_match": false,
+          "total": 2451,
+          "win": 642,
+          "draw": 667,
+          "lose": 1142,
+          "win_pct": 26.2,
+          "draw_pct": 27.2,
+          "lose_pct": 46.6,
+          "top5": [
+            [
+              "1:1",
+              322
+            ],
+            [
+              "0:1",
+              287
+            ],
+            [
+              "1:2",
+              239
+            ],
+            [
+              "0:0",
+              205
+            ],
+            [
+              "0:2",
+              203
+            ]
+          ]
+        }
+      },
+      "xiaofeng": {
+        "direction": "不推荐",
+        "confidence": "不推荐"
+      }
+    },
+    {
+      "match_no": "002",
+      "league": "韩职",
+      "home_team": "济州SK",
+      "away_team": "浦项制铁",
+      "match_time": "18:30:00",
+      "spf_odds": "2.24/2.98/2.88",
+      "rspf_odds": "5.35/3.7/1.49",
+      "handicap": 1.0,
+      "poisson": {
+        "lambda_h": 1.4,
+        "lambda_a": 1.1,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "14.7%"
+          },
+          {
+            "score": "0:0",
+            "prob": "11.6%"
+          },
+          {
+            "score": "1:0",
+            "prob": "10.9%"
+          }
+        ],
+        "spf_prob": {
+          "home": 39.4,
+          "draw": 32.2,
+          "away": 28.4
+        }
+      },
+      "v42": {
+        "direction": "无",
+        "star": 0,
+        "star_name": "无星",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.8856,
+        "golden_scores": [
+          "1:1",
+          "0:0"
+        ]
+      },
+      "bizhongge_v2": {
+        "home_win": {
+          "target_odds": 2.24,
+          "actual_odds": 2.25,
+          "exact_match": false,
+          "total": 9882,
+          "win": 4130,
+          "draw": 3018,
+          "lose": 2734,
+          "win_pct": 41.8,
+          "draw_pct": 30.5,
+          "lose_pct": 27.7,
+          "top5": [
+            [
+              "1:1",
+              1433
+            ],
+            [
+              "1:0",
+              1125
+            ],
+            [
+              "0:0",
+              956
+            ],
+            [
+              "2:1",
+              915
+            ],
+            [
+              "0:1",
+              786
+            ]
+          ]
+        },
+        "draw": {
+          "target_odds": 2.98,
+          "actual_odds": 3.0,
+          "exact_match": false,
+          "total": 7456,
+          "win": 2924,
+          "draw": 2412,
+          "lose": 2120,
+          "win_pct": 39.2,
+          "draw_pct": 32.3,
+          "lose_pct": 28.4,
+          "top5": [
+            [
+              "1:1",
+              1126
+            ],
+            [
+              "1:0",
+              915
+            ],
+            [
+              "0:0",
+              839
+            ],
+            [
+              "0:1",
+              690
+            ],
+            [
+              "2:1",
+              614
+            ]
+          ]
+        },
+        "away_win": {
+          "target_odds": 2.88,
+          "actual_odds": 2.88,
+          "exact_match": true,
+          "total": 4827,
+          "win": 1801,
+          "draw": 1501,
+          "lose": 1525,
+          "win_pct": 37.3,
+          "draw_pct": 31.1,
+          "lose_pct": 31.6,
+          "top5": [
+            [
+              "1:1",
+              709
+            ],
+            [
+              "1:0",
+              468
+            ],
+            [
+              "0:0",
+              463
+            ],
+            [
+              "0:1",
+              448
+            ],
+            [
+              "2:1",
+              408
+            ]
+          ]
+        }
+      },
+      "xiaofeng": {
+        "direction": "不推荐",
+        "confidence": "不推荐"
+      }
+    },
+    {
+      "match_no": "003",
+      "league": "沙职",
+      "home_team": "达曼协定",
+      "away_team": "利雅胜利",
+      "match_time": "02:00:00",
+      "spf_odds": "9.75/6.35/1.15",
+      "rspf_odds": "2.1/4.05/2.47",
+      "handicap": -2.0,
+      "poisson": {
+        "lambda_h": 1.0,
+        "lambda_a": 1.6,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "12.7%"
+          },
+          {
+            "score": "0:1",
+            "prob": "11.3%"
+          },
+          {
+            "score": "0:2",
+            "prob": "9.3%"
+          }
+        ],
+        "spf_prob": {
+          "home": 22.2,
+          "draw": 28.0,
+          "away": 49.8
+        }
+      },
+      "v42": {
+        "direction": "客胜",
+        "star": 4,
+        "star_name": "钻石",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8853,
+        "golden_scores": [
+          "1:1",
+          "0:1"
+        ]
+      },
+      "bizhongge_v2": {
+        "home_win": {
+          "target_odds": 9.75,
+          "actual_odds": 10.0,
+          "exact_match": false,
+          "total": 100,
+          "win": 6,
+          "draw": 12,
+          "lose": 82,
+          "win_pct": 6.0,
+          "draw_pct": 12.0,
+          "lose_pct": 82.0,
+          "top5": [
+            [
+              "0:1",
+              15
+            ],
+            [
+              "0:2",
+              13
+            ],
+            [
+              "0:3",
+              11
+            ],
+            [
+              "1:2",
+              11
+            ],
+            [
+              "1:3",
+              8
+            ]
+          ]
+        },
+        "draw": {
+          "target_odds": 6.35,
+          "actual_odds": 6.25,
+          "exact_match": false,
+          "total": 100,
+          "win": 75,
+          "draw": 13,
+          "lose": 12,
+          "win_pct": 75.0,
+          "draw_pct": 13.0,
+          "lose_pct": 12.0,
+          "top5": [
+            [
+              "1:0",
+              12
+            ],
+            [
+              "4:0",
+              11
+            ],
+            [
+              "3:0",
+              10
+            ],
+            [
+              "4:1",
+              9
+            ],
+            [
+              "2:0",
+              8
+            ]
+          ]
+        },
+        "away_win": {
+          "target_odds": 1.15,
+          "actual_odds": 1.16,
+          "exact_match": false,
+          "total": 111,
+          "win": 7,
+          "draw": 11,
+          "lose": 93,
+          "win_pct": 6.3,
+          "draw_pct": 9.9,
+          "lose_pct": 83.8,
+          "top5": [
+            [
+              "0:1",
+              17
+            ],
+            [
+              "1:2",
+              14
+            ],
+            [
+              "0:2",
+              13
+            ],
+            [
+              "0:4",
+              10
+            ],
+            [
+              "0:3",
+              8
+            ]
+          ]
+        }
+      },
+      "xiaofeng": {
+        "direction": "客胜",
+        "confidence": "高"
+      }
+    },
+    {
+      "match_no": "004",
+      "league": "英联赛杯",
+      "home_team": "斯托克城",
+      "away_team": "赫尔城",
+      "match_time": "02:45:00",
+      "spf_odds": "2.64/3.0/2.4",
+      "rspf_odds": "1.42/4.15/5.45",
+      "handicap": -1.0,
+      "poisson": {
+        "lambda_h": 1.3,
+        "lambda_a": 1.3,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "13.7%"
+          },
+          {
+            "score": "0:1",
+            "prob": "9.9%"
+          },
+          {
+            "score": "1:0",
+            "prob": "9.4%"
+          }
+        ],
+        "spf_prob": {
+          "home": 34.4,
+          "draw": 27.9,
+          "away": 37.6
+        }
+      },
+      "v42": {
+        "direction": "无",
+        "star": 0,
+        "star_name": "无星",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8859,
+        "golden_scores": [
+          "1:1",
+          "0:1"
+        ]
+      },
+      "bizhongge_v2": {
+        "home_win": {
+          "target_odds": 2.64,
+          "actual_odds": 2.64,
+          "exact_match": true,
+          "total": 4526,
+          "win": 1606,
+          "draw": 1360,
+          "lose": 1560,
+          "win_pct": 35.5,
+          "draw_pct": 30.0,
+          "lose_pct": 34.5,
+          "top5": [
+            [
+              "1:1",
+              667
+            ],
+            [
+              "1:0",
+              444
+            ],
+            [
+              "0:1",
+              435
+            ],
+            [
+              "0:0",
+              382
+            ],
+            [
+              "2:1",
+              377
+            ]
+          ]
+        },
+        "draw": {
+          "target_odds": 3.0,
+          "actual_odds": 3.0,
+          "exact_match": true,
+          "total": 7456,
+          "win": 2924,
+          "draw": 2412,
+          "lose": 2120,
+          "win_pct": 39.2,
+          "draw_pct": 32.3,
+          "lose_pct": 28.4,
+          "top5": [
+            [
+              "1:1",
+              1126
+            ],
+            [
+              "1:0",
+              915
+            ],
+            [
+              "0:0",
+              839
+            ],
+            [
+              "0:1",
+              690
+            ],
+            [
+              "2:1",
+              614
+            ]
+          ]
+        },
+        "away_win": {
+          "target_odds": 2.4,
+          "actual_odds": 2.4,
+          "exact_match": true,
+          "total": 3793,
+          "win": 1183,
+          "draw": 1099,
+          "lose": 1511,
+          "win_pct": 31.2,
+          "draw_pct": 29.0,
+          "lose_pct": 39.8,
+          "top5": [
+            [
+              "1:1",
+              489
+            ],
+            [
+              "0:1",
+              392
+            ],
+            [
+              "1:2",
+              338
+            ],
+            [
+              "0:0",
+              334
+            ],
+            [
+              "1:0",
+              315
+            ]
+          ]
+        }
+      },
+      "xiaofeng": {
+        "direction": "不推荐",
+        "confidence": "不推荐"
+      }
+    },
+    {
+      "match_no": "005",
+      "league": "欧冠",
+      "home_team": "LASK林茨",
+      "away_team": "凯尔特人",
+      "match_time": "03:00:00",
+      "spf_odds": "1.84/3.7/3.17",
+      "rspf_odds": "3.45/3.75/1.75",
+      "handicap": 1.0,
+      "poisson": {
+        "lambda_h": 1.7,
+        "lambda_a": 1.0,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "12.2%"
+          },
+          {
+            "score": "1:0",
+            "prob": "11.0%"
+          },
+          {
+            "score": "2:1",
+            "prob": "9.7%"
+          }
+        ],
+        "spf_prob": {
+          "home": 53.1,
+          "draw": 24.9,
+          "away": 22.0
+        }
+      },
+      "v42": {
+        "direction": "无",
+        "star": 0,
+        "star_name": "无星",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.8856,
+        "golden_scores": [
+          "1:1",
+          "1:0"
+        ]
+      },
+      "bizhongge_v2": {
+        "home_win": {
+          "target_odds": 1.84,
+          "actual_odds": 1.83,
+          "exact_match": false,
+          "total": 8920,
+          "win": 4565,
+          "draw": 2480,
+          "lose": 1875,
+          "win_pct": 51.2,
+          "draw_pct": 27.8,
+          "lose_pct": 21.0,
+          "top5": [
+            [
+              "1:1",
+              1193
+            ],
+            [
+              "1:0",
+              1128
+            ],
+            [
+              "2:1",
+              874
+            ],
+            [
+              "2:0",
+              818
+            ],
+            [
+              "0:0",
+              742
+            ]
+          ]
+        },
+        "draw": {
+          "target_odds": 3.7,
+          "actual_odds": 3.7,
+          "exact_match": true,
+          "total": 5820,
+          "win": 2815,
+          "draw": 1485,
+          "lose": 1520,
+          "win_pct": 48.4,
+          "draw_pct": 25.5,
+          "lose_pct": 26.1,
+          "top5": [
+            [
+              "1:1",
+              690
+            ],
+            [
+              "1:0",
+              604
+            ],
+            [
+              "2:1",
+              536
+            ],
+            [
+              "2:0",
+              514
+            ],
+            [
+              "0:0",
+              397
+            ]
+          ]
+        },
+        "away_win": {
+          "target_odds": 3.17,
+          "actual_odds": 3.2,
+          "exact_match": false,
+          "total": 3606,
+          "win": 1496,
+          "draw": 1094,
+          "lose": 1016,
+          "win_pct": 41.5,
+          "draw_pct": 30.3,
+          "lose_pct": 28.2,
+          "top5": [
+            [
+              "1:1",
+              520
+            ],
+            [
+              "1:0",
+              420
+            ],
+            [
+              "0:0",
+              361
+            ],
+            [
+              "2:1",
+              329
+            ],
+            [
+              "0:1",
+              284
+            ]
+          ]
+        }
+      },
+      "xiaofeng": {
+        "direction": "不推荐",
+        "confidence": "不推荐"
+      }
+    },
+    {
+      "match_no": "006",
+      "league": "欧冠",
+      "home_team": "博德闪耀",
+      "away_team": "奈梅亨",
+      "match_time": "03:00:00",
+      "spf_odds": "1.41/4.6/4.95",
+      "rspf_odds": "2.16/3.8/2.48",
+      "handicap": 1.0,
+      "poisson": {
+        "lambda_h": 2.3,
+        "lambda_a": 0.8,
+        "top3": [
+          {
+            "score": "2:0",
+            "prob": "11.0%"
+          },
+          {
+            "score": "1:0",
+            "prob": "9.6%"
+          },
+          {
+            "score": "2:1",
+            "prob": "9.4%"
+          }
+        ],
+        "spf_prob": {
+          "home": 69.6,
+          "draw": 18.0,
+          "away": 12.4
+        }
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 2,
+        "star_name": "银星",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.886,
+        "golden_scores": [
+          "2:0",
+          "1:0"
+        ]
+      },
+      "bizhongge_v2": {
+        "home_win": {
+          "target_odds": 1.41,
+          "actual_odds": 1.4,
+          "exact_match": false,
+          "total": 4566,
+          "win": 3173,
+          "draw": 923,
+          "lose": 470,
+          "win_pct": 69.5,
+          "draw_pct": 20.2,
+          "lose_pct": 10.3,
+          "top5": [
+            [
+              "1:0",
+              609
+            ],
+            [
+              "2:0",
+              545
+            ],
+            [
+              "2:1",
+              481
+            ],
+            [
+              "1:1",
+              412
+            ],
+            [
+              "3:0",
+              376
+            ]
+          ]
+        },
+        "draw": {
+          "target_odds": 4.6,
+          "actual_odds": 4.6,
+          "exact_match": true,
+          "total": 65,
+          "win": 40,
+          "draw": 7,
+          "lose": 18,
+          "win_pct": 61.5,
+          "draw_pct": 10.8,
+          "lose_pct": 27.7,
+          "top5": [
+            [
+              "2:1",
+              7
+            ],
+            [
+              "1:0",
+              7
+            ],
+            [
+              "3:1",
+              5
+            ],
+            [
+              "2:0",
+              5
+            ],
+            [
+              "4:0",
+              4
+            ]
+          ]
+        },
+        "away_win": {
+          "target_odds": 4.95,
+          "actual_odds": 5.0,
+          "exact_match": false,
+          "total": 4398,
+          "win": 2478,
+          "draw": 1188,
+          "lose": 732,
+          "win_pct": 56.3,
+          "draw_pct": 27.0,
+          "lose_pct": 16.6,
+          "top5": [
+            [
+              "1:0",
+              585
+            ],
+            [
+              "1:1",
+              551
+            ],
+            [
+              "2:1",
+              480
+            ],
+            [
+              "2:0",
+              467
+            ],
+            [
+              "0:0",
+              356
+            ]
+          ]
+        }
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "中"
+      }
+    },
+    {
+      "match_no": "007",
+      "league": "英联赛杯",
+      "home_team": "诺丁汉",
+      "away_team": "利兹联",
+      "match_time": "03:00:00",
+      "spf_odds": "2.06/3.15/3.06",
+      "rspf_odds": "4.25/3.9/1.57",
+      "handicap": 1.0,
+      "poisson": {
+        "lambda_h": 1.4,
+        "lambda_a": 1.2,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "13.5%"
+          },
+          {
+            "score": "1:0",
+            "prob": "10.6%"
+          },
+          {
+            "score": "2:1",
+            "prob": "8.7%"
+          }
+        ],
+        "spf_prob": {
+          "home": 42.0,
+          "draw": 27.9,
+          "away": 30.1
+        }
+      },
+      "v42": {
+        "direction": "无",
+        "star": 0,
+        "star_name": "无星",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.8852,
+        "golden_scores": [
+          "1:1",
+          "1:0"
+        ]
+      },
+      "bizhongge_v2": {
+        "home_win": {
+          "target_odds": 2.06,
+          "actual_odds": 2.05,
+          "exact_match": false,
+          "total": 9041,
+          "win": 4040,
+          "draw": 2700,
+          "lose": 2301,
+          "win_pct": 44.7,
+          "draw_pct": 29.9,
+          "lose_pct": 25.5,
+          "top5": [
+            [
+              "1:1",
+              1247
+            ],
+            [
+              "1:0",
+              1051
+            ],
+            [
+              "0:0",
+              863
+            ],
+            [
+              "2:1",
+              815
+            ],
+            [
+              "2:0",
+              741
+            ]
+          ]
+        },
+        "draw": {
+          "target_odds": 3.15,
+          "actual_odds": 3.15,
+          "exact_match": true,
+          "total": 7540,
+          "win": 3008,
+          "draw": 2417,
+          "lose": 2115,
+          "win_pct": 39.9,
+          "draw_pct": 32.1,
+          "lose_pct": 28.1,
+          "top5": [
+            [
+              "1:1",
+              1128
+            ],
+            [
+              "1:0",
+              918
+            ],
+            [
+              "0:0",
+              834
+            ],
+            [
+              "2:1",
+              673
+            ],
+            [
+              "0:1",
+              659
+            ]
+          ]
+        },
+        "away_win": {
+          "target_odds": 3.06,
+          "actual_odds": 3.1,
+          "exact_match": false,
+          "total": 3633,
+          "win": 1463,
+          "draw": 1096,
+          "lose": 1074,
+          "win_pct": 40.3,
+          "draw_pct": 30.2,
+          "lose_pct": 29.6,
+          "top5": [
+            [
+              "1:1",
+              491
+            ],
+            [
+              "1:0",
+              386
+            ],
+            [
+              "0:0",
+              364
+            ],
+            [
+              "2:1",
+              338
+            ],
+            [
+              "0:1",
+              304
+            ]
+          ]
+        }
+      },
+      "xiaofeng": {
+        "direction": "不推荐",
+        "confidence": "不推荐"
+      }
+    },
+    {
+      "match_no": "008",
+      "league": "英联赛杯",
+      "home_team": "伯明翰",
+      "away_team": "布伦特",
+      "match_time": "03:00:00",
+      "spf_odds": "3.85/3.55/1.7",
+      "rspf_odds": "1.9/3.58/3.1",
+      "handicap": -1.0,
+      "poisson": {
+        "lambda_h": 1.0,
+        "lambda_a": 1.7,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "11.4%"
+          },
+          {
+            "score": "0:1",
+            "prob": "10.9%"
+          },
+          {
+            "score": "1:2",
+            "prob": "9.8%"
+          }
+        ],
+        "spf_prob": {
+          "home": 23.2,
+          "draw": 24.2,
+          "away": 52.6
+        }
+      },
+      "v42": {
+        "direction": "客胜",
+        "star": 0.5,
+        "star_name": "铁星",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8852,
+        "golden_scores": [
+          "1:1",
+          "0:1"
+        ]
+      },
+      "bizhongge_v2": {
+        "home_win": {
+          "target_odds": 3.85,
+          "actual_odds": 3.89,
+          "exact_match": false,
+          "total": 153,
+          "win": 39,
+          "draw": 35,
+          "lose": 79,
+          "win_pct": 25.5,
+          "draw_pct": 22.9,
+          "lose_pct": 51.6,
+          "top5": [
+            [
+              "1:2",
+              22
+            ],
+            [
+              "1:1",
+              19
+            ],
+            [
+              "0:1",
+              14
+            ],
+            [
+              "0:2",
+              12
+            ],
+            [
+              "1:0",
+              11
+            ]
+          ]
+        },
+        "draw": {
+          "target_odds": 3.55,
+          "actual_odds": 3.5,
+          "exact_match": false,
+          "total": 12607,
+          "win": 5567,
+          "draw": 3419,
+          "lose": 3621,
+          "win_pct": 44.2,
+          "draw_pct": 27.1,
+          "lose_pct": 28.7,
+          "top5": [
+            [
+              "1:1",
+              1622
+            ],
+            [
+              "1:0",
+              1320
+            ],
+            [
+              "2:1",
+              1194
+            ],
+            [
+              "0:0",
+              961
+            ],
+            [
+              "1:2",
+              939
+            ]
+          ]
+        },
+        "away_win": {
+          "target_odds": 1.7,
+          "actual_odds": 1.7,
+          "exact_match": true,
+          "total": 1306,
+          "win": 252,
+          "draw": 327,
+          "lose": 727,
+          "win_pct": 19.3,
+          "draw_pct": 25.0,
+          "lose_pct": 55.7,
+          "top5": [
+            [
+              "0:1",
+              159
+            ],
+            [
+              "1:1",
+              142
+            ],
+            [
+              "0:2",
+              142
+            ],
+            [
+              "1:2",
+              131
+            ],
+            [
+              "0:0",
+              100
+            ]
+          ]
+        }
+      },
+      "xiaofeng": {
+        "direction": "客胜",
+        "confidence": "低"
+      }
+    },
+    {
+      "match_no": "009",
+      "league": "西甲",
+      "home_team": "巴伦西亚",
+      "away_team": "贝蒂斯",
+      "match_time": "03:00:00",
+      "spf_odds": "2.55/3.05/2.45",
+      "rspf_odds": "1.41/4.1/5.75",
+      "handicap": -1.0,
+      "poisson": {
+        "lambda_h": 1.3,
+        "lambda_a": 1.3,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "14.1%"
+          },
+          {
+            "score": "0:1",
+            "prob": "9.7%"
+          },
+          {
+            "score": "1:0",
+            "prob": "9.2%"
+          }
+        ],
+        "spf_prob": {
+          "home": 33.9,
+          "draw": 29.1,
+          "away": 37.0
+        }
+      },
+      "v42": {
+        "direction": "无",
+        "star": 0,
+        "star_name": "无星",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8864,
+        "golden_scores": [
+          "1:1",
+          "0:1"
+        ]
+      },
+      "bizhongge_v2": {
+        "home_win": {
+          "target_odds": 2.55,
+          "actual_odds": 2.55,
+          "exact_match": true,
+          "total": 6049,
+          "win": 2208,
+          "draw": 1834,
+          "lose": 2007,
+          "win_pct": 36.5,
+          "draw_pct": 30.3,
+          "lose_pct": 33.2,
+          "top5": [
+            [
+              "1:1",
+              870
+            ],
+            [
+              "1:0",
+              624
+            ],
+            [
+              "0:1",
+              602
+            ],
+            [
+              "0:0",
+              565
+            ],
+            [
+              "2:1",
+              515
+            ]
+          ]
+        },
+        "draw": {
+          "target_odds": 3.05,
+          "actual_odds": 3.0,
+          "exact_match": false,
+          "total": 7455,
+          "win": 2924,
+          "draw": 2412,
+          "lose": 2119,
+          "win_pct": 39.2,
+          "draw_pct": 32.4,
+          "lose_pct": 28.4,
+          "top5": [
+            [
+              "1:1",
+              1126
+            ],
+            [
+              "1:0",
+              915
+            ],
+            [
+              "0:0",
+              839
+            ],
+            [
+              "0:1",
+              690
+            ],
+            [
+              "2:1",
+              614
+            ]
+          ]
+        },
+        "away_win": {
+          "target_odds": 2.45,
+          "actual_odds": 2.45,
+          "exact_match": true,
+          "total": 4248,
+          "win": 1422,
+          "draw": 1260,
+          "lose": 1566,
+          "win_pct": 33.5,
+          "draw_pct": 29.7,
+          "lose_pct": 36.9,
+          "top5": [
+            [
+              "1:1",
+              567
+            ],
+            [
+              "0:1",
+              450
+            ],
+            [
+              "1:0",
+              397
+            ],
+            [
+              "0:0",
+              389
+            ],
+            [
+              "1:2",
+              344
+            ]
+          ]
+        }
+      },
+      "xiaofeng": {
+        "direction": "不推荐",
+        "confidence": "不推荐"
+      }
+    },
+    {
+      "match_no": "001",
+      "league": "韩职",
+      "home_team": "大田市民",
+      "away_team": "蔚山现代",
+      "match_time": "18:30:00",
+      "spf_odds": "2.09/3.3/2.88",
+      "rspf_odds": "4.4/3.8/1.57",
+      "handicap": 1.0,
+      "poisson": {
+        "lambda_h": 1.4,
+        "lambda_a": 1.1,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "14.7%"
+          },
+          {
+            "score": "0:0",
+            "prob": "11.6%"
+          },
+          {
+            "score": "1:0",
+            "prob": "10.9%"
+          }
+        ],
+        "spf_prob": {
+          "home": 39.4,
+          "draw": 32.2,
+          "away": 28.4
+        }
+      },
+      "v42": {
+        "direction": "无",
+        "star": 0,
+        "star_name": "无星",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.886,
+        "golden_scores": [
+          "1:1",
+          "0:0"
+        ]
+      },
+      "bizhongge_v2": {
+        "home_win": {
+          "target_odds": 2.09,
+          "actual_odds": 2.1,
+          "exact_match": false,
+          "total": 9041,
+          "win": 4040,
+          "draw": 2700,
+          "lose": 2301,
+          "win_pct": 44.7,
+          "draw_pct": 29.9,
+          "lose_pct": 25.5,
+          "top5": [
+            [
+              "1:1",
+              1247
+            ],
+            [
+              "1:0",
+              1051
+            ],
+            [
+              "0:0",
+              863
+            ],
+            [
+              "2:1",
+              815
+            ],
+            [
+              "2:0",
+              741
+            ]
+          ]
+        },
+        "draw": {
+          "target_odds": 3.3,
+          "actual_odds": 3.3,
+          "exact_match": true,
+          "total": 24960,
+          "win": 10074,
+          "draw": 7078,
+          "lose": 7808,
+          "win_pct": 40.4,
+          "draw_pct": 28.4,
+          "lose_pct": 31.3,
+          "top5": [
+            [
+              "1:1",
+              3334
+            ],
+            [
+              "1:0",
+              2677
+            ],
+            [
+              "2:1",
+              2206
+            ],
+            [
+              "0:1",
+              2187
+            ],
+            [
+              "0:0",
+              2135
+            ]
+          ]
+        },
+        "away_win": {
+          "target_odds": 2.88,
+          "actual_odds": 2.88,
+          "exact_match": true,
+          "total": 4827,
+          "win": 1801,
+          "draw": 1501,
+          "lose": 1525,
+          "win_pct": 37.3,
+          "draw_pct": 31.1,
+          "lose_pct": 31.6,
+          "top5": [
+            [
+              "1:1",
+              709
+            ],
+            [
+              "1:0",
+              468
+            ],
+            [
+              "0:0",
+              463
+            ],
+            [
+              "0:1",
+              448
+            ],
+            [
+              "2:1",
+              408
+            ]
+          ]
+        }
+      },
+      "xiaofeng": {
+        "direction": "不推荐",
+        "confidence": "不推荐"
+      }
+    },
+    {
+      "match_no": "002",
+      "league": "韩职",
+      "home_team": "安养FC",
+      "away_team": "仁川联",
+      "match_time": "18:30:00",
+      "spf_odds": "3.0/3.0/2.16",
+      "rspf_odds": "1.53/3.75/4.8",
+      "handicap": -1.0,
+      "poisson": {
+        "lambda_h": 1.0,
+        "lambda_a": 1.6,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "12.7%"
+          },
+          {
+            "score": "0:1",
+            "prob": "11.3%"
+          },
+          {
+            "score": "0:2",
+            "prob": "9.3%"
+          }
+        ],
+        "spf_prob": {
+          "home": 22.2,
+          "draw": 28.0,
+          "away": 49.8
+        }
+      },
+      "v42": {
+        "direction": "无",
+        "star": 0,
+        "star_name": "无星",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8852,
+        "golden_scores": [
+          "1:1",
+          "0:1"
+        ]
+      },
+      "bizhongge_v2": {
+        "home_win": {
+          "target_odds": 3.0,
+          "actual_odds": 3.0,
+          "exact_match": true,
+          "total": 2454,
+          "win": 746,
+          "draw": 712,
+          "lose": 996,
+          "win_pct": 30.4,
+          "draw_pct": 29.0,
+          "lose_pct": 40.6,
+          "top5": [
+            [
+              "1:1",
+              325
+            ],
+            [
+              "0:1",
+              266
+            ],
+            [
+              "1:2",
+              223
+            ],
+            [
+              "1:0",
+              221
+            ],
+            [
+              "0:0",
+              216
+            ]
+          ]
+        },
+        "draw": {
+          "target_odds": 3.0,
+          "actual_odds": 3.0,
+          "exact_match": true,
+          "total": 7456,
+          "win": 2924,
+          "draw": 2412,
+          "lose": 2120,
+          "win_pct": 39.2,
+          "draw_pct": 32.3,
+          "lose_pct": 28.4,
+          "top5": [
+            [
+              "1:1",
+              1126
+            ],
+            [
+              "1:0",
+              915
+            ],
+            [
+              "0:0",
+              839
+            ],
+            [
+              "0:1",
+              690
+            ],
+            [
+              "2:1",
+              614
+            ]
+          ]
+        },
+        "away_win": {
+          "target_odds": 2.16,
+          "actual_odds": 2.15,
+          "exact_match": false,
+          "total": 2520,
+          "win": 679,
+          "draw": 704,
+          "lose": 1137,
+          "win_pct": 26.9,
+          "draw_pct": 27.9,
+          "lose_pct": 45.1,
+          "top5": [
+            [
+              "1:1",
+              348
+            ],
+            [
+              "0:1",
+              283
+            ],
+            [
+              "1:2",
+              236
+            ],
+            [
+              "0:0",
+              211
+            ],
+            [
+              "0:2",
+              203
+            ]
+          ]
+        }
+      },
+      "xiaofeng": {
+        "direction": "不推荐",
+        "confidence": "不推荐"
+      }
+    },
+    {
+      "match_no": "005",
+      "league": "欧冠",
+      "home_team": "雅典AEK",
+      "away_team": "索列夫",
+      "match_time": "03:00:00",
+      "spf_odds": "1.42/3.8/6.25",
+      "rspf_odds": "2.48/3.15/2.45",
+      "handicap": 1.0,
+      "poisson": {
+        "lambda_h": 2.3,
+        "lambda_a": 0.8,
+        "top3": [
+          {
+            "score": "2:0",
+            "prob": "11.0%"
+          },
+          {
+            "score": "1:0",
+            "prob": "9.6%"
+          },
+          {
+            "score": "2:1",
+            "prob": "9.4%"
+          }
+        ],
+        "spf_prob": {
+          "home": 69.6,
+          "draw": 18.0,
+          "away": 12.4
+        }
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 2,
+        "star_name": "银星",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.887,
+        "golden_scores": [
+          "2:0",
+          "1:0"
+        ]
+      },
+      "bizhongge_v2": {
+        "home_win": {
+          "target_odds": 1.42,
+          "actual_odds": 1.42,
+          "exact_match": true,
+          "total": 3540,
+          "win": 2448,
+          "draw": 728,
+          "lose": 364,
+          "win_pct": 69.2,
+          "draw_pct": 20.6,
+          "lose_pct": 10.3,
+          "top5": [
+            [
+              "1:0",
+              468
+            ],
+            [
+              "2:0",
+              423
+            ],
+            [
+              "2:1",
+              376
+            ],
+            [
+              "1:1",
+              332
+            ],
+            [
+              "3:0",
+              287
+            ]
+          ]
+        },
+        "draw": {
+          "target_odds": 3.8,
+          "actual_odds": 3.8,
+          "exact_match": true,
+          "total": 8634,
+          "win": 4195,
+          "draw": 2122,
+          "lose": 2317,
+          "win_pct": 48.6,
+          "draw_pct": 24.6,
+          "lose_pct": 26.8,
+          "top5": [
+            [
+              "1:1",
+              957
+            ],
+            [
+              "1:0",
+              867
+            ],
+            [
+              "2:1",
+              811
+            ],
+            [
+              "2:0",
+              753
+            ],
+            [
+              "0:0",
+              573
+            ]
+          ]
+        },
+        "away_win": {
+          "target_odds": 6.25,
+          "actual_odds": 6.25,
+          "exact_match": true,
+          "total": 150,
+          "win": 93,
+          "draw": 30,
+          "lose": 27,
+          "win_pct": 62.0,
+          "draw_pct": 20.0,
+          "lose_pct": 18.0,
+          "top5": [
+            [
+              "1:0",
+              23
+            ],
+            [
+              "1:1",
+              16
+            ],
+            [
+              "2:0",
+              16
+            ],
+            [
+              "3:0",
+              15
+            ],
+            [
+              "0:1",
+              10
+            ]
+          ]
+        }
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "中"
+      }
+    },
+    {
+      "match_no": "006",
+      "league": "欧冠",
+      "home_team": "采列",
+      "away_team": "布拉迪斯",
+      "match_time": "03:00:00",
+      "spf_odds": "2.2/3.2/2.77",
+      "rspf_odds": "4.7/3.9/1.52",
+      "handicap": 1.0,
+      "poisson": {
+        "lambda_h": 1.4,
+        "lambda_a": 1.2,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "13.6%"
+          },
+          {
+            "score": "1:0",
+            "prob": "10.3%"
+          },
+          {
+            "score": "2:1",
+            "prob": "8.8%"
+          }
+        ],
+        "spf_prob": {
+          "home": 42.2,
+          "draw": 27.7,
+          "away": 30.1
+        }
+      },
+      "v42": {
+        "direction": "无",
+        "star": 0,
+        "star_name": "无星",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.8865,
+        "golden_scores": [
+          "1:1",
+          "1:0"
+        ]
+      },
+      "bizhongge_v2": {
+        "home_win": {
+          "target_odds": 2.2,
+          "actual_odds": 2.2,
+          "exact_match": true,
+          "total": 9723,
+          "win": 4068,
+          "draw": 2976,
+          "lose": 2679,
+          "win_pct": 41.8,
+          "draw_pct": 30.6,
+          "lose_pct": 27.6,
+          "top5": [
+            [
+              "1:1",
+              1412
+            ],
+            [
+              "1:0",
+              1109
+            ],
+            [
+              "0:0",
+              943
+            ],
+            [
+              "2:1",
+              898
+            ],
+            [
+              "0:1",
+              769
+            ]
+          ]
+        },
+        "draw": {
+          "target_odds": 3.2,
+          "actual_odds": 3.2,
+          "exact_match": true,
+          "total": 24119,
+          "win": 9694,
+          "draw": 7013,
+          "lose": 7412,
+          "win_pct": 40.2,
+          "draw_pct": 29.1,
+          "lose_pct": 30.7,
+          "top5": [
+            [
+              "1:1",
+              3295
+            ],
+            [
+              "1:0",
+              2687
+            ],
+            [
+              "0:0",
+              2147
+            ],
+            [
+              "0:1",
+              2121
+            ],
+            [
+              "2:1",
+              2079
+            ]
+          ]
+        },
+        "away_win": {
+          "target_odds": 2.77,
+          "actual_odds": 2.75,
+          "exact_match": false,
+          "total": 5818,
+          "win": 2149,
+          "draw": 1725,
+          "lose": 1944,
+          "win_pct": 36.9,
+          "draw_pct": 29.6,
+          "lose_pct": 33.4,
+          "top5": [
+            [
+              "1:1",
+              816
+            ],
+            [
+              "1:0",
+              579
+            ],
+            [
+              "0:1",
+              547
+            ],
+            [
+              "0:0",
+              517
+            ],
+            [
+              "2:1",
+              517
+            ]
+          ]
+        }
+      },
+      "xiaofeng": {
+        "direction": "不推荐",
+        "confidence": "不推荐"
+      }
+    },
+    {
+      "match_no": "007",
+      "league": "欧冠",
+      "home_team": "维京",
+      "away_team": "萨迪纳摩",
+      "match_time": "03:00:00",
+      "spf_odds": "2.3/3.35/2.53",
+      "rspf_odds": "4.8/4.1/1.48",
+      "handicap": 1.0,
+      "poisson": {
+        "lambda_h": 1.4,
+        "lambda_a": 1.2,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "13.6%"
+          },
+          {
+            "score": "1:0",
+            "prob": "10.3%"
+          },
+          {
+            "score": "2:1",
+            "prob": "8.8%"
+          }
+        ],
+        "spf_prob": {
+          "home": 42.2,
+          "draw": 27.7,
+          "away": 30.1
+        }
+      },
+      "v42": {
+        "direction": "无",
+        "star": 0,
+        "star_name": "无星",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.8861,
+        "golden_scores": [
+          "1:1",
+          "1:0"
+        ]
+      },
+      "bizhongge_v2": {
+        "home_win": {
+          "target_odds": 2.3,
+          "actual_odds": 2.3,
+          "exact_match": true,
+          "total": 8960,
+          "win": 3674,
+          "draw": 2653,
+          "lose": 2633,
+          "win_pct": 41.0,
+          "draw_pct": 29.6,
+          "lose_pct": 29.4,
+          "top5": [
+            [
+              "1:1",
+              1230
+            ],
+            [
+              "1:0",
+              973
+            ],
+            [
+              "0:0",
+              815
+            ],
+            [
+              "2:1",
+              801
+            ],
+            [
+              "0:1",
+              710
+            ]
+          ]
+        },
+        "draw": {
+          "target_odds": 3.35,
+          "actual_odds": 3.39,
+          "exact_match": false,
+          "total": 17676,
+          "win": 7360,
+          "draw": 4887,
+          "lose": 5429,
+          "win_pct": 41.6,
+          "draw_pct": 27.6,
+          "lose_pct": 30.7,
+          "top5": [
+            [
+              "1:1",
+              2335
+            ],
+            [
+              "1:0",
+              1834
+            ],
+            [
+              "2:1",
+              1564
+            ],
+            [
+              "0:1",
+              1533
+            ],
+            [
+              "0:0",
+              1399
+            ]
+          ]
+        },
+        "away_win": {
+          "target_odds": 2.53,
+          "actual_odds": 2.54,
+          "exact_match": false,
+          "total": 4147,
+          "win": 1386,
+          "draw": 1208,
+          "lose": 1553,
+          "win_pct": 33.4,
+          "draw_pct": 29.1,
+          "lose_pct": 37.4,
+          "top5": [
+            [
+              "1:1",
+              554
+            ],
+            [
+              "0:1",
+              436
+            ],
+            [
+              "1:0",
+              386
+            ],
+            [
+              "0:0",
+              361
+            ],
+            [
+              "1:2",
+              348
+            ]
+          ]
+        }
+      },
+      "xiaofeng": {
+        "direction": "不推荐",
+        "confidence": "不推荐"
+      }
+    },
+    {
+      "match_no": "008",
+      "league": "欧冠",
+      "home_team": "里昂",
+      "away_team": "费内巴切",
+      "match_time": "03:00:00",
+      "spf_odds": "1.87/3.35/3.4",
+      "rspf_odds": "3.7/3.6/1.72",
+      "handicap": 1.0,
+      "poisson": {
+        "lambda_h": 1.7,
+        "lambda_a": 1.0,
+        "top3": [
+          {
+            "score": "1:1",
+            "prob": "12.2%"
+          },
+          {
+            "score": "1:0",
+            "prob": "11.0%"
+          },
+          {
+            "score": "2:1",
+            "prob": "9.7%"
+          }
+        ],
+        "spf_prob": {
+          "home": 53.1,
+          "draw": 24.9,
+          "away": 22.0
+        }
+      },
+      "v42": {
+        "direction": "无",
+        "star": 0,
+        "star_name": "无星",
+        "rspf_direction": "客胜(让)",
+        "rv": 0.887,
+        "golden_scores": [
+          "1:1",
+          "1:0"
+        ]
+      },
+      "bizhongge_v2": {
+        "home_win": {
+          "target_odds": 1.87,
+          "actual_odds": 1.87,
+          "exact_match": true,
+          "total": 10583,
+          "win": 5278,
+          "draw": 2983,
+          "lose": 2322,
+          "win_pct": 49.9,
+          "draw_pct": 28.2,
+          "lose_pct": 21.9,
+          "top5": [
+            [
+              "1:1",
+              1389
+            ],
+            [
+              "1:0",
+              1328
+            ],
+            [
+              "2:1",
+              1011
+            ],
+            [
+              "2:0",
+              947
+            ],
+            [
+              "0:0",
+              934
+            ]
+          ]
+        },
+        "draw": {
+          "target_odds": 3.35,
+          "actual_odds": 3.39,
+          "exact_match": false,
+          "total": 17676,
+          "win": 7360,
+          "draw": 4887,
+          "lose": 5429,
+          "win_pct": 41.6,
+          "draw_pct": 27.6,
+          "lose_pct": 30.7,
+          "top5": [
+            [
+              "1:1",
+              2335
+            ],
+            [
+              "1:0",
+              1834
+            ],
+            [
+              "2:1",
+              1564
+            ],
+            [
+              "0:1",
+              1533
+            ],
+            [
+              "0:0",
+              1399
+            ]
+          ]
+        },
+        "away_win": {
+          "target_odds": 3.4,
+          "actual_odds": 3.4,
+          "exact_match": true,
+          "total": 4104,
+          "win": 1796,
+          "draw": 1199,
+          "lose": 1109,
+          "win_pct": 43.8,
+          "draw_pct": 29.2,
+          "lose_pct": 27.0,
+          "top5": [
+            [
+              "1:1",
+              587
+            ],
+            [
+              "1:0",
+              481
+            ],
+            [
+              "2:1",
+              379
+            ],
+            [
+              "0:0",
+              362
+            ],
+            [
+              "0:1",
+              312
+            ]
+          ]
+        }
+      },
+      "xiaofeng": {
+        "direction": "不推荐",
+        "confidence": "不推荐"
+      }
+    },
+    {
+      "match_no": "010",
+      "league": "西甲",
+      "home_team": "皇马",
+      "away_team": "皇家社会",
+      "match_time": "03:00:00",
+      "spf_odds": "1.22/5.4/8.1",
+      "rspf_odds": "1.72/4.05/3.32",
+      "handicap": 1.0,
+      "poisson": {
+        "lambda_h": 2.3,
+        "lambda_a": 0.8,
+        "top3": [
+          {
+            "score": "2:0",
+            "prob": "11.2%"
+          },
+          {
+            "score": "1:0",
+            "prob": "9.9%"
+          },
+          {
+            "score": "2:1",
+            "prob": "9.3%"
+          }
+        ],
+        "spf_prob": {
+          "home": 68.7,
+          "draw": 19.0,
+          "away": 12.3
+        }
+      },
+      "v42": {
+        "direction": "主胜",
+        "star": 4,
+        "star_name": "钻石",
+        "rspf_direction": "主胜(让)",
+        "rv": 0.8863,
+        "golden_scores": [
+          "2:0",
+          "1:0"
+        ]
+      },
+      "bizhongge_v2": {
+        "home_win": {
+          "target_odds": 1.22,
+          "actual_odds": 1.22,
+          "exact_match": true,
+          "total": 1523,
+          "win": 1223,
+          "draw": 215,
+          "lose": 85,
+          "win_pct": 80.3,
+          "draw_pct": 14.1,
+          "lose_pct": 5.6,
+          "top5": [
+            [
+              "2:0",
+              208
+            ],
+            [
+              "1:0",
+              175
+            ],
+            [
+              "2:1",
+              161
+            ],
+            [
+              "3:0",
+              155
+            ],
+            [
+              "3:1",
+              126
+            ]
+          ]
+        },
+        "draw": {
+          "target_odds": 5.4,
+          "actual_odds": 5.4,
+          "exact_match": true,
+          "total": 1,
+          "win": 0,
+          "draw": 0,
+          "lose": 1,
+          "win_pct": 0.0,
+          "draw_pct": 0.0,
+          "lose_pct": 100.0,
+          "top5": [
+            [
+              "0:3",
+              1
+            ]
+          ]
+        },
+        "away_win": {
+          "target_odds": 8.1,
+          "actual_odds": 8.0,
+          "exact_match": false,
+          "total": 100,
+          "win": 76,
+          "draw": 11,
+          "lose": 13,
+          "win_pct": 76.0,
+          "draw_pct": 11.0,
+          "lose_pct": 13.0,
+          "top5": [
+            [
+              "2:0",
+              16
+            ],
+            [
+              "3:0",
+              11
+            ],
+            [
+              "2:1",
+              9
+            ],
+            [
+              "4:0",
+              8
+            ],
+            [
+              "1:0",
+              8
+            ]
+          ]
+        }
+      },
+      "xiaofeng": {
+        "direction": "主胜",
+        "confidence": "高"
+      }
+    }
+  ]
+}
