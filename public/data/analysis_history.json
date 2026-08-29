@@ -1,144 +1,6 @@
 {
   "days": [
     {
-      "date": "2026-07-21",
-      "total": 7,
-      "direction_hits": 0,
-      "direction_total": 0,
-      "direction_rate": "-",
-      "score_hits": 2,
-      "score_total": 7,
-      "score_rate": "28.6%",
-      "matches": [
-        {
-          "match_no": "周一202",
-          "league": "芬超",
-          "home_team": "玛丽港",
-          "away_team": "拉赫蒂",
-          "match_time": "",
-          "spf_odds": "5.25/4.1/1.44",
-          "actual_score": "0:2",
-          "result_label": "客胜",
-          "direction_label": "无推荐",
-          "top3_scores": [
-            "1:2",
-            "1:1",
-            "0:2"
-          ],
-          "direction_hit": null,
-          "score_hit": true
-        },
-        {
-          "match_no": "周一203",
-          "league": "瑞超",
-          "home_team": "厄尔格里特",
-          "away_team": "佐加顿斯",
-          "match_time": "",
-          "spf_odds": "7.25/5.6/1.23",
-          "actual_score": "0:0",
-          "result_label": "平局",
-          "direction_label": "无推荐",
-          "top3_scores": [
-            "1:2",
-            "0:2",
-            "1:3"
-          ],
-          "direction_hit": null,
-          "score_hit": false
-        },
-        {
-          "match_no": "周一203",
-          "league": "瑞超",
-          "home_team": "厄格里特",
-          "away_team": "佐加顿斯",
-          "match_time": "",
-          "spf_odds": "6.6/5.25/1.27",
-          "actual_score": "0:0",
-          "result_label": "平局",
-          "direction_label": "无推荐",
-          "top3_scores": [
-            "1:2",
-            "0:2",
-            "1:3"
-          ],
-          "direction_hit": null,
-          "score_hit": false
-        },
-        {
-          "match_no": "周一204",
-          "league": "瑞超",
-          "home_team": "卡尔马",
-          "away_team": "马尔默",
-          "match_time": "",
-          "spf_odds": "2.3/3.45/2.47",
-          "actual_score": "2:2",
-          "result_label": "平局",
-          "direction_label": "无推荐",
-          "top3_scores": [
-            "1:1",
-            "2:1",
-            "1:2"
-          ],
-          "direction_hit": null,
-          "score_hit": false
-        },
-        {
-          "match_no": "周二201",
-          "league": "韩职",
-          "home_team": "济州SK",
-          "away_team": "江原FC",
-          "match_time": "18:30",
-          "spf_odds": "4.2/3.05/1.78",
-          "actual_score": "1:1",
-          "result_label": "平局",
-          "direction_label": "无推荐",
-          "top3_scores": [
-            "1:1",
-            "0:1",
-            "1:2"
-          ],
-          "direction_hit": null,
-          "score_hit": true
-        },
-        {
-          "match_no": "周二202",
-          "league": "韩职",
-          "home_team": "全北现代",
-          "away_team": "大田市民",
-          "match_time": "18:30",
-          "spf_odds": "1.76/3.35/3.8",
-          "actual_score": "0:0",
-          "result_label": "平局",
-          "direction_label": "无推荐",
-          "top3_scores": [
-            "1:1",
-            "2:1",
-            "1:0"
-          ],
-          "direction_hit": null,
-          "score_hit": false
-        },
-        {
-          "match_no": "周二203",
-          "league": "韩职",
-          "home_team": "蔚山现代",
-          "away_team": "仁川联",
-          "match_time": "18:30",
-          "spf_odds": "1.88/3.15/3.6",
-          "actual_score": "1:2",
-          "result_label": "客胜",
-          "direction_label": "无推荐",
-          "top3_scores": [
-            "1:1",
-            "1:0",
-            "2:1"
-          ],
-          "direction_hit": null,
-          "score_hit": false
-        }
-      ]
-    },
-    {
       "date": "2026-07-22",
       "total": 10,
       "direction_hits": 0,
@@ -7781,6 +7643,270 @@
             "2:0",
             "1:0",
             "2:1"
+          ],
+          "direction_hit": true,
+          "score_hit": true
+        }
+      ]
+    },
+    {
+      "date": "2026-08-28",
+      "total": 14,
+      "direction_hits": 6,
+      "direction_total": 11,
+      "direction_rate": "54.5%",
+      "score_hits": 3,
+      "score_total": 14,
+      "score_rate": "21.4%",
+      "matches": [
+        {
+          "match_no": "001",
+          "league": "德乙",
+          "home_team": "不伦瑞克",
+          "away_team": "柏林赫塔",
+          "match_time": "00:30:00",
+          "spf_odds": "2.51/3.35/2.31",
+          "actual_score": "3:5",
+          "result_label": "客胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "0:0",
+            "0:1"
+          ],
+          "direction_hit": false,
+          "score_hit": false
+        },
+        {
+          "match_no": "002",
+          "league": "德乙",
+          "home_team": "波鸿",
+          "away_team": "奥斯纳",
+          "match_time": "00:30:00",
+          "spf_odds": "1.51/3.9/4.75",
+          "actual_score": "0:1",
+          "result_label": "客胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "0:0"
+          ],
+          "direction_hit": false,
+          "score_hit": false
+        },
+        {
+          "match_no": "003",
+          "league": "西甲",
+          "home_team": "桑坦德",
+          "away_team": "埃尔切",
+          "match_time": "01:00:00",
+          "spf_odds": "1.95/3.35/3.15",
+          "actual_score": "3:2",
+          "result_label": "主胜",
+          "direction_label": "无推荐",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "2:1"
+          ],
+          "direction_hit": null,
+          "score_hit": false
+        },
+        {
+          "match_no": "004",
+          "league": "沙职",
+          "home_team": "赛哈海湾",
+          "away_team": "利雅新月",
+          "match_time": "02:00:00",
+          "spf_odds": "9.0/5.85/1.18",
+          "actual_score": "1:5",
+          "result_label": "客胜",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:1",
+            "0:1",
+            "0:2"
+          ],
+          "direction_hit": true,
+          "score_hit": false
+        },
+        {
+          "match_no": "005",
+          "league": "法乙",
+          "home_team": "蒙彼利埃",
+          "away_team": "布洛涅",
+          "match_time": "02:00:00",
+          "spf_odds": "1.63/3.3/4.7",
+          "actual_score": "0:0",
+          "result_label": "平局",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "1:0",
+            "0:0"
+          ],
+          "direction_hit": false,
+          "score_hit": true
+        },
+        {
+          "match_no": "006",
+          "league": "荷甲",
+          "home_team": "格罗宁根",
+          "away_team": "福图纳",
+          "match_time": "02:00:00",
+          "spf_odds": "1.46/4.25/4.8",
+          "actual_score": "2:3",
+          "result_label": "客胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "2:0",
+            "2:1",
+            "3:1"
+          ],
+          "direction_hit": false,
+          "score_hit": false
+        },
+        {
+          "match_no": "007",
+          "league": "荷乙",
+          "home_team": "罗达JC",
+          "away_team": "布雷达",
+          "match_time": "02:00:00",
+          "spf_odds": "3.05/3.43/1.96",
+          "actual_score": "2:2",
+          "result_label": "平局",
+          "direction_label": "无推荐",
+          "top3_scores": [
+            "1:1",
+            "1:2",
+            "0:1"
+          ],
+          "direction_hit": null,
+          "score_hit": false
+        },
+        {
+          "match_no": "008",
+          "league": "德甲",
+          "home_team": "拜仁",
+          "away_team": "斯图加特",
+          "match_time": "02:30:00",
+          "spf_odds": "1.14/6.85/9.4",
+          "actual_score": "5:1",
+          "result_label": "主胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "2:0",
+            "3:1",
+            "2:1"
+          ],
+          "direction_hit": true,
+          "score_hit": false
+        },
+        {
+          "match_no": "009",
+          "league": "意甲",
+          "home_team": "AC米兰",
+          "away_team": "威尼斯",
+          "match_time": "02:45:00",
+          "spf_odds": "1.28/4.56/7.75",
+          "actual_score": "2:0",
+          "result_label": "主胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "2:0",
+            "1:0",
+            "2:1"
+          ],
+          "direction_hit": true,
+          "score_hit": true
+        },
+        {
+          "match_no": "010",
+          "league": "法甲",
+          "home_team": "里尔",
+          "away_team": "巴黎圣曼",
+          "match_time": "02:45:00",
+          "spf_odds": "4.4/3.9/1.55",
+          "actual_score": "2:2",
+          "result_label": "平局",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:1",
+            "0:1",
+            "0:2"
+          ],
+          "direction_hit": false,
+          "score_hit": false
+        },
+        {
+          "match_no": "011",
+          "league": "英超",
+          "home_team": "水晶宫",
+          "away_team": "曼城",
+          "match_time": "03:00:00",
+          "spf_odds": "4.9/4.0/1.48",
+          "actual_score": "1:4",
+          "result_label": "客胜",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:1",
+            "0:1",
+            "1:2"
+          ],
+          "direction_hit": true,
+          "score_hit": false
+        },
+        {
+          "match_no": "012",
+          "league": "英冠",
+          "home_team": "雷克斯",
+          "away_team": "伯明翰",
+          "match_time": "03:00:00",
+          "spf_odds": "2.3/3.07/2.72",
+          "actual_score": "1:2",
+          "result_label": "客胜",
+          "direction_label": "无推荐",
+          "top3_scores": [
+            "1:1",
+            "0:0",
+            "1:0"
+          ],
+          "direction_hit": null,
+          "score_hit": false
+        },
+        {
+          "match_no": "013",
+          "league": "葡超",
+          "home_team": "里奥阿维",
+          "away_team": "里斯本",
+          "match_time": "03:15:00",
+          "spf_odds": "8.75/5.3/1.21",
+          "actual_score": "0:4",
+          "result_label": "客胜",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:1",
+            "0:1",
+            "0:2"
+          ],
+          "direction_hit": true,
+          "score_hit": false
+        },
+        {
+          "match_no": "014",
+          "league": "西甲",
+          "home_team": "阿拉维斯",
+          "away_team": "比利亚雷",
+          "match_time": "03:30:00",
+          "spf_odds": "2.9/3.25/2.1",
+          "actual_score": "1:0",
+          "result_label": "主胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:1",
+            "0:1",
+            "1:0"
           ],
           "direction_hit": true,
           "score_hit": true
