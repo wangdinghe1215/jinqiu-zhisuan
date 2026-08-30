@@ -108,11 +108,12 @@ interface HistoryData {
 
 // ===== 星级颜色 =====
 const starColors: Record<string, string> = {
-  "钻石": "text-cyan-400 bg-cyan-900/30 border-cyan-500/50",
-  "铂金": "text-blue-300 bg-blue-900/30 border-blue-500/50",
-  "黄金": "text-amber-400 bg-amber-900/30 border-amber-500/50",
-  "白银": "text-gray-300 bg-gray-800/50 border-gray-500/50",
-  "青铜": "text-orange-400 bg-orange-900/30 border-orange-500/50",
+  "钻石": "text-cyan-300 bg-cyan-900/40 border-cyan-400/60",
+  "金星": "text-amber-300 bg-amber-900/40 border-amber-400/60",
+  "银星": "text-gray-200 bg-gray-700/40 border-gray-300/50",
+  "铜星": "text-orange-300 bg-orange-900/40 border-orange-500/60",
+  "铁星": "text-gray-400 bg-gray-800/40 border-gray-500/40",
+  "无星": "text-gray-500 bg-gray-800/30 border-gray-700/40",
 };
 
 const bzgDominantColors: Record<string, string> = {
@@ -125,6 +126,7 @@ const confidenceColors: Record<string, string> = {
   "高": "text-emerald-400",
   "中": "text-amber-400",
   "低": "text-gray-400",
+  "不推荐": "text-gray-600",
 };
 
 // ===== 组件 =====
@@ -180,7 +182,7 @@ export default function AnalysisPage() {
     } else if (filter === "high_conf") {
       list = list.filter(m => m.xiaofeng.confidence === "高");
     } else if (filter === "silver_plus") {
-      const highStars = ["钻石", "铂金", "黄金", "白银"];
+      const highStars = ["钻石", "金星", "银星"];
       list = list.filter(m => highStars.includes(m.v42.star_name));
     }
     return list;
@@ -196,7 +198,7 @@ export default function AnalysisPage() {
   const stats = useMemo(() => {
     if (!todayData?.matches) return { total: 0, bzgPass: 0, highConf: 0, silverPlus: 0 };
     const matches = todayData.matches;
-    const highStars = ["钻石", "铂金", "黄金", "白银"];
+    const highStars = ["钻石", "金星", "银星"];
     return {
       total: matches.length,
       bzgPass: matches.filter(m => {
@@ -308,7 +310,7 @@ export default function AnalysisPage() {
                 <div className="text-lg md:text-xl font-bold text-amber-400">{stats.highConf}</div>
               </div>
               <div className="bg-[#1a1a2e] border border-purple-700/40 rounded-lg px-3 py-2">
-                <div className="text-xs text-purple-400">白银以上</div>
+                <div className="text-xs text-purple-400">银星以上</div>
                 <div className="text-lg md:text-xl font-bold text-purple-300">{stats.silverPlus}</div>
               </div>
             </div>
@@ -319,7 +321,7 @@ export default function AnalysisPage() {
                 { key: "all", label: "全部" },
                 { key: "bzg_pass", label: "必中哥V2" },
                 { key: "high_conf", label: "高信心" },
-                { key: "silver_plus", label: "白银以上" },
+                { key: "silver_plus", label: "银星以上" },
               ].map(f => (
                 <button
                   key={f.key}
