@@ -219,6 +219,15 @@ export function filterMatches(
   conditions: FilterCondition[]
 ): FilterResult {
   let filtered = [...matches];
+
+  // 去重（按日期+联赛+主客队）
+  const seen = new Set<string>();
+  filtered = filtered.filter(m => {
+    const key = `${m.date}|${m.league}|${m.homeTeam}|${m.awayTeam}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
   
   // 逐个条件过滤（AND关系）
   for (const cond of conditions) {

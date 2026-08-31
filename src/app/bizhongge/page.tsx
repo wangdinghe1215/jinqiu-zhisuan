@@ -233,7 +233,7 @@ export default function BizhonggePage() {
         </div>
         {liveMatches.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-            {liveMatches.slice(0, 6).map((m: any) => (
+            {liveMatches.map((m: any) => (
               <div
                 key={m.match_no}
                 className="p-3 bg-[#0f0f1a] rounded-lg border border-gray-700/50 hover:border-orange-500/50 transition-colors"

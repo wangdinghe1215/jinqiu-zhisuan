@@ -335,7 +335,8 @@ function buildTodayMatch(
 ): TodayMatch {
   const poisson = adaptPoisson(apiMatch.poisson);
   const v42 = adaptV42(apiMatch.v42, apiMatch);
-  const bizhongge_v2 = bzgMap[apiMatch.match_no] || null;
+  const numMatch = apiMatch.match_no.replace(/\D/g, '').padStart(3, '0');
+  const bizhongge_v2 = bzgMap[numMatch] || null;
   const xiaofeng = calcXiaofeng(v42);
 
   const spf_odds = `${apiMatch.spf_home.toFixed(2)}/${apiMatch.spf_draw.toFixed(2)}/${apiMatch.spf_away.toFixed(2)}`;
@@ -393,7 +394,8 @@ export default function AnalysisPage() {
           if (bzgData.matches && Array.isArray(bzgData.matches)) {
             for (const m of bzgData.matches) {
               if (m.match_no && m.bizhongge) {
-                bzgMap[m.match_no] = m.bizhongge;
+                const numKey = m.match_no.replace(/\D/g, '').padStart(3, '0');
+                bzgMap[numKey] = m.bizhongge;
               }
             }
           }
@@ -424,6 +426,9 @@ export default function AnalysisPage() {
       if (hRes && hRes.ok) {
         try {
           const h = await hRes.json();
+          if (h.days && Array.isArray(h.days)) {
+            h.days = h.days.filter((d: any) => d.date >= "2026-08-13");
+          }
           setHistoryData(h);
           if (h.days && h.days.length > 0) {
             setSelectedDate(h.days[h.days.length - 1].date);
