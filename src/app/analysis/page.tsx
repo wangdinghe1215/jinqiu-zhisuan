@@ -10,13 +10,22 @@ interface PoissonTop {
   prob: string;
 }
 
+interface PoissonData {
+  lambda_h: number;
+  lambda_a: number;
+  top3: PoissonTop[];
+  spf_prob?: { home: number; draw: number; away: number };
+}
+
 interface V42Data {
   direction: string;
-  star: number;
-  star_name: string;
+  star: number;        // starCount
+  star_name: string;   // 钻石/金星/银星/铜星/铁星/无星
   rspf_direction: string;
-  rv: number;
+  rv: number;          // 返还率
   golden_scores?: string[];
+  t_level?: string;
+  cross_cr?: number;
 }
 
 interface BzgV2Direction {
@@ -54,14 +63,9 @@ interface TodayMatch {
   spf_odds: string;
   rspf_odds: string;
   handicap: number;
-  poisson: {
-    lambda_h: number;
-    lambda_a: number;
-    top3: PoissonTop[];
-    spf_prob?: { home: number; draw: number; away: number };
-  };
+  poisson: PoissonData;
   v42: V42Data;
-  bizhongge_v2: BizhonggeV2Data;
+  bizhongge_v2: BizhonggeV2Data | null;
   xiaofeng: XiaofengData;
 }
 
@@ -106,6 +110,72 @@ interface HistoryData {
   days: HistoryDay[];
 }
 
+// ===== API 原始返回类型（来自 /api/sporttery/matches?type=all）=====
+interface ApiPoissonResult {
+  top5?: { score: string; prob: number }[];
+  homeWinProb?: number;
+  drawProb?: number;
+  awayWinProb?: number;
+  lambdaHome?: number;
+  lambdaAway?: number;
+  matrix?: number[][];
+  // 兼容可能的 snake_case 格式
+  lambda_h?: number;
+  lambda_a?: number;
+  top3?: PoissonTop[];
+  spf_prob?: { home: number; draw: number; away: number };
+}
+
+interface ApiV42Result {
+  tLevel?: string;
+  tLabel?: string;
+  starLevel?: string;    // 钻石 / 金 / 银 / 铜 / 铁 / 无星
+  starCount?: number;
+  direction?: string;
+  spfCR?: number;
+  rspfCR?: number;
+  crossCR?: number;
+  line0?: string;
+  goldenScores?: { score: string; odds: number }[];
+}
+
+interface ApiSportteryMatch {
+  match_no: string;
+  league: string;
+  home_team: string;
+  away_team: string;
+  match_date: string;
+  match_time: string;
+  spf_home: number;
+  spf_draw: number;
+  spf_away: number;
+  rspf_home: number;
+  rspf_draw: number;
+  rspf_away: number;
+  handicap: number;
+  score_odds?: Array<{ score: string; odds: number }>;
+  poisson?: ApiPoissonResult | null;
+  v42?: ApiV42Result | null;
+}
+
+// ===== bizhongge_data.json 类型 =====
+interface BizhonggeRawMatch {
+  match_no: string;
+  league: string;
+  home_team: string;
+  away_team: string;
+  handicap: number;
+  spf_odds: string;
+  bizhongge: BizhonggeV2Data;
+}
+
+interface BizhonggeRawData {
+  date: string;
+  total_matches: number;
+  source: string;
+  matches: BizhonggeRawMatch[];
+}
+
 // ===== 星级颜色 =====
 const starColors: Record<string, string> = {
   "钻石": "text-cyan-300 bg-cyan-900/40 border-cyan-400/60",
@@ -129,6 +199,164 @@ const confidenceColors: Record<string, string> = {
   "不推荐": "text-gray-600",
 };
 
+// ===== 辅助函数 =====
+
+// starLevel（钻石/金/银/铜/铁/无星）→ star_name（钻石/金星/银星/铜星/铁星/无星）
+function normalizeStarName(starLevel: string): string {
+  if (!starLevel) return "无星";
+  if (starLevel === "钻石" || starLevel === "钻石星") return "钻石";
+  if (starLevel === "金" || starLevel === "金星") return "金星";
+  if (starLevel === "银" || starLevel === "银星") return "银星";
+  if (starLevel === "铜" || starLevel === "铜星") return "铜星";
+  if (starLevel === "铁" || starLevel === "铁星") return "铁星";
+  return "无星";
+}
+
+// 计算返还率
+function calcRv(home: number, draw: number, away: number): number {
+  if (home <= 0 || draw <= 0 || away <= 0) return 0.88;
+  return 1 / (1 / home + 1 / draw + 1 / away);
+}
+
+// 计算让球方向
+function calcRspfDirection(rspfHome: number, rspfDraw: number, rspfAway: number): string {
+  const min = Math.min(rspfHome || 999, rspfDraw || 999, rspfAway || 999);
+  if (min === rspfHome) return "主胜(让)";
+  if (min === rspfAway) return "客胜(让)";
+  return "平局(让)";
+}
+
+// 将 API poisson 结果适配为 UI 期望格式
+function adaptPoisson(apiPoisson: ApiPoissonResult | null | undefined): PoissonData {
+  if (!apiPoisson) {
+    return {
+      lambda_h: 0,
+      lambda_a: 0,
+      top3: [],
+      spf_prob: { home: 0, draw: 0, away: 0 },
+    };
+  }
+
+  // 如果已经是 snake_case 格式（未来API升级后）
+  if (apiPoisson.lambda_h !== undefined && apiPoisson.top3) {
+    return {
+      lambda_h: apiPoisson.lambda_h,
+      lambda_a: apiPoisson.lambda_a ?? 0,
+      top3: apiPoisson.top3,
+      spf_prob: apiPoisson.spf_prob,
+    };
+  }
+
+  // 从 calculatePoisson 的返回格式转换
+  const lambdaH = apiPoisson.lambdaHome ?? apiPoisson.lambda_h ?? 0;
+  const lambdaA = apiPoisson.lambdaAway ?? apiPoisson.lambda_a ?? 0;
+
+  // top5 → top3，prob 转为百分比字符串
+  const top5 = apiPoisson.top5 || [];
+  const top3: PoissonTop[] = top5.slice(0, 3).map(item => ({
+    score: item.score,
+    prob: (item.prob * 100).toFixed(1) + "%",
+  }));
+
+  const spfProb = apiPoisson.spf_prob || {
+    home: Math.round((apiPoisson.homeWinProb ?? 0) * 1000) / 10,
+    draw: Math.round((apiPoisson.drawProb ?? 0) * 1000) / 10,
+    away: Math.round((apiPoisson.awayWinProb ?? 0) * 1000) / 10,
+  };
+
+  return {
+    lambda_h: lambdaH,
+    lambda_a: lambdaA,
+    top3,
+    spf_prob: spfProb,
+  };
+}
+
+// 将 API v42 结果适配为 UI 期望格式
+function adaptV42(
+  apiV42: ApiV42Result | null | undefined,
+  m: ApiSportteryMatch
+): V42Data {
+  if (!apiV42) {
+    return {
+      direction: "无",
+      star: 0,
+      star_name: "无星",
+      rspf_direction: calcRspfDirection(m.rspf_home, m.rspf_draw, m.rspf_away),
+      rv: calcRv(m.spf_home, m.spf_draw, m.spf_away),
+      golden_scores: [],
+    };
+  }
+
+  const starName = normalizeStarName(apiV42.starLevel || "无星");
+  const goldenScores = (apiV42.goldenScores || []).map(s => s.score);
+
+  return {
+    direction: apiV42.direction || "无",
+    star: apiV42.starCount ?? 0,
+    star_name: starName,
+    rspf_direction: calcRspfDirection(m.rspf_home, m.rspf_draw, m.rspf_away),
+    rv: calcRv(m.spf_home, m.spf_draw, m.spf_away),
+    golden_scores: goldenScores,
+    t_level: apiV42.tLevel,
+    cross_cr: apiV42.crossCR,
+  };
+}
+
+// 根据 v42 数据计算小丰综合
+function calcXiaofeng(v42: V42Data, goldenScores?: string[]): XiaofengData {
+  // star 为 0 或 direction 为"无" → 不推荐
+  if (v42.star === 0 || v42.direction === "无" || !v42.direction) {
+    return {
+      direction: "不推荐",
+      confidence: "不推荐",
+      top_scores: [],
+    };
+  }
+
+  let confidence = "低";
+  if (v42.star >= 4) {
+    confidence = "高";
+  } else if (v42.star >= 2) {
+    confidence = "中";
+  }
+
+  return {
+    direction: v42.direction,
+    confidence,
+    top_scores: goldenScores || v42.golden_scores || [],
+  };
+}
+
+// 将 API 比赛数据 + bizhongge 数据合并为 TodayMatch
+function buildTodayMatch(
+  apiMatch: ApiSportteryMatch,
+  bzgMap: Record<string, BizhonggeV2Data>
+): TodayMatch {
+  const poisson = adaptPoisson(apiMatch.poisson);
+  const v42 = adaptV42(apiMatch.v42, apiMatch);
+  const bizhongge_v2 = bzgMap[apiMatch.match_no] || null;
+  const xiaofeng = calcXiaofeng(v42);
+
+  const spf_odds = `${apiMatch.spf_home.toFixed(2)}/${apiMatch.spf_draw.toFixed(2)}/${apiMatch.spf_away.toFixed(2)}`;
+  const rspf_odds = `${apiMatch.rspf_home?.toFixed(2) || "-"}/${apiMatch.rspf_draw?.toFixed(2) || "-"}/${apiMatch.rspf_away?.toFixed(2) || "-"}`;
+
+  return {
+    match_no: apiMatch.match_no,
+    league: apiMatch.league,
+    home_team: apiMatch.home_team,
+    away_team: apiMatch.away_team,
+    match_time: `${apiMatch.match_date?.slice(5) || ""} ${apiMatch.match_time?.slice(0, 5) || ""}`.trim(),
+    spf_odds,
+    rspf_odds,
+    handicap: apiMatch.handicap,
+    poisson,
+    v42,
+    bizhongge_v2,
+    xiaofeng,
+  };
+}
+
 // ===== 组件 =====
 export default function AnalysisPage() {
   const router = useRouter();
@@ -141,31 +369,77 @@ export default function AnalysisPage() {
   const [expandedBzg, setExpandedBzg] = useState<Record<string, boolean>>({});
   const [selectedDate, setSelectedDate] = useState<string>("");
 
-  useEffect(() => {
-    const load = async () => {
-      setLoading(true);
-      setError("");
-      try {
-        const [tRes, hRes] = await Promise.all([
-          fetch("/data/analysis_data.json"),
-          fetch("/data/analysis_history.json"),
-        ]);
-        if (!tRes.ok) throw new Error("今日数据加载失败");
-        const t = await tRes.json();
-        setTodayData(t);
-        if (hRes.ok) {
+  const load = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      // 并行获取：实时比赛数据（含poisson+v42）、必中哥数据、历史数据
+      const [matchRes, bzgRes, hRes] = await Promise.all([
+        fetch("/api/sporttery/matches?type=all"),
+        fetch("/data/bizhongge_data.json").catch(() => null),
+        fetch("/data/analysis_history.json").catch(() => null),
+      ]);
+
+      if (!matchRes.ok) throw new Error("比赛数据加载失败");
+      const matchData = await matchRes.json();
+      if (!matchData.success) throw new Error(matchData.message || "比赛数据加载失败");
+      const apiMatches: ApiSportteryMatch[] = matchData.data || [];
+
+      // 解析必中哥数据
+      let bzgMap: Record<string, BizhonggeV2Data> = {};
+      if (bzgRes && bzgRes.ok) {
+        try {
+          const bzgData: BizhonggeRawData = await bzgRes.json();
+          if (bzgData.matches && Array.isArray(bzgData.matches)) {
+            for (const m of bzgData.matches) {
+              if (m.match_no && m.bizhongge) {
+                bzgMap[m.match_no] = m.bizhongge;
+              }
+            }
+          }
+        } catch (e) {
+          console.warn("必中哥数据解析失败:", e);
+        }
+      }
+
+      // 合并数据
+      const matches: TodayMatch[] = apiMatches.map(m => buildTodayMatch(m, bzgMap));
+
+      // 统计必中哥通过数
+      const bzgPass = matches.filter(m => {
+        const bv2 = m.bizhongge_v2;
+        if (!bv2) return false;
+        return Math.max(bv2.home_win.win_pct, bv2.draw.draw_pct, bv2.away_win.lose_pct) >= 40;
+      }).length;
+
+      const today: TodayData = {
+        date: apiMatches.length > 0 ? (apiMatches[0].match_date || new Date().toISOString().slice(0, 10)) : new Date().toISOString().slice(0, 10),
+        total: matches.length,
+        bizhongge_pass: bzgPass,
+        matches,
+      };
+      setTodayData(today);
+
+      // 历史数据
+      if (hRes && hRes.ok) {
+        try {
           const h = await hRes.json();
           setHistoryData(h);
           if (h.days && h.days.length > 0) {
             setSelectedDate(h.days[h.days.length - 1].date);
           }
+        } catch (e) {
+          console.warn("历史数据解析失败:", e);
         }
-      } catch (e: any) {
-        setError(e.message || "数据加载失败");
-      } finally {
-        setLoading(false);
       }
-    };
+    } catch (e: any) {
+      setError(e.message || "数据加载失败");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
     load();
   }, []);
 
@@ -368,7 +642,7 @@ function TodayMatchCard({ match, expanded, onToggleBzg }: { match: TodayMatch; e
   const bzgDominant = bv2 ? (
     bv2.home_win.win_pct >= bv2.draw.draw_pct && bv2.home_win.win_pct >= bv2.away_win.lose_pct ? "home_win" :
     bv2.draw.draw_pct >= bv2.away_win.lose_pct ? "draw" : "away_win"
-  ) : "home_win";
+  ) : null;
   const bzgDominantPct = bv2 && bzgDominant ? (
     bzgDominant === "home_win" ? bv2.home_win.win_pct :
     bzgDominant === "draw" ? bv2.draw.draw_pct : bv2.away_win.lose_pct
@@ -407,12 +681,16 @@ function TodayMatchCard({ match, expanded, onToggleBzg }: { match: TodayMatch; e
           </div>
           <div className="space-y-1 mb-2">
             <div className="text-xs text-gray-500">Top3预测</div>
-            {match.poisson.top3.map((t, i) => (
-              <div key={i} className="flex items-center justify-between text-xs">
-                <span className="font-mono text-cyan-300">{t.score}</span>
-                <span className="text-gray-400">{t.prob}</span>
-              </div>
-            ))}
+            {match.poisson.top3.length > 0 ? (
+              match.poisson.top3.map((t, i) => (
+                <div key={i} className="flex items-center justify-between text-xs">
+                  <span className="font-mono text-cyan-300">{t.score}</span>
+                  <span className="text-gray-400">{t.prob}</span>
+                </div>
+              ))
+            ) : (
+              <div className="text-xs text-gray-600">暂无数据</div>
+            )}
           </div>
           {match.poisson.spf_prob && (match.poisson.spf_prob.home > 0 || match.poisson.spf_prob.draw > 0 || match.poisson.spf_prob.away > 0) && (() => {
             const sp = match.poisson.spf_prob;
@@ -485,7 +763,7 @@ function TodayMatchCard({ match, expanded, onToggleBzg }: { match: TodayMatch; e
               </span>
             )}
           </div>
-          {bv2 && (
+          {bv2 ? (
             <>
               <div className="space-y-1.5 mb-1.5">
                 <div className="flex items-center gap-2 text-[10px]">
@@ -519,7 +797,7 @@ function TodayMatchCard({ match, expanded, onToggleBzg }: { match: TodayMatch; e
               </button>
               {expanded && bzgDominantTop5.length > 0 && (
                 <div className="mt-1.5 pt-1.5 border-t border-gray-700/50 space-y-0.5">
-                  <div className="text-[10px] text-gray-500 mb-1">{bzgDominantLabel[bzgDominant!]}方向 · 查史{bv2[bzgDominant]?.total || 0}场</div>
+                  <div className="text-[10px] text-gray-500 mb-1">{bzgDominant ? bzgDominantLabel[bzgDominant] : ''}方向 · 查史{bzgDominant ? bv2[bzgDominant]?.total || 0 : 0}场</div>
                   {bzgDominantTop5.map(([score, count], i) => (
                     <div key={i} className="flex items-center justify-between text-[10px]">
                       <span className="font-mono text-orange-300">{score}</span>
@@ -529,6 +807,8 @@ function TodayMatchCard({ match, expanded, onToggleBzg }: { match: TodayMatch; e
                 </div>
               )}
             </>
+          ) : (
+            <div className="text-xs text-gray-500 py-4 text-center">暂无数据</div>
           )}
         </div>
 
