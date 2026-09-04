@@ -7976,12 +7976,12 @@
     {
       "date": "2026-09-01",
       "total": 10,
-      "direction_hits": 3,
-      "direction_total": 3,
-      "direction_rate": "100.0%",
-      "score_hits": 2,
+      "direction_hits": 4,
+      "direction_total": 10,
+      "direction_rate": 40.0,
+      "score_hits": 4,
       "score_total": 10,
-      "score_rate": "20.0%",
+      "score_rate": 40.0,
       "matches": [
         {
           "match_no": "001",
@@ -7995,8 +7995,8 @@
           "direction_label": "主胜",
           "top3_scores": [
             "1:1",
-            "1:0",
-            "0:0"
+            "2:1",
+            "1:0"
           ],
           "direction_hit": true,
           "score_hit": false
@@ -8010,14 +8010,14 @@
           "spf_odds": "1.8/3.35/3.65",
           "actual_score": "2:0",
           "result_label": "主胜",
-          "direction_label": "无推荐",
+          "direction_label": "主胜",
           "top3_scores": [
-            "1:1",
             "1:0",
-            "0:0"
+            "1:1",
+            "2:0"
           ],
-          "direction_hit": null,
-          "score_hit": false
+          "direction_hit": true,
+          "score_hit": true
         },
         {
           "match_no": "003",
@@ -8028,13 +8028,13 @@
           "spf_odds": "1.78/3.5/3.55",
           "actual_score": "4:2",
           "result_label": "主胜",
-          "direction_label": "无推荐",
+          "direction_label": "主胜",
           "top3_scores": [
             "1:1",
             "1:0",
-            "0:0"
+            "2:1"
           ],
-          "direction_hit": null,
+          "direction_hit": true,
           "score_hit": false
         },
         {
@@ -8046,13 +8046,13 @@
           "spf_odds": "1.99/3.14/3.25",
           "actual_score": "0:2",
           "result_label": "客胜",
-          "direction_label": "无推荐",
+          "direction_label": "主胜",
           "top3_scores": [
-            "1:1",
             "1:0",
+            "1:1",
             "0:0"
           ],
-          "direction_hit": null,
+          "direction_hit": false,
           "score_hit": false
         },
         {
@@ -8064,13 +8064,13 @@
           "spf_odds": "2.05/3.2/3.05",
           "actual_score": "0:0",
           "result_label": "平局",
-          "direction_label": "无推荐",
+          "direction_label": "主胜",
           "top3_scores": [
+            "1:0",
             "1:1",
-            "0:0",
-            "1:0"
+            "0:0"
           ],
-          "direction_hit": null,
+          "direction_hit": false,
           "score_hit": true
         },
         {
@@ -8082,13 +8082,13 @@
           "spf_odds": "2.46/3.16/2.46",
           "actual_score": "1:3",
           "result_label": "客胜",
-          "direction_label": "无推荐",
+          "direction_label": "主胜",
           "top3_scores": [
             "1:1",
-            "0:0",
+            "0:1",
             "1:0"
           ],
-          "direction_hit": null,
+          "direction_hit": false,
           "score_hit": false
         },
         {
@@ -8102,9 +8102,9 @@
           "result_label": "主胜",
           "direction_label": "主胜",
           "top3_scores": [
-            "1:1",
             "1:0",
-            "0:0"
+            "1:1",
+            "2:0"
           ],
           "direction_hit": true,
           "score_hit": false
@@ -8118,13 +8118,13 @@
           "spf_odds": "2.28/3.2/2.65",
           "actual_score": "1:1",
           "result_label": "平局",
-          "direction_label": "无推荐",
+          "direction_label": "主胜",
           "top3_scores": [
             "1:1",
-            "0:0",
-            "1:0"
+            "1:0",
+            "0:1"
           ],
-          "direction_hit": null,
+          "direction_hit": false,
           "score_hit": true
         },
         {
@@ -8136,14 +8136,14 @@
           "spf_odds": "2.85/3.36/2.08",
           "actual_score": "1:0",
           "result_label": "主胜",
-          "direction_label": "主胜",
+          "direction_label": "客胜",
           "top3_scores": [
             "1:1",
-            "0:0",
-            "0:1"
+            "0:1",
+            "1:0"
           ],
-          "direction_hit": true,
-          "score_hit": false
+          "direction_hit": false,
+          "score_hit": true
         },
         {
           "match_no": "010",
@@ -8154,26 +8154,26 @@
           "spf_odds": "1.75/3.28/3.95",
           "actual_score": "0:1",
           "result_label": "客胜",
-          "direction_label": "无推荐",
+          "direction_label": "主胜",
           "top3_scores": [
-            "1:1",
             "1:0",
-            "2:1"
+            "1:1",
+            "2:0"
           ],
-          "direction_hit": null,
+          "direction_hit": false,
           "score_hit": false
         }
       ]
     },
     {
       "date": "2026-09-02",
-      "total": 12,
-      "direction_hits": 3,
-      "direction_total": 8,
-      "direction_rate": "37.5%",
+      "total": 13,
+      "direction_hits": 6,
+      "direction_total": 13,
+      "direction_rate": 46.2,
       "score_hits": 5,
-      "score_total": 12,
-      "score_rate": "41.7%",
+      "score_total": 13,
+      "score_rate": 38.5,
       "matches": [
         {
           "match_no": "001",
@@ -8184,13 +8184,13 @@
           "spf_odds": "2.58/3.09/2.39",
           "actual_score": "0:2",
           "result_label": "客胜",
-          "direction_label": "主胜",
+          "direction_label": "客胜",
           "top3_scores": [
             "1:1",
             "0:1",
             "1:0"
           ],
-          "direction_hit": false,
+          "direction_hit": true,
           "score_hit": false
         },
         {
@@ -8202,13 +8202,13 @@
           "spf_odds": "3.08/3.4/1.96",
           "actual_score": "2:0",
           "result_label": "主胜",
-          "direction_label": "无推荐",
+          "direction_label": "客胜",
           "top3_scores": [
             "1:1",
             "0:1",
-            "0:0"
+            "1:2"
           ],
-          "direction_hit": null,
+          "direction_hit": false,
           "score_hit": false
         },
         {
@@ -8222,9 +8222,9 @@
           "result_label": "主胜",
           "direction_label": "客胜",
           "top3_scores": [
-            "1:1",
             "0:1",
-            "0:0"
+            "1:1",
+            "0:2"
           ],
           "direction_hit": false,
           "score_hit": false
@@ -8240,9 +8240,9 @@
           "result_label": "主胜",
           "direction_label": "主胜",
           "top3_scores": [
-            "1:1",
             "1:0",
-            "0:0"
+            "1:1",
+            "2:0"
           ],
           "direction_hit": true,
           "score_hit": false
@@ -8258,9 +8258,9 @@
           "result_label": "平局",
           "direction_label": "主胜",
           "top3_scores": [
-            "1:1",
             "1:0",
-            "2:1"
+            "1:1",
+            "2:0"
           ],
           "direction_hit": false,
           "score_hit": true
@@ -8274,14 +8274,14 @@
           "spf_odds": "1.99/3.15/3.25",
           "actual_score": "2:1",
           "result_label": "主胜",
-          "direction_label": "无推荐",
+          "direction_label": "主胜",
           "top3_scores": [
-            "1:1",
             "1:0",
-            "2:1"
+            "1:1",
+            "0:0"
           ],
-          "direction_hit": null,
-          "score_hit": true
+          "direction_hit": true,
+          "score_hit": false
         },
         {
           "match_no": "007",
@@ -8292,13 +8292,13 @@
           "spf_odds": "2.15/3.19/2.85",
           "actual_score": "0:3",
           "result_label": "客胜",
-          "direction_label": "无推荐",
+          "direction_label": "主胜",
           "top3_scores": [
             "1:1",
-            "0:0",
-            "1:0"
+            "1:0",
+            "0:1"
           ],
-          "direction_hit": null,
+          "direction_hit": false,
           "score_hit": false
         },
         {
@@ -8312,9 +8312,9 @@
           "result_label": "平局",
           "direction_label": "主胜",
           "top3_scores": [
-            "1:1",
             "1:0",
-            "0:0"
+            "1:1",
+            "2:0"
           ],
           "direction_hit": false,
           "score_hit": true
@@ -8328,14 +8328,14 @@
           "spf_odds": "1.85/3.5/3.3",
           "actual_score": "2:1",
           "result_label": "主胜",
-          "direction_label": "无推荐",
+          "direction_label": "主胜",
           "top3_scores": [
             "1:1",
             "1:0",
-            "0:0"
+            "2:1"
           ],
-          "direction_hit": null,
-          "score_hit": false
+          "direction_hit": true,
+          "score_hit": true
         },
         {
           "match_no": "010",
@@ -8348,9 +8348,9 @@
           "result_label": "客胜",
           "direction_label": "客胜",
           "top3_scores": [
-            "1:1",
-            "0:1",
-            "1:2"
+            "0:3",
+            "0:4",
+            "0:2"
           ],
           "direction_hit": true,
           "score_hit": false
@@ -8364,11 +8364,11 @@
           "spf_odds": "2.65/3.32/2.22",
           "actual_score": "1:1",
           "result_label": "平局",
-          "direction_label": "主胜",
+          "direction_label": "客胜",
           "top3_scores": [
             "1:1",
-            "0:0",
-            "0:1"
+            "0:1",
+            "1:0"
           ],
           "direction_hit": false,
           "score_hit": true
@@ -8384,12 +8384,168 @@
           "result_label": "主胜",
           "direction_label": "主胜",
           "top3_scores": [
-            "1:0",
             "2:0",
-            "1:1"
+            "1:0",
+            "3:0"
           ],
           "direction_hit": true,
           "score_hit": true
+        },
+        {
+          "match_no": "013",
+          "league": "巴西杯",
+          "home_team": "桑托斯",
+          "away_team": "帕梅拉斯",
+          "match_time": "08:30:00",
+          "spf_odds": "2.55/3.18/2.37",
+          "actual_score": "0:0",
+          "result_label": "平局",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:1",
+            "0:1",
+            "1:0"
+          ],
+          "direction_hit": false,
+          "score_hit": false
+        }
+      ]
+    },
+    {
+      "date": "2026-09-03",
+      "total": 7,
+      "direction_hits": 5,
+      "direction_total": 7,
+      "direction_rate": 71.4,
+      "score_hits": 2,
+      "score_total": 7,
+      "score_rate": 28.6,
+      "matches": [
+        {
+          "match_no": "001",
+          "league": "沙职",
+          "home_team": "迈季宽广",
+          "away_team": "拉斯永恒",
+          "match_time": "23:55:00",
+          "spf_odds": "2.69/3.05/2.33",
+          "actual_score": "2:2",
+          "result_label": "平局",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:1",
+            "0:1",
+            "1:0"
+          ],
+          "direction_hit": false,
+          "score_hit": false
+        },
+        {
+          "match_no": "002",
+          "league": "沙职",
+          "home_team": "新未来SC",
+          "away_team": "赛哈海湾",
+          "match_time": "00:30:00",
+          "spf_odds": "1.6/3.8/4.15",
+          "actual_score": "3:0",
+          "result_label": "主胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:0",
+            "1:1",
+            "2:0"
+          ],
+          "direction_hit": true,
+          "score_hit": false
+        },
+        {
+          "match_no": "003",
+          "league": "瑞超",
+          "home_team": "米亚尔比",
+          "away_team": "佐加顿斯",
+          "match_time": "01:00:00",
+          "spf_odds": "4.0/3.95/1.6",
+          "actual_score": "0:2",
+          "result_label": "客胜",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:1",
+            "1:2",
+            "0:1"
+          ],
+          "direction_hit": true,
+          "score_hit": false
+        },
+        {
+          "match_no": "004",
+          "league": "沙职",
+          "home_team": "迪里耶",
+          "away_team": "胡巴卡德",
+          "match_time": "02:00:00",
+          "spf_odds": "4.8/4.5/1.43",
+          "actual_score": "0:2",
+          "result_label": "客胜",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:2",
+            "1:1",
+            "0:2"
+          ],
+          "direction_hit": true,
+          "score_hit": true
+        },
+        {
+          "match_no": "005",
+          "league": "法甲",
+          "home_team": "图卢兹",
+          "away_team": "里尔",
+          "match_time": "02:45:00",
+          "spf_odds": "3.3/3.35/1.9",
+          "actual_score": "0:1",
+          "result_label": "客胜",
+          "direction_label": "客胜",
+          "top3_scores": [
+            "1:1",
+            "0:1",
+            "1:2"
+          ],
+          "direction_hit": true,
+          "score_hit": true
+        },
+        {
+          "match_no": "006",
+          "league": "西甲",
+          "home_team": "皇家社会",
+          "away_team": "塞尔塔",
+          "match_time": "03:00:00",
+          "spf_odds": "1.8/3.4/3.57",
+          "actual_score": "0:0",
+          "result_label": "平局",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "1:0",
+            "1:1",
+            "2:0"
+          ],
+          "direction_hit": false,
+          "score_hit": false
+        },
+        {
+          "match_no": "007",
+          "league": "巴西杯",
+          "home_team": "格雷米奥",
+          "away_team": "巴西国际",
+          "match_time": "07:00:00",
+          "spf_odds": "2.38/2.7/2.95",
+          "actual_score": "3:1",
+          "result_label": "主胜",
+          "direction_label": "主胜",
+          "top3_scores": [
+            "0:0",
+            "1:0",
+            "0:1"
+          ],
+          "direction_hit": true,
+          "score_hit": false
         }
       ]
     }
